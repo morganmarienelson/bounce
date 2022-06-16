@@ -1,21 +1,26 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Button, Form, Input, Modal, PageHeader, Select } from "antd";
+import { Form, Input, Modal, Select } from "antd";
 const { Option } = Select;
 
 interface MatchModalProps {
-  isModalVisible: boolean;
-  handleOk: any;
+  isStartModalVisible: boolean;
+  handleOkStartModal: any;
 }
 
 const MatchInfoModal: React.FC<MatchModalProps> = ({
-  isModalVisible,
-  handleOk,
+  isStartModalVisible,
+  handleOkStartModal,
 }) => {
   const [form] = Form.useForm();
 
   return (
-    <Modal title="Match Information" visible={isModalVisible} onOk={handleOk}>
+    //TODO: handle oncancel of modal
+    <Modal
+      title="Match Information"
+      visible={isStartModalVisible}
+      onOk={handleOkStartModal}
+    >
       <Form
         form={form}
         name="Match Information"
