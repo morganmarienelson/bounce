@@ -30,6 +30,10 @@ const MatchOverview = () => {
       <PointOutcomeComponent
         setIsWinningModalVisible={setIsWinningModalVisible}
         setIsLosingModalVisible={setIsLosingModalVisible}
+        setPointsWon={setPointsWon}
+        setPointsLost={setPointsLost}
+        pointsLost={pointsLost}
+        pointsWon={pointsWon}
       />
       <WinningModal
         handleOkWinningModal={handleOkWinningModal}

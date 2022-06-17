@@ -5,11 +5,19 @@ import { useState } from "react";
 interface PointOutComeProps {
   setIsWinningModalVisible: (isWinningModalVisible: boolean) => void;
   setIsLosingModalVisible: (isLosingModalVisible: boolean) => void;
+  setPointsWon: (pointsWon: number) => void;
+  setPointsLost: (pointsLost: number) => void;
+  pointsLost: number;
+  pointsWon: number;
 }
 
 const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
   setIsWinningModalVisible,
   setIsLosingModalVisible,
+  setPointsWon,
+  setPointsLost,
+  pointsLost,
+  pointsWon,
 }) => {
   const [activeTabKey, setActiveTabKey1] = useState("first");
 
