@@ -1,7 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Form, Input, Modal, Radio, Select, Switch } from "antd";
-const { Option } = Select;
 
 interface LosingModalProps {
   isLosingModalVisible: boolean;
@@ -14,6 +13,7 @@ const LosingModal: React.FC<LosingModalProps> = ({
 }) => {
   return (
     //TODO: handle oncancel of modal
+    //TODO: Clear all fields on commit
     <Modal
       title="Point Break Down"
       visible={isLosingModalVisible}
@@ -23,6 +23,10 @@ const LosingModal: React.FC<LosingModalProps> = ({
         <Form.Item label="Missed Return" valuePropName="checked">
           <Switch />
         </Form.Item>
+        {/* disable missesd return field */}
+        <Form.Item label="At Net" valuePropName="checked">
+          <Switch />
+        </Form.Item>
         <Form.Item label="Unforced Error" valuePropName="checked">
           <Switch />
         </Form.Item>
@@ -30,16 +34,7 @@ const LosingModal: React.FC<LosingModalProps> = ({
           <Radio.Group>
             <Radio value="forehand"> Forehand </Radio>
             <Radio value="backhand">Backhand</Radio>
-            <Radio value="backhand" disabled={true}>
-              Overhead
-            </Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Location">
-          <Radio.Group>
-            <Radio value="crossCourt"> Cross Court </Radio>
-            <Radio value="downLine">Down the Line</Radio>
-            <Radio value="middle">Middle</Radio>
+            <Radio value="backhand">Overhead</Radio>
           </Radio.Group>
         </Form.Item>
       </Form>

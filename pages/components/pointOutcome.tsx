@@ -5,19 +5,11 @@ import { useState } from "react";
 interface PointOutComeProps {
   setIsWinningModalVisible: (isWinningModalVisible: boolean) => void;
   setIsLosingModalVisible: (isLosingModalVisible: boolean) => void;
-  setPointsWon: (pointsWon: number) => void;
-  setPointsLost: (pointsLost: number) => void;
-  pointsLost: number;
-  pointsWon: number;
 }
 
 const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
   setIsWinningModalVisible,
   setIsLosingModalVisible,
-  setPointsWon,
-  setPointsLost,
-  pointsLost,
-  pointsWon,
 }) => {
   const [activeTabKey, setActiveTabKey1] = useState("first");
 
@@ -89,31 +81,24 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
   };
 
   return (
-    <>
-      <Card
-        style={{
-          width: "100%",
-        }}
-        extra={
-          <Button
-            style={{ width: 200, height: 50 }}
-            type="primary"
-            danger={true}
-          >
-            Double Fault
-          </Button>
-        }
-        title="Serve"
-        tabList={tabList}
-        activeTabKey={activeTabKey}
-        onTabChange={(key) => {
-          onTab1Change(key);
-        }}
-      >
-        {contentList[activeTabKey]}
-      </Card>
-      <br />
-    </>
+    <Card
+      style={{
+        width: "100%",
+      }}
+      extra={
+        <Button style={{ width: 200, height: 50 }} type="primary" danger={true}>
+          Double Fault
+        </Button>
+      }
+      title="Serve"
+      tabList={tabList}
+      activeTabKey={activeTabKey}
+      onTabChange={(key) => {
+        onTab1Change(key);
+      }}
+    >
+      {contentList[activeTabKey]}
+    </Card>
   );
 };
 

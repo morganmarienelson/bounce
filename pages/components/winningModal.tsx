@@ -14,6 +14,7 @@ const WinningModal: React.FC<WinningModalProps> = ({
 }) => {
   return (
     //TODO: handle oncancel of modal
+    //TODO: make modal data disappear on ok
     <Modal
       title="Point Break Down"
       visible={isWinningModalVisible}
@@ -23,6 +24,7 @@ const WinningModal: React.FC<WinningModalProps> = ({
         <Form.Item label="Winner" valuePropName="checked">
           <Switch />
         </Form.Item>
+        {/* TODO: disable overhead option unless switch is on */}
         <Form.Item label="At Net" valuePropName="checked">
           <Switch />
         </Form.Item>
