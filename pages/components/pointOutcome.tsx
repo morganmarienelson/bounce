@@ -1,4 +1,4 @@
-import { Button, Card, Col, Row, Statistic } from "antd";
+import { Button, Card, Col, Radio, Row, Statistic } from "antd";
 import "antd/dist/antd.css";
 import { useState } from "react";
 
@@ -15,6 +15,7 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
   const [pointsLost, setPointsLost] = useState(0);
   const [gamesLost, setGamesLost] = useState(0);
   const [gamesWon, setGamesWon] = useState(0);
+  const [activeTabKey, setActiveTabKey1] = useState("first");
 
   const winningButton = () => {
     setIsWinningModalVisible(true);
@@ -57,6 +58,65 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
       setGamesWon(0);
       setGamesLost(0);
     }
+  };
+
+  const onTab1Change = (key: string) => {
+    setActiveTabKey1(key);
+  };
+
+  const tabList = [
+    {
+      key: "first",
+      tab: "First Serve",
+    },
+    {
+      key: "second",
+      tab: "Second Serve",
+    },
+  ];
+  const contentList = {
+    first: (
+      <>
+        <Col>
+          <Button
+            type="primary"
+            style={{ width: 300, height: 200, marginRight: 10 }}
+            onClick={winningButton}
+          >
+            Win
+          </Button>
+          <Button
+            danger={true}
+            type="primary"
+            style={{ width: 300, height: 200 }}
+            onClick={losingButton}
+          >
+            Loss
+          </Button>
+        </Col>
+      </>
+    ),
+    second: (
+      <>
+        <Col>
+          <Button
+            type="primary"
+            style={{ width: 300, height: 200, marginRight: 10 }}
+            onClick={winningButton}
+          >
+            Win
+          </Button>
+          <Button
+            style={{ width: 300, height: 200 }}
+            type="primary"
+            danger={true}
+            onClick={losingButton}
+          >
+            Loss
+          </Button>
+        </Col>
+      </>
+    ),
   };
 
   return (
@@ -109,22 +169,29 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
           </Card>
         </Col>
       </Row>
-      <Col>
-        <Card title="Serving Stats" bordered={false}>
-          <Button style={{ width: 300 }}>Second Serve</Button>
-          <Button style={{ width: 300 }}>Double Fault</Button>
-        </Card>
-      </Col>
-      <Col>
-        <Card title="Point Outcome" bordered={false}>
-          <Button style={{ width: 300 }} onClick={winningButton}>
-            Win
+      <Card
+        style={{
+          width: "100%",
+        }}
+        extra={
+          <Button
+            style={{ width: 200, height: 50 }}
+            type="primary"
+            danger={true}
+          >
+            Double Fault
           </Button>
-          <Button style={{ width: 300 }} onClick={losingButton}>
-            Loss
-          </Button>
-        </Card>
-      </Col>
+        }
+        title="Serve"
+        tabList={tabList}
+        activeTabKey={activeTabKey}
+        onTabChange={(key) => {
+          onTab1Change(key);
+        }}
+      >
+        {contentList[activeTabKey]}
+      </Card>
+      <br />
     </>
   );
 };
