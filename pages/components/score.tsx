@@ -44,7 +44,10 @@ const Score: React.FC<ScoreProps> = ({
     } else {
       setGamesLost(gamesLost + 1);
     }
-    if ((gamesWon == 6 && gamesLost < 6) || (gamesLost == 6 && gamesWon < 6)) {
+    if (
+      (gamesWon == 6 && gamesLost <= 5) ||
+      (gamesLost == 6 && gamesWon <= 5)
+    ) {
       setGamesWon(0);
       setGamesLost(0);
     }

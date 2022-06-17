@@ -43,13 +43,13 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
       tab: "Second Serve",
     },
   ];
-  const contentList = {
+  const contentList: any = {
     first: (
       <>
         <Col>
           <Button
             type="primary"
-            style={{ width: 300, height: 200, marginRight: 10 }}
+            style={{ width: 500, height: 200, marginRight: 10 }}
             onClick={winningButton}
           >
             Win
@@ -57,7 +57,7 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
           <Button
             danger={true}
             type="primary"
-            style={{ width: 300, height: 200 }}
+            style={{ width: 500, height: 200 }}
             onClick={losingButton}
           >
             Loss
@@ -70,13 +70,13 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
         <Col>
           <Button
             type="primary"
-            style={{ width: 300, height: 200, marginRight: 10 }}
+            style={{ width: 500, height: 200, marginRight: 10 }}
             onClick={winningButton}
           >
             Win
           </Button>
           <Button
-            style={{ width: 300, height: 200 }}
+            style={{ width: 500, height: 200 }}
             type="primary"
             danger={true}
             onClick={losingButton}
@@ -110,7 +110,7 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
           onTab1Change(key);
         }}
       >
-        <div> {contentList[activeTabKey]}</div>
+        {contentList[activeTabKey]}
       </Card>
       <br />
     </>
