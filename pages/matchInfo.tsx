@@ -6,7 +6,13 @@ const { Option } = Select;
 
 const MatchInfo = () => {
   const [form] = Form.useForm();
-  const [serving, setServing] = useState(true);
+  const [server, setServer] = useState("");
+  const [playerName, setPlayerName] = useState("");
+  const [opponentName, setOpponentName] = useState("");
+
+  const onSelectedServer = (name: string) => {
+    setServer(name);
+  };
 
   return (
     <>
@@ -27,7 +33,7 @@ const MatchInfo = () => {
             },
           ]}
         >
-          <Input />
+          <Input value={playerName} />
         </Form.Item>
         <Form.Item
           name="opponentName"
@@ -39,7 +45,7 @@ const MatchInfo = () => {
             },
           ]}
         >
-          <Input />
+          <Input value={opponentName} />
         </Form.Item>
         <Form.Item
           name="serving"
@@ -51,9 +57,9 @@ const MatchInfo = () => {
             },
           ]}
         >
-          <Select placeholder="Select Player">
-            <Option value="player">Player</Option>
-            <Option value="opponent">Opponent</Option>
+          <Select placeholder="Select Player" onSelect={onSelectedServer}>
+            <Option value={playerName}>Player</Option>
+            <Option value={opponentName}>Opponent</Option>
           </Select>
         </Form.Item>
         <Form.Item

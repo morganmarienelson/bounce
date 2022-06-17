@@ -102,7 +102,7 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
           onTab1Change(key);
         }}
       >
-        {contentList[activeTabKey]}
+        <div> {contentList[activeTabKey]}</div>
       </Card>
       <br />
     </>
