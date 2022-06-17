@@ -1,11 +1,14 @@
 import { Button, Checkbox } from "antd";
 import { useState } from "react";
+import LosingModal from "./components/losingModal";
 import MatchInfoModal from "./components/matchInfoModal";
+import PointOutcomeComponent from "./components/pointOutcome";
 import WinningModal from "./components/winningModal";
 
 const App = () => {
   const [isStartModalVisible, setIsStartModalVisible] = useState(true);
-  const [isWinningModalVisible, setIsWinningModalVisible] = useState(true);
+  const [isWinningModalVisible, setIsWinningModalVisible] = useState(false);
+  const [isLosingModalVisible, setIsLosingModalVisible] = useState(false);
 
   const handleOkStartModal = () => {
     setIsStartModalVisible(false);
@@ -15,30 +18,28 @@ const App = () => {
     setIsWinningModalVisible(false);
   };
 
-  const positionOptions = ["Baseline", "Middle", "Net"];
-  const shotOptions = ["Forehand", "Backhand", "Volley", "Overhead"];
+  const handleOkLosingModal = () => {
+    setIsLosingModalVisible(false);
+  };
 
   return (
     <>
-      <Button style={{ width: 300 }}>Second Serve</Button>
-      <Button style={{ width: 300 }}>Double Fault</Button>
-      <br />
-      <Button style={{ width: 300 }}>Win</Button>
-      <Button style={{ width: 300 }}>Loss</Button>
-      <br />
-      <Checkbox.Group options={positionOptions} defaultValue={["Baseline"]} />
-      <br />
-      <Button>Forced Error</Button>
-      <Button>Unforced Error</Button>
-      <br />
-      <Checkbox.Group options={shotOptions} defaultValue={["Baseline"]} />
       <MatchInfoModal
         isStartModalVisible={isStartModalVisible}
         handleOkStartModal={handleOkStartModal}
       />
+      <PointOutcomeComponent
+        setIsWinningModalVisible={setIsWinningModalVisible}
+        setIsLosingModalVisible={setIsLosingModalVisible}
+      />
       <WinningModal
-        isWinningModalVisible={isWinningModalVisible}
         handleOkWinningModal={handleOkWinningModal}
+        isWinningModalVisible={isWinningModalVisible}
+      />
+
+      <LosingModal
+        handleOkLosingModal={handleOkLosingModal}
+        isLosingModalVisible={isLosingModalVisible}
       />
     </>
   );
