@@ -13,6 +13,8 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
 }) => {
   const [pointsWon, setPointsWon] = useState(0);
   const [pointsLost, setPointsLost] = useState(0);
+  const [gamesLost, setGamesLost] = useState(0);
+  const [gamesWon, setGamesWon] = useState(0);
 
   const winningButton = () => {
     setIsWinningModalVisible(true);
@@ -24,7 +26,7 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
     setPointsLost(pointsLost + 1);
   };
 
-  const upDateScore = (pointsLost: number, pointsWon: number) => {
+  const updateGameScore = (pointsLost: number, pointsWon: number) => {
     const scores = ["Love", 15, 30, 40, "Deuce", "Advantage"];
     if (
       (pointsWon == 4 && pointsLost < 3) ||
@@ -32,6 +34,7 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
       pointsWon == 6 ||
       (pointsLost == 4 && pointsWon < 3)
     ) {
+      updateMatchScore(pointsWon);
       setPointsWon(0);
       setPointsLost(0);
     } else if (
@@ -44,6 +47,18 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
     return [scores[pointsWon], scores[pointsLost]];
   };
 
+  const updateMatchScore = (pointsWon: number) => {
+    if (pointsWon == 4 || pointsWon == 6) {
+      setGamesWon(gamesWon + 1);
+    } else {
+      setGamesLost(gamesLost + 1);
+    }
+    if ((gamesWon == 6 && gamesLost < 6) || (gamesLost == 6 && gamesWon < 6)) {
+      setGamesWon(0);
+      setGamesLost(0);
+    }
+  };
+
   return (
     <>
       <Row>
@@ -51,7 +66,7 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
           <Card>
             <Statistic
               title="Player Score"
-              value={upDateScore(pointsLost, pointsWon)[0]}
+              value={gamesWon}
               valueStyle={{
                 color: "#3f8600",
               }}
@@ -62,7 +77,31 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
           <Card>
             <Statistic
               title="Opponent's Score"
-              value={upDateScore(pointsLost, pointsWon)[1]}
+              value={gamesLost}
+              valueStyle={{
+                color: "#cf1322",
+              }}
+            />
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={12}>
+          <Card>
+            <Statistic
+              title="Player Score"
+              value={updateGameScore(pointsLost, pointsWon)[0]}
+              valueStyle={{
+                color: "#3f8600",
+              }}
+            />
+          </Card>
+        </Col>
+        <Col span={12}>
+          <Card>
+            <Statistic
+              title="Opponent's Score"
+              value={updateGameScore(pointsLost, pointsWon)[1]}
               valueStyle={{
                 color: "#cf1322",
               }}
