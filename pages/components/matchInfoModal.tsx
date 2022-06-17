@@ -1,26 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
 import { Form, Input, Modal, Select } from "antd";
 const { Option } = Select;
 
-interface MatchModalProps {
-  isStartModalVisible: boolean;
-  handleOkStartModal: any;
-}
-
-const MatchInfoModal: React.FC<MatchModalProps> = ({
-  isStartModalVisible,
-  handleOkStartModal,
-}) => {
+//TODO: maybe create a start menu
+const MatchInfoModal = () => {
+  const [isStartModalVisible, setIsStartModalVisible] = useState(false);
   const [form] = Form.useForm();
+
+  const handleOkStartModal = () => {
+    setIsStartModalVisible(false);
+  };
 
   return (
     //TODO: handle oncancel of modal
-    <Modal
-      title="Match Information"
-      visible={isStartModalVisible}
-      onOk={handleOkStartModal}
-    >
+    <Modal visible={isStartModalVisible} onOk={handleOkStartModal}>
       <Form
         form={form}
         name="Match Information"
