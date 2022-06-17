@@ -6,8 +6,7 @@ const { Option } = Select;
 
 const MatchInfo = () => {
   const [form] = Form.useForm();
-  var playerName = "";
-  var opponentName = "";
+  const [serving, setServing] = useState(true);
 
   return (
     <>
@@ -28,7 +27,7 @@ const MatchInfo = () => {
             },
           ]}
         >
-          <Input value={playerName} />
+          <Input />
         </Form.Item>
         <Form.Item
           name="opponentName"
@@ -40,7 +39,7 @@ const MatchInfo = () => {
             },
           ]}
         >
-          <Input value={opponentName} />
+          <Input />
         </Form.Item>
         <Form.Item
           name="serving"

@@ -1,4 +1,4 @@
-import MatchInfo from "./components/matchInfo";
+import MatchInfo from "./matchInfo";
 
 const App = () => {
   return (
