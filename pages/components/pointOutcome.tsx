@@ -5,11 +5,13 @@ import { useState } from "react";
 interface PointOutComeProps {
   setIsWinningModalVisible: (isWinningModalVisible: boolean) => void;
   setIsLosingModalVisible: (isLosingModalVisible: boolean) => void;
+  onDoubleFaultClick: () => void;
 }
 
 const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
   setIsWinningModalVisible,
   setIsLosingModalVisible,
+  onDoubleFaultClick,
 }) => {
   const [activeTabKey, setActiveTabKey1] = useState("first");
 
@@ -86,7 +88,12 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
         width: "100%",
       }}
       extra={
-        <Button style={{ width: 200, height: 50 }} type="primary" danger={true}>
+        <Button
+          style={{ width: 200, height: 50 }}
+          type="primary"
+          danger={true}
+          onClick={onDoubleFaultClick}
+        >
           Double Fault
         </Button>
       }

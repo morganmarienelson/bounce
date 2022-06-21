@@ -41,21 +41,6 @@ const MatchInfo = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          name="serving"
-          label="Serving First"
-          rules={[
-            {
-              required: true,
-              message: "Please select a player!",
-            },
-          ]}
-        >
-          <Select placeholder="Select Player">
-            <Option>Player</Option>
-            <Option>Opponent</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item
           name="Match Scoring"
           label="Match Scoring"
           rules={[
