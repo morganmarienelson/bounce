@@ -1,5 +1,5 @@
 import { Card, Col, Row, Statistic } from "antd";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 interface ScoreProps {
   updateGameScore: (pointsLost: number, pointsWon: number) => Array<any>;
@@ -16,9 +16,6 @@ const Score: React.FC<ScoreProps> = ({
   pointsLost,
   pointsWon,
 }) => {
-  useEffect(() => {
-    updateGameScore(pointsLost, pointsWon);
-  }, [pointsWon, pointsLost]);
 
   return (
     <>

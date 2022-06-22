@@ -1,9 +1,10 @@
-import { Modal, Radio } from "antd";
-import { useEffect, useState } from "react";
+import { Card, Col, Modal, Radio, Row, Statistic } from "antd";
+import React, { useEffect, useState } from "react";
 import LosingModal from "./components/losingModal";
 import PointOutcomeComponent from "./components/pointOutcome";
 import Score from "./components/score";
 import WinningModal from "./components/winningModal";
+import MatchInfo from "./matchInfo";
 
 const MatchOverview = () => {
   const [isWinningModalVisible, setIsWinningModalVisible] = useState(false);
@@ -14,9 +15,11 @@ const MatchOverview = () => {
   const [server, setFirstServer] = useState("Player");
   const [gamesLost, setGamesLost] = useState(0);
   const [gamesWon, setGamesWon] = useState(0);
+  const [showSetTieBreak, setShowSetTieBreak] = useState(false);
 
   const scores = ["Love", 15, 30, 40, "Deuce", "Advantage"];
   const servers = ["Player", "Opponent"];
+  const tieBreakScores = [pointsWon, pointsLost];
 
   const onServerSelected = (e: any) => {
     setFirstServer(e);
@@ -42,23 +45,27 @@ const MatchOverview = () => {
   };
 
   const updateGameScore = (pointsLost: number, pointsWon: number) => {
-    if (
-      (pointsWon == 4 && pointsLost < 3) ||
-      pointsLost == 6 ||
-      pointsWon == 6 ||
-      (pointsLost == 4 && pointsWon < 3)
-    ) {
-      updateMatchScore(pointsWon);
-      setPointsWon(0);
-      setPointsLost(0);
-    } else if (
-      (pointsLost == 3 && pointsWon == 3) ||
-      (pointsLost == 5 && pointsWon == 5)
-    ) {
-      setPointsWon(4);
-      setPointsLost(4);
+    if (!showSetTieBreak) {
+      if (
+        (pointsWon == 4 && pointsLost < 3) ||
+        pointsLost == 6 ||
+        pointsWon == 6 ||
+        (pointsLost == 4 && pointsWon < 3)
+      ) {
+        updateMatchScore(pointsWon);
+        setPointsWon(0);
+        setPointsLost(0);
+      } else if (
+        (pointsLost == 3 && pointsWon == 3) ||
+        (pointsLost == 5 && pointsWon == 5)
+      ) {
+        setPointsWon(4);
+        setPointsLost(4);
+      }
+      return [scores[pointsWon], scores[pointsLost]];
+    } else {
+      return [tieBreakScores[0], tieBreakScores[1]];
     }
-    return [scores[pointsWon], scores[pointsLost]];
   };
 
   const updateMatchScore = (pointsWon: number) => {
@@ -67,13 +74,8 @@ const MatchOverview = () => {
     } else {
       setGamesLost(gamesLost + 1);
     }
-    if (
-      (gamesWon == 6 && gamesLost <= 5) ||
-      (gamesLost == 6 && gamesWon <= 5)
-    ) {
-      setGamesWon(0);
-      setGamesLost(0);
-    }
+    console.log(gamesWon);
+    console.log(gamesLost);
     if (server == "Player") {
       setFirstServer("Opponent");
     } else {
@@ -81,40 +83,82 @@ const MatchOverview = () => {
     }
   };
 
+  const checkMatchScore = (gamesWon: number, gamesLost: number) => {
+    if ((gamesWon == 6 && gamesLost < 5) || (gamesLost == 6 && gamesWon < 5)) {
+    } else if (gamesLost == 6 && gamesWon == 6) {
+      setShowSetTieBreak(true);
+    } else {
+      console.log("blah");
+    }
+  };
+
+  //TODO: add server opton
   return (
     <>
-      <h4>Server</h4>
-      <Radio.Group
-        options={servers}
-        onChange={onServerSelected}
-        disabled={showOverview}
+      <MatchInfo />
+      <Row>
+        <Col span={12}>
+          <Card>
+            <Statistic
+              title="Player Score"
+              value={gamesWon}
+              valueStyle={{
+                color: "#3f8600",
+              }}
+            />
+          </Card>
+        </Col>
+        <Col span={12}>
+          <Card>
+            <Statistic
+              title="Opponent's Score"
+              value={gamesLost}
+              valueStyle={{
+                color: "#cf1322",
+              }}
+            />
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={12}>
+          <Card>
+            <Statistic
+              title="Player Score"
+              value={updateGameScore(pointsLost, pointsWon)[0]}
+              valueStyle={{
+                color: "#3f8600",
+              }}
+            />
+          </Card>
+        </Col>
+        <Col span={12}>
+          <Card>
+            <Statistic
+              title="Opponent's Score"
+              value={updateGameScore(pointsLost, pointsWon)[1]}
+              valueStyle={{
+                color: "#cf1322",
+              }}
+            />
+          </Card>
+        </Col>
+      </Row>
+
+      <PointOutcomeComponent
+        setIsWinningModalVisible={setIsWinningModalVisible}
+        setIsLosingModalVisible={setIsLosingModalVisible}
+        onDoubleFaultClick={onDoubleFaultClick}
       />
-      {showOverview ? (
-        <>
-          <Score
-            updateGameScore={updateGameScore}
-            gamesLost={gamesLost}
-            gamesWon={gamesWon}
-            pointsLost={pointsLost}
-            pointsWon={pointsWon}
-          />
+      <WinningModal
+        handleOkWinningModal={handleOkWinningModal}
+        isWinningModalVisible={isWinningModalVisible}
+      />
 
-          <PointOutcomeComponent
-            setIsWinningModalVisible={setIsWinningModalVisible}
-            setIsLosingModalVisible={setIsLosingModalVisible}
-            onDoubleFaultClick={onDoubleFaultClick}
-          />
-          <WinningModal
-            handleOkWinningModal={handleOkWinningModal}
-            isWinningModalVisible={isWinningModalVisible}
-          />
-
-          <LosingModal
-            handleOkLosingModal={handleOkLosingModal}
-            isLosingModalVisible={isLosingModalVisible}
-          />
-        </>
-      ) : null}
+      <LosingModal
+        handleOkLosingModal={handleOkLosingModal}
+        isLosingModalVisible={isLosingModalVisible}
+      />
     </>
   );
 };
