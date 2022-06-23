@@ -16,14 +16,13 @@ const Score: React.FC<ScoreProps> = ({
   pointsLost,
   pointsWon,
 }) => {
-
   return (
     <>
       <Row>
         <Col span={12}>
           <Card>
             <Statistic
-              title="Player Score"
+              title="Player Set Score"
               value={gamesWon}
               valueStyle={{
                 color: "#3f8600",
@@ -34,7 +33,7 @@ const Score: React.FC<ScoreProps> = ({
         <Col span={12}>
           <Card>
             <Statistic
-              title="Opponent's Score"
+              title="Opponent Set Score"
               value={gamesLost}
               valueStyle={{
                 color: "#cf1322",

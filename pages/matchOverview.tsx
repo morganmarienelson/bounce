@@ -1,4 +1,3 @@
-import { Card, Col, Modal, Radio, Row, Statistic } from "antd";
 import React, { useEffect, useState } from "react";
 import LosingModal from "./components/losingModal";
 import PointOutcomeComponent from "./components/pointOutcome";
@@ -11,20 +10,13 @@ const MatchOverview = () => {
   const [isLosingModalVisible, setIsLosingModalVisible] = useState(false);
   const [pointsWon, setPointsWon] = useState(0);
   const [pointsLost, setPointsLost] = useState(0);
-  const [showOverview, setShowOverview] = useState(false);
-  const [server, setFirstServer] = useState("Player");
+  const [server, setFirstServer] = useState("");
   const [gamesLost, setGamesLost] = useState(0);
   const [gamesWon, setGamesWon] = useState(0);
   const [showSetTieBreak, setShowSetTieBreak] = useState(false);
 
   const scores = ["Love", 15, 30, 40, "Deuce", "Advantage"];
-  const servers = ["Player", "Opponent"];
   const tieBreakScores = [pointsWon, pointsLost];
-
-  const onServerSelected = (e: any) => {
-    setFirstServer(e);
-    setShowOverview(true);
-  };
 
   const handleOkWinningModal = () => {
     setIsWinningModalVisible(false);
@@ -69,7 +61,7 @@ const MatchOverview = () => {
   };
 
   const updateMatchScore = (pointsWon: number) => {
-    if (pointsWon == 4 || pointsWon == 6) {
+    if ((pointsWon == 4 && pointsLost != 6) || pointsWon == 6) {
       setGamesWon(gamesWon + 1);
     } else {
       setGamesLost(gamesLost + 1);
@@ -83,67 +75,17 @@ const MatchOverview = () => {
     }
   };
 
-  const checkMatchScore = (gamesWon: number, gamesLost: number) => {
-    if ((gamesWon == 6 && gamesLost < 5) || (gamesLost == 6 && gamesWon < 5)) {
-    } else if (gamesLost == 6 && gamesWon == 6) {
-      setShowSetTieBreak(true);
-    } else {
-      console.log("blah");
-    }
-  };
-
-  //TODO: add server opton
   return (
     <>
-      <MatchInfo />
-      <Row>
-        <Col span={12}>
-          <Card>
-            <Statistic
-              title="Player Score"
-              value={gamesWon}
-              valueStyle={{
-                color: "#3f8600",
-              }}
-            />
-          </Card>
-        </Col>
-        <Col span={12}>
-          <Card>
-            <Statistic
-              title="Opponent's Score"
-              value={gamesLost}
-              valueStyle={{
-                color: "#cf1322",
-              }}
-            />
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={12}>
-          <Card>
-            <Statistic
-              title="Player Score"
-              value={updateGameScore(pointsLost, pointsWon)[0]}
-              valueStyle={{
-                color: "#3f8600",
-              }}
-            />
-          </Card>
-        </Col>
-        <Col span={12}>
-          <Card>
-            <Statistic
-              title="Opponent's Score"
-              value={updateGameScore(pointsLost, pointsWon)[1]}
-              valueStyle={{
-                color: "#cf1322",
-              }}
-            />
-          </Card>
-        </Col>
-      </Row>
+      <MatchInfo setFirstServer={setFirstServer} server={server} />
+
+      <Score
+        gamesLost={gamesLost}
+        gamesWon={gamesWon}
+        updateGameScore={updateGameScore}
+        pointsLost={pointsLost}
+        pointsWon={pointsWon}
+      />
 
       <PointOutcomeComponent
         setIsWinningModalVisible={setIsWinningModalVisible}
