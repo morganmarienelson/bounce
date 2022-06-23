@@ -22,6 +22,8 @@ const MatchInfo: React.FC<MatchInfoProps> = ({ setFirstServer, server }) => {
     setFirstServer(e);
   };
 
+  const scores = ["Love", 15, 30, 40, "Deuce", "Advantage"];
+
   return (
     <>
       <Box fill align="end" justify="end">

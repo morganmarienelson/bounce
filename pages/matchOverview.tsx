@@ -17,6 +17,7 @@ const MatchOverview = () => {
 
   const scores = ["Love", 15, 30, 40, "Deuce", "Advantage"];
   const tieBreakScores = [pointsWon, pointsLost];
+  var counter = 1;
 
   const handleOkWinningModal = () => {
     setIsWinningModalVisible(false);
@@ -39,7 +40,7 @@ const MatchOverview = () => {
   const updateGameScore = (pointsLost: number, pointsWon: number) => {
     if (!showSetTieBreak) {
       if (
-        (pointsWon == 4 && pointsLost < 3) ||
+        (pointsWon == 3 && pointsLost < 3) ||
         pointsLost == 6 ||
         pointsWon == 6 ||
         (pointsLost == 4 && pointsWon < 3)
@@ -54,8 +55,15 @@ const MatchOverview = () => {
         setPointsWon(4);
         setPointsLost(4);
       }
-      return [scores[pointsWon], scores[pointsLost]];
     } else {
+      if (counter % 2 != 0) {
+        if (server == "Player") {
+          setFirstServer("Opponent");
+        } else {
+          setFirstServer("Player");
+        }
+      }
+      counter++;
       return [tieBreakScores[0], tieBreakScores[1]];
     }
   };
@@ -66,8 +74,10 @@ const MatchOverview = () => {
     } else {
       setGamesLost(gamesLost + 1);
     }
-    console.log(gamesWon);
-    console.log(gamesLost);
+    if ((gamesLost == 6 && gamesWon == 7) || gamesLost == 6 || gamesWon == 6) {
+      console.log("in a tiebreak");
+      setShowSetTieBreak(true);
+    }
     if (server == "Player") {
       setFirstServer("Opponent");
     } else {
