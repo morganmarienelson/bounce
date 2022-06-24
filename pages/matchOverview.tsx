@@ -10,14 +10,10 @@ const MatchOverview = () => {
   const [isLosingModalVisible, setIsLosingModalVisible] = useState(false);
   const [pointsWon, setPointsWon] = useState(0);
   const [pointsLost, setPointsLost] = useState(0);
-  const [server, setFirstServer] = useState("");
   const [gamesLost, setGamesLost] = useState(0);
   const [gamesWon, setGamesWon] = useState(0);
   const [showSetTieBreak, setShowSetTieBreak] = useState(false);
-
   const scores = ["Love", 15, 30, 40, "Deuce", "Advantage"];
-  const tieBreakScores = [pointsWon, pointsLost];
-  var counter = 1;
 
   const handleOkWinningModal = () => {
     setIsWinningModalVisible(false);
@@ -29,78 +25,63 @@ const MatchOverview = () => {
     setPointsLost(pointsLost + 1);
   };
 
-  const onDoubleFaultClick = () => {
-    if (server == "Player") {
-      setPointsLost(pointsLost + 1);
+  const updateMatchScore = (pointsWon: number, pointsLost: number) => {
+    if ((pointsWon == 4 && pointsLost != 6) || pointsWon == 6) {
+     setGamesWon(gamesWon+1)
     } else {
-      setPointsWon(pointsWon + 1);
+      setGamesLost(gamesLost + 1);
     }
+    if ((gamesLost == 6 && gamesWon < 5) || (gamesWon == 6 || gamesLost < 5)) {
+      setGamesLost(0);
+      setGamesWon(0);
+    }
+    else if ((gamesLost == 7 && gamesWon == 5) || (gamesWon == 7 || gamesLost == 5)) {
+      setGamesLost(0);
+      setGamesWon(0);
+    }
+    else if ((gamesLost == 6 && gamesWon == 6) || (gamesWon == 6 || gamesLost == 6)) {
+     setShowSetTieBreak(true)
+      setPointsWon(0);
+     setPointsLost(0);
+    }
+
   };
 
-  const updateGameScore = (pointsLost: number, pointsWon: number) => {
-    if (!showSetTieBreak) {
+  const updateGameScore = () => {
       if (
-        (pointsWon == 3 && pointsLost < 3) ||
-        pointsLost == 6 ||
-        pointsWon == 6 ||
-        (pointsLost == 4 && pointsWon < 3)
+          (pointsWon == 4 && pointsLost < 3) ||
+          pointsLost == 6 ||
+          pointsWon == 6 ||
+          (pointsLost == 4 && pointsWon < 3)
       ) {
-        updateMatchScore(pointsWon);
+        updateMatchScore(pointsWon, pointsLost);
         setPointsWon(0);
         setPointsLost(0);
       } else if (
-        (pointsLost == 3 && pointsWon == 3) ||
-        (pointsLost == 5 && pointsWon == 5)
+          (pointsLost == 3 && pointsWon == 3) ||
+          (pointsLost == 5 && pointsWon == 5)
       ) {
         setPointsWon(4);
         setPointsLost(4);
       }
-    } else {
-      if (counter % 2 != 0) {
-        if (server == "Player") {
-          setFirstServer("Opponent");
-        } else {
-          setFirstServer("Player");
-        }
-      }
-      counter++;
-      return [tieBreakScores[0], tieBreakScores[1]];
-    }
-  };
-
-  const updateMatchScore = (pointsWon: number) => {
-    if ((pointsWon == 4 && pointsLost != 6) || pointsWon == 6) {
-      setGamesWon(gamesWon + 1);
-    } else {
-      setGamesLost(gamesLost + 1);
-    }
-    if ((gamesLost == 6 && gamesWon == 7) || gamesLost == 6 || gamesWon == 6) {
-      console.log("in a tiebreak");
-      setShowSetTieBreak(true);
-    }
-    if (server == "Player") {
-      setFirstServer("Opponent");
-    } else {
-      setFirstServer("Player");
-    }
+      return [scores[pointsWon], scores[pointsLost]];
   };
 
   return (
     <>
-      <MatchInfo setFirstServer={setFirstServer} server={server} />
+      <MatchInfo />
 
       <Score
         gamesLost={gamesLost}
         gamesWon={gamesWon}
-        updateGameScore={updateGameScore}
         pointsLost={pointsLost}
         pointsWon={pointsWon}
+        updateGameScore={updateGameScore}
       />
 
       <PointOutcomeComponent
         setIsWinningModalVisible={setIsWinningModalVisible}
         setIsLosingModalVisible={setIsLosingModalVisible}
-        onDoubleFaultClick={onDoubleFaultClick}
       />
       <WinningModal
         handleOkWinningModal={handleOkWinningModal}
