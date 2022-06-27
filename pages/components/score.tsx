@@ -1,22 +1,20 @@
 import { Card, Col, Row, Statistic } from "antd";
-import React, { useEffect } from "react";
 
 interface ScoreProps {
-  updateGameScore: (pointsLost: number, pointsWon: number) => Array<any>;
   gamesLost: number;
   gamesWon: number;
   pointsLost: number;
   pointsWon: number;
+  updateGameScore: () => (string | number)[];
 }
 
 const Score: React.FC<ScoreProps> = ({
   gamesLost,
   gamesWon,
-  updateGameScore,
   pointsLost,
   pointsWon,
+                                       updateGameScore,
 }) => {
-  const scores = ["Love", 15, 30, 40, "Deuce", "Advantage"];
   return (
     <>
       <Row>
@@ -48,7 +46,7 @@ const Score: React.FC<ScoreProps> = ({
           <Card>
             <Statistic
               title="Player Score"
-              value={scores[pointsWon]}
+              value={updateGameScore()[0]}
               valueStyle={{
                 color: "#3f8600",
               }}
@@ -59,7 +57,7 @@ const Score: React.FC<ScoreProps> = ({
           <Card>
             <Statistic
               title="Opponent's Score"
-              value={scores[pointsLost]}
+              value={updateGameScore()[1]}
               valueStyle={{
                 color: "#cf1322",
               }}

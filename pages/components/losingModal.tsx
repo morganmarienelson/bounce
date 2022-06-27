@@ -1,16 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import "antd/dist/antd.css";
-import { Form, Input, Modal, Radio, Select, Switch } from "antd";
+import { Button, Form, Input, Modal, Radio, Select, Switch } from "antd";
 
 interface LosingModalProps {
   isLosingModalVisible: boolean;
   handleOkLosingModal: any;
+  handleCancelModal: () => void;
 }
 
 const LosingModal: React.FC<LosingModalProps> = ({
+
   isLosingModalVisible,
   handleOkLosingModal,
+    handleCancelModal,
 }) => {
+
+  const [atNet, disableAtNet ] = useState(false);
+  const onMissedReturnSwitchClicked = (checked : boolean) => {
+    if (checked){
+     disableAtNet(true);
+    } else {
+      disableAtNet(false);
+    }
+
+  }
+
   return (
     //TODO: handle oncancel of modal
     //TODO: Clear all fields on commit
@@ -18,14 +32,15 @@ const LosingModal: React.FC<LosingModalProps> = ({
       title="Point Break Down"
       visible={isLosingModalVisible}
       onOk={handleOkLosingModal}
+      onCancel={handleCancelModal}
+      destroyOnClose={true}
     >
       <Form name="Match Information" scrollToFirstError style={{ margin: 20 }}>
         <Form.Item label="Missed Return" valuePropName="checked">
-          <Switch />
+          <Switch onChange={onMissedReturnSwitchClicked } />
         </Form.Item>
-        {/* disable missesd return field */}
         <Form.Item label="At Net" valuePropName="checked">
-          <Switch />
+          <Switch disabled={atNet}/>
         </Form.Item>
         <Form.Item label="Unforced Error" valuePropName="checked">
           <Switch />
@@ -34,9 +49,17 @@ const LosingModal: React.FC<LosingModalProps> = ({
           <Radio.Group>
             <Radio value="forehand"> Forehand </Radio>
             <Radio value="backhand">Backhand</Radio>
-            <Radio value="backhand">Overhead</Radio>
+            <Radio value="overhead">Overhead</Radio>
           </Radio.Group>
         </Form.Item>
+        <Button
+          style={{ width: 200, height: 50, marginRight: 0 }}
+          type="primary"
+          danger={true}
+          onClick={handleOkLosingModal}
+        >
+          Double Fault
+        </Button>
       </Form>
     </Modal>
   );

@@ -1,17 +1,20 @@
 import { Button, Card, Col, Radio, Row, Statistic } from "antd";
 import "antd/dist/antd.css";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Undo} from "grommet-icons";
 
 interface PointOutComeProps {
   setIsWinningModalVisible: (isWinningModalVisible: boolean) => void;
   setIsLosingModalVisible: (isLosingModalVisible: boolean) => void;
-  onDoubleFaultClick: () => void;
+  undoButton: () => void;
+  undoButtonDisabled: boolean;
 }
 
 const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
   setIsWinningModalVisible,
   setIsLosingModalVisible,
-  onDoubleFaultClick,
+    undoButton,
+    undoButtonDisabled,
 }) => {
   const [activeTabKey, setActiveTabKey1] = useState("first");
 
@@ -56,6 +59,13 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
           >
             Loss
           </Button>
+          <Button
+              type="text"
+              style={{ width: 300, height: 200 }}
+              disabled={undoButtonDisabled}
+              icon={<Undo />}
+          onClick={undoButton}
+          />
         </Col>
       </>
     ),
@@ -77,6 +87,12 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
           >
             Loss
           </Button>
+          <Button
+              type="default"
+              style={{ width: 100, height: 50 }}
+              icon={<Undo />}
+              disabled={undoButtonDisabled}
+          />
         </Col>
       </>
     ),
@@ -87,16 +103,6 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
       style={{
         width: "100%",
       }}
-      extra={
-        <Button
-          style={{ width: 200, height: 50 }}
-          type="primary"
-          danger={true}
-          onClick={onDoubleFaultClick}
-        >
-          Double Fault
-        </Button>
-      }
       title="Serve"
       tabList={tabList}
       activeTabKey={activeTabKey}

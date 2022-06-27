@@ -4,25 +4,13 @@ import { Form, Input, PageHeader, Radio, Select } from "antd";
 const { Option } = Select;
 import { SettingsOption, Close } from "grommet-icons";
 import { Box, Heading, Layer, Button } from "grommet/components";
-import { setServers } from "dns";
 
-interface MatchInfoProps {
-  setFirstServer: (firstServer: string) => void;
-  server: string;
-}
-
-const MatchInfo: React.FC<MatchInfoProps> = ({ setFirstServer, server }) => {
+const MatchInfo = () => {
   const [form] = Form.useForm();
   const [open, setOpen] = useState(true);
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
-
-  const onServerSelected = (e: any) => {
-    setFirstServer(e);
-  };
-
-  const scores = ["Love", 15, 30, 40, "Deuce", "Advantage"];
 
   return (
     <>
@@ -131,27 +119,6 @@ const MatchInfo: React.FC<MatchInfoProps> = ({ setFirstServer, server }) => {
                       <Radio value="outdoors">Outdoors</Radio>
                       <Radio value="indoors">Indoors</Radio>
                     </Radio.Group>
-                  </Form.Item>
-                  <Form.Item
-                    name="server"
-                    label="Who is Serving First?"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Please select the first server",
-                      },
-                    ]}
-                  >
-                    <Select
-                      value={server}
-                      style={{
-                        width: 120,
-                      }}
-                      onChange={onServerSelected}
-                    >
-                      <Option value="Player">Player</Option>
-                      <Option value="Opponent">Opponent</Option>
-                    </Select>
                   </Form.Item>
                   <Button
                     type="submit"
