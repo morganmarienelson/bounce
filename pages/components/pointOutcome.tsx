@@ -60,11 +60,10 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
             Loss
           </Button>
           <Button
-              type="text"
-              style={{ width: 300, height: 200 }}
-              disabled={undoButtonDisabled}
+              type="default"
+              style={{ width: 100, height: 100, margin: 30 }}
               icon={<Undo />}
-          onClick={undoButton}
+              disabled={undoButtonDisabled}
           />
         </Col>
       </>
@@ -73,23 +72,23 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
       <>
         <Col>
           <Button
-            type="primary"
-            style={{ width: 500, height: 200, marginRight: 10 }}
-            onClick={winningButton}
+              type="primary"
+              style={{ width: 500, height: 200, marginRight: 10 }}
+              onClick={winningButton}
           >
             Win
           </Button>
           <Button
-            style={{ width: 500, height: 200 }}
-            type="primary"
-            danger={true}
-            onClick={losingButton}
+              danger={true}
+              type="primary"
+              style={{ width: 500, height: 200 }}
+              onClick={losingButton}
           >
             Loss
           </Button>
           <Button
               type="default"
-              style={{ width: 100, height: 50 }}
+              style={{ width: 100, height: 100, margin: 30 }}
               icon={<Undo />}
               disabled={undoButtonDisabled}
           />
