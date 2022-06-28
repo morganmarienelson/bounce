@@ -1,8 +1,9 @@
-import { Button, Col, Row } from "antd";
 import "antd/dist/antd.css";
 import { useState } from "react";
 import LosingModal from "./components/losingModal";
 import PointOutcomeComponent from "./components/pointOutcome";
+import ReturnPanel from "./components/returnPanel";
+import ServingPanel from "./components/servingPanel";
 import WinningModal from "./components/winningModal";
 
 const PointInput = () => {
@@ -30,53 +31,10 @@ const PointInput = () => {
 
   return (
     <>
-      <Row>
-        <div style={{ border: "solid" }}>
-          <h1>Return</h1>
-          <Button
-            type="primary"
-            style={{ width: 200, height: 200, marginRight: 10, marginLeft: 20 }}
-          >
-            In
-          </Button>
-          <Button
-            type="primary"
-            style={{ width: 200, height: 200, marginRight: 10 }}
-          >
-            Winner
-          </Button>
-          <Button
-            type="primary"
-            danger={true}
-            style={{ width: 200, height: 200, marginRight: 10 }}
-          >
-            Miss
-          </Button>
-        </div>
-        <div style={{ border: "solid" }}>
-          <h1>Serve</h1>
-          <Button
-            type="primary"
-            style={{ width: 200, height: 200, marginRight: 10 }}
-          >
-            Ace
-          </Button>
-          <Button
-            danger={true}
-            type="primary"
-            style={{ width: 200, height: 200, marginRight: 10 }}
-          >
-            In
-          </Button>
-          <Button
-            danger={true}
-            type="primary"
-            style={{ width: 200, height: 200, marginRight: 10 }}
-          >
-            Fault
-          </Button>
-        </div>
-      </Row>
+      <ReturnPanel />
+
+      <ServingPanel />
+
       <PointOutcomeComponent
         setIsWinningModalVisible={setIsWinningModalVisible}
         setIsLosingModalVisible={setIsLosingModalVisible}
