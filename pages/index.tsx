@@ -4,8 +4,6 @@ import PointOutcomeComponent from "./components/pointOutcome";
 import Score from "./components/score";
 import WinningModal from "./components/winningModal";
 import MatchInfo from "./matchInfo";
-import { Button } from "antd";
-import { Undo } from "grommet-icons";
 
 const MatchOverview = () => {
   const [isWinningModalVisible, setIsWinningModalVisible] = useState(false);
@@ -19,8 +17,8 @@ const MatchOverview = () => {
   const [lastPoint, setLastPoint] = useState(0);
   const [undoButtonDisabled, setUndoButtonDisabled] = useState(true);
   const [secondSet, setSecondSet] = useState(true);
-  const [previousPlayerSetScore, setPreviousPlayerSetScore] = useState(0);
-  const [previousOpponentSetScore, setPreviousOpponentSetScore] = useState(0);
+  const [previousPlayerSetScore, setPreviousPlayerSetScore] = useState(-1);
+  const [previousOpponentSetScore, setPreviousOpponentSetScore] = useState(-1);
   const [showMatchTieBreak, setShowMatchTieBreak] = useState(false);
 
   const handleOkWinningModal = () => {
@@ -81,7 +79,8 @@ const MatchOverview = () => {
     } else {
       if (!showMatchTieBreak) {
         if (pointsWon >= 7 && pointsWon - pointsLost >= 2) {
-          if (previousPlayerSetScore != 0) {
+          if (previousPlayerSetScore != -1) {
+            setGamesLost(gamesWon + 1);
             checkMatchTieBreak();
           } else {
             setPointsLost(0);
@@ -95,7 +94,8 @@ const MatchOverview = () => {
             setGamesWon(0);
           }
         } else if (pointsLost >= 7 && pointsLost - pointsWon >= 2) {
-          if (previousPlayerSetScore != 0) {
+          if (previousPlayerSetScore != -1) {
+            setGamesLost(gamesLost + 1);
             checkMatchTieBreak();
           } else {
             setPointsLost(0);
@@ -131,7 +131,7 @@ const MatchOverview = () => {
       (gamesWon == 5 && gamesLost == 7) ||
       (gamesWon == 7 && gamesLost == 5)
     ) {
-      if (previousPlayerSetScore != 0) {
+      if (previousPlayerSetScore != -1) {
         checkMatchTieBreak();
       } else {
         setPreviousPlayerSetScore(gamesWon);

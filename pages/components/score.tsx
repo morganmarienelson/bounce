@@ -3,23 +3,19 @@ import { Card, Col, Row, Statistic } from "antd";
 interface ScoreProps {
   gamesLost: number;
   gamesWon: number;
-  pointsLost: number;
-  pointsWon: number;
   updateGameScore: () => (string | number)[];
   secondSet: boolean;
-  previousPlayerSetScore : number,
-    previousOpponentSetScore : number,
+  previousPlayerSetScore: number;
+  previousOpponentSetScore: number;
 }
 
 const Score: React.FC<ScoreProps> = ({
   gamesLost,
   gamesWon,
-  pointsLost,
-  pointsWon,
-    secondSet,
-                                       updateGameScore,
-    previousOpponentSetScore,
-    previousPlayerSetScore,
+  secondSet,
+  updateGameScore,
+  previousOpponentSetScore,
+  previousPlayerSetScore,
 }) => {
   return (
     <>
@@ -47,30 +43,6 @@ const Score: React.FC<ScoreProps> = ({
           </Card>
         </Col>
       </Row>
-        <Row hidden={secondSet} >
-            <Col span={12}>
-                <Card>
-                    <Statistic
-                        title="Player Score"
-                        value={previousPlayerSetScore}
-                        valueStyle={{
-                            color: "#3f8600",
-                        }}
-                    />
-                </Card>
-            </Col>
-            <Col span={12}>
-                <Card>
-                    <Statistic
-                        title="Opponent's Score"
-                        value={previousOpponentSetScore}
-                        valueStyle={{
-                            color: "#cf1322",
-                        }}
-                    />
-                </Card>
-            </Col>
-        </Row>
       <Row>
         <Col span={12}>
           <Card>
@@ -88,6 +60,30 @@ const Score: React.FC<ScoreProps> = ({
             <Statistic
               title="Opponent's Score"
               value={updateGameScore()[1]}
+              valueStyle={{
+                color: "#cf1322",
+              }}
+            />
+          </Card>
+        </Col>
+      </Row>
+      <Row hidden={secondSet}>
+        <Col span={12}>
+          <Card>
+            <Statistic
+              title="Player Score"
+              value={previousPlayerSetScore}
+              valueStyle={{
+                color: "#3f8600",
+              }}
+            />
+          </Card>
+        </Col>
+        <Col span={12}>
+          <Card>
+            <Statistic
+              title="Opponent's Score"
+              value={previousOpponentSetScore}
               valueStyle={{
                 color: "#cf1322",
               }}

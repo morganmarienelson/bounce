@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Button, Form, Input, Modal, Radio, Select, Switch } from "antd";
+import { Button, Form, Modal, Radio, Select, Switch } from "antd";
 
 interface LosingModalProps {
   isLosingModalVisible: boolean;
@@ -9,27 +9,22 @@ interface LosingModalProps {
 }
 
 const LosingModal: React.FC<LosingModalProps> = ({
-
   isLosingModalVisible,
   handleOkLosingModal,
-    handleCancelModal,
+  handleCancelModal,
 }) => {
-
-  const [atNet, disableAtNet ] = useState(false);
-  const onMissedReturnSwitchClicked = (checked : boolean) => {
-    if (checked){
-     disableAtNet(true);
+  const [atNet, disableAtNet] = useState(false);
+  const onMissedReturnSwitchClicked = (checked: boolean) => {
+    if (checked) {
+      disableAtNet(true);
     } else {
       disableAtNet(false);
     }
-
-  }
+  };
 
   return (
-    //TODO: handle oncancel of modal
-    //TODO: Clear all fields on commit
     <Modal
-      title="Point Break Down"
+      title="Losing Point Break Down"
       visible={isLosingModalVisible}
       onOk={handleOkLosingModal}
       onCancel={handleCancelModal}
@@ -37,10 +32,10 @@ const LosingModal: React.FC<LosingModalProps> = ({
     >
       <Form name="Match Information" scrollToFirstError style={{ margin: 20 }}>
         <Form.Item label="Missed Return" valuePropName="checked">
-          <Switch onChange={onMissedReturnSwitchClicked } />
+          <Switch onChange={onMissedReturnSwitchClicked} />
         </Form.Item>
         <Form.Item label="At Net" valuePropName="checked">
-          <Switch disabled={atNet}/>
+          <Switch disabled={atNet} />
         </Form.Item>
         <Form.Item label="Unforced Error" valuePropName="checked">
           <Switch />
