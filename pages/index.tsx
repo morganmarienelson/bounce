@@ -82,26 +82,32 @@ const MatchOverview = () => {
         else {
             if (!showMatchTieBreak){
                 if (pointsWon >=7 && (pointsWon-pointsLost) >= 2){
-                    setGamesWon(7);
-                    setPointsLost(0);
-                    setPointsWon(0);
-                    setShowSetTieBreak(false);
-                    setPreviousPlayerSetScore(gamesWon + 1);
-                    setPreviousOpponentSetScore(gamesLost);
-                    setSecondSet(false);
-                    setGamesLost(0);
-                    setGamesWon(0);
+                    if (previousPlayerSetScore != 0) {
+                        checkMatchTieBreak();
+                    } else {
+                        setPointsLost(0);
+                        setPointsWon(0);
+                        setShowSetTieBreak(false);
+                        setPreviousPlayerSetScore(gamesWon + 1);
+                        setPreviousOpponentSetScore(gamesLost);
+                        setSecondSet(false);
+                        setGamesLost(0);
+                        setGamesWon(0);
+                    }
                 }
                 else if (pointsLost >=7 && (pointsLost-pointsWon) >= 2){
-                    setGamesLost(7);
-                    setPointsLost(0);
-                    setPointsWon(0);
-                    setShowSetTieBreak(false);
-                    setPreviousPlayerSetScore(gamesWon);
-                    setPreviousOpponentSetScore(gamesLost + 1);
-                    setSecondSet(false);
-                    setGamesLost(0);
-                    setGamesWon(0);
+                    if (previousPlayerSetScore != 0) {
+                        checkMatchTieBreak();
+                    } else {
+                        setPointsLost(0);
+                        setPointsWon(0);
+                        setShowSetTieBreak(false);
+                        setPreviousPlayerSetScore(gamesWon);
+                        setPreviousOpponentSetScore(gamesLost + 1);
+                        setSecondSet(false);
+                        setGamesLost(0);
+                        setGamesWon(0);
+                    }
                 }
             } else {
                 if (pointsWon >=10 && (pointsWon-pointsLost) >= 2){
@@ -123,21 +129,28 @@ const MatchOverview = () => {
 
     const checkSetScore = () => {
         if ((gamesWon == 6 && gamesLost <=4) || (gamesLost == 6 && gamesWon <=4) || (gamesWon == 5 && gamesLost == 7) || (gamesWon == 7 && gamesLost == 5)  ){
-           setPreviousPlayerSetScore(gamesWon);
-           setPreviousOpponentSetScore(gamesLost);
-            if (((previousPlayerSetScore > previousOpponentSetScore) && (gamesWon < gamesLost)) || ((previousPlayerSetScore < previousOpponentSetScore) && (gamesWon > gamesLost))) {
-                setShowMatchTieBreak(true);
-                setPointsWon(0);
-                setPointsLost(0);
-            } else {
+            if (previousPlayerSetScore != 0) {
+                checkMatchTieBreak();
+            }  else {
+                setPreviousPlayerSetScore(gamesWon);
+                setPreviousOpponentSetScore(gamesLost);
                 setGamesLost(0);
                 setGamesWon(0);
             }
+
         } else if (gamesWon == 6 && gamesLost == 6){
             setShowSetTieBreak(true)
             setPointsWon(0);
             setPointsLost(0);
         }
+    }
+//TODO: fix double tiebreak situation
+    const checkMatchTieBreak = () => {
+            if (((previousPlayerSetScore > previousOpponentSetScore) && (gamesWon < gamesLost)) || ((previousPlayerSetScore < previousOpponentSetScore) && (gamesWon > gamesLost))) {
+                setShowMatchTieBreak(true);
+                setPointsWon(0);
+                setPointsLost(0);
+            }
     }
 
 
