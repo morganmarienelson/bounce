@@ -1,10 +1,15 @@
 import { Button } from "antd";
 
-const ReturnPanel = () => {
+interface ReturnPanelProps {
+  onServeAndReturn: () => void;
+}
+
+const ReturnPanel: React.FC<ReturnPanelProps> = ({ onServeAndReturn }) => {
   return (
     <div style={{ border: "solid" }}>
       <h1>Return</h1>
       <Button
+        onClick={onServeAndReturn}
         type="primary"
         style={{ width: 200, height: 200, marginRight: 10, marginLeft: 20 }}
       >

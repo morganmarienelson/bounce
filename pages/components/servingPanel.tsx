@@ -11,7 +11,6 @@ const ServingPanel = () => {
         Ace
       </Button>
       <Button
-        danger={true}
         type="primary"
         style={{ width: 200, height: 200, marginRight: 10 }}
       >

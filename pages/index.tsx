@@ -10,6 +10,8 @@ const PointInput = () => {
   const [isWinningModalVisible, setIsWinningModalVisible] = useState(false);
   const [isLosingModalVisible, setIsLosingModalVisible] = useState(false);
   const [undoButtonDisabled, setUndoButtonDisabled] = useState(true);
+  const [showPointOutcome, setShowPointOutcome] = useState(false);
+  const [showServeAndReturn, setShowServeAndReturn] = useState(true);
 
   const handleOkWinningModal = () => {
     setIsWinningModalVisible(false);
@@ -26,21 +28,30 @@ const PointInput = () => {
     setUndoButtonDisabled(false);
   };
 
+  const onServeAndReturn = () => {
+    setShowServeAndReturn(false);
+  };
+
   //TODO: delete method will go here
   const undoButton = () => {};
 
   return (
     <>
-      <ReturnPanel />
+      {showServeAndReturn ? (
+        <>
+          <ReturnPanel onServeAndReturn={onServeAndReturn} />
 
-      <ServingPanel />
-
-      <PointOutcomeComponent
-        setIsWinningModalVisible={setIsWinningModalVisible}
-        setIsLosingModalVisible={setIsLosingModalVisible}
-        undoButton={undoButton}
-        undoButtonDisabled={undoButtonDisabled}
-      />
+          <ServingPanel />
+        </>
+      ) : (
+        <PointOutcomeComponent
+          showPointOutcome={showPointOutcome}
+          setIsWinningModalVisible={setIsWinningModalVisible}
+          setIsLosingModalVisible={setIsLosingModalVisible}
+          undoButton={undoButton}
+          undoButtonDisabled={undoButtonDisabled}
+        />
+      )}
 
       <WinningModal
         handleOkWinningModal={handleOkWinningModal}
