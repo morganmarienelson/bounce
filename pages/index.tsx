@@ -10,7 +10,6 @@ const PointInput = () => {
   const [isWinningModalVisible, setIsWinningModalVisible] = useState(false);
   const [isLosingModalVisible, setIsLosingModalVisible] = useState(false);
   const [undoButtonDisabled, setUndoButtonDisabled] = useState(true);
-  const [showPointOutcome, setShowPointOutcome] = useState(false);
   const [showServeAndReturn, setShowServeAndReturn] = useState(true);
 
   const handleOkWinningModal = () => {
@@ -41,11 +40,10 @@ const PointInput = () => {
         <>
           <ReturnPanel onServeAndReturn={onServeAndReturn} />
 
-          <ServingPanel />
+          <ServingPanel onServeAndReturn={onServeAndReturn} />
         </>
       ) : (
         <PointOutcomeComponent
-          showPointOutcome={showPointOutcome}
           setIsWinningModalVisible={setIsWinningModalVisible}
           setIsLosingModalVisible={setIsLosingModalVisible}
           undoButton={undoButton}
