@@ -1,7 +1,7 @@
 import { Button, Card, Col, Radio, Row, Statistic } from "antd";
 import "antd/dist/antd.css";
 import React, { useState } from "react";
-import { Undo} from "grommet-icons";
+import { Undo } from "grommet-icons";
 
 interface PointOutComeProps {
   setIsWinningModalVisible: (isWinningModalVisible: boolean) => void;
@@ -13,8 +13,8 @@ interface PointOutComeProps {
 const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
   setIsWinningModalVisible,
   setIsLosingModalVisible,
-    undoButton,
-    undoButtonDisabled,
+  undoButton,
+  undoButtonDisabled,
 }) => {
   const [activeTabKey, setActiveTabKey1] = useState("first");
 
@@ -60,10 +60,11 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
             Loss
           </Button>
           <Button
-              type="default"
-              style={{ width: 100, height: 100, margin: 30 }}
-              icon={<Undo />}
-              disabled={undoButtonDisabled}
+            type="default"
+            style={{ width: 100, height: 100, margin: 30 }}
+            icon={<Undo />}
+            disabled={undoButtonDisabled}
+            onClick={undoButton}
           />
         </Col>
       </>
@@ -72,25 +73,26 @@ const PointOutcomeComponent: React.FC<PointOutComeProps> = ({
       <>
         <Col>
           <Button
-              type="primary"
-              style={{ width: 500, height: 200, marginRight: 10 }}
-              onClick={winningButton}
+            type="primary"
+            style={{ width: 500, height: 200, marginRight: 10 }}
+            onClick={winningButton}
           >
             Win
           </Button>
           <Button
-              danger={true}
-              type="primary"
-              style={{ width: 500, height: 200 }}
-              onClick={losingButton}
+            danger={true}
+            type="primary"
+            style={{ width: 500, height: 200 }}
+            onClick={losingButton}
           >
             Loss
           </Button>
           <Button
-              type="default"
-              style={{ width: 100, height: 100, margin: 30 }}
-              icon={<Undo />}
-              disabled={undoButtonDisabled}
+            type="default"
+            style={{ width: 100, height: 100, margin: 30 }}
+            icon={<Undo />}
+            disabled={undoButtonDisabled}
+            onClick={undoButton}
           />
         </Col>
       </>

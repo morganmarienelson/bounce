@@ -73,7 +73,8 @@ const MatchInfo = () => {
                       },
                     ]}
                   >
-                    <Select
+                    {/* TODO: add match scoring options later */}
+                    {/*    <Select
                       style={{
                         width: 120,
                       }}
@@ -82,7 +83,7 @@ const MatchInfo = () => {
                       <Option value="3">3 Sets</Option>
                       <Option value="5">5 Sets</Option>
                       <Option value="8">8 Game Pro Set</Option>
-                    </Select>
+                    </Select> */}
                   </Form.Item>
                   <Form.Item
                     name="courtType"
