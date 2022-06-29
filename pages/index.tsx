@@ -1,3 +1,4 @@
+import { PageHeader, Row } from "antd";
 import "antd/dist/antd.css";
 import { useState } from "react";
 import LosingModal from "./components/losingModal";
@@ -37,11 +38,11 @@ const PointInput = () => {
   return (
     <>
       {showServeAndReturn ? (
-        <>
+        <Row gutter={[32, 24]} style={{ marginLeft: 10 }}>
           <ReturnPanel onServeAndReturn={onServeAndReturn} />
 
           <ServingPanel onServeAndReturn={onServeAndReturn} />
-        </>
+        </Row>
       ) : (
         <PointOutcomeComponent
           setIsWinningModalVisible={setIsWinningModalVisible}

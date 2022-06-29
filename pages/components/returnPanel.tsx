@@ -1,4 +1,5 @@
-import { Button } from "antd";
+import { Button, Col, PageHeader } from "antd";
+import { position } from "polished";
 
 interface ReturnPanelProps {
   onServeAndReturn: () => void;
@@ -6,29 +7,36 @@ interface ReturnPanelProps {
 
 const ReturnPanel: React.FC<ReturnPanelProps> = ({ onServeAndReturn }) => {
   return (
-    <div style={{ border: "solid" }}>
-      <h1>Return</h1>
-      <Button
-        onClick={onServeAndReturn}
-        type="primary"
-        style={{ width: 200, height: 200, marginRight: 10, marginLeft: 20 }}
-      >
-        In
-      </Button>
-      <Button
-        type="primary"
-        style={{ width: 200, height: 200, marginRight: 10 }}
-      >
-        Winner
-      </Button>
-      <Button
-        type="primary"
-        danger={true}
-        style={{ width: 200, height: 200, marginRight: 10 }}
-      >
-        Miss
-      </Button>
-    </div>
+    <>
+      <Col span={10}></Col>
+      <Col span={4}>
+        <h1>Return</h1>
+      </Col>
+      <Col span={10}></Col>
+      <Col span={8}>
+        <Button
+          onClick={onServeAndReturn}
+          type="primary"
+          style={{ width: 400, height: 200 }}
+        >
+          In
+        </Button>
+      </Col>
+      <Col span={8}>
+        <Button type="primary" style={{ width: 400, height: 200 }}>
+          Winner
+        </Button>
+      </Col>
+      <Col span={8}>
+        <Button
+          type="primary"
+          danger={true}
+          style={{ width: 400, height: 200 }}
+        >
+          Miss
+        </Button>
+      </Col>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Col, Row } from "antd";
 
 interface ServingPanelProps {
   onServeAndReturn: () => void;
@@ -6,29 +6,36 @@ interface ServingPanelProps {
 
 const ServingPanel: React.FC<ServingPanelProps> = ({ onServeAndReturn }) => {
   return (
-    <div style={{ border: "solid" }}>
-      <h1>Serve</h1>
-      <Button
-        type="primary"
-        style={{ width: 200, height: 200, marginRight: 10 }}
-      >
-        Ace
-      </Button>
-      <Button
-        onClick={onServeAndReturn}
-        type="primary"
-        style={{ width: 200, height: 200, marginRight: 10 }}
-      >
-        In
-      </Button>
-      <Button
-        danger={true}
-        type="primary"
-        style={{ width: 200, height: 200, marginRight: 10 }}
-      >
-        Fault
-      </Button>
-    </div>
+    <>
+      <Col span={10}></Col>
+      <Col span={4}>
+        <h1>Serve</h1>
+      </Col>
+      <Col span={10}></Col>
+      <Col span={8}>
+        <Button type="primary" style={{ width: 400, height: 200 }}>
+          Ace
+        </Button>
+      </Col>
+      <Col span={8}>
+        <Button
+          onClick={onServeAndReturn}
+          type="primary"
+          style={{ width: 400, height: 200 }}
+        >
+          In
+        </Button>
+      </Col>
+      <Col span={8}>
+        <Button
+          danger={true}
+          type="primary"
+          style={{ width: 400, height: 200 }}
+        >
+          Fault
+        </Button>
+      </Col>
+    </>
   );
 };
 
