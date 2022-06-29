@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "antd";
+import { Button, Col } from "antd";
 
 interface ServingPanelProps {
   onServeAndReturn: () => void;
@@ -7,32 +7,45 @@ interface ServingPanelProps {
 const ServingPanel: React.FC<ServingPanelProps> = ({ onServeAndReturn }) => {
   return (
     <>
-      <Col span={10}></Col>
-      <Col span={4}>
+      <Col span={9}></Col>
+      <Col style={{ marginTop: 30 }}>
         <h1>Serve</h1>
       </Col>
       <Col span={10}></Col>
-      <Col span={8}>
-        <Button type="primary" style={{ width: 400, height: 200 }}>
-          Ace
+      <Col span={7}>
+        <Button type="primary" style={{ width: 300, height: 200 }}>
+          <h2 style={{ color: "white" }}>Ace</h2>
         </Button>
       </Col>
-      <Col span={8}>
+      <Col span={7}>
         <Button
+          type="primary"
+          style={{ width: 300, height: 200 }}
           onClick={onServeAndReturn}
-          type="primary"
-          style={{ width: 400, height: 200 }}
         >
-          In
+          <h2 style={{ color: "white" }}>In</h2>
         </Button>
       </Col>
-      <Col span={8}>
+      <Col span={7}>
         <Button
-          danger={true}
           type="primary"
-          style={{ width: 400, height: 200 }}
+          danger={true}
+          style={{ width: 300, height: 200 }}
         >
-          Fault
+          <h2 style={{ color: "white" }}>Fault</h2>
+        </Button>
+      </Col>
+      <Col span={3}>
+        <Button
+          type="primary"
+          danger={true}
+          style={{
+            width: 100,
+            height: 60,
+            marginTop: 180,
+          }}
+        >
+          <h2 style={{ color: "white" }}>Stop</h2>
         </Button>
       </Col>
     </>

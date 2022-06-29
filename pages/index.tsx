@@ -1,6 +1,7 @@
-import { PageHeader, Row } from "antd";
+import { Button, PageHeader, Row } from "antd";
 import "antd/dist/antd.css";
 import { useState } from "react";
+import EditPointPanel from "./components/editPointPanel";
 import LosingModal from "./components/losingModal";
 import PointOutcomeComponent from "./components/pointOutcome";
 import ReturnPanel from "./components/returnPanel";
@@ -38,11 +39,12 @@ const PointInput = () => {
   return (
     <>
       {showServeAndReturn ? (
-        <Row gutter={[32, 24]} style={{ marginLeft: 10 }}>
-          <ReturnPanel onServeAndReturn={onServeAndReturn} />
-
-          <ServingPanel onServeAndReturn={onServeAndReturn} />
-        </Row>
+        <>
+          <Row style={{ marginLeft: 35 }}>
+            <ReturnPanel onServeAndReturn={onServeAndReturn} />
+            <ServingPanel onServeAndReturn={onServeAndReturn} />
+          </Row>
+        </>
       ) : (
         <PointOutcomeComponent
           setIsWinningModalVisible={setIsWinningModalVisible}

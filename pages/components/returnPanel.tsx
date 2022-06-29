@@ -1,5 +1,5 @@
-import { Button, Col, PageHeader } from "antd";
-import { position } from "polished";
+import { Button, Col } from "antd";
+import { Undo } from "grommet-icons";
 
 interface ReturnPanelProps {
   onServeAndReturn: () => void;
@@ -8,33 +8,40 @@ interface ReturnPanelProps {
 const ReturnPanel: React.FC<ReturnPanelProps> = ({ onServeAndReturn }) => {
   return (
     <>
-      <Col span={10}></Col>
-      <Col span={4}>
+      <Col span={9}></Col>
+      <Col style={{ marginTop: 30 }}>
         <h1>Return</h1>
       </Col>
       <Col span={10}></Col>
-      <Col span={8}>
+      <Col span={7}>
+        <Button type="primary" style={{ width: 300, height: 200 }}>
+          <h2 style={{ color: "white" }}>Winner</h2>
+        </Button>
+      </Col>
+      <Col span={7}>
         <Button
-          onClick={onServeAndReturn}
           type="primary"
-          style={{ width: 400, height: 200 }}
+          style={{ width: 300, height: 200 }}
+          onClick={onServeAndReturn}
         >
-          In
+          <h2 style={{ color: "white" }}>In</h2>
         </Button>
       </Col>
-      <Col span={8}>
-        <Button type="primary" style={{ width: 400, height: 200 }}>
-          Winner
-        </Button>
-      </Col>
-      <Col span={8}>
+      <Col span={7}>
         <Button
           type="primary"
           danger={true}
-          style={{ width: 400, height: 200 }}
+          style={{ width: 300, height: 200 }}
         >
-          Miss
+          <h2 style={{ color: "white" }}>Miss</h2>
         </Button>
+      </Col>
+      <Col span={3}>
+        <Button
+          type="default"
+          style={{ width: 100, height: 100, marginTop: 60 }}
+          icon={<Undo />}
+        />
       </Col>
     </>
   );
