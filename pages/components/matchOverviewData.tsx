@@ -10,7 +10,6 @@ const MatchOverviewData = () => {
         trailColor={"red"}
         strokeWidth={12}
       />
-
       <Row>
         <Col span={12}>
           <h2>Percentage of Points Won by Winners</h2>
