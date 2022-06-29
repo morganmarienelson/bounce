@@ -37,7 +37,6 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
         visible={losingModalVisible}
         onCancel={onModalCancel}
         onOk={onModalOk}
-        destroyOnClose={true}
       >
         <Form
           name="Match Information"

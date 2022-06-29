@@ -1,4 +1,5 @@
 import { Button, Col } from "antd";
+import StopMatchButton from "./stopMatchButton";
 
 interface ServingPanelProps {
   onServeAndReturn: () => void;
@@ -36,17 +37,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({ onServeAndReturn }) => {
         </Button>
       </Col>
       <Col span={3}>
-        <Button
-          type="primary"
-          danger={true}
-          style={{
-            width: 100,
-            height: 60,
-            marginTop: 180,
-          }}
-        >
-          <h2 style={{ color: "white" }}>Stop</h2>
-        </Button>
+        <StopMatchButton />
       </Col>
     </>
   );

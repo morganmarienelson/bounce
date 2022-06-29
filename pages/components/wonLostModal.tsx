@@ -16,8 +16,16 @@ const WonLostModal: React.FC<WonLostModalProps> = ({
   const [losingModalVisible, setLosingModalVisible] = useState(false);
   const [winningModalVisible, setWinningModalVisible] = useState(false);
 
-  const onModalButtonClick = () => {
+  const onCancelModal = () => {
     setShowPointOutcomeModal(false);
+  };
+
+  const onOkModal = () => {
+    Modal.warning({
+      title:
+        "Click the win or lost point button to record the point, or press cancel",
+      okType: "danger",
+    });
   };
 
   const onWinningButtonClick = () => {
@@ -34,8 +42,8 @@ const WonLostModal: React.FC<WonLostModalProps> = ({
     <>
       <Modal
         visible={showPointOutcomeModal}
-        onCancel={onModalButtonClick}
-        destroyOnClose={true}
+        onCancel={onCancelModal}
+        onOk={onOkModal}
       >
         <Row gutter={[16, 0]}>
           <Col span={12}>

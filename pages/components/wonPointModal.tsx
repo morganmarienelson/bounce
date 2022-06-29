@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Button, Form, Modal, Radio, Switch } from "antd";
+import { Form, message, Modal, Radio, Switch } from "antd";
 
 interface WonPointModalProps {
   winningModalVisible: boolean;

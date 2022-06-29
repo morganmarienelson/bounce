@@ -1,4 +1,4 @@
-import { Button, Col } from "antd";
+import { Button, Col, Modal } from "antd";
 import { Undo } from "grommet-icons";
 
 interface ReturnPanelProps {
@@ -6,6 +6,12 @@ interface ReturnPanelProps {
 }
 
 const ReturnPanel: React.FC<ReturnPanelProps> = ({ onServeAndReturn }) => {
+  const pointUndone = () => {
+    Modal.success({
+      title: "The last point has been deleted from record",
+    });
+  };
+
   return (
     <>
       <Col span={9}></Col>
@@ -41,6 +47,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({ onServeAndReturn }) => {
           type="default"
           style={{ width: 100, height: 100, marginTop: 60 }}
           icon={<Undo />}
+          onClick={pointUndone}
         />
       </Col>
     </>
