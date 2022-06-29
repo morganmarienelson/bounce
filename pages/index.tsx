@@ -1,69 +1,27 @@
-import { Button, PageHeader, Row } from "antd";
+import { Row } from "antd";
 import "antd/dist/antd.css";
 import { useState } from "react";
-import EditPointPanel from "./components/editPointPanel";
-import LosingModal from "./components/losingModal";
-import PointOutcomeComponent from "./components/pointOutcome";
+import PointOutcomeComponent from "./components/wonLostModal";
 import ReturnPanel from "./components/returnPanel";
 import ServingPanel from "./components/servingPanel";
-import WinningModal from "./components/winningModal";
 
 const PointInput = () => {
-  const [isWinningModalVisible, setIsWinningModalVisible] = useState(false);
-  const [isLosingModalVisible, setIsLosingModalVisible] = useState(false);
-  const [undoButtonDisabled, setUndoButtonDisabled] = useState(true);
-  const [showServeAndReturn, setShowServeAndReturn] = useState(true);
-
-  const handleOkWinningModal = () => {
-    setIsWinningModalVisible(false);
-    setUndoButtonDisabled(false);
-  };
-
-  const handleCancelModal = () => {
-    setIsWinningModalVisible(false);
-    setIsLosingModalVisible(false);
-  };
-
-  const handleOkLosingModal = () => {
-    setIsLosingModalVisible(false);
-    setUndoButtonDisabled(false);
-  };
+  const [showPointOutcomeModal, setShowPointOutcomeModal] = useState(false);
 
   const onServeAndReturn = () => {
-    setShowServeAndReturn(false);
+    setShowPointOutcomeModal(true);
   };
-
-  //TODO: delete method will go here
-  const undoButton = () => {};
 
   return (
     <>
-      {showServeAndReturn ? (
-        <>
-          <Row style={{ marginLeft: 35 }}>
-            <ReturnPanel onServeAndReturn={onServeAndReturn} />
-            <ServingPanel onServeAndReturn={onServeAndReturn} />
-          </Row>
-        </>
-      ) : (
-        <PointOutcomeComponent
-          setIsWinningModalVisible={setIsWinningModalVisible}
-          setIsLosingModalVisible={setIsLosingModalVisible}
-          undoButton={undoButton}
-          undoButtonDisabled={undoButtonDisabled}
-        />
-      )}
+      <Row style={{ marginLeft: 35 }}>
+        <ReturnPanel onServeAndReturn={onServeAndReturn} />
+        <ServingPanel onServeAndReturn={onServeAndReturn} />
+      </Row>
 
-      <WinningModal
-        handleOkWinningModal={handleOkWinningModal}
-        isWinningModalVisible={isWinningModalVisible}
-        handleCancelModal={handleCancelModal}
-      />
-
-      <LosingModal
-        handleOkLosingModal={handleOkLosingModal}
-        isLosingModalVisible={isLosingModalVisible}
-        handleCancelModal={handleCancelModal}
+      <PointOutcomeComponent
+        showPointOutcomeModal={showPointOutcomeModal}
+        setShowPointOutcomeModal={setShowPointOutcomeModal}
       />
     </>
   );
