@@ -1,9 +1,10 @@
 import MatchStats from "./matchStats";
+import PointDashboard from "./pointDashboard";
 
 const PointInput = () => {
   return (
     <>
-      <MatchStats />
+      <PointDashboard />
     </>
   );
 };
