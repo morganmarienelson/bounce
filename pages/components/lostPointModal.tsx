@@ -7,7 +7,6 @@ interface LostPointModalProps {
     setLosingModalVisible: (losingModalVisible: boolean) => void;
     pointFinished: () => void;
     onModalCancel: () => void;
-    setShowWinLostButtons: (showWinLostButtons: boolean) => void;
 }
 
 const LostPointModal: React.FC<LostPointModalProps> = ({
@@ -36,6 +35,8 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                 visible={losingModalVisible}
                 onCancel={onModalCancel}
                 onOk={onModalOk}
+                title="Losing Point Information"
+                destroyOnClose={true}
             >
                 <Form
                     name="Match Information"

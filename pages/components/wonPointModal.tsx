@@ -36,6 +36,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                 onCancel={onModalCancel}
                 destroyOnClose={true}
                 onOk={onModalOk}
+                title="Winning Point Information"
             >
                 <Form name="Match Information" style={{margin: 20}}>
                     <Form.Item label="Winner" valuePropName="checked">
