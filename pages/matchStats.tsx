@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import MatchProgressBars from "./components/matchProgressBars";
 import { Col, Row } from "antd";
 import MatchDataTable from "./components/matchDataTable";
-import { Save, Undo } from "grommet-icons";
+import { Save } from "grommet-icons";
 import { Grommet } from "grommet/components";
 
 const MatchStats = () => {
