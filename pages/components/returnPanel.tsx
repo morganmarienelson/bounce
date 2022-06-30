@@ -31,7 +31,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
   return (
     <>
       <Col span={9}></Col>
-      <Col style={{ marginTop: 20 }}>
+      <Col style={{ marginTop: 10 }}>
         <h1>Return</h1>
       </Col>
       <Col span={11}></Col>

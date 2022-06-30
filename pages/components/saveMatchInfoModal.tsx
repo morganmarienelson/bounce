@@ -6,14 +6,17 @@ import { TextArea } from "grommet";
 interface SaveMatchInfoModalProps {
   showSaveMatchModal: boolean;
   setShowSaveMatchModal: (saveMatchModal: boolean) => void;
+  setSavedData: (savedData: boolean) => void;
 }
 
 const SaveMatchInfoModal: React.FC<SaveMatchInfoModalProps> = ({
   showSaveMatchModal,
   setShowSaveMatchModal,
+  setSavedData,
 }) => {
   const onModalOk = () => {
     setShowSaveMatchModal(false);
+    setSavedData(true);
   };
 
   const onModalCancel = () => {

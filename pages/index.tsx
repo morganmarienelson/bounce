@@ -10,7 +10,7 @@ const PointInput = () => {
       {showDashboard ? (
         <PointDashboard setShowDashboard={setShowDashboard} />
       ) : (
-        <MatchStats />
+        <MatchStats setShowDashboard={setShowDashboard} />
       )}
     </>
   );
