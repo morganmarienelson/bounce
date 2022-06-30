@@ -1,6 +1,6 @@
 import {Col, Progress, Row, Tooltip} from "antd";
 
-const MatchOverviewData = () => {
+const MatchProgressBars = () => {
 
     const checkSuccess = (value: number) => {
         if (value >= 50) {
@@ -26,7 +26,7 @@ const MatchOverviewData = () => {
         }
     }
 
-    const testMatchData =
+    const testMatchPercents =
         {
             percentPointsWon: 20,
             percentWonByWinners: 30,
@@ -48,65 +48,65 @@ const MatchOverviewData = () => {
 
     return (
         <>
-            <div style={{padding: 25}}>
-                <h4>Total Points Won</h4>
+            <div style={{padding: 10, paddingLeft: 15}}>
+                <h3>Total Points Won</h3>
                 <Progress
-                    percent={testMatchData.percentPointsWon}
-                    strokeColor={checkSuccess(testMatchData.percentPointsWon)}
+                    percent={testMatchPercents.percentPointsWon}
+                    strokeColor={checkSuccess(testMatchPercents.percentPointsWon)}
                     strokeWidth={12}
                 />
-                <h4>Point Won By Winners</h4>
+                <h3>Point Won By Winners</h3>
                 <Progress
-                    percent={testMatchData.percentWonByWinners}
+                    percent={testMatchPercents.percentWonByWinners}
                     strokeWidth={12}
                     strokeColor={"green"}
                 />
-                <h4>Points Lost by Unforced Errors</h4>
+                <h3>Points Lost by Unforced Errors</h3>
                 <Progress
-                    percent={testMatchData.percentLostByUnforced}
-                    strokeColor={checkError(testMatchData.percentLostByUnforced)}
+                    percent={testMatchPercents.percentLostByUnforced}
+                    strokeColor={checkError(testMatchPercents.percentLostByUnforced)}
                     strokeWidth={12}
                 />
-                <h4>Points Won on Serve</h4>
-                <Progress percent={testMatchData.percentWonServe}
-                          strokeWidth={12} strokeColor={checkSuccess(testMatchData.percentWonServe)}/>
-                <h4>First Serve Percentage</h4>
-                <Progress percent={testMatchData.firstServePercent}
-                          strokeColor={checkSuccess(testMatchData.firstServePercent)}
+                <h3>Points Won on Serve</h3>
+                <Progress percent={testMatchPercents.percentWonServe}
+                          strokeWidth={12} strokeColor={checkSuccess(testMatchPercents.percentWonServe)}/>
+                <h3>First Serve Percentage</h3>
+                <Progress percent={testMatchPercents.firstServePercent}
+                          strokeColor={checkSuccess(testMatchPercents.firstServePercent)}
                           strokeWidth={12}/>
-                <h4>Second Serve Percentage</h4>
-                <Progress percent={testMatchData.secondServePercent} strokeWidth={12}
-                          strokeColor={checkSecondServe(testMatchData.secondServePercent)}/>
-                <h4>Points Lost on Return</h4>
-                <Progress percent={testMatchData.pointsLostOnReturn} strokeWidth={12}
-                          strokeColor={checkError(testMatchData.pointsLostOnReturn)}/>
-                <h4>Percentage of Missed Returns</h4>
-                <Progress percent={testMatchData.percentMissedReturns} strokeWidth={12}
-                          strokeColor={checkError(testMatchData.percentMissedReturns)}/>
-                <h4>Points Won at Baseline</h4>
-                <Progress percent={testMatchData.pointsWonBaseline} strokeWidth={12}
-                          strokeColor={checkSuccess(testMatchData.pointsWonBaseline)}/>
-                <h4>Points Won with Forehand</h4>
-                <Progress percent={testMatchData.pointsWonWithForehand} strokeWidth={12}
-                          strokeColor={checkSuccess(testMatchData.pointsWonWithForehand)}/>
-                <h4>Points Won with Backhand</h4>
-                <Progress percent={testMatchData.pointsWonWithBackhand} strokeWidth={12}
-                          strokeColor={checkSuccess(testMatchData.pointsWonWithBackhand)}/>
-                <h4>Points Won at Net</h4>
-                <Progress percent={testMatchData.pointsWonAtNet} strokeWidth={12}
-                          strokeColor={checkSuccess(testMatchData.pointsWonAtNet)}/>
-                <h4>Points Won with Forehand Volley</h4>
-                <Progress percent={testMatchData.pointsWonForehandVolley} strokeWidth={12}
-                          strokeColor={checkSuccess(testMatchData.pointsWonForehandVolley)}/>
-                <h4>Points Won with Backhand Volley</h4>
-                <Progress percent={testMatchData.pointsWonBackhandVolley} strokeWidth={12}
-                          strokeColor={checkSuccess(testMatchData.pointsWonBackhandVolley)}/>
-                <h4>Points Won with Overhead</h4>
-                <Progress percent={testMatchData.pointsWonOverhead} strokeWidth={12}
-                          strokeColor={checkSuccess(testMatchData.pointsWonOverhead)}/>
+                <h3>Second Serve Percentage</h3>
+                <Progress percent={testMatchPercents.secondServePercent} strokeWidth={12}
+                          strokeColor={checkSecondServe(testMatchPercents.secondServePercent)}/>
+                <h3>Points Lost on Return</h3>
+                <Progress percent={testMatchPercents.pointsLostOnReturn} strokeWidth={12}
+                          strokeColor={checkError(testMatchPercents.pointsLostOnReturn)}/>
+                <h3>Percentage of Missed Returns</h3>
+                <Progress percent={testMatchPercents.percentMissedReturns} strokeWidth={12}
+                          strokeColor={checkError(testMatchPercents.percentMissedReturns)}/>
+                <h3>Points Won at Baseline</h3>
+                <Progress percent={testMatchPercents.pointsWonBaseline} strokeWidth={12}
+                          strokeColor={checkSuccess(testMatchPercents.pointsWonBaseline)}/>
+                <h3>Points Won with Forehand</h3>
+                <Progress percent={testMatchPercents.pointsWonWithForehand} strokeWidth={12}
+                          strokeColor={checkSuccess(testMatchPercents.pointsWonWithForehand)}/>
+                <h3>Points Won with Backhand</h3>
+                <Progress percent={testMatchPercents.pointsWonWithBackhand} strokeWidth={12}
+                          strokeColor={checkSuccess(testMatchPercents.pointsWonWithBackhand)}/>
+                <h3>Points Won at Net</h3>
+                <Progress percent={testMatchPercents.pointsWonAtNet} strokeWidth={12}
+                          strokeColor={checkSuccess(testMatchPercents.pointsWonAtNet)}/>
+                <h3>Points Won with Forehand Volley</h3>
+                <Progress percent={testMatchPercents.pointsWonForehandVolley} strokeWidth={12}
+                          strokeColor={checkSuccess(testMatchPercents.pointsWonForehandVolley)}/>
+                <h3>Points Won with Backhand Volley</h3>
+                <Progress percent={testMatchPercents.pointsWonBackhandVolley} strokeWidth={12}
+                          strokeColor={checkSuccess(testMatchPercents.pointsWonBackhandVolley)}/>
+                <h3>Points Won with Overhead</h3>
+                <Progress percent={testMatchPercents.pointsWonOverhead} strokeWidth={12}
+                          strokeColor={checkSuccess(testMatchPercents.pointsWonOverhead)}/>
             </div>
         </>
     );
 };
 
-export default MatchOverviewData;
+export default MatchProgressBars;
