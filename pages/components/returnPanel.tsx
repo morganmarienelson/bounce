@@ -1,15 +1,35 @@
-import {Button, Col, message, Modal} from "antd";
+import {Button, Col, message, Modal, Row} from "antd";
 import {Undo} from "grommet-icons";
+import React from "react";
 
 
 interface ReturnPanelProps {
     pointFinished: () => void;
+    showReturnButtons: boolean;
+    setShowReturnButtons: (showReturnButtons: boolean) => void;
+    setShowServeButtons: (showServeButtons: boolean) => void;
+    onWinningButtonClick: () => void;
+    onLosingButtonClick: () => void;
 }
 
-const ReturnPanel: React.FC<ReturnPanelProps> = ({pointFinished}) => {
+const ReturnPanel: React.FC<ReturnPanelProps> = ({
+                                                     pointFinished,
+                                                     showReturnButtons,
+                                                     onWinningButtonClick,
+                                                     onLosingButtonClick,
+                                                     setShowReturnButtons,
+                                                     setShowServeButtons,
+
+                                                 }) => {
     const pointUndone = () => {
         message.success('The last point has been removed from record', 2);
     };
+
+    const onInClick = () => {
+        setShowReturnButtons(true);
+        setShowServeButtons(false);
+    }
+
 
     return (
         <>
@@ -19,13 +39,35 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({pointFinished}) => {
             </Col>
             <Col span={11}></Col>
             <Col span={10}>
-                <Button
-                    type="primary"
-                    style={{width: 500, height: 200}}
-                    //TODO: add functionality
-                >
-                    <h2 style={{color: "white"}}>In</h2>
-                </Button>
+                {!showReturnButtons ? (
+                        <Button
+                            type="primary"
+                            style={{width: 500, height: 200}}
+                            onClick={onInClick}
+                        >
+                            <h2 style={{color: "white"}}>In</h2>
+                        </Button>
+                    ) :
+                    (
+
+                        <Row>
+                            <Button
+                                type="primary"
+                                style={{width: 250, height: 200}}
+                                onClick={onWinningButtonClick}
+                            >
+                                <h2 style={{color: "white"}}>Won</h2>
+                            </Button>
+                            <Button
+                                type="primary"
+                                danger={true}
+                                style={{width: 250, height: 200}}
+                                onClick={onLosingButtonClick}
+                            >
+                                <h2 style={{color: "white"}}>Lost</h2>
+                            </Button>
+                        </Row>
+                    )}
             </Col>
             <Col span={11}>
                 <Button

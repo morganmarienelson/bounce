@@ -6,6 +6,7 @@ interface LostPointModalProps {
     losingModalVisible: boolean;
     setLosingModalVisible: (losingModalVisible: boolean) => void;
     pointFinished: () => void;
+    onModalCancel: () => void;
     setShowWinLostButtons: (showWinLostButtons: boolean) => void;
 }
 
@@ -13,7 +14,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                                                            losingModalVisible,
                                                            setLosingModalVisible,
                                                            pointFinished,
-                                                           setShowWinLostButtons,
+                                                           onModalCancel,
                                                        }) => {
     const [overhead, disableOverhead] = useState(true);
     const onSwitchClicked = (checked: boolean) => {
@@ -22,11 +23,6 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
         } else {
             disableOverhead(true);
         }
-    };
-
-    const onModalCancel = () => {
-        setLosingModalVisible(false);
-        setShowWinLostButtons(false);
     };
 
     const onModalOk = () => {

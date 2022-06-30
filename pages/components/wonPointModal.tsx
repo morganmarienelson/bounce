@@ -6,14 +6,14 @@ interface WonPointModalProps {
     winningModalVisible: boolean;
     setWinningModalVisible: (winningModalVisible: boolean) => void;
     pointFinished: () => void;
-    setShowWinLostButtons: (showWinLostButtons: boolean) => void;
+    onModalCancel: () => void;
 }
 
 const WonPointModal: React.FC<WonPointModalProps> = ({
                                                          winningModalVisible,
                                                          setWinningModalVisible,
                                                          pointFinished,
-                                                         setShowWinLostButtons,
+                                                         onModalCancel,
                                                      }) => {
     const [overhead, disableOverhead] = useState(true);
     const onSwitchClicked = (checked: boolean) => {
@@ -23,11 +23,6 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             disableOverhead(true);
         }
     };
-
-    const onModalCancel = () => {
-        setWinningModalVisible(false);
-        setShowWinLostButtons(false);
-    }
 
     const onModalOk = () => {
         setWinningModalVisible(false);

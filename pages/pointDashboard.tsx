@@ -12,12 +12,14 @@ interface PointDashboardProps {
 
 const PointDashboard: React.FC<PointDashboardProps> = ({setShowDashboard}) => {
     const [showServeButtons, setShowServeButtons] = useState(false);
+    const [showReturnButtons, setShowReturnButtons] = useState(false);
     const [losingModalVisible, setLosingModalVisible] = useState(false);
     const [winningModalVisible, setWinningModalVisible] = useState(false);
 
     const pointFinished = () => {
         message.success('Point has been recorded', 1);
         setShowServeButtons(false);
+        setShowReturnButtons(false);
     };
 
     const confirmStop = () => {
@@ -39,12 +41,24 @@ const PointDashboard: React.FC<PointDashboardProps> = ({setShowDashboard}) => {
         setLosingModalVisible(true);
     };
 
+    const onModalCancel = () => {
+        setLosingModalVisible(false);
+        setWinningModalVisible(false);
+        setShowServeButtons(false);
+        setShowReturnButtons(false);
+    };
 
     return (
         <>
             <Row style={{marginLeft: 35}}>
-                <ReturnPanel pointFinished={pointFinished}/>
+                <ReturnPanel showReturnButtons={showReturnButtons}
+                             setShowReturnButtons={setShowReturnButtons}
+                             pointFinished={pointFinished}
+                             setShowServeButtons={setShowServeButtons}
+                             onWinningButtonClick={onWinningButtonClick}
+                             onLosingButtonClick={onLosingButtonClick}/>
                 <ServingPanel showServeButtons={showServeButtons}
+                              setShowReturnButtons={setShowReturnButtons}
                               setShowServeButtons={setShowServeButtons}
                               pointFinished={pointFinished}
                               onWinningButtonClick={onWinningButtonClick}
@@ -69,7 +83,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({setShowDashboard}) => {
             <LostPointModal
                 losingModalVisible={losingModalVisible}
                 setLosingModalVisible={setLosingModalVisible}
-                setShowWinLostButtons={setShowServeButtons}
+                onModalCancel={onModalCancel}
                 pointFinished={pointFinished}
             />
 
@@ -77,7 +91,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({setShowDashboard}) => {
                 winningModalVisible={winningModalVisible}
                 setWinningModalVisible={setWinningModalVisible}
                 pointFinished={pointFinished}
-                setShowWinLostButtons={setShowServeButtons}
+                onModalCancel={onModalCancel}
             />
         </>
     );

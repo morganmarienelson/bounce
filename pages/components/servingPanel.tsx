@@ -6,6 +6,7 @@ interface ServingPanelProps {
     pointFinished: () => void;
     showServeButtons: boolean;
     setShowServeButtons: (showServeButtons: boolean) => void;
+    setShowReturnButtons: (showReturnButtons: boolean) => void;
     onWinningButtonClick: () => void;
     onLosingButtonClick: () => void;
 }
@@ -16,10 +17,12 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                                        onWinningButtonClick,
                                                        onLosingButtonClick,
                                                        setShowServeButtons,
+                                                       setShowReturnButtons,
                                                    }) => {
 
     const onInClick = () => {
         setShowServeButtons(true);
+        setShowReturnButtons(false);
     }
 
     return (
