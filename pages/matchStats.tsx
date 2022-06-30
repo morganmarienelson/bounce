@@ -5,8 +5,16 @@ import { Col, Row } from "antd";
 import MatchDataTable from "./components/matchDataTable";
 import { Save } from "grommet-icons";
 import { Grommet } from "grommet/components";
+import { useState } from "react";
+import SaveMatchInfoModal from "./components/saveMatchInfoModal";
 
 const MatchStats = () => {
+  const [showSaveMatchModal, setShowSaveMatchModal] = useState(false);
+
+  const onSave = () => {
+    setShowSaveMatchModal(true);
+  };
+
   return (
     <div>
       <Grommet>
@@ -15,7 +23,7 @@ const MatchStats = () => {
             Match Statistics
           </Heading>
           <Nav direction="row">
-            <Button primary icon={<Save />} label="Save" />
+            <Button primary icon={<Save />} label="Save" onClick={onSave} />
           </Nav>
         </Header>
       </Grommet>
@@ -27,6 +35,11 @@ const MatchStats = () => {
           <MatchDataTable />
         </Col>
       </Row>
+
+      <SaveMatchInfoModal
+        showSaveMatchModal={showSaveMatchModal}
+        setShowSaveMatchModal={setShowSaveMatchModal}
+      />
     </div>
   );
 };
