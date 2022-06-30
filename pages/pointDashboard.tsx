@@ -1,28 +1,28 @@
-import {Button, message, Modal, Row} from "antd";
+import {Button, Col, message, Modal, Row} from "antd";
 import "antd/dist/antd.css";
 import React, {useState} from "react";
 import ReturnPanel from "./components/returnPanel";
 import ServingPanel from "./components/servingPanel";
-import WonLostModal from "./components/wonLostModal";
+import LostPointModal from "./components/lostPointModal";
+import WonPointModal from "./components/wonPointModal";
 
 interface PointDashboardProps {
     setShowDashboard: (showDashboard: boolean) => void;
 }
 
 const PointDashboard: React.FC<PointDashboardProps> = ({setShowDashboard}) => {
-    const [showPointOutcomeModal, setShowPointOutcomeModal] = useState(false);
-
-    const onServeAndReturn = () => {
-        setShowPointOutcomeModal(true);
-    };
+    const [showServeButtons, setShowServeButtons] = useState(false);
+    const [losingModalVisible, setLosingModalVisible] = useState(false);
+    const [winningModalVisible, setWinningModalVisible] = useState(false);
 
     const pointFinished = () => {
         message.success('Point has been recorded', 1);
+        setShowServeButtons(false);
     };
 
     const confirmStop = () => {
         Modal.confirm({
-            title: "Are you sure you want to stop the match?",
+            title: "Are you sure you want to stop recording data for this match?",
             okType: "danger",
             onOk: () => {
                 setShowDashboard(false);
@@ -31,31 +31,54 @@ const PointDashboard: React.FC<PointDashboardProps> = ({setShowDashboard}) => {
         });
     };
 
+    const onWinningButtonClick = () => {
+        setWinningModalVisible(true);
+    };
+
+    const onLosingButtonClick = () => {
+        setLosingModalVisible(true);
+    };
+
+
     return (
         <>
             <Row style={{marginLeft: 35}}>
-                <ReturnPanel onServeAndReturn={onServeAndReturn} pointFinished={pointFinished}/>
-                <ServingPanel onServeAndReturn={onServeAndReturn} pointFinished={pointFinished}/>
+                <ReturnPanel pointFinished={pointFinished}/>
+                <ServingPanel showServeButtons={showServeButtons}
+                              setShowServeButtons={setShowServeButtons}
+                              pointFinished={pointFinished}
+                              onWinningButtonClick={onWinningButtonClick}
+                              onLosingButtonClick={onLosingButtonClick}/>
+
+                <Col span={2}>
+                    <Button
+                        type="primary"
+                        danger={true}
+                        style={{
+                            width: 100,
+                            height: 60,
+                            marginTop: 180,
+                        }}
+                        onClick={confirmStop}
+                    >
+                        <h2 style={{color: "white"}}>Stop</h2>
+                    </Button>
+                </Col>
             </Row>
 
-            <WonLostModal
-                showPointOutcomeModal={showPointOutcomeModal}
-                setShowPointOutcomeModal={setShowPointOutcomeModal}
+            <LostPointModal
+                losingModalVisible={losingModalVisible}
+                setLosingModalVisible={setLosingModalVisible}
+                setShowWinLostButtons={setShowServeButtons}
                 pointFinished={pointFinished}
             />
 
-            <Button
-                type="primary"
-                danger={true}
-                style={{
-                    width: 100,
-                    height: 60,
-                    marginTop: 180,
-                }}
-                onClick={confirmStop}
-            >
-                <h2 style={{color: "white"}}>Stop</h2>
-            </Button>
+            <WonPointModal
+                winningModalVisible={winningModalVisible}
+                setWinningModalVisible={setWinningModalVisible}
+                pointFinished={pointFinished}
+                setShowWinLostButtons={setShowServeButtons}
+            />
         </>
     );
 };

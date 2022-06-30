@@ -1,19 +1,19 @@
 import React, {useState} from "react";
 import "antd/dist/antd.css";
-import {Button, Form, Modal, Radio, Switch} from "antd";
+import {Form, Modal, Radio, Switch} from "antd";
 
 interface LostPointModalProps {
     losingModalVisible: boolean;
     setLosingModalVisible: (losingModalVisible: boolean) => void;
-    setShowPointOutcomeModal: (showPointOutcomeModal: boolean) => void;
     pointFinished: () => void;
+    setShowWinLostButtons: (showWinLostButtons: boolean) => void;
 }
 
 const LostPointModal: React.FC<LostPointModalProps> = ({
                                                            losingModalVisible,
                                                            setLosingModalVisible,
-                                                           setShowPointOutcomeModal,
                                                            pointFinished,
+                                                           setShowWinLostButtons,
                                                        }) => {
     const [overhead, disableOverhead] = useState(true);
     const onSwitchClicked = (checked: boolean) => {
@@ -26,7 +26,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
 
     const onModalCancel = () => {
         setLosingModalVisible(false);
-        setShowPointOutcomeModal(true);
+        setShowWinLostButtons(false);
     };
 
     const onModalOk = () => {

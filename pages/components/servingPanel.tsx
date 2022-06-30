@@ -1,12 +1,27 @@
-import {Button, Col} from "antd";
-import StopMatchButton from "./stopMatchButton";
+import {Button, Col, Row} from "antd";
+import React from "react";
+
 
 interface ServingPanelProps {
-    onServeAndReturn: () => void;
     pointFinished: () => void;
+    showServeButtons: boolean;
+    setShowServeButtons: (showServeButtons: boolean) => void;
+    onWinningButtonClick: () => void;
+    onLosingButtonClick: () => void;
 }
 
-const ServingPanel: React.FC<ServingPanelProps> = ({onServeAndReturn, pointFinished}) => {
+const ServingPanel: React.FC<ServingPanelProps> = ({
+                                                       pointFinished,
+                                                       showServeButtons,
+                                                       onWinningButtonClick,
+                                                       onLosingButtonClick,
+                                                       setShowServeButtons,
+                                                   }) => {
+
+    const onInClick = () => {
+        setShowServeButtons(true);
+    }
+
     return (
         <>
             <Col span={9}></Col>
@@ -20,13 +35,35 @@ const ServingPanel: React.FC<ServingPanelProps> = ({onServeAndReturn, pointFinis
                 </Button>
             </Col>
             <Col span={7}>
-                <Button
-                    type="primary"
-                    style={{width: 300, height: 200}}
-                    onClick={onServeAndReturn}
-                >
-                    <h2 style={{color: "white"}}>In</h2>
-                </Button>
+                {!showServeButtons ? (
+                        <Button
+                            type="primary"
+                            style={{width: 300, height: 200}}
+                            onClick={onInClick}
+                        >
+                            <h2 style={{color: "white"}}>In</h2>
+                        </Button>
+                    ) :
+                    (
+
+                        <Row>
+                            <Button
+                                type="primary"
+                                style={{width: 150, height: 200}}
+                                onClick={onWinningButtonClick}
+                            >
+                                <h2 style={{color: "white"}}>Won</h2>
+                            </Button>
+                            <Button
+                                type="primary"
+                                danger={true}
+                                style={{width: 150, height: 200}}
+                                onClick={onLosingButtonClick}
+                            >
+                                <h2 style={{color: "white"}}>Lost</h2>
+                            </Button>
+                        </Row>
+                    )}
             </Col>
             <Col span={7}>
                 <Button

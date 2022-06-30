@@ -3,11 +3,10 @@ import {Undo} from "grommet-icons";
 
 
 interface ReturnPanelProps {
-    onServeAndReturn: () => void;
     pointFinished: () => void;
 }
 
-const ReturnPanel: React.FC<ReturnPanelProps> = ({onServeAndReturn, pointFinished}) => {
+const ReturnPanel: React.FC<ReturnPanelProps> = ({pointFinished}) => {
     const pointUndone = () => {
         message.success('The last point has been removed from record', 2);
     };
@@ -15,7 +14,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({onServeAndReturn, pointFinishe
     return (
         <>
             <Col span={9}></Col>
-            <Col style={{marginTop: 30}}>
+            <Col style={{marginTop: 10}}>
                 <h1>Return</h1>
             </Col>
             <Col span={11}></Col>
@@ -23,7 +22,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({onServeAndReturn, pointFinishe
                 <Button
                     type="primary"
                     style={{width: 500, height: 200}}
-                    onClick={onServeAndReturn}
+                    //TODO: add functionality
                 >
                     <h2 style={{color: "white"}}>In</h2>
                 </Button>

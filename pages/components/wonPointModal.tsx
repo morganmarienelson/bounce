@@ -5,15 +5,15 @@ import {Form, message, Modal, Radio, Switch} from "antd";
 interface WonPointModalProps {
     winningModalVisible: boolean;
     setWinningModalVisible: (winningModalVisible: boolean) => void;
-    setShowPointOutcomeModal: (showPointOutcomeModal: boolean) => void;
     pointFinished: () => void;
+    setShowWinLostButtons: (showWinLostButtons: boolean) => void;
 }
 
 const WonPointModal: React.FC<WonPointModalProps> = ({
                                                          winningModalVisible,
                                                          setWinningModalVisible,
-                                                         setShowPointOutcomeModal,
                                                          pointFinished,
+                                                         setShowWinLostButtons,
                                                      }) => {
     const [overhead, disableOverhead] = useState(true);
     const onSwitchClicked = (checked: boolean) => {
@@ -26,8 +26,8 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
 
     const onModalCancel = () => {
         setWinningModalVisible(false);
-        setShowPointOutcomeModal(true);
-    };
+        setShowWinLostButtons(false);
+    }
 
     const onModalOk = () => {
         setWinningModalVisible(false);

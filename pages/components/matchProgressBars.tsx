@@ -1,4 +1,4 @@
-import {Col, Progress, Row, Tooltip} from "antd";
+import {Progress} from "antd";
 
 const MatchProgressBars = () => {
 

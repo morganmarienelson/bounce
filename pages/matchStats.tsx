@@ -1,4 +1,4 @@
-import {Heading, Table, TableBody, TableCell, TableHeader, TableRow} from "grommet/components";
+import {Heading} from "grommet/components";
 import "antd/dist/antd.css";
 import MatchProgressBars from "./components/matchProgressBars";
 import {Col, Row} from "antd";
