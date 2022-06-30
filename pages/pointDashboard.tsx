@@ -1,12 +1,11 @@
-import { Col, message, Modal, Row } from "antd";
+import { Button, Col, message, Modal, Row } from "antd";
 import "antd/dist/antd.css";
 import React, { useState } from "react";
 import ReturnPanel from "./components/returnPanel";
 import ServingPanel from "./components/servingPanel";
 import LostPointModal from "./components/lostPointModal";
 import WonPointModal from "./components/wonPointModal";
-import { Grommet, Header, Heading, Nav, Button } from "grommet";
-import { Database } from "grommet-icons";
+import { Grommet, Header, Heading, Nav } from "grommet";
 
 interface PointDashboardProps {
   setShowDashboard: (showDashboard: boolean) => void;
@@ -73,19 +72,17 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
 
         <Col span={2}>
           <Button
-            primary
-            color="red"
-            label="Stop"
+            type="primary"
+            danger={true}
             style={{
               width: 100,
               height: 60,
               marginTop: 180,
-              color: "white",
-              fontSize: 20,
-              fontWeight: "medium",
             }}
             onClick={confirmStop}
-          ></Button>
+          >
+            <h2 style={{ color: "white" }}>Stop</h2>
+          </Button>
         </Col>
       </Row>
 
