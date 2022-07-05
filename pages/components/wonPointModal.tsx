@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Form, message, Modal, Radio, Switch } from "antd";
+import { Col, Form, Modal, Radio, Row, Switch } from "antd";
+import styles from "./pointModal.module.css";
 
 interface WonPointModalProps {
   winningModalVisible: boolean;
@@ -30,37 +31,54 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
   };
 
   return (
-    <>
-      <Modal
-        visible={winningModalVisible}
-        onCancel={onModalCancel}
-        destroyOnClose={true}
-        onOk={onModalOk}
-        title="Winning Point Information"
+    <Modal
+      visible={winningModalVisible}
+      onCancel={onModalCancel}
+      destroyOnClose={true}
+      onOk={onModalOk}
+    >
+      <div className={styles.title}>Point Information</div>
+      <Form
+        name="Match Information"
+        scrollToFirstError
+        style={{ marginLeft: 30 }}
       >
-        <Form name="Match Information" style={{ margin: 20 }}>
-          <Form.Item label="Winner" valuePropName="checked">
-            <Switch />
-          </Form.Item>
-          <Form.Item label="At Net" valuePropName="checked">
-            <Switch onChange={onSwitchClicked} />
-          </Form.Item>
-          <Form.Item label="Shot Type">
-            <Radio.Group>
-              <Radio value="forehand"> Forehand </Radio>
-              <Radio value="backhand">Backhand</Radio>
-              <Radio
-                value="overhead"
-                defaultChecked={false}
-                disabled={overhead}
-              >
-                Overhead
-              </Radio>
-            </Radio.Group>
-          </Form.Item>
-        </Form>
-      </Modal>
-    </>
+        <Row>
+          <Col>
+            <div className={styles.label}>Winner: </div>
+          </Col>
+          <Col>
+            <Form.Item valuePropName="checked">
+              <Switch />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className={styles.label}>At Net: </div>
+          </Col>
+          <Col>
+            <Form.Item valuePropName="checked">
+              <Switch onChange={onSwitchClicked} />
+            </Form.Item>
+          </Col>
+        </Row>
+        <div className={styles.label}>Shot Type:</div>
+        <Form.Item>
+          <Radio.Group size="large">
+            <Radio value="forehand">
+              <div className={styles.radioLabel}>Forehand</div>
+            </Radio>
+            <Radio value="backhand">
+              <div className={styles.radioLabel}>Backhand</div>
+            </Radio>
+            <Radio value="overhead" defaultChecked={false} disabled={overhead}>
+              <div className={styles.radioLabel}>Overhead</div>
+            </Radio>
+          </Radio.Group>
+        </Form.Item>
+      </Form>
+    </Modal>
   );
 };
 

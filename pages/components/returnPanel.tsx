@@ -1,4 +1,4 @@
-import { Button, Col, message, Modal, Row } from "antd";
+import { Button, Col, message, Row } from "antd";
 import { Undo } from "grommet-icons";
 import React from "react";
 
