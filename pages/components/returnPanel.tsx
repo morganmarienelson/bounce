@@ -1,6 +1,7 @@
 import { Button, Col, message, Row } from "antd";
 import { Undo } from "grommet-icons";
 import React from "react";
+import styles from "./panel.module.css";
 
 interface ReturnPanelProps {
   pointFinished: () => void;
@@ -30,14 +31,15 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
 
   return (
     <>
-      <Col span={9}></Col>
-      <Col style={{ marginTop: 10 }}>
-        <h1>Return</h1>
+      <Col span={8}></Col>
+      <Col>
+        <div className={styles.panelTitle}>Return</div>
       </Col>
       <Col span={11}></Col>
       <Col span={10}>
         {!showReturnButtons ? (
           <Button
+            className={styles.panelButton}
             type="primary"
             style={{ width: 500, height: 200 }}
             onClick={onInClick}
@@ -47,16 +49,27 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
         ) : (
           <Row>
             <Button
+              className={styles.panelButton}
               type="primary"
-              style={{ width: 250, height: 200 }}
+              style={{
+                width: 250,
+                height: 200,
+                background: "rgba(37, 187, 57, 0.986)",
+                border: "rgba(37, 187, 57, 0.986)",
+              }}
               onClick={onWinningButtonClick}
             >
               <h2 style={{ color: "white" }}>Won</h2>
             </Button>
             <Button
+              className={styles.panelButton}
               type="primary"
-              danger={true}
-              style={{ width: 250, height: 200 }}
+              style={{
+                width: 250,
+                height: 200,
+                background: "#ff0000",
+                border: "#ff0000",
+              }}
               onClick={onLosingButtonClick}
             >
               <h2 style={{ color: "white" }}>Lost</h2>
@@ -66,9 +79,14 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
       </Col>
       <Col span={11}>
         <Button
+          className={styles.panelButton}
           type="primary"
-          danger={true}
-          style={{ width: 500, height: 200 }}
+          style={{
+            width: 500,
+            height: 200,
+            background: "#ff0000",
+            border: "#ff0000",
+          }}
           onClick={pointFinished}
         >
           <h2 style={{ color: "white" }}>Miss</h2>
@@ -76,6 +94,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
       </Col>
       <Col span={2}>
         <Button
+          className={styles.undo}
           type="default"
           style={{ width: 100, height: 100, marginTop: 60 }}
           icon={<Undo />}

@@ -1,5 +1,6 @@
 import { Button, Col, Row } from "antd";
 import React from "react";
+import styles from "./panel.module.css";
 
 interface ServingPanelProps {
   pointFinished: () => void;
@@ -25,15 +26,21 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
 
   return (
     <>
-      <Col span={9}></Col>
-      <Col style={{ marginTop: 30 }}>
-        <h1>Serve</h1>
+      <Col span={8}></Col>
+      <Col>
+        <div className={styles.panelTitle}>Serve</div>
       </Col>
-      <Col span={10}></Col>
+      <Col span={11}></Col>
       <Col span={7}>
         <Button
+          className={styles.panelButton}
           type="primary"
-          style={{ width: 300, height: 200 }}
+          style={{
+            width: 300,
+            height: 200,
+            background: "rgba(37, 187, 57, 0.986)",
+            border: "rgba(37, 187, 57, 0.986)",
+          }}
           onClick={pointFinished}
         >
           <h2 style={{ color: "white" }}>Ace</h2>
@@ -42,6 +49,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
       <Col span={7}>
         {!showServeButtons ? (
           <Button
+            className={styles.panelButton}
             type="primary"
             style={{ width: 300, height: 200 }}
             onClick={onInClick}
@@ -51,16 +59,27 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         ) : (
           <Row>
             <Button
+              className={styles.panelButton}
               type="primary"
-              style={{ width: 150, height: 200 }}
+              style={{
+                width: 150,
+                height: 200,
+                background: "rgba(37, 187, 57, 0.986)",
+                border: "rgba(37, 187, 57, 0.986)",
+              }}
               onClick={onWinningButtonClick}
             >
               <h2 style={{ color: "white" }}>Won</h2>
             </Button>
             <Button
+              className={styles.panelButton}
               type="primary"
-              danger={true}
-              style={{ width: 150, height: 200 }}
+              style={{
+                width: 150,
+                height: 200,
+                background: "#ff0000",
+                border: "#ff0000",
+              }}
               onClick={onLosingButtonClick}
             >
               <h2 style={{ color: "white" }}>Lost</h2>
@@ -70,9 +89,14 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
       </Col>
       <Col span={7}>
         <Button
+          className={styles.panelButton}
           type="primary"
-          danger={true}
-          style={{ width: 300, height: 200 }}
+          style={{
+            width: 300,
+            height: 200,
+            background: "#ff0000",
+            border: "#ff0000",
+          }}
           onClick={pointFinished}
         >
           <h2 style={{ color: "white" }}>Fault</h2>

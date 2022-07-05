@@ -78,6 +78,10 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
               width: 100,
               height: 60,
               marginTop: 180,
+              background: "#ff0000",
+              border: "#ff0000",
+              boxShadow:
+                "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
             }}
             onClick={confirmStop}
           >

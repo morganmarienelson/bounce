@@ -1,0 +1,23 @@
+.panelButton {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.undo {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-color: none;
+}
+
+.undo:hover {
+  background-color: rgb(238, 238, 238);
+  border-color: rgb(238, 238, 238);
+}
+
+.panelTitle {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 30px;
+}
