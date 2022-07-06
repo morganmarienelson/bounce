@@ -1,19 +1,20 @@
 import MatchStats from "./matchStats";
 import PointDashboard from "./pointDashboard";
-import { useState } from "react";
+import {useState} from "react";
+import clientPromise from "../lib/mongodb";
 
-const PointInput = () => {
-  const [showDashboard, setShowDashboard] = useState(true);
+function PointInput() {
+    const [showDashboard, setShowDashboard] = useState(true);
 
-  return (
-    <>
-      {showDashboard ? (
-        <PointDashboard setShowDashboard={setShowDashboard} />
-      ) : (
-        <MatchStats setShowDashboard={setShowDashboard} />
-      )}
-    </>
-  );
-};
+    return (
+        <>
+            {showDashboard ? (
+                <PointDashboard setShowDashboard={setShowDashboard}/>
+            ) : (
+                <MatchStats setShowDashboard={setShowDashboard}/>
+            )}
+        </>
+    );
+}
 
 export default PointInput;

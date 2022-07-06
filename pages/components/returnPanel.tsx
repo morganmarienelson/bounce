@@ -44,7 +44,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
             style={{ width: 500, height: 200 }}
             onClick={onInClick}
           >
-            <h2 style={{ color: "white" }}>In</h2>
+            <h1 style={{ color: "white" }}>In</h1>
           </Button>
         ) : (
           <Row>
@@ -59,7 +59,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
               }}
               onClick={onWinningButtonClick}
             >
-              <h2 style={{ color: "white" }}>Won</h2>
+              <h1 style={{ color: "white" }}>Won</h1>
             </Button>
             <Button
               className={styles.panelButton}
@@ -72,7 +72,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
               }}
               onClick={onLosingButtonClick}
             >
-              <h2 style={{ color: "white" }}>Lost</h2>
+              <h1 style={{ color: "white" }}>Lost</h1>
             </Button>
           </Row>
         )}
@@ -89,7 +89,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
           }}
           onClick={pointFinished}
         >
-          <h2 style={{ color: "white" }}>Miss</h2>
+          <h1 style={{ color: "white" }}>Miss</h1>
         </Button>
       </Col>
       <Col span={2}>

@@ -31,30 +31,30 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         <div className={styles.panelTitle}>Serve</div>
       </Col>
       <Col span={11}></Col>
-      <Col span={7}>
+      <Col span={6}>
         <Button
           className={styles.panelButton}
           type="primary"
           style={{
-            width: 300,
+            width: 200,
             height: 200,
             background: "rgba(37, 187, 57, 0.986)",
             border: "rgba(37, 187, 57, 0.986)",
           }}
           onClick={pointFinished}
         >
-          <h2 style={{ color: "white" }}>Ace</h2>
+          <h1 style={{ color: "white" }}>Ace</h1>
         </Button>
       </Col>
-      <Col span={7}>
+      <Col span={10}>
         {!showServeButtons ? (
           <Button
             className={styles.panelButton}
             type="primary"
-            style={{ width: 300, height: 200 }}
+            style={{ width: 400, height: 200 }}
             onClick={onInClick}
           >
-            <h2 style={{ color: "white" }}>In</h2>
+            <h1 style={{ color: "white" }}>In</h1>
           </Button>
         ) : (
           <Row>
@@ -62,44 +62,44 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
               className={styles.panelButton}
               type="primary"
               style={{
-                width: 150,
+                width: 200,
                 height: 200,
                 background: "rgba(37, 187, 57, 0.986)",
                 border: "rgba(37, 187, 57, 0.986)",
               }}
               onClick={onWinningButtonClick}
             >
-              <h2 style={{ color: "white" }}>Won</h2>
+              <h1 style={{ color: "white" }}>Won</h1>
             </Button>
             <Button
               className={styles.panelButton}
               type="primary"
               style={{
-                width: 150,
+                width: 200,
                 height: 200,
                 background: "#ff0000",
                 border: "#ff0000",
               }}
               onClick={onLosingButtonClick}
             >
-              <h2 style={{ color: "white" }}>Lost</h2>
+              <h1 style={{ color: "white" }}>Lost</h1>
             </Button>
           </Row>
         )}
       </Col>
-      <Col span={7}>
+      <Col span={5}>
         <Button
           className={styles.panelButton}
           type="primary"
           style={{
-            width: 300,
+            width: 200,
             height: 200,
             background: "#ff0000",
             border: "#ff0000",
           }}
           onClick={pointFinished}
         >
-          <h2 style={{ color: "white" }}>Fault</h2>
+          <h1 style={{ color: "white" }}>Fault</h1>
         </Button>
       </Col>
     </>

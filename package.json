@@ -11,6 +11,8 @@
   "dependencies": {
     "antd": "^4.21.2",
     "grommet": "^2.24.0",
+    "mongodb": "^3.7.3",
+    "mongoose": "^6.4.3",
     "next": "^12.1.6",
     "polished": "^4.2.2",
     "react": "^18.2.0",
