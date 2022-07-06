@@ -25,15 +25,15 @@
 }
 
 .panelRow {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: 50px;
 }
 
 .serveGrid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .undo {
