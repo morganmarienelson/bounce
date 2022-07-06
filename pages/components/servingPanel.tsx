@@ -26,82 +26,95 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
 
   return (
     <>
-      <Col span={8}></Col>
-      <Col>
-        <div className={styles.panelTitle}>Serve</div>
-      </Col>
-      <Col span={11}></Col>
-      <Col span={6}>
-        <Button
-          className={styles.panelButton}
-          type="primary"
-          style={{
-            width: 200,
-            height: 200,
-            background: "rgba(37, 187, 57, 0.986)",
-            border: "rgba(37, 187, 57, 0.986)",
-          }}
-          onClick={pointFinished}
-        >
-          <h1 style={{ color: "white" }}>Ace</h1>
-        </Button>
-      </Col>
-      <Col span={10}>
-        {!showServeButtons ? (
+      <Row className={styles.panelTitle}>
+        <div>Serve</div>
+      </Row>
+      <Row className={styles.serveGrid}>
+        <Col className={styles.returnButtonCol}>
           <Button
-            className={styles.panelButton}
+            className={styles.serveBtn}
             type="primary"
-            style={{ width: 400, height: 200 }}
-            onClick={onInClick}
+            style={{
+              background: "rgba(37, 187, 57, 0.986)",
+              border: "rgba(37, 187, 57, 0.986)",
+            }}
+            onClick={pointFinished}
           >
-            <h1 style={{ color: "white" }}>In</h1>
+            <h1 style={{ color: "white" }}>Ace</h1>
           </Button>
-        ) : (
-          <Row>
+        </Col>
+        <Col className={styles.returnButtonCol}>
+          <Button
+            className={styles.serveBtn}
+            type="primary"
+            style={{
+              background: "#ff0000",
+              border: "#ff0000",
+            }}
+            onClick={pointFinished}
+          >
+            <h1 style={{ color: "white" }}>Fault</h1>
+          </Button>
+        </Col>
+        <Col className={styles.returnButtonCol}>
+          {!showServeButtons ? (
             <Button
-              className={styles.panelButton}
+              className={styles.serveIn}
               type="primary"
-              style={{
-                width: 200,
-                height: 200,
-                background: "rgba(37, 187, 57, 0.986)",
-                border: "rgba(37, 187, 57, 0.986)",
-              }}
-              onClick={onWinningButtonClick}
+              onClick={onInClick}
             >
-              <h1 style={{ color: "white" }}>Won</h1>
+              <h1 style={{ color: "white" }}>In</h1>
             </Button>
-            <Button
-              className={styles.panelButton}
-              type="primary"
-              style={{
-                width: 200,
-                height: 200,
-                background: "#ff0000",
-                border: "#ff0000",
-              }}
-              onClick={onLosingButtonClick}
-            >
-              <h1 style={{ color: "white" }}>Lost</h1>
-            </Button>
-          </Row>
-        )}
-      </Col>
-      <Col span={5}>
-        <Button
-          className={styles.panelButton}
-          type="primary"
-          style={{
-            width: 200,
-            height: 200,
-            background: "#ff0000",
-            border: "#ff0000",
-          }}
-          onClick={pointFinished}
-        >
-          <h1 style={{ color: "white" }}>Fault</h1>
-        </Button>
-      </Col>
+          ) : (
+            <Row>
+              <Button
+                className={styles.panelButton}
+                type="primary"
+                style={{
+                  width: 200,
+                  height: 200,
+                  background: "rgba(37, 187, 57, 0.986)",
+                  border: "rgba(37, 187, 57, 0.986)",
+                }}
+                onClick={onWinningButtonClick}
+              >
+                <h1 style={{ color: "white" }}>Won</h1>
+              </Button>
+              <Button
+                className={styles.panelButton}
+                type="primary"
+                style={{
+                  width: 200,
+                  height: 200,
+                  background: "#ff0000",
+                  border: "#ff0000",
+                }}
+                onClick={onLosingButtonClick}
+              >
+                <h1 style={{ color: "white" }}>Lost</h1>
+              </Button>
+            </Row>
+          )}
+        </Col>
+        <Col className={styles.returnButtonCol}>
+          <Button
+            type="primary"
+            danger={true}
+            style={{
+              width: 100,
+              height: 60,
+              marginTop: 180,
+              background: "#ff0000",
+              border: "#ff0000",
+              boxShadow:
+                "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
+            }}
+            //onClick={confirmStop}
+          >
+            <h2 style={{ color: "white" }}>Stop</h2>
+          </Button>
+        </Col>
+      </Row>
     </>
   );
 };
