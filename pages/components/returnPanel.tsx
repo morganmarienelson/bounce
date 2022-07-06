@@ -88,7 +88,6 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                     <Button
                         className={styles.undo}
                         type="default"
-                        style={{width: 100, height: 100, marginTop: 60}}
                         icon={<Undo/>}
                         onClick={pointUndone}
                     />

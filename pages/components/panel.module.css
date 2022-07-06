@@ -19,7 +19,9 @@
 
 .undo {
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    border-color: none;
+    width: 100px;
+    height: 100px;
+    margin-top: 50px;
 }
 
 .undo:hover {
@@ -69,21 +71,24 @@
 
 @media (max-width: 800px) {
     .panelButton {
-        width: 150px;
+        width: 180px;
     }
 
     .returnEmbeddedButton {
-        width: 75px;
+        width: 90px;
     }
 
     .returnButtonCol {
         margin-right: 0;
     }
+
 }
 
-@media (max-width: 600px) {
 
-    .returnButtonCol {
-        margin-right: 0;
+@media (max-width: 600px) {
+    .undo {
+        height: 60px;
+        width: 60px;
     }
+
 }
