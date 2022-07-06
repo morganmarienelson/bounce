@@ -1,29 +1,89 @@
 .panelButton {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    width: 450px;
+    height: 200px;
+}
+
+.returnEmbeddedButton {
+    width: 225px;
+    height: 200px;
+}
+
+.panelRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .undo {
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  border-color: none;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-color: none;
 }
 
 .undo:hover {
-  background-color: rgb(238, 238, 238);
-  border-color: rgb(238, 238, 238);
+    background-color: rgb(238, 238, 238);
+    border-color: rgb(238, 238, 238);
 }
 
 .panelTitle {
-  font-size: 40px;
-  font-weight: 500;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 30px;
+    width: 100%;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
 }
 
 @media (max-width: 1200px) {
-  .panelButton {
-    background-color: lightblue;
-  }
+    .panelButton {
+        width: 350px;
+    }
+
+    .returnEmbeddedButton {
+        width: 175px;
+    }
+
+    .panelTitle {
+        margin-right: 20px;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    .panelButton {
+        width: 250px;
+    }
+
+    .returnEmbeddedButton {
+        width: 125px;
+    }
+
+    .returnButtonCol {
+        column-span: 3;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 800px) {
+    .panelButton {
+        width: 150px;
+    }
+
+    .returnEmbeddedButton {
+        width: 75px;
+    }
+
+    .returnButtonCol {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .returnButtonCol {
+        margin-right: 0;
+    }
 }

@@ -9,7 +9,8 @@ function PointInput() {
     return (
         <>
             {showDashboard ? (
-                <PointDashboard setShowDashboard={setShowDashboard}/>
+                <PointDashboard setShowDashboard={setShowDashboard}
+                />
             ) : (
                 <MatchStats setShowDashboard={setShowDashboard}/>
             )}
