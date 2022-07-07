@@ -53,7 +53,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
 
 
     return (
-        <>
+        <div className={styles.page}>
             <div className={styles.row}>
                 <div className={styles.col}>
                     <ReturnPanel
@@ -91,7 +91,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                 pointFinished={pointFinished}
                 onModalCancel={onModalCancel}
             />
-        </>
+        </div>
     );
 };
 
