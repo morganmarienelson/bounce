@@ -9,6 +9,7 @@ interface ServingPanelProps {
     setShowReturnButtons: (showReturnButtons: boolean) => void;
     onWinningButtonClick: () => void;
     onLosingButtonClick: () => void;
+    confirmStop: () => void;
 }
 
 const ServingPanel: React.FC<ServingPanelProps> = ({
@@ -18,6 +19,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                                        onLosingButtonClick,
                                                        setShowServeButtons,
                                                        setShowReturnButtons,
+                                                       confirmStop
                                                    }) => {
     const onInClick = () => {
         setShowServeButtons(true);
@@ -89,6 +91,21 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                             </Button>
                         </div>
                     )}
+                </div>
+                <div className={styles.stopBtnCol}>
+                    <Button
+                        type="primary"
+                        danger={true}
+                        style={{
+                            background: "#ff0000",
+                            border: "#ff0000",
+                            boxShadow:
+                                "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
+                        }}
+                        onClick={confirmStop}
+                    >
+                        <h2 style={{color: "white"}}>Stop</h2>
+                    </Button>
                 </div>
             </div>
         </>

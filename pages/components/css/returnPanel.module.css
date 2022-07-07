@@ -10,14 +10,19 @@
 .panelRow {
     width: 90%;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    column-gap: 50px;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     margin: 20px auto 0;
 }
 
 .btnCol {
-    grid-column: span 2 / span 2;
+    grid-column: span 1 / span 1;
+}
 
+.undoCol {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    grid-column: span 1 / span 1;
 }
 
 .btnTitle {
@@ -75,15 +80,15 @@
 }
 
 @media (max-width: 800px) {
-    .panelRow {
-        column-gap: 0px;
-    }
-
     .panelTitle {
         font-size: 30px;
     }
 
     .panelBtn, .hiddenBtn {
         height: 100px;
+    }
+
+    .btnTitle, .winLostBtn {
+        font-size: 25px;
     }
 }

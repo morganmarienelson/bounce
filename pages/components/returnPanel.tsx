@@ -1,7 +1,7 @@
 import {Button, message} from "antd";
-import {Undo} from "grommet-icons";
 import React from "react";
 import styles from "./css/returnPanel.module.css";
+import {Undo} from "grommet-icons";
 
 interface ReturnPanelProps {
     pointFinished: () => void;
@@ -20,13 +20,13 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                                      setShowReturnButtons,
                                                      setShowServeButtons,
                                                  }) => {
-    const pointUndone = () => {
-        message.success("The last point has been removed from record", 2);
-    };
-
     const onInClick = () => {
         setShowReturnButtons(true);
         setShowServeButtons(false);
+    };
+
+    const pointUndone = () => {
+        message.success("The last point has been removed from record", 2);
     };
 
     return (
@@ -88,7 +88,9 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                         type="default"
                         icon={<Undo/>}
                         onClick={pointUndone}
-                    />
+                    >
+                        <div>Undo</div>
+                    </Button>
                 </div>
             </div>
         </>

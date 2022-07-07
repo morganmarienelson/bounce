@@ -5,7 +5,8 @@ import ReturnPanel from "./components/returnPanel";
 import ServingPanel from "./components/servingPanel";
 import LostPointModal from "./components/lostPointModal";
 import WonPointModal from "./components/wonPointModal";
-import styles from "./css/pointDashboard.module.css";
+import styles from "./components/css/pointDashboard.module.css";
+import {Undo} from "grommet-icons";
 
 interface PointDashboardProps {
     setShowDashboard: (showDashboard: boolean) => void;
@@ -31,7 +32,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
             okType: "danger",
             onOk: () => {
                 setShowDashboard(false);
-            }
+            },
         });
     };
 
@@ -49,6 +50,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
         setShowServeButtons(false);
         setShowReturnButtons(false);
     };
+
 
     return (
         <>
@@ -71,25 +73,8 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                         pointFinished={pointFinished}
                         onWinningButtonClick={onWinningButtonClick}
                         onLosingButtonClick={onLosingButtonClick}
+                        confirmStop={confirmStop}
                     />
-                </div>
-                <div className={styles.col}>
-                    <Button
-                        type="primary"
-                        danger={true}
-                        style={{
-                            width: 100,
-                            height: 60,
-                            marginTop: 180,
-                            background: "#ff0000",
-                            border: "#ff0000",
-                            boxShadow:
-                                "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
-                        }}
-                        onClick={confirmStop}
-                    >
-                        <h2 style={{color: "white"}}>Stop</h2>
-                    </Button>
                 </div>
             </div>
 
