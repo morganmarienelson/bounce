@@ -2,7 +2,7 @@
     width: 100%;
     font-size: 40px;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
 }
@@ -37,6 +37,13 @@
     justify-content: center;
 }
 
+.stopBtn {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    width: 50%;
+    height: 80px;
+    margin-top: 50px;
+}
+
 .serveInBtn {
     width: 100%;
     height: 150px;
@@ -67,6 +74,12 @@
     font-weight: 500;
 }
 
+@media (max-width: 1000px) {
+    .stopBtn {
+        height: 60px;
+    }
+}
+
 @media (max-width: 800px) {
     .panelRow {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -78,6 +91,11 @@
     }
 
     .serveBtn, .serveInBtn, .hiddenBtn {
-        height: 100px;
+        height: 125px;
+    }
+
+    .panelRow {
+        width: 100%;
     }
 }
+

@@ -33,55 +33,57 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
         <>
             <div className={styles.panelTitle}>Return</div>
             <div className={styles.panelRow}>
-                <div className={styles.btnCol}>
-                    {!showReturnButtons ? (
-                        <Button
-                            className={styles.panelBtn}
-                            type="primary"
-                            onClick={onInClick}
-                        >
-                            <div className={styles.btnTitle}>In</div>
-                        </Button>
-                    ) : (
-                        <div>
+                {!showReturnButtons ? (
+                    <>
+                        <div className={styles.btnCol}>
                             <Button
-                                className={styles.hiddenBtn}
+                                className={styles.panelBtn}
                                 type="primary"
-                                style={{
-                                    background: "rgba(37, 187, 57, 0.986)",
-                                    border: "rgba(37, 187, 57, 0.986)",
-                                }}
-                                onClick={onWinningButtonClick}
+                                onClick={onInClick}
                             >
-                                <div className={styles.winLostBtn}>Won</div>
+                                <div className={styles.btnTitle}>In</div>
                             </Button>
+                        </div>
+                        <div className={styles.btnCol}>
                             <Button
-                                className={styles.hiddenBtn}
+                                className={styles.panelBtn}
                                 type="primary"
                                 style={{
                                     background: "#ff0000",
                                     border: "#ff0000",
                                 }}
-                                onClick={onLosingButtonClick}
+                                onClick={pointFinished}
                             >
-                                <div className={styles.winLostBtn}>Lost</div>
+                                <div className={styles.btnTitle}>Miss</div>
                             </Button>
                         </div>
-                    )}
-                </div>
-                <div className={styles.btnCol}>
-                    <Button
-                        className={styles.panelBtn}
-                        type="primary"
-                        style={{
-                            background: "#ff0000",
-                            border: "#ff0000",
-                        }}
-                        onClick={pointFinished}
-                    >
-                        <div className={styles.btnTitle}>Miss</div>
-                    </Button>
-                </div>
+                    </>
+                ) : (
+                    <div className={styles.btnCol}>
+                        <Button
+                            className={styles.hiddenBtn}
+                            type="primary"
+                            style={{
+                                background: "rgba(37, 187, 57, 0.986)",
+                                border: "rgba(37, 187, 57, 0.986)",
+                            }}
+                            onClick={onWinningButtonClick}
+                        >
+                            <div className={styles.winLostBtn}>Won</div>
+                        </Button>
+                        <Button
+                            className={styles.hiddenBtn}
+                            type="primary"
+                            style={{
+                                background: "#ff0000",
+                                border: "#ff0000",
+                            }}
+                            onClick={onLosingButtonClick}
+                        >
+                            <div className={styles.winLostBtn}>Lost</div>
+                        </Button>
+                    </div>
+                )}
                 <div className={styles.undoCol}>
                     <Button
                         className={styles.undo}
@@ -89,7 +91,6 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                         icon={<Undo/>}
                         onClick={pointUndone}
                     >
-                        <div>Undo</div>
                     </Button>
                 </div>
             </div>

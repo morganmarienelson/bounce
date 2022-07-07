@@ -56,7 +56,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
             <Form
                 name="Match Information"
                 scrollToFirstError
-                style={{marginLeft: 30}}
+                className={styles.form}
             >
                 <Row>
                     <Col>
