@@ -19,7 +19,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                                        onLosingButtonClick,
                                                        setShowServeButtons,
                                                        setShowReturnButtons,
-                                                       confirmStop
+                                                       confirmStop,
                                                    }) => {
     const onInClick = () => {
         setShowServeButtons(true);
@@ -30,34 +30,34 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         <>
             <div className={styles.panelTitle}>Serve</div>
             <div className={styles.panelRow}>
-                <div className={styles.btnCol}>
-                    <Button
-                        className={styles.serveBtn}
-                        type="primary"
-                        style={{
-                            background: "#ff0000",
-                            border: "#ff0000",
-                        }}
-                        onClick={pointFinished}
-                    >
-                        <div className={styles.btnTitle}>Fault</div>
-                    </Button>
-                </div>
-                <div className={styles.btnCol}>
-                    <Button
-                        className={styles.serveBtn}
-                        type="primary"
-                        style={{
-                            background: "rgba(37, 187, 57, 0.986)",
-                            border: "rgba(37, 187, 57, 0.986)",
-                        }}
-                        onClick={pointFinished}
-                    >
-                        <div className={styles.btnTitle}>Ace</div>
-                    </Button>
-                </div>
                 {!showServeButtons ? (
                     <>
+                        <div className={styles.btnCol}>
+                            <Button
+                                className={styles.serveBtn}
+                                type="primary"
+                                style={{
+                                    background: "#26CC3E ",
+                                    border: "rgba(37, 187, 57, 0.986)",
+                                }}
+                                onClick={pointFinished}
+                            >
+                                <div className={styles.btnTitle}>Ace</div>
+                            </Button>
+                        </div>
+                        <div className={styles.btnCol}>
+                            <Button
+                                className={styles.serveBtn}
+                                type="primary"
+                                style={{
+                                    background: "#FF0000",
+                                    border: "#ff0000",
+                                }}
+                                onClick={pointFinished}
+                            >
+                                <div className={styles.btnTitle}>Fault</div>
+                            </Button>
+                        </div>
                         <div className={styles.serveInCol}>
                             <Button
                                 className={styles.serveInBtn}
@@ -70,12 +70,12 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                     </>
                 ) : (
                     <>
-                        <div className={styles.btnCol}>
+                        <div className={styles.serveInCol}>
                             <Button
-                                className={styles.hiddenBtn}
+                                className={styles.serveInBtn}
                                 type="primary"
                                 style={{
-                                    background: "#38B563 ",
+                                    background: "#26CC3E ",
                                     border: "rgba(37, 187, 57, 0.986)",
                                 }}
                                 onClick={onWinningButtonClick}
@@ -83,12 +83,12 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                 <div className={styles.winLostBtn}>Won</div>
                             </Button>
                         </div>
-                        <div className={styles.btnCol}>
+                        <div className={styles.serveInCol}>
                             <Button
-                                className={styles.hiddenBtn}
+                                className={styles.serveInBtn}
                                 type="primary"
                                 style={{
-                                    background: "#EE1A1A  ",
+                                    background: "#FF0000",
                                     border: "#ff0000",
                                 }}
                                 onClick={onLosingButtonClick}

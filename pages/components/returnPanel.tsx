@@ -65,7 +65,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 className={styles.panelBtn}
                                 type="primary"
                                 style={{
-                                    background: "#38B563 ",
+                                    background: "#26CC3E ",
                                     border: "rgba(37, 187, 57, 0.986)",
                                 }}
                                 onClick={onWinningButtonClick}
@@ -78,7 +78,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 className={styles.panelBtn}
                                 type="primary"
                                 style={{
-                                    background: "#EE1A1A  ",
+                                    background: "#FF0000",
                                     border: "#ff0000",
                                 }}
                                 onClick={onLosingButtonClick}
@@ -94,8 +94,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                         type="default"
                         icon={<Undo/>}
                         onClick={pointUndone}
-                    >
-                    </Button>
+                    ></Button>
                 </div>
             </div>
         </>
