@@ -36,16 +36,16 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                 <div className={styles.btnCol}>
                     {!showReturnButtons ? (
                         <Button
-                            className={styles.panelButton}
+                            className={styles.panelBtn}
                             type="primary"
                             onClick={onInClick}
                         >
-                            <h1 style={{color: "white"}}>In</h1>
+                            <div className={styles.btnTitle}>In</div>
                         </Button>
                     ) : (
-                        <>
+                        <div>
                             <Button
-                                className={styles.returnEmbeddedButton}
+                                className={styles.hiddenBtn}
                                 type="primary"
                                 style={{
                                     background: "rgba(37, 187, 57, 0.986)",
@@ -53,10 +53,10 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 }}
                                 onClick={onWinningButtonClick}
                             >
-                                <h1 style={{color: "white"}}>Won</h1>
+                                <div className={styles.winLostBtn}>Won</div>
                             </Button>
                             <Button
-                                className={styles.returnEmbeddedButton}
+                                className={styles.hiddenBtn}
                                 type="primary"
                                 style={{
                                     background: "#ff0000",
@@ -64,14 +64,14 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 }}
                                 onClick={onLosingButtonClick}
                             >
-                                <h1 style={{color: "white"}}>Lost</h1>
+                                <div className={styles.winLostBtn}>Lost</div>
                             </Button>
-                        </>
+                        </div>
                     )}
                 </div>
                 <div className={styles.btnCol}>
                     <Button
-                        className={styles.panelButton}
+                        className={styles.panelBtn}
                         type="primary"
                         style={{
                             background: "#ff0000",
@@ -79,7 +79,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                         }}
                         onClick={pointFinished}
                     >
-                        <h1 style={{color: "white"}}>Miss</h1>
+                        <div className={styles.btnTitle}>Miss</div>
                     </Button>
                 </div>
                 <div className={styles.undoCol}>

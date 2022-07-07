@@ -8,40 +8,59 @@
 }
 
 .panelRow {
-    width: 100%;
+    width: 90%;
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     column-gap: 50px;
-    margin: 50px;
+    margin: 20px auto 0;
 }
 
 .btnCol {
-    grid-column: span 3 / span 3;
+    grid-column: span 2 / span 2;
 
+}
+
+.btnTitle {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
 }
 
 .undoCol {
     grid-column: span 1 / span 1;
+    display: flex;
+    justify-content: center;
 }
 
-.panelButton {
+.hiddenBtn {
+    width: 50%;
+    height: 150px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    width: 450px;
-    height: 200px;
 }
 
-.returnEmbeddedButton {
-    width: 225px;
-    height: 200px;
+.winLostBtn {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.panelBtn {
+    width: 100%;
+    height: 150px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .undo {
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    width: 100px;
-    height: 100px;
-    margin-top: 50px;
+    width: 50%;
+    height: 80px;
+    margin: auto;
 }
 
 .undo:hover {
@@ -49,53 +68,22 @@
     border-color: rgb(238, 238, 238);
 }
 
-@media (max-width: 1200px) {
-    .panelButton {
-        width: 350px;
-    }
-
-    .returnEmbeddedButton {
-        width: 175px;
-    }
-
-    .panelTitle {
-        margin-right: 20px;
-    }
-}
-
 @media (max-width: 1000px) {
-    .panelButton {
-        width: 250px;
-    }
-
-    .returnEmbeddedButton {
-        width: 125px;
-    }
-
-    .returnButtonCol {
-        column-span: 3;
-        margin-right: 10px;
+    .undo {
+        height: 60px;
     }
 }
 
 @media (max-width: 800px) {
-    .panelButton {
-        width: 180px;
+    .panelRow {
+        column-gap: 0px;
     }
 
-    .returnEmbeddedButton {
-        width: 90px;
+    .panelTitle {
+        font-size: 30px;
     }
 
-    .returnButtonCol {
-        margin-right: 0;
+    .panelBtn, .hiddenBtn {
+        height: 100px;
     }
-}
-
-@media (max-width: 600px) {
-    .undo {
-        height: 60px;
-        width: 60px;
-    }
-
 }

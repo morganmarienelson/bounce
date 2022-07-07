@@ -38,7 +38,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                         }}
                         onClick={pointFinished}
                     >
-                        <h1 style={{color: "white"}}>Ace</h1>
+                        <div className={styles.btnTitle}>Ace</div>
                     </Button>
                 </div>
                 <div className={styles.btnCol}>
@@ -51,7 +51,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                         }}
                         onClick={pointFinished}
                     >
-                        <h1 style={{color: "white"}}>Fault</h1>
+                        <div className={styles.btnTitle}>Fault</div>
                     </Button>
                 </div>
                 <div className={styles.serveInCol}>
@@ -61,7 +61,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                             type="primary"
                             onClick={onInClick}
                         >
-                            <h1 style={{color: "white"}}>In</h1>
+                            <div className={styles.btnTitle}>In</div>
                         </Button>
                     ) : (
                         <div>
