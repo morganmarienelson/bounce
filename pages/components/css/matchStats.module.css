@@ -1,72 +1,74 @@
 .row {
-  width: 95%;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 30px;
-  margin: 20px auto 0;
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 30px;
+    margin: 20px auto 0;
 }
 
 .barCol {
-  grid-column: span 2 / span 2;
+    grid-column: span 2 / span 2;
+    margin-bottom: 20px;
 }
 
 .tableCol {
-  grid-column: span 1 / span 1;
+    grid-column: span 1 / span 1;
 }
 
 .heading {
-  font-size: 20px;
-  font-weight: 500;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .shotTable {
-  font-size: 20px;
-  border-left: solid;
-  margin: auto;
+    font-size: 20px;
+    border-left: solid;
+    margin: auto;
 }
 
 .header {
-  background-color: #e2e2e2;
-  padding: 20px;
+    background-color: #e2e2e2;
+    padding: 20px;
 }
 
 .headingTitle {
-  padding-top: 10px;
+    padding-top: 10px;
 }
 
-@media (max-width: 1200px) {
-  .shotTable {
-    font-size: 18px;
-  }
 
-  .heading {
-    font-size: 18px;
-  }
+@media (max-width: 1200px) {
+    .shotTable {
+        font-size: 18px;
+    }
+
+    .heading {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 1100px) {
-  .row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+    .row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-  .barCol {
-    grid-column: span 1 / span 1;
-  }
+    .barCol {
+        grid-column: span 1 / span 1;
+    }
 
-  .heading {
-    font-size: 16px;
-  }
+    .heading {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 900px) {
-  .row {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
+    .row {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
 
-  .shotTable {
-    font-size: 20px;
-    border-left: none;
-    border-top: solid;
-    margin: 20px auto 0;
-  }
+    .shotTable {
+        font-size: 20px;
+        border-left: none;
+        border-top: solid;
+        margin: 20px auto 0;
+    }
 }
