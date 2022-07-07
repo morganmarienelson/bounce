@@ -1,0 +1,11 @@
+.panelRow {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 30px;
+    margin: 20px auto 0;
+}
+
+.btnCol {
+    grid-column: span 1 / span 1;
+}
