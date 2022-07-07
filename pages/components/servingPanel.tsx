@@ -73,7 +73,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                         <div className={styles.btnCol}>
                             <Button
                                 className={styles.hiddenBtn}
-                                ty pe="primary"
+                                type="primary"
                                 style={{
                                     background: "#38B563 ",
                                     border: "rgba(37, 187, 57, 0.986)",
