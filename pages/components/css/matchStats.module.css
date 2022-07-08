@@ -73,6 +73,7 @@
 
     .tableCol {
         grid-column: span 1/ span 1;
+        font-size: 17px;
     }
 
     .barCol {
@@ -86,14 +87,14 @@
     }
 
     .barCol {
-        grid-column: span 2/ span 2;
         padding: 0 5px 40px 5px;
         border-bottom: solid;
         border-right: none;
+        font-size: 20px;
     }
 
     .tableCol {
-        font-size: 17px;
+        font-size: 20px;
         margin: auto auto 20px auto;
     }
 }
