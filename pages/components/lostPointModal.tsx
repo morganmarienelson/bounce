@@ -28,22 +28,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
     const onModalOk = () => {
         setLosingModalVisible(false);
         pointFinished();
-        getServerSideProps;
     };
-
-    async function getServerSideProps() {
-        let res = await fetch("http://localhost:3000/components/point", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        let posts = await res.json();
-
-        return {
-            props: {posts},
-        };
-    }
 
     return (
         <Modal

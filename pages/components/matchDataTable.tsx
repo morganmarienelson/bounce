@@ -29,7 +29,7 @@ const MatchDataTable = () => {
     };
 
     return (
-        <Table className={styles.shotTable}>
+        <Table>
             <TableHeader>
                 <TableRow>
                     <TableCell scope="col" border="bottom">
@@ -43,103 +43,103 @@ const MatchDataTable = () => {
             <TableBody>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Aces</strong>
+                        <div className={styles.tableCell}>Aces</div>
                     </TableCell>
                     <TableCell>{testMatchData.Aces}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Double Faults</strong>
+                        <div className={styles.tableCell}>Double Faults</div>
                     </TableCell>
                     <TableCell>{testMatchData.DoubleFaults}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Missed Returns</strong>
+                        <div className={styles.tableCell}>Missed Returns</div>
                     </TableCell>
                     <TableCell>{testMatchData.MissedReturns}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Baseline Winners</strong>
+                        <div className={styles.tableCell}>Baseline Winners</div>
                     </TableCell>
                     <TableCell>{testMatchData.BaselineWinners}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Baseline Unforced Errors</strong>
+                        <div className={styles.tableCell}>Baseline Unforced Errors</div>
                     </TableCell>
                     <TableCell>{testMatchData.BaselineUnforced}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Forehand Winners</strong>
+                        <div className={styles.tableCell}>Forehand Winners</div>
                     </TableCell>
                     <TableCell>{testMatchData.ForehandWinners}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Forehand Unforced Errors</strong>
+                        <div className={styles.tableCell}>Forehand Unforced Errors</div>
                     </TableCell>
                     <TableCell>{testMatchData.ForehandUnforced}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Backhand Winners</strong>
+                        <div className={styles.tableCell}>Backhand Winners</div>
                     </TableCell>
                     <TableCell>{testMatchData.BackhandWinners}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Backhand Unforced Errors</strong>
+                        <div className={styles.tableCell}>Backhand Unforced Errors</div>
                     </TableCell>
                     <TableCell>{testMatchData.BackhandWinners}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Net Winners</strong>
+                        <div className={styles.tableCell}>Net Winners</div>
                     </TableCell>
                     <TableCell>{testMatchData.NetWinners}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Net Unforced Errors</strong>
+                        <div className={styles.tableCell}>Net Unforced Errors</div>
                     </TableCell>
                     <TableCell>{testMatchData.NetUnforced}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Forehand Volley Winners</strong>
+                        <div className={styles.tableCell}>Forehand Volley Winners</div>
                     </TableCell>
                     <TableCell>{testMatchData.ForehandVolleyWinners}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Forehand Volley Unforced Errors</strong>
+                        <div className={styles.tableCell}>Forehand Volley Unforced Errors</div>
                     </TableCell>
                     <TableCell>{testMatchData.ForehandVolleyUnforced}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Backhand Volley Winners</strong>
+                        <div className={styles.tableCell}>Backhand Volley Winners</div>
                     </TableCell>
                     <TableCell>{testMatchData.BackhandVolleyWinners}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Backhand Volley Unforced Errors</strong>
+                        <div className={styles.tableCell}>Backhand Volley Unforced Errors</div>
                     </TableCell>
                     <TableCell>{testMatchData.BackhandVolleyUnforced}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Overhead Winners</strong>
+                        <div className={styles.tableCell}>Overhead Winners</div>
                     </TableCell>
                     <TableCell>{testMatchData.OverheadWinners}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell scope="row">
-                        <strong>Overhead Unforced Errors</strong>
+                        <div className={styles.tableCell}>Overhead Unforced Errors</div>
                     </TableCell>
                     <TableCell>{testMatchData.OverheadUnforced}</TableCell>
                 </TableRow>
