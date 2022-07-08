@@ -32,12 +32,12 @@ const SaveMatchInfoModal: React.FC<SaveMatchInfoModalProps> = ({
             onOk={onModalOk}
             onCancel={onModalCancel}
         >
-            <Form name="Match Information" style={{margin: 20}}>
+            <Form name="Match Information" className={styles.saveForm}>
                 <Row className={styles.saveRow}>
-                    <Col style={{width: 120}}>
+                    <Col className={styles.playerName}>
                         <div className={styles.saveLabel}>Player Name:</div>
                     </Col>
-                    <Col style={{width: 250}}>
+                    <Col className={styles.userInput}>
                         <Input/>
                     </Col>
                 </Row>
@@ -45,7 +45,7 @@ const SaveMatchInfoModal: React.FC<SaveMatchInfoModalProps> = ({
                     <Col>
                         <div className={styles.saveLabel}>Opponent Name:</div>
                     </Col>
-                    <Col style={{width: 250}}>
+                    <Col className={styles.userInput}>
                         <Input/>
                     </Col>
                 </Row>

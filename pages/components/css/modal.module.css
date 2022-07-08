@@ -32,3 +32,15 @@
 .saveRow {
     margin: auto auto 20px auto;
 }
+
+.playerName {
+    width: 120px;
+}
+
+.userInput {
+    width: 250px;
+}
+
+.saveForm {
+    margin: 20px;
+}
