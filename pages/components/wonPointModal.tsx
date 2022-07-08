@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Col, Form, Modal, Radio, Row, Switch} from "antd";
-import styles from "./css/pointModal.module.css";
+import styles from "./css/modal.module.css";
 
 interface WonPointModalProps {
     winningModalVisible: boolean;

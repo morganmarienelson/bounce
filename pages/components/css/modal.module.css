@@ -22,3 +22,13 @@
 .form {
     margin-left: 30px;
 }
+
+.saveLabel {
+    font-size: 15px;
+    margin: 0 20px 10px 0;
+    font-weight: 500;
+}
+
+.saveRow {
+    margin: auto auto 20px auto;
+}
