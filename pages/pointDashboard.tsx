@@ -1,4 +1,4 @@
-import { Button, message, Modal } from "antd";
+import { message, Modal } from "antd";
 import "antd/dist/antd.css";
 import React, { useState } from "react";
 import ReturnPanel from "./components/returnPanel";
@@ -6,16 +6,13 @@ import ServingPanel from "./components/servingPanel";
 import LostPointModal from "./components/lostPointModal";
 import WonPointModal from "./components/wonPointModal";
 import styles from "./components/css/pointDashboard.module.css";
-import { AnyEventObject, SCXML } from "xstate";
 
 interface PointDashboardProps {
   setShowDashboard: (showDashboard: boolean) => void;
-  send: (event: any) => any;
 }
 
 const PointDashboard: React.FC<PointDashboardProps> = ({
   setShowDashboard,
-  send,
 }) => {
   const [showServeButtons, setShowServeButtons] = useState(false);
   const [showReturnButtons, setShowReturnButtons] = useState(false);
@@ -91,7 +88,6 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
         setWinningModalVisible={setWinningModalVisible}
         pointFinished={pointFinished}
         onModalCancel={onModalCancel}
-        send={send}
       />
     </div>
   );

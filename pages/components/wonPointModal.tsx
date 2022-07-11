@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "antd/dist/antd.css";
 import { Col, Form, Modal, Radio, Row, Switch } from "antd";
 import styles from "./css/modal.module.css";
+import { useMachine } from "@xstate/react";
+import { matchData } from "../../machines/totalPointsWon";
 
 interface WonPointModalProps {
   winningModalVisible: boolean;
   setWinningModalVisible: (winningModalVisible: boolean) => void;
   pointFinished: () => void;
   onModalCancel: () => void;
-  send: (event: any) => any;
 }
 
 const WonPointModal: React.FC<WonPointModalProps> = ({
@@ -16,10 +17,10 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
   setWinningModalVisible,
   pointFinished,
   onModalCancel,
-  send,
 }) => {
   const [atBaseline, setAtBaseline] = useState(true);
   const [shotType, setShotType] = useState("");
+  const [state, send] = useMachine(matchData);
 
   const onWinnerSwitch = (checked: boolean) => {
     if (checked) {

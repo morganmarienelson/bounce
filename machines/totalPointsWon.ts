@@ -1,9 +1,6 @@
 import { assign, createMachine } from "xstate";
 
-interface CounterContext {
-  totalPointsWon: number;
-  pointsWonByWinner: number;
-  winnersAtNet: number;
+interface PointOutcomes {
   pointsWonByForehand: number;
   pointsWonByBackhand: number;
   pointsWonByForehandVolley: number;
@@ -11,22 +8,25 @@ interface CounterContext {
   pointsWonByOverhead: number;
 }
 
-export const totalPointsWon = createMachine({
+export enum MatchDataEvents {
+  IncrementBackhand = "incrementBackhand",
+  IncrementForehand = "incrementForehand",
+  IncrementBackhandVolley = "incrementBackhandVolley",
+  IncrementForehandVolley = "incrementForehandVolley",
+  IncrementOverhead = "incrementOverhead",
+}
+
+export const matchData = createMachine({
   schema: {
-    context: {} as CounterContext,
+    context: {} as PointOutcomes,
     events: {} as
-      | { type: "incrementTotalPoints" }
-      | { type: "incrementWinners" }
-      | { type: "incrementForehand" }
-      | { type: "incrementBackhand" }
-      | { type: "incrementForehandVolley" }
-      | { type: "incrementBackhandVolley" }
-      | { type: "incrementOverhead" },
+      | { type: MatchDataEvents.IncrementForehand }
+      | { type: MatchDataEvents.IncrementBackhand }
+      | { type: MatchDataEvents.IncrementForehandVolley }
+      | { type: MatchDataEvents.IncrementBackhandVolley }
+      | { type: MatchDataEvents.IncrementOverhead },
   },
   context: {
-    totalPointsWon: 0,
-    pointsWonByWinner: 0,
-    winnersAtNet: 0,
     pointsWonByForehand: 0,
     pointsWonByBackhand: 0,
     pointsWonByForehandVolley: 0,
@@ -34,45 +34,33 @@ export const totalPointsWon = createMachine({
     pointsWonByOverhead: 0,
   },
   on: {
-    incrementTotalPoints: {
-      actions: assign({
-        totalPointsWon: (context: CounterContext, event) =>
-          context.totalPointsWon + 1,
-      }),
-    },
-    incrementWinners: {
-      actions: assign({
-        pointsWonByWinner: (context: CounterContext, event) =>
-          context.pointsWonByWinner + 1,
-      }),
-    },
     incrementForehand: {
       actions: assign({
-        pointsWonByForehand: (context: CounterContext, event) =>
+        pointsWonByForehand: (context: PointOutcomes, event) =>
           context.pointsWonByForehand + 1,
       }),
     },
     incrementBackhand: {
       actions: assign({
-        pointsWonByBackhand: (context: CounterContext, event) =>
+        pointsWonByBackhand: (context: PointOutcomes, event) =>
           context.pointsWonByBackhand + 1,
       }),
     },
     incrementForehandVolley: {
       actions: assign({
-        pointsWonByForehandVolley: (context: CounterContext, event) =>
+        pointsWonByForehandVolley: (context: PointOutcomes, event) =>
           context.pointsWonByForehandVolley + 1,
       }),
     },
     incrementBackhandVolley: {
       actions: assign({
-        pointsWonByBackhandVolley: (context: CounterContext, event) =>
+        pointsWonByBackhandVolley: (context: PointOutcomes, event) =>
           context.pointsWonByBackhandVolley + 1,
       }),
     },
     incrementOverhead: {
       actions: assign({
-        pointsWonByOverhead: (context: CounterContext, event) =>
+        pointsWonByOverhead: (context: PointOutcomes, event) =>
           context.pointsWonByOverhead + 1,
       }),
     },
