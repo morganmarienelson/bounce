@@ -16,7 +16,12 @@ export const totalPointsWon = createMachine({
     context: {} as CounterContext,
     events: {} as
       | { type: "incrementTotalPoints" }
-      | { type: "incrementWinners" },
+      | { type: "incrementWinners" }
+      | { type: "incrementForehand" }
+      | { type: "incrementBackhand" }
+      | { type: "incrementForehandVolley" }
+      | { type: "incrementBackhandVolley" }
+      | { type: "incrementOverhead" },
   },
   context: {
     totalPointsWon: 0,
@@ -39,6 +44,36 @@ export const totalPointsWon = createMachine({
       actions: assign({
         pointsWonByWinner: (context: CounterContext, event) =>
           context.pointsWonByWinner + 1,
+      }),
+    },
+    incrementForehand: {
+      actions: assign({
+        pointsWonByForehand: (context: CounterContext, event) =>
+          context.pointsWonByForehand + 1,
+      }),
+    },
+    incrementBackhand: {
+      actions: assign({
+        pointsWonByBackhand: (context: CounterContext, event) =>
+          context.pointsWonByBackhand + 1,
+      }),
+    },
+    incrementForehandVolley: {
+      actions: assign({
+        pointsWonByForehandVolley: (context: CounterContext, event) =>
+          context.pointsWonByForehandVolley + 1,
+      }),
+    },
+    incrementBackhandVolley: {
+      actions: assign({
+        pointsWonByBackhandVolley: (context: CounterContext, event) =>
+          context.pointsWonByBackhandVolley + 1,
+      }),
+    },
+    incrementOverhead: {
+      actions: assign({
+        pointsWonByOverhead: (context: CounterContext, event) =>
+          context.pointsWonByOverhead + 1,
       }),
     },
   },

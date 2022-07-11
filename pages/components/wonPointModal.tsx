@@ -44,6 +44,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
   const onModalOk = () => {
     setWinningModalVisible(false);
     pointFinished();
+    console.log(atBaseline);
     if (atBaseline) {
       if (shotType == "forehand") {
         send({ type: "incrementForehand" });
