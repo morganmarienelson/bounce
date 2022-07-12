@@ -60,10 +60,10 @@ const MatchStats: React.FC<MatchStatsProps> = ({ setShowDashboard, state }) => {
       </Grommet>
       <div className={styles.row}>
         <div className={styles.barCol}>
-          <MatchProgressBars state={state}/>
+          <MatchProgressBars state={state} />
         </div>
         <div className={styles.tableCol}>
-          <MatchDataTable />
+          <MatchDataTable state={state} />
         </div>
       </div>
       <SaveMatchInfoModal

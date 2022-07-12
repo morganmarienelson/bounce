@@ -13,8 +13,6 @@ function PointInput() {
       {showDashboard ? (
         <>
           <PointDashboard setShowDashboard={setShowDashboard} send={send} />
-          FW: {JSON.stringify(state.context.pointsWonByForehandVolley)}
-          BW: {JSON.stringify(state.context.pointsWonByBackhandVolley)}
         </>
       ) : (
         <MatchStats setShowDashboard={setShowDashboard} state={state} />

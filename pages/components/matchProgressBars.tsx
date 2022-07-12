@@ -14,17 +14,16 @@ const MatchProgressBars: React.FC<MatchProgressBarProps> = ({ state }) => {
     +JSON.stringify(state.context.pointsLostOnServe) +
     +JSON.stringify(state.context.pointsLostOnReturn);
 
-  const totalServePoints =
-    +JSON.stringify(state.context.pointsWonOnServe) +
-    +JSON.stringify(state.context.pointsLostOnServe);
-
   const totalReturnPoints =
     +JSON.stringify(state.context.pointsWonOnReturn) +
     +JSON.stringify(state.context.pointsLostOnReturn);
 
   const totalPointsPlayed = totalPointsLost + totalPointsWon;
 
-  const percentPointsWon = (totalPointsWon / totalPointsPlayed) * 100;
+  const percentPointsWon = +(
+    (totalPointsWon / totalPointsPlayed) *
+    100
+  ).toPrecision(2);
 
   const pointsWonByWinner =
     +JSON.stringify(state.context.pointsWonByForehandWinner) +
@@ -33,7 +32,10 @@ const MatchProgressBars: React.FC<MatchProgressBarProps> = ({ state }) => {
     +JSON.stringify(state.context.pointsWonByBackhandVolleyWinner) +
     +JSON.stringify(state.context.pointsWonByOverheadWinner);
 
-  const percentPointsWonByWinners = (pointsWonByWinner / totalPointsWon) * 100;
+  const percentPointsWonByWinners = +(
+    (pointsWonByWinner / totalPointsWon) *
+    100
+  ).toPrecision(2);
 
   const pointsLostByUnforcedErrors =
     +JSON.stringify(state.context.pointsLostByForehandUnforcedError) +
@@ -42,18 +44,24 @@ const MatchProgressBars: React.FC<MatchProgressBarProps> = ({ state }) => {
     +JSON.stringify(state.context.pointsLostByBackhandVolleyUnforcedError) +
     +JSON.stringify(state.context.pointsLostByOverheadUnforcedError);
 
-  const percentLostByUnforced =
-    (pointsLostByUnforcedErrors / totalPointsLost) * 100;
+  const percentLostByUnforced = +(
+    (pointsLostByUnforcedErrors / totalPointsLost) *
+    100
+  ).toPrecision(2);
 
-  const percentWonOnServe =
-    (+JSON.stringify(state.context.pointsWonOnServe) / totalPointsPlayed) * 100;
+  const percentWonOnServe = +(
+    (+JSON.stringify(state.context.pointsWonOnServe) / totalPointsPlayed) *
+    100
+  ).toPrecision(2);
 
-  const percentWonOnReturn =
+  const percentWonOnReturn = +(
     (+JSON.stringify(state.context.pointsWonOnReturn) / totalPointsPlayed) *
-    100;
+    100
+  ).toPrecision(2);
 
-  const percentMissedReturns =
-    +JSON.stringify(state.context.missedReturns) / totalReturnPoints;
+  const percentMissedReturns = +(
+    +JSON.stringify(state.context.missedReturns) / totalReturnPoints
+  ).toPrecision(2);
 
   const checkSuccess = (value: number) => {
     if (value >= 75) {
