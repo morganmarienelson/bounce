@@ -13,8 +13,9 @@ function PointInput() {
             {showDashboard ? (
                 <>
                     <PointDashboard setShowDashboard={setShowDashboard} send={send}/>
-                    Missed Returns: {JSON.stringify(state.context.missedReturns)}
-                    Loss on Return: {JSON.stringify(state.context.pointsLostOnReturn)}
+                    Missed First: {JSON.stringify(state.context.missedFirstServes)}
+                    Doubles: {JSON.stringify(state.context.doubleFaults)}
+                    L serve: {JSON.stringify(state.context.pointsLostOnServe)}
                 </>
             ) : (
                 <MatchStats setShowDashboard={setShowDashboard}/>

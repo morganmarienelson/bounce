@@ -26,6 +26,8 @@ interface PointOutcomes {
     pointsLostOnServe: number;
     pointsLostOnReturn: number;
     missedReturns: number;
+    missedFirstServes: number;
+    doubleFaults: number;
 
 }
 
@@ -54,7 +56,9 @@ export enum MatchDataEvents {
     IncrementOverheadUnforcedError = "incrementOverheadUnforcedError",
     IncrementPointsLostOnServe = "incrementPointsLostOnServe",
     IncrementPointsLostOnReturn = "incrementPointsLostOnReturn",
-    IncrementMissedReturns = "incrementMissedReturns"
+    IncrementMissedReturns = "incrementMissedReturns",
+    IncrementMissedFirstServes = "incrementMissedFirstServes",
+    IncrementDoubleFaults = "incrementDoubleFaults",
 }
 
 export const matchData = createMachine({
@@ -85,7 +89,9 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.IncrementOverheadUnforcedError }
             | { type: MatchDataEvents.IncrementPointsLostOnReturn }
             | { type: MatchDataEvents.IncrementPointsLostOnServe }
-            | { type: MatchDataEvents.IncrementMissedReturns },
+            | { type: MatchDataEvents.IncrementMissedReturns }
+            | { type: MatchDataEvents.IncrementMissedFirstServes }
+            | { type: MatchDataEvents.IncrementDoubleFaults },
     },
     context: {
         pointsWonByForehand: 0,
@@ -113,6 +119,8 @@ export const matchData = createMachine({
         pointsLostOnServe: 0,
         pointsLostOnReturn: 0,
         missedReturns: 0,
+        missedFirstServes: 0,
+        doubleFaults: 0,
     },
     on: {
         incrementForehandWin: {
@@ -265,6 +273,20 @@ export const matchData = createMachine({
                     context.missedReturns + 1,
                 pointsLostOnReturn: (context: PointOutcomes, event) =>
                     context.pointsLostOnReturn + 1,
+            }),
+        },
+        incrementMissedFirstServes: {
+            actions: assign({
+                missedFirstServes: (context: PointOutcomes, event) =>
+                    context.missedFirstServes + 1,
+            }),
+        },
+        incrementDoubleFaults: {
+            actions: assign({
+                doubleFaults: (context: PointOutcomes, event) =>
+                    context.doubleFaults + 1,
+                pointsLostOnServe: (context: PointOutcomes, event) =>
+                    context.pointsLostOnServe + 1,
             }),
         }
     },

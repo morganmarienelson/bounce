@@ -1,6 +1,7 @@
 import {Button} from "antd";
-import React from "react";
+import React, {useState} from "react";
 import styles from "./css/servePanel.module.css";
+import {MatchDataEvents} from "../../machines/matchData";
 
 interface ServingPanelProps {
     pointFinished: () => void;
@@ -11,6 +12,9 @@ interface ServingPanelProps {
     onLosingButtonClick: () => void;
     confirmStop: () => void;
     setIsServing: (isServing: boolean) => void;
+    secondServe: boolean;
+    setSecondServe: (secondServe: boolean) => void;
+    send: (event: any) => any;
 }
 
 const ServingPanel: React.FC<ServingPanelProps> = ({
@@ -22,12 +26,25 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                                        setShowReturnButtons,
                                                        confirmStop,
                                                        setIsServing,
+                                                       secondServe,
+                                                       setSecondServe,
+                                                       send
                                                    }) => {
     const onInClick = () => {
         setShowServeButtons(true);
         setShowReturnButtons(false);
         setIsServing(true);
     };
+
+    const onFaultClick = () => {
+        if (secondServe) {
+            pointFinished();
+            send({type: MatchDataEvents.IncrementDoubleFaults});
+        } else {
+            setSecondServe(true);
+            send({type: MatchDataEvents.IncrementMissedFirstServes});
+        }
+    }
 
     return (
         <>
@@ -56,9 +73,12 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                     background: "#FF0000",
                                     border: "#ff0000",
                                 }}
-                                onClick={pointFinished}
+                                onClick={onFaultClick}
                             >
-                                <div className={styles.btnTitle}>Fault</div>
+                                {!secondServe ? (
+                                    <div className={styles.btnTitle}>Fault</div>
+                                ) : (<div className={styles.btnTitle}>Double Fault</div>
+                                )}
                             </Button>
                         </div>
                         <div className={styles.serveInCol}>
