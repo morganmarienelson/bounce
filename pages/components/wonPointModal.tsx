@@ -11,6 +11,7 @@ interface WonPointModalProps {
     pointFinished: () => void;
     onModalCancel: () => void;
     send: (event: any) => any;
+    isServing: boolean;
 }
 
 const WonPointModal: React.FC<WonPointModalProps> = ({
@@ -19,6 +20,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                                                          pointFinished,
                                                          onModalCancel,
                                                          send,
+                                                         isServing
                                                      }) => {
     const [atBaseline, setAtBaseline] = useState(true);
     const [shotType, setShotType] = useState("");
@@ -84,6 +86,11 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             } else {
                 send({type: MatchDataEvents.IncrementOverhead});
             }
+        }
+        if (isServing) {
+            send({type: MatchDataEvents.IncrementPointsWonOnServe});
+        } else {
+            send({type: MatchDataEvents.IncrementPointsWonOnReturn});
         }
     };
 

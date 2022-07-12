@@ -27,6 +27,8 @@ function PointInput() {
                     Forehand VolleyW:{" "}
                     {JSON.stringify(state.context.pointsWonByForehandVolleyWinner)}
                     OverheadW: {JSON.stringify(state.context.pointsWonByOverheadWinner)}
+                    Serve: {JSON.stringify(state.context.pointsWonOnServe)}
+                    Return: {JSON.stringify(state.context.pointsWonOnReturn)}s
                 </>
             ) : (
                 <MatchStats setShowDashboard={setShowDashboard}/>

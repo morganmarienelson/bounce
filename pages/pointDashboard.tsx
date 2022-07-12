@@ -20,11 +20,13 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
     const [showReturnButtons, setShowReturnButtons] = useState(false);
     const [losingModalVisible, setLosingModalVisible] = useState(false);
     const [winningModalVisible, setWinningModalVisible] = useState(false);
+    const [isServing, setIsServing] = useState(false);
 
     const pointFinished = () => {
         message.success("Point has been recorded", 1);
         setShowServeButtons(false);
         setShowReturnButtons(false);
+        setIsServing(false);
     };
 
     const confirmStop = () => {
@@ -74,6 +76,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                         onWinningButtonClick={onWinningButtonClick}
                         onLosingButtonClick={onLosingButtonClick}
                         confirmStop={confirmStop}
+                        setIsServing={setIsServing}
                     />
                 </div>
             </div>
@@ -91,6 +94,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                 setWinningModalVisible={setWinningModalVisible}
                 pointFinished={pointFinished}
                 onModalCancel={onModalCancel}
+                isServing={isServing}
             />
         </div>
     );
