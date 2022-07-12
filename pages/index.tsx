@@ -13,6 +13,8 @@ function PointInput() {
             {showDashboard ? (
                 <>
                     <PointDashboard setShowDashboard={setShowDashboard} send={send}/>
+                    Missed Returns: {JSON.stringify(state.context.missedReturns)}
+                    Loss on Return: {JSON.stringify(state.context.pointsLostOnReturn)}
                 </>
             ) : (
                 <MatchStats setShowDashboard={setShowDashboard}/>

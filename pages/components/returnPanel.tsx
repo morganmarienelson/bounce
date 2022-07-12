@@ -2,6 +2,7 @@ import {Button, message} from "antd";
 import React from "react";
 import styles from "./css/returnPanel.module.css";
 import {Undo} from "grommet-icons";
+import {matchData, MatchDataEvents} from "../../machines/matchData";
 
 interface ReturnPanelProps {
     pointFinished: () => void;
@@ -10,6 +11,7 @@ interface ReturnPanelProps {
     setShowServeButtons: (showServeButtons: boolean) => void;
     onWinningButtonClick: () => void;
     onLosingButtonClick: () => void;
+    send: (event: any) => any;
 }
 
 const ReturnPanel: React.FC<ReturnPanelProps> = ({
@@ -19,10 +21,15 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                                      onLosingButtonClick,
                                                      setShowReturnButtons,
                                                      setShowServeButtons,
+                                                     send,
                                                  }) => {
     const onInClick = () => {
         setShowReturnButtons(true);
         setShowServeButtons(false);
+    };
+
+    const onMissReturn = () => {
+        send({type: MatchDataEvents.IncrementMissedReturns});
     };
 
     const pointUndone = () => {
@@ -45,7 +52,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 }}
                                 onClick={pointFinished}
                             >
-                                <div className={styles.btnTitle}>Miss</div>
+                                <div className={styles.btnTitle} onClick={onMissReturn}>Miss</div>
                             </Button>
                         </div>
                         <div className={styles.btnCol}>

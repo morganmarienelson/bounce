@@ -65,6 +65,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                         setShowServeButtons={setShowServeButtons}
                         onWinningButtonClick={onWinningButtonClick}
                         onLosingButtonClick={onLosingButtonClick}
+                        send={send}
                     />
                 </div>
                 <div className={styles.col}>

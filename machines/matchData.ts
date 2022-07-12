@@ -25,6 +25,7 @@ interface PointOutcomes {
     pointsLostByOverheadUnforcedError: number;
     pointsLostOnServe: number;
     pointsLostOnReturn: number;
+    missedReturns: number;
 
 }
 
@@ -53,6 +54,7 @@ export enum MatchDataEvents {
     IncrementOverheadUnforcedError = "incrementOverheadUnforcedError",
     IncrementPointsLostOnServe = "incrementPointsLostOnServe",
     IncrementPointsLostOnReturn = "incrementPointsLostOnReturn",
+    IncrementMissedReturns = "incrementMissedReturns"
 }
 
 export const matchData = createMachine({
@@ -83,6 +85,7 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.IncrementOverheadUnforcedError }
             | { type: MatchDataEvents.IncrementPointsLostOnReturn }
             | { type: MatchDataEvents.IncrementPointsLostOnServe }
+            | { type: MatchDataEvents.IncrementMissedReturns },
     },
     context: {
         pointsWonByForehand: 0,
@@ -109,6 +112,7 @@ export const matchData = createMachine({
         pointsLostByOverheadUnforcedError: 0,
         pointsLostOnServe: 0,
         pointsLostOnReturn: 0,
+        missedReturns: 0,
     },
     on: {
         incrementForehandWin: {
@@ -255,5 +259,13 @@ export const matchData = createMachine({
                     context.pointsLostOnReturn + 1,
             }),
         },
+        incrementMissedReturns: {
+            actions: assign({
+                missedReturns: (context: PointOutcomes, event) =>
+                    context.missedReturns + 1,
+                pointsLostOnReturn: (context: PointOutcomes, event) =>
+                    context.pointsLostOnReturn + 1,
+            }),
+        }
     },
 });
