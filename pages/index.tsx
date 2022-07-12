@@ -13,22 +13,6 @@ function PointInput() {
             {showDashboard ? (
                 <>
                     <PointDashboard setShowDashboard={setShowDashboard} send={send}/>
-                    Forehand: {JSON.stringify(state.context.pointsWonByForehand)}
-                    Backhand: {JSON.stringify(state.context.pointsWonByBackhand)}
-                    BackhandVolley:{" "}
-                    {JSON.stringify(state.context.pointsWonByBackhandVolley)}
-                    Forehand Volley:{" "}
-                    {JSON.stringify(state.context.pointsWonByForehandVolley)}
-                    Overhead: {JSON.stringify(state.context.pointsWonByOverhead)}
-                    ForehandW: {JSON.stringify(state.context.pointsWonByForehandWinner)}
-                    BackhandW: {JSON.stringify(state.context.pointsWonByBackhandWinner)}
-                    BackhandVolleyW:{" "}
-                    {JSON.stringify(state.context.pointsWonByBackhandVolleyWinner)}
-                    Forehand VolleyW:{" "}
-                    {JSON.stringify(state.context.pointsWonByForehandVolleyWinner)}
-                    OverheadW: {JSON.stringify(state.context.pointsWonByOverheadWinner)}
-                    Serve: {JSON.stringify(state.context.pointsWonOnServe)}
-                    Return: {JSON.stringify(state.context.pointsWonOnReturn)}s
                 </>
             ) : (
                 <MatchStats setShowDashboard={setShowDashboard}/>

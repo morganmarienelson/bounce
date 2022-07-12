@@ -79,7 +79,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
             if (unforcedError) {
                 send({type: MatchDataEvents.IncrementOverheadUnforcedError});
             } else {
-                send({type: MatchDataEvents.IncrementOverheadUnforcedError});
+                send({type: MatchDataEvents.IncrementOverheadLoss});
             }
         }
         if (isServing) {
