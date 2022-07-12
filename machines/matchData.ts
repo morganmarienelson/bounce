@@ -28,6 +28,8 @@ interface PointOutcomes {
     missedReturns: number;
     missedFirstServes: number;
     doubleFaults: number;
+    acesOnFirstServe: number;
+    acesOnSecondServe: number;
 
 }
 
@@ -59,6 +61,8 @@ export enum MatchDataEvents {
     IncrementMissedReturns = "incrementMissedReturns",
     IncrementMissedFirstServes = "incrementMissedFirstServes",
     IncrementDoubleFaults = "incrementDoubleFaults",
+    IncrementAcesOnFirstServe = "incrementAcesOnFirstServe",
+    IncrementAcesOnSecondServe = "incrementAcesOnSecondServe",
 }
 
 export const matchData = createMachine({
@@ -91,7 +95,9 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.IncrementPointsLostOnServe }
             | { type: MatchDataEvents.IncrementMissedReturns }
             | { type: MatchDataEvents.IncrementMissedFirstServes }
-            | { type: MatchDataEvents.IncrementDoubleFaults },
+            | { type: MatchDataEvents.IncrementDoubleFaults }
+            | { type: MatchDataEvents.IncrementAcesOnFirstServe }
+            | { type: MatchDataEvents.IncrementAcesOnSecondServe },
     },
     context: {
         pointsWonByForehand: 0,
@@ -121,6 +127,8 @@ export const matchData = createMachine({
         missedReturns: 0,
         missedFirstServes: 0,
         doubleFaults: 0,
+        acesOnFirstServe: 0,
+        acesOnSecondServe: 0,
     },
     on: {
         incrementForehandWin: {
@@ -288,6 +296,22 @@ export const matchData = createMachine({
                 pointsLostOnServe: (context: PointOutcomes, event) =>
                     context.pointsLostOnServe + 1,
             }),
-        }
+        },
+        incrementAcesOnFirstServe: {
+            actions: assign({
+                acesOnFirstServe: (context: PointOutcomes, event) =>
+                    context.acesOnFirstServe + 1,
+                pointsWonOnServe: (context: PointOutcomes, event) =>
+                    context.pointsWonOnServe + 1,
+            }),
+        },
+        incrementAcesOnSecondServe: {
+            actions: assign({
+                acesOnSecondServe: (context: PointOutcomes, event) =>
+                    context.acesOnSecondServe + 1,
+                pointsWonOnServe: (context: PointOutcomes, event) =>
+                    context.pointsWonOnServe + 1,
+            }),
+        },
     },
 });

@@ -46,6 +46,16 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         }
     }
 
+    const onAceClick = () => {
+        if (secondServe) {
+            pointFinished();
+            send({type: MatchDataEvents.IncrementAcesOnSecondServe});
+        } else {
+            pointFinished();
+            send({type: MatchDataEvents.IncrementAcesOnFirstServe});
+        }
+    }
+
     return (
         <>
             <div className={styles.panelTitle}>Serve</div>
@@ -60,7 +70,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                     background: "#26CC3E ",
                                     border: "rgba(37, 187, 57, 0.986)",
                                 }}
-                                onClick={pointFinished}
+                                onClick={onAceClick}
                             >
                                 <div className={styles.btnTitle}>Ace</div>
                             </Button>
