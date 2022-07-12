@@ -2,8 +2,7 @@ import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Col, Form, Modal, Radio, Row, Switch} from "antd";
 import styles from "./css/modal.module.css";
-import {useMachine} from "@xstate/react";
-import {matchData, MatchDataEvents} from "../../machines/matchData";
+import {MatchDataEvents} from "../../machines/matchData";
 
 interface WonPointModalProps {
     winningModalVisible: boolean;
@@ -47,22 +46,18 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
     };
 
     const onModalOk = () => {
-        setWinningModalVisible(false);
-        setWinner(false);
-        setAtBaseline(true);
-        pointFinished();
         if (atBaseline) {
             if (shotType == "forehand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementForehandWinner});
                 } else {
-                    send({type: MatchDataEvents.IncrementForehand});
+                    send({type: MatchDataEvents.IncrementForehandWin});
                 }
             } else if (shotType == "backhand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementBackhandWinner});
                 } else {
-                    send({type: MatchDataEvents.IncrementBackhand});
+                    send({type: MatchDataEvents.IncrementBackhandWin});
                 }
             }
         } else {
@@ -70,13 +65,13 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                 if (winner) {
                     send({type: MatchDataEvents.IncrementForehandVolleyWinner});
                 } else {
-                    send({type: MatchDataEvents.IncrementForehandVolley});
+                    send({type: MatchDataEvents.IncrementForehandVolleyWin});
                 }
             } else if (shotType == "backhand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementBackhandVolleyWinner});
                 } else {
-                    send({type: MatchDataEvents.IncrementBackhandVolley});
+                    send({type: MatchDataEvents.IncrementBackhandVolleyWin});
                 }
             }
         }
@@ -84,7 +79,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             if (winner) {
                 send({type: MatchDataEvents.IncrementOverheadWinner});
             } else {
-                send({type: MatchDataEvents.IncrementOverhead});
+                send({type: MatchDataEvents.IncrementOverheadWin});
             }
         }
         if (isServing) {
@@ -92,8 +87,12 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
         } else {
             send({type: MatchDataEvents.IncrementPointsWonOnReturn});
         }
+        setWinningModalVisible(false);
+        setWinner(false);
+        setAtBaseline(true);
+        pointFinished();
     };
-
+    //TODO: clear data on ok and close
     return (
         <Modal
             visible={winningModalVisible}
@@ -102,7 +101,6 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             onOk={onModalOk}
         >
             <div className={styles.title}>Point Information</div>
-            //TODO: clear data on ok and close
             <Form
                 name="Match Information"
                 scrollToFirstError
@@ -139,7 +137,6 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                         </Radio>
                         <Radio
                             value="overhead"
-                            defaultChecked={false}
                         >
                             <div className={styles.radioLabel}>Overhead</div>
                         </Radio>

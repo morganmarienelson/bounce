@@ -86,6 +86,8 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                 setLosingModalVisible={setLosingModalVisible}
                 onModalCancel={onModalCancel}
                 pointFinished={pointFinished}
+                send={send}
+                isServing={isServing}
             />
 
             <WonPointModal
