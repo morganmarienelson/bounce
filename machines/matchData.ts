@@ -37,8 +37,11 @@ export enum MatchDataEvents {
     IncrementForehandWin = "incrementForehandWin",
     DecrementForehandWin = "decrementForehandWin",
     IncrementBackhandWin = "incrementBackhandWin",
-    IncrementBackhandVolleyWin = "incrementBackhandVolleyWin",
+    DecrementBackhandWin = "decrementBackhandWin",
     IncrementForehandVolleyWin = "incrementForehandVolleyWin",
+    DecrementForehandVolleyWin = "decrementForehandVolleyWin",
+    IncrementBackhandVolleyWin = "incrementBackhandVolleyWin",
+    DecrementBackhandVolleyWin = "decrementBackhandVolleyWin",
     IncrementOverheadWin = "incrementOverheadWin",
     IncrementBackhandWinner = "incrementBackhandWinner",
     IncrementForehandWinner = "incrementForehandWinner",
@@ -73,8 +76,11 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.IncrementForehandWin }
             | { type: MatchDataEvents.DecrementForehandWin }
             | { type: MatchDataEvents.IncrementBackhandWin }
+            | { type: MatchDataEvents.DecrementBackhandWin }
             | { type: MatchDataEvents.IncrementForehandVolleyWin }
+            | { type: MatchDataEvents.DecrementForehandVolleyWin }
             | { type: MatchDataEvents.IncrementBackhandVolleyWin }
+            | { type: MatchDataEvents.DecrementBackhandVolleyWin }
             | { type: MatchDataEvents.IncrementOverheadWin }
             | { type: MatchDataEvents.IncrementForehandWinner }
             | { type: MatchDataEvents.IncrementBackhandWinner }
@@ -151,16 +157,34 @@ export const matchData = createMachine({
                     context.pointsWonByBackhand + 1,
             }),
         },
+        decrementBackhandWin: {
+            actions: assign({
+                pointsWonByBackhand: (context: PointOutcomes, event) =>
+                    context.pointsWonByBackhand - 1,
+            }),
+        },
         incrementForehandVolleyWin: {
             actions: assign({
                 pointsWonByForehandVolley: (context: PointOutcomes, event) =>
                     context.pointsWonByForehandVolley + 1,
             }),
         },
+        decrementForehandVolleyWin: {
+            actions: assign({
+                pointsWonByForehandVolley: (context: PointOutcomes, event) =>
+                    context.pointsWonByForehandVolley - 1,
+            }),
+        },
         incrementBackhandVolleyWin: {
             actions: assign({
                 pointsWonByBackhandVolley: (context: PointOutcomes, event) =>
                     context.pointsWonByBackhandVolley + 1,
+            }),
+        },
+        decrementBackhandVolleyWin: {
+            actions: assign({
+                pointsWonByBackhandVolley: (context: PointOutcomes, event) =>
+                    context.pointsWonByBackhandVolley - 1,
             }),
         },
         incrementOverheadWin: {

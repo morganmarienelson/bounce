@@ -38,9 +38,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
         if (pointLog.length == 0) {
             message.error("There is not a recorded point to undo", 2)
         } else {
-            if (pointLog.pop() == MatchDataEvents.IncrementForehandWin) {
-                send({type: MatchDataEvents.DecrementForehandWin});
-            }
+            send({type: pointLog.pop()});
             message.success("The last point has been removed from record", 2);
         }
     };

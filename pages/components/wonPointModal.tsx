@@ -54,15 +54,14 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                     send({type: MatchDataEvents.IncrementForehandWinner});
                 } else {
                     send({type: MatchDataEvents.IncrementForehandWin});
-                    pointLog.push(MatchDataEvents.IncrementForehandWin);
-                    console.log(pointLog)
-                    console.log(pointLog[0])
+                    pointLog.push(MatchDataEvents.DecrementForehandWin);
                 }
             } else if (shotType == "backhand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementBackhandWinner});
                 } else {
                     send({type: MatchDataEvents.IncrementBackhandWin});
+                    pointLog.push(MatchDataEvents.DecrementBackhandWin);
                 }
             }
         } else {
@@ -71,12 +70,14 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                     send({type: MatchDataEvents.IncrementForehandVolleyWinner});
                 } else {
                     send({type: MatchDataEvents.IncrementForehandVolleyWin});
+                    pointLog.push(MatchDataEvents.DecrementForehandVolleyWin);
                 }
             } else if (shotType == "backhand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementBackhandVolleyWinner});
                 } else {
                     send({type: MatchDataEvents.IncrementBackhandVolleyWin});
+                    pointLog.push(MatchDataEvents.DecrementBackhandVolleyWin);
                 }
             }
         }
