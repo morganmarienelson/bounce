@@ -11,6 +11,7 @@ interface LostPointModalProps {
     onModalCancel: () => void;
     send: (event: any) => any;
     isServing: boolean;
+    pointLog: Array<String>;
 }
 
 const LostPointModal: React.FC<LostPointModalProps> = ({
@@ -19,7 +20,8 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                                                            pointFinished,
                                                            onModalCancel,
                                                            send,
-                                                           isServing
+                                                           isServing,
+                                                           pointLog
                                                        }) => {
     const [atBaseline, setAtBaseline] = useState(true);
     const [shotType, setShotType] = useState("");
@@ -50,42 +52,54 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
             if (shotType == "forehand") {
                 if (unforcedError) {
                     send({type: MatchDataEvents.IncrementForehandUnforcedError});
+                    pointLog.push(MatchDataEvents.DecrementForehandUnforcedError);
                 } else {
                     send({type: MatchDataEvents.IncrementForehandLoss});
+                    pointLog.push(MatchDataEvents.DecrementForehandLoss);
                 }
             } else if (shotType == "backhand") {
                 if (unforcedError) {
                     send({type: MatchDataEvents.IncrementBackhandUnforcedError});
+                    pointLog.push(MatchDataEvents.DecrementBackhandUnforcedError);
                 } else {
                     send({type: MatchDataEvents.IncrementBackhandLoss});
+                    pointLog.push(MatchDataEvents.DecrementBackhandLoss);
                 }
             }
         } else {
             if (shotType == "forehand") {
                 if (unforcedError) {
                     send({type: MatchDataEvents.IncrementForehandVolleyUnforcedError});
+                    pointLog.push(MatchDataEvents.DecrementForehandVolleyUnforcedError);
                 } else {
                     send({type: MatchDataEvents.IncrementForehandVolleyLoss});
+                    pointLog.push(MatchDataEvents.DecrementForehandVolleyLoss);
                 }
             } else if (shotType == "backhand") {
                 if (unforcedError) {
                     send({type: MatchDataEvents.IncrementBackhandVolleyUnforcedError});
+                    pointLog.push(MatchDataEvents.DecrementBackhandVolleyUnforcedError);
                 } else {
                     send({type: MatchDataEvents.IncrementBackhandVolleyLoss});
+                    pointLog.push(MatchDataEvents.DecrementBackhandVolleyLoss);
                 }
             }
         }
         if (shotType == "overhead") {
             if (unforcedError) {
                 send({type: MatchDataEvents.IncrementOverheadUnforcedError});
+                pointLog.push(MatchDataEvents.DecrementOverheadUnforcedError);
             } else {
                 send({type: MatchDataEvents.IncrementOverheadLoss});
+                pointLog.push(MatchDataEvents.DecrementOverheadLoss);
             }
         }
         if (isServing) {
             send({type: MatchDataEvents.IncrementPointsLostOnServe});
+            pointLog.push(MatchDataEvents.DecrementPointsLostOnServe);
         } else {
             send({type: MatchDataEvents.IncrementPointsLostOnReturn});
+            pointLog.push(MatchDataEvents.DecrementPointsLostOnReturn);
         }
         setLosingModalVisible(false);
         pointFinished();

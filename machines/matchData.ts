@@ -43,30 +43,55 @@ export enum MatchDataEvents {
     IncrementBackhandVolleyWin = "incrementBackhandVolleyWin",
     DecrementBackhandVolleyWin = "decrementBackhandVolleyWin",
     IncrementOverheadWin = "incrementOverheadWin",
+    DecrementOverheadWin = "decrementOverheadWin",
     IncrementBackhandWinner = "incrementBackhandWinner",
+    DecrementBackhandWinner = "decrementBackhandWinner",
     IncrementForehandWinner = "incrementForehandWinner",
+    DecrementForehandWinner = "decrementForehandWinner",
     IncrementBackhandVolleyWinner = "incrementBackhandVolleyWinner",
+    DecrementBackhandVolleyWinner = "decrementBackhandVolleyWinner",
     IncrementForehandVolleyWinner = "incrementForehandVolleyWinner",
+    DecrementForehandVolleyWinner = "decrementForehandVolleyWinner",
     IncrementOverheadWinner = "incrementOverheadWinner",
+    DecrementOverheadWinner = "decrementOverheadWinner",
     IncrementPointsWonOnServe = "incrementPointsWonOnServe",
+    DecrementPointsWonOnServe = "decrementPointsWonOnServe",
     IncrementPointsWonOnReturn = "incrementPointsWonOnReturn",
+    DecrementPointsWonOnReturn = "decrementPointsWonOnReturn",
     IncrementBackhandLoss = "incrementBackhandLoss",
+    DecrementBackhandLoss = "decrementBackhandLoss",
     IncrementForehandLoss = "incrementForehandLoss",
+    DecrementForehandLoss = "decrementForehandLoss",
     IncrementBackhandVolleyLoss = "incrementBackhandVolleyLoss",
+    DecrementBackhandVolleyLoss = "decrementBackhandVolleyLoss",
     IncrementForehandVolleyLoss = "incrementForehandVolleyLoss",
+    DecrementForehandVolleyLoss = "decrementForehandVolleyLoss",
     IncrementOverheadLoss = "incrementOverheadLoss",
+    DecrementOverheadLoss = "decrementOverheadLoss",
     IncrementBackhandUnforcedError = "incrementBackhandUnforcedError",
+    DecrementBackhandUnforcedError = "decrementBackhandUnforcedError",
     IncrementForehandUnforcedError = "incrementForehandUnforcedError",
+    DecrementForehandUnforcedError = "decrementForehandUnforcedError",
     IncrementBackhandVolleyUnforcedError = "incrementBackhandVolleyUnforcedError",
+    DecrementBackhandVolleyUnforcedError = "decrementBackhandVolleyUnforcedError",
     IncrementForehandVolleyUnforcedError = "incrementForehandVolleyUnforcedError",
+    DecrementForehandVolleyUnforcedError = "decrementForehandVolleyUnforcedError",
     IncrementOverheadUnforcedError = "incrementOverheadUnforcedError",
+    DecrementOverheadUnforcedError = "decrementOverheadUnforcedError",
     IncrementPointsLostOnServe = "incrementPointsLostOnServe",
+    DecrementPointsLostOnServe = "decrementPointsLostOnServe",
     IncrementPointsLostOnReturn = "incrementPointsLostOnReturn",
+    DecrementPointsLostOnReturn = "decrementPointsLostOnReturn",
     IncrementMissedReturns = "incrementMissedReturns",
+    DecrementMissedReturns = "decrementMissedReturns",
     IncrementMissedFirstServes = "incrementMissedFirstServes",
+    DecrementMissedFirstServes = "decrementMissedFirstServes",
     IncrementDoubleFaults = "incrementDoubleFaults",
+    DecrementDoubleFaults = "decrementDoubleFaults",
     IncrementAcesOnFirstServe = "incrementAcesOnFirstServe",
+    DecrementAcesOnFirstServe = "decrementAcesOnFirstServe",
     IncrementAcesOnSecondServe = "incrementAcesOnSecondServe",
+    DecrementAcesOnSecondServe = "decrementAcesOnSecondServe",
 }
 
 export const matchData = createMachine({
@@ -82,30 +107,55 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.IncrementBackhandVolleyWin }
             | { type: MatchDataEvents.DecrementBackhandVolleyWin }
             | { type: MatchDataEvents.IncrementOverheadWin }
+            | { type: MatchDataEvents.DecrementOverheadWin }
             | { type: MatchDataEvents.IncrementForehandWinner }
+            | { type: MatchDataEvents.DecrementForehandWinner }
             | { type: MatchDataEvents.IncrementBackhandWinner }
+            | { type: MatchDataEvents.DecrementBackhandWinner }
             | { type: MatchDataEvents.IncrementForehandVolleyWinner }
+            | { type: MatchDataEvents.DecrementForehandVolleyWinner }
             | { type: MatchDataEvents.IncrementBackhandVolleyWinner }
+            | { type: MatchDataEvents.DecrementBackhandVolleyWinner }
             | { type: MatchDataEvents.IncrementOverheadWinner }
+            | { type: MatchDataEvents.DecrementOverheadWinner }
             | { type: MatchDataEvents.IncrementPointsWonOnReturn }
+            | { type: MatchDataEvents.DecrementPointsWonOnReturn }
             | { type: MatchDataEvents.IncrementPointsWonOnServe }
+            | { type: MatchDataEvents.DecrementPointsWonOnServe }
             | { type: MatchDataEvents.IncrementForehandLoss }
+            | { type: MatchDataEvents.DecrementForehandLoss }
             | { type: MatchDataEvents.IncrementBackhandLoss }
+            | { type: MatchDataEvents.DecrementBackhandLoss }
             | { type: MatchDataEvents.IncrementForehandVolleyLoss }
+            | { type: MatchDataEvents.DecrementForehandVolleyLoss }
             | { type: MatchDataEvents.IncrementBackhandVolleyLoss }
+            | { type: MatchDataEvents.DecrementBackhandVolleyLoss }
             | { type: MatchDataEvents.IncrementOverheadLoss }
+            | { type: MatchDataEvents.DecrementOverheadLoss }
             | { type: MatchDataEvents.IncrementForehandUnforcedError }
+            | { type: MatchDataEvents.DecrementForehandUnforcedError }
             | { type: MatchDataEvents.IncrementBackhandUnforcedError }
+            | { type: MatchDataEvents.DecrementBackhandUnforcedError }
             | { type: MatchDataEvents.IncrementForehandVolleyUnforcedError }
+            | { type: MatchDataEvents.DecrementForehandVolleyUnforcedError }
             | { type: MatchDataEvents.IncrementBackhandVolleyUnforcedError }
+            | { type: MatchDataEvents.DecrementBackhandVolleyUnforcedError }
             | { type: MatchDataEvents.IncrementOverheadUnforcedError }
+            | { type: MatchDataEvents.DecrementOverheadUnforcedError }
             | { type: MatchDataEvents.IncrementPointsLostOnReturn }
+            | { type: MatchDataEvents.DecrementPointsLostOnReturn }
             | { type: MatchDataEvents.IncrementPointsLostOnServe }
+            | { type: MatchDataEvents.DecrementPointsLostOnServe }
             | { type: MatchDataEvents.IncrementMissedReturns }
+            | { type: MatchDataEvents.DecrementMissedReturns }
             | { type: MatchDataEvents.IncrementMissedFirstServes }
+            | { type: MatchDataEvents.DecrementMissedFirstServes }
             | { type: MatchDataEvents.IncrementDoubleFaults }
+            | { type: MatchDataEvents.DecrementDoubleFaults }
             | { type: MatchDataEvents.IncrementAcesOnFirstServe }
-            | { type: MatchDataEvents.IncrementAcesOnSecondServe },
+            | { type: MatchDataEvents.DecrementAcesOnFirstServe }
+            | { type: MatchDataEvents.IncrementAcesOnSecondServe }
+            | { type: MatchDataEvents.DecrementAcesOnSecondServe },
     },
     context: {
         pointsWonByForehand: 0,
@@ -193,10 +243,22 @@ export const matchData = createMachine({
                     context.pointsWonByOverhead + 1,
             }),
         },
+        decrementOverheadWin: {
+            actions: assign({
+                pointsWonByOverhead: (context: PointOutcomes, event) =>
+                    context.pointsWonByOverhead - 1,
+            }),
+        },
         incrementForehandWinner: {
             actions: assign({
                 pointsWonByForehandWinner: (context: PointOutcomes, event) =>
                     context.pointsWonByForehandWinner + 1,
+            }),
+        },
+        decrementForehandWinner: {
+            actions: assign({
+                pointsWonByForehandWinner: (context: PointOutcomes, event) =>
+                    context.pointsWonByForehandWinner - 1,
             }),
         },
         incrementBackhandWinner: {
@@ -205,10 +267,22 @@ export const matchData = createMachine({
                     context.pointsWonByBackhandWinner + 1,
             }),
         },
+        decrementBackhandWinner: {
+            actions: assign({
+                pointsWonByBackhandWinner: (context: PointOutcomes, event) =>
+                    context.pointsWonByBackhandWinner - 1,
+            }),
+        },
         incrementForehandVolleyWinner: {
             actions: assign({
                 pointsWonByForehandVolleyWinner: (context: PointOutcomes, event) =>
                     context.pointsWonByForehandVolleyWinner + 1,
+            }),
+        },
+        decrementForehandVolleyWinner: {
+            actions: assign({
+                pointsWonByForehandVolleyWinner: (context: PointOutcomes, event) =>
+                    context.pointsWonByForehandVolleyWinner - 1,
             }),
         },
         incrementBackhandVolleyWinner: {
@@ -217,10 +291,22 @@ export const matchData = createMachine({
                     context.pointsWonByBackhandVolleyWinner + 1,
             }),
         },
+        decrementBackhandVolleyWinner: {
+            actions: assign({
+                pointsWonByBackhandVolleyWinner: (context: PointOutcomes, event) =>
+                    context.pointsWonByBackhandVolleyWinner - 1,
+            }),
+        },
         incrementOverheadWinner: {
             actions: assign({
                 pointsWonByOverheadWinner: (context: PointOutcomes, event) =>
                     context.pointsWonByOverheadWinner + 1,
+            }),
+        },
+        decrementOverheadWinner: {
+            actions: assign({
+                pointsWonByOverheadWinner: (context: PointOutcomes, event) =>
+                    context.pointsWonByOverheadWinner - 1,
             }),
         },
         incrementPointsWonOnServe: {
@@ -229,10 +315,22 @@ export const matchData = createMachine({
                     context.pointsWonOnServe + 1,
             }),
         },
+        decrementPointsWonOnServe: {
+            actions: assign({
+                pointsWonOnServe: (context: PointOutcomes, event) =>
+                    context.pointsWonOnServe - 1,
+            }),
+        },
         incrementPointsWonOnReturn: {
             actions: assign({
                 pointsWonOnReturn: (context: PointOutcomes, event) =>
                     context.pointsWonOnReturn + 1,
+            }),
+        },
+        decrementPointsWonOnReturn: {
+            actions: assign({
+                pointsWonOnReturn: (context: PointOutcomes, event) =>
+                    context.pointsWonOnReturn - 1,
             }),
         },
         incrementForehandLoss: {
@@ -241,10 +339,22 @@ export const matchData = createMachine({
                     context.pointsLostByForehand + 1,
             }),
         },
+        decrementForehandLoss: {
+            actions: assign({
+                pointsLostByForehand: (context: PointOutcomes, event) =>
+                    context.pointsLostByForehand - 1,
+            }),
+        },
         incrementBackhandLoss: {
             actions: assign({
                 pointsLostByBackhand: (context: PointOutcomes, event) =>
                     context.pointsLostByBackhand + 1,
+            }),
+        },
+        decrementBackhandLoss: {
+            actions: assign({
+                pointsLostByBackhand: (context: PointOutcomes, event) =>
+                    context.pointsLostByBackhand - 1,
             }),
         },
         incrementForehandVolleyLoss: {
@@ -253,10 +363,22 @@ export const matchData = createMachine({
                     context.pointsLostByForehandVolley + 1,
             }),
         },
+        decrementForehandVolleyLoss: {
+            actions: assign({
+                pointsLostByForehandVolley: (context: PointOutcomes, event) =>
+                    context.pointsLostByForehandVolley - 1,
+            }),
+        },
         incrementBackhandVolleyLoss: {
             actions: assign({
                 pointsLostByBackhandVolley: (context: PointOutcomes, event) =>
                     context.pointsLostByBackhandVolley + 1,
+            }),
+        },
+        decrementBackhandVolleyLoss: {
+            actions: assign({
+                pointsLostByBackhandVolley: (context: PointOutcomes, event) =>
+                    context.pointsLostByBackhandVolley - 1,
             }),
         },
         incrementOverheadLoss: {
@@ -265,10 +387,22 @@ export const matchData = createMachine({
                     context.pointsLostByOverhead + 1,
             }),
         },
+        decrementOverheadLoss: {
+            actions: assign({
+                pointsLostByOverhead: (context: PointOutcomes, event) =>
+                    context.pointsLostByOverhead - 1,
+            }),
+        },
         incrementForehandUnforcedError: {
             actions: assign({
                 pointsLostByForehandUnforcedError: (context: PointOutcomes, event) =>
                     context.pointsLostByForehandUnforcedError + 1,
+            }),
+        },
+        decrementForehandUnforcedError: {
+            actions: assign({
+                pointsLostByForehandUnforcedError: (context: PointOutcomes, event) =>
+                    context.pointsLostByForehandUnforcedError - 1,
             }),
         },
         incrementBackhandUnforcedError: {
@@ -277,10 +411,22 @@ export const matchData = createMachine({
                     context.pointsLostByBackhandUnforcedError + 1,
             }),
         },
+        decrementBackhandUnforcedError: {
+            actions: assign({
+                pointsLostByBackhandUnforcedError: (context: PointOutcomes, event) =>
+                    context.pointsLostByBackhandUnforcedError - 1,
+            }),
+        },
         incrementForehandVolleyUnforcedError: {
             actions: assign({
                 pointsLostByForehandVolleyUnforcedError: (context: PointOutcomes, event) =>
                     context.pointsLostByForehandVolleyUnforcedError + 1,
+            }),
+        },
+        decrementForehandVolleyUnforcedError: {
+            actions: assign({
+                pointsLostByForehandVolleyUnforcedError: (context: PointOutcomes, event) =>
+                    context.pointsLostByForehandVolleyUnforcedError - 1,
             }),
         },
         incrementBackhandVolleyUnforcedError: {
@@ -289,10 +435,22 @@ export const matchData = createMachine({
                     context.pointsLostByBackhandVolleyUnforcedError + 1,
             }),
         },
+        decrementBackhandVolleyUnforcedError: {
+            actions: assign({
+                pointsLostByBackhandVolleyUnforcedError: (context: PointOutcomes, event) =>
+                    context.pointsLostByBackhandVolleyUnforcedError - 1,
+            }),
+        },
         incrementOverheadUnforcedError: {
             actions: assign({
                 pointsLostByOverheadUnforcedError: (context: PointOutcomes, event) =>
                     context.pointsLostByOverheadUnforcedError + 1,
+            }),
+        },
+        decrementOverheadUnforcedError: {
+            actions: assign({
+                pointsLostByOverheadUnforcedError: (context: PointOutcomes, event) =>
+                    context.pointsLostByOverheadUnforcedError - 1,
             }),
         },
         incrementPointsLostOnServe: {
@@ -301,10 +459,22 @@ export const matchData = createMachine({
                     context.pointsLostOnServe + 1,
             }),
         },
+        decrementPointsLostOnServe: {
+            actions: assign({
+                pointsLostOnServe: (context: PointOutcomes, event) =>
+                    context.pointsLostOnServe - 1,
+            }),
+        },
         incrementPointsLostOnReturn: {
             actions: assign({
                 pointsLostOnReturn: (context: PointOutcomes, event) =>
                     context.pointsLostOnReturn + 1,
+            }),
+        },
+        decrementPointsLostOnReturn: {
+            actions: assign({
+                pointsLostOnReturn: (context: PointOutcomes, event) =>
+                    context.pointsLostOnReturn - 1,
             }),
         },
         incrementMissedReturns: {
@@ -315,10 +485,24 @@ export const matchData = createMachine({
                     context.pointsLostOnReturn + 1,
             }),
         },
+        decrementMissedReturns: {
+            actions: assign({
+                missedReturns: (context: PointOutcomes, event) =>
+                    context.missedReturns + 1,
+                pointsLostOnReturn: (context: PointOutcomes, event) =>
+                    context.pointsLostOnReturn - 1,
+            }),
+        },
         incrementMissedFirstServes: {
             actions: assign({
                 missedFirstServes: (context: PointOutcomes, event) =>
                     context.missedFirstServes + 1,
+            }),
+        },
+        decrementMissedFirstServes: {
+            actions: assign({
+                missedFirstServes: (context: PointOutcomes, event) =>
+                    context.missedFirstServes - 1,
             }),
         },
         incrementDoubleFaults: {
@@ -329,6 +513,14 @@ export const matchData = createMachine({
                     context.pointsLostOnServe + 1,
             }),
         },
+        decrementDoubleFaults: {
+            actions: assign({
+                doubleFaults: (context: PointOutcomes, event) =>
+                    context.doubleFaults + 1,
+                pointsLostOnServe: (context: PointOutcomes, event) =>
+                    context.pointsLostOnServe - 1,
+            }),
+        },
         incrementAcesOnFirstServe: {
             actions: assign({
                 acesOnFirstServe: (context: PointOutcomes, event) =>
@@ -337,12 +529,28 @@ export const matchData = createMachine({
                     context.pointsWonOnServe + 1,
             }),
         },
+        decrementAcesOnFirstServe: {
+            actions: assign({
+                acesOnFirstServe: (context: PointOutcomes, event) =>
+                    context.acesOnFirstServe + 1,
+                pointsWonOnServe: (context: PointOutcomes, event) =>
+                    context.pointsWonOnServe - 1,
+            }),
+        },
         incrementAcesOnSecondServe: {
             actions: assign({
                 acesOnSecondServe: (context: PointOutcomes, event) =>
                     context.acesOnSecondServe + 1,
                 pointsWonOnServe: (context: PointOutcomes, event) =>
                     context.pointsWonOnServe + 1,
+            }),
+        },
+        decrementAcesOnSecondServe: {
+            actions: assign({
+                acesOnSecondServe: (context: PointOutcomes, event) =>
+                    context.acesOnSecondServe + 1,
+                pointsWonOnServe: (context: PointOutcomes, event) =>
+                    context.pointsWonOnServe - 1,
             }),
         },
     },

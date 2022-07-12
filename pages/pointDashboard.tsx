@@ -86,6 +86,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                         secondServe={secondServe}
                         setSecondServe={setSecondServe}
                         send={send}
+                        pointLog={pointLog}
                     />
                 </div>
             </div>
@@ -97,6 +98,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                 pointFinished={pointFinished}
                 send={send}
                 isServing={isServing}
+                pointLog={pointLog}
             />
 
             <WonPointModal

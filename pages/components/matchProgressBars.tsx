@@ -1,162 +1,126 @@
-import {Progress} from "antd";
+import { Progress } from "antd";
 import styles from "./css/matchStats.module.css";
 
-const MatchProgressBars = () => {
-    const checkSuccess = (value: number) => {
-        if (value >= 75) {
-            return "#69E53B";
-        } else if (value > 50) {
-            return " #EEFB46";
-        } else {
-            return "red";
-        }
-    };
+interface MatchProgressBarProps {
+  state: any;
+}
 
-    const checkError = (value: number) => {
-        if (value >= 50) {
-            return "purple";
-        } else {
-            return "green";
-        }
-    };
+const MatchProgressBars: React.FC<MatchProgressBarProps> = ({ state }) => {
+  const totalPointsWon =
+    +JSON.stringify(state.context.pointsWonOnServe) +
+    +JSON.stringify(state.context.pointsWonOnReturn);
 
-    const checkSecondServe = (value: number) => {
-        if (value >= 70) {
-            return "green";
-        } else {
-            return "red";
-        }
-    };
+  const totalPointsLost =
+    +JSON.stringify(state.context.pointsLostOnServe) +
+    +JSON.stringify(state.context.pointsLostOnReturn);
 
-    const testMatchPercents = {
-        percentPointsWon: 20,
-        percentWonByWinners: 30,
-        percentLostByUnforced: 40,
-        percentWonServe: 50,
-        firstServePercent: 30,
-        secondServePercent: 70,
-        pointsLostOnReturn: 40,
-        percentMissedReturns: 30,
-        pointsWonBaseline: 80,
-        pointsWonWithForehand: 34,
-        pointsWonWithBackhand: 65,
-        pointsWonAtNet: 40,
-        pointsWonForehandVolley: 60,
-        pointsWonBackhandVolley: 30,
-        pointsWonOverhead: 30,
-    };
+  const totalServePoints =
+    +JSON.stringify(state.context.pointsWonOnServe) +
+    +JSON.stringify(state.context.pointsLostOnServe);
 
-    return (
-        <>
-            <div>
-                <div className={styles.heading}>Total Points Won</div>
-                <Progress
-                    percent={testMatchPercents.percentPointsWon}
-                    strokeColor={checkSuccess(testMatchPercents.percentPointsWon)}
-                    strokeWidth={12}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Point Won By Winners</div>
-                <Progress
-                    percent={testMatchPercents.percentWonByWinners}
-                    strokeWidth={12}
-                    strokeColor={"green"}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Lost by Unforced Errors</div>
-                <Progress
-                    percent={testMatchPercents.percentLostByUnforced}
-                    strokeColor={checkError(testMatchPercents.percentLostByUnforced)}
-                    strokeWidth={12}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Won on Serve</div>
-                <Progress
-                    percent={testMatchPercents.percentWonServe}
-                    strokeWidth={12}
-                    strokeColor={checkSuccess(testMatchPercents.percentWonServe)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>First Serve Percentage</div>
-                <Progress
-                    percent={testMatchPercents.firstServePercent}
-                    strokeColor={checkSuccess(testMatchPercents.firstServePercent)}
-                    strokeWidth={12}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Second Serve Percentage</div>
-                <Progress
-                    percent={testMatchPercents.secondServePercent}
-                    strokeWidth={12}
-                    strokeColor={checkSecondServe(testMatchPercents.secondServePercent)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Lost on Return</div>
-                <Progress
-                    percent={testMatchPercents.pointsLostOnReturn}
-                    strokeWidth={12}
-                    strokeColor={checkError(testMatchPercents.pointsLostOnReturn)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Percentage of Missed Returns</div>
-                <Progress
-                    percent={testMatchPercents.percentMissedReturns}
-                    strokeWidth={12}
-                    strokeColor={checkError(testMatchPercents.percentMissedReturns)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Won at Baseline</div>
-                <Progress
-                    percent={testMatchPercents.pointsWonBaseline}
-                    strokeWidth={12}
-                    strokeColor={checkSuccess(testMatchPercents.pointsWonBaseline)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Won with Forehand</div>
-                <Progress
-                    percent={testMatchPercents.pointsWonWithForehand}
-                    strokeWidth={12}
-                    strokeColor={checkSuccess(testMatchPercents.pointsWonWithForehand)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Won with Backhand</div>
-                <Progress
-                    percent={testMatchPercents.pointsWonWithBackhand}
-                    strokeWidth={12}
-                    strokeColor={checkSuccess(testMatchPercents.pointsWonWithBackhand)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Won at Net</div>
-                <Progress
-                    percent={testMatchPercents.pointsWonAtNet}
-                    strokeWidth={12}
-                    strokeColor={checkSuccess(testMatchPercents.pointsWonAtNet)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Won with Forehand Volley</div>
-                <Progress
-                    percent={testMatchPercents.pointsWonForehandVolley}
-                    strokeWidth={12}
-                    strokeColor={checkSuccess(testMatchPercents.pointsWonForehandVolley)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Won with Backhand Volley</div>
-                <Progress
-                    percent={testMatchPercents.pointsWonBackhandVolley}
-                    strokeWidth={12}
-                    strokeColor={checkSuccess(testMatchPercents.pointsWonBackhandVolley)}
-                    trailColor={"#DEDEDE"}
-                />
-                <div className={styles.heading}>Points Won with Overhead</div>
-                <Progress
-                    percent={testMatchPercents.pointsWonOverhead}
-                    strokeWidth={12}
-                    strokeColor={checkSuccess(testMatchPercents.pointsWonOverhead)}
-                    trailColor={"#DEDEDE"}
-                />
-            </div>
-        </>
-    );
+  const totalReturnPoints =
+    +JSON.stringify(state.context.pointsWonOnReturn) +
+    +JSON.stringify(state.context.pointsLostOnReturn);
+
+  const totalPointsPlayed = totalPointsLost + totalPointsWon;
+
+  const percentPointsWon = (totalPointsWon / totalPointsPlayed) * 100;
+
+  const pointsWonByWinner =
+    +JSON.stringify(state.context.pointsWonByForehandWinner) +
+    +JSON.stringify(state.context.pointsWonByBackhandWinner) +
+    +JSON.stringify(state.context.pointsWonByForehandVolleyWinner) +
+    +JSON.stringify(state.context.pointsWonByBackhandVolleyWinner) +
+    +JSON.stringify(state.context.pointsWonByOverheadWinner);
+
+  const percentPointsWonByWinners = (pointsWonByWinner / totalPointsWon) * 100;
+
+  const pointsLostByUnforcedErrors =
+    +JSON.stringify(state.context.pointsLostByForehandUnforcedError) +
+    +JSON.stringify(state.context.pointsLostByBackhandUnforcedError) +
+    +JSON.stringify(state.context.pointsLostByForehandVolleyUnforcedError) +
+    +JSON.stringify(state.context.pointsLostByBackhandVolleyUnforcedError) +
+    +JSON.stringify(state.context.pointsLostByOverheadUnforcedError);
+
+  const percentLostByUnforced =
+    (pointsLostByUnforcedErrors / totalPointsLost) * 100;
+
+  const percentWonOnServe =
+    (+JSON.stringify(state.context.pointsWonOnServe) / totalPointsPlayed) * 100;
+
+  const percentWonOnReturn =
+    (+JSON.stringify(state.context.pointsWonOnReturn) / totalPointsPlayed) *
+    100;
+
+  const percentMissedReturns =
+    +JSON.stringify(state.context.missedReturns) / totalReturnPoints;
+
+  const checkSuccess = (value: number) => {
+    if (value >= 75) {
+      return "#69E53B";
+    } else if (value > 50) {
+      return " #EEFB46";
+    } else {
+      return "red";
+    }
+  };
+
+  const checkError = (value: number) => {
+    if (value >= 50) {
+      return "purple";
+    } else {
+      return "green";
+    }
+  };
+
+  return (
+    <>
+      <div>
+        <div className={styles.heading}>Total Points Won</div>
+        <Progress
+          percent={percentPointsWon}
+          strokeColor={checkSuccess(percentPointsWon)}
+          strokeWidth={12}
+          trailColor={"#DEDEDE"}
+        />
+        <div className={styles.heading}>Point Won By Winners</div>
+        <Progress
+          percent={percentPointsWonByWinners}
+          strokeWidth={12}
+          strokeColor={"green"}
+          trailColor={"#DEDEDE"}
+        />
+        <div className={styles.heading}>Points Lost by Unforced Errors</div>
+        <Progress
+          percent={percentLostByUnforced}
+          strokeColor={checkError(percentLostByUnforced)}
+          strokeWidth={12}
+          trailColor={"#DEDEDE"}
+        />
+        <div className={styles.heading}>Points Won on Serve</div>
+        <Progress
+          percent={percentWonOnServe}
+          strokeWidth={12}
+          strokeColor={checkSuccess(percentWonOnServe)}
+          trailColor={"#DEDEDE"}
+        />
+        <div className={styles.heading}>Points Won on Return</div>
+        <Progress
+          percent={percentWonOnReturn}
+          strokeWidth={12}
+          strokeColor={checkError(percentWonOnReturn)}
+          trailColor={"#DEDEDE"}
+        />
+        <div className={styles.heading}>Percentage of Missed Returns</div>
+        <Progress
+          percent={percentMissedReturns}
+          strokeWidth={12}
+          strokeColor={checkError(percentMissedReturns)}
+          trailColor={"#DEDEDE"}
+        />
+      </div>
+    </>
+  );
 };
 
 export default MatchProgressBars;

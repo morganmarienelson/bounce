@@ -32,6 +32,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
 
     const onMissReturn = () => {
         send({type: MatchDataEvents.IncrementMissedReturns});
+        pointLog.push(MatchDataEvents.DecrementMissedReturns);
     };
 
     const pointUndone = () => {

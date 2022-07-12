@@ -15,6 +15,7 @@ interface ServingPanelProps {
     secondServe: boolean;
     setSecondServe: (secondServe: boolean) => void;
     send: (event: any) => any;
+    pointLog: Array<String>;
 }
 
 const ServingPanel: React.FC<ServingPanelProps> = ({
@@ -28,7 +29,8 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                                        setIsServing,
                                                        secondServe,
                                                        setSecondServe,
-                                                       send
+                                                       send,
+                                                       pointLog
                                                    }) => {
     const onInClick = () => {
         setShowServeButtons(true);
@@ -40,9 +42,11 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         if (secondServe) {
             pointFinished();
             send({type: MatchDataEvents.IncrementDoubleFaults});
+            pointLog.push(MatchDataEvents.DecrementDoubleFaults);
         } else {
             setSecondServe(true);
             send({type: MatchDataEvents.IncrementMissedFirstServes});
+            pointLog.push(MatchDataEvents.DecrementMissedFirstServes);
         }
     }
 
@@ -50,9 +54,13 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         if (secondServe) {
             pointFinished();
             send({type: MatchDataEvents.IncrementAcesOnSecondServe});
+            pointLog.push(MatchDataEvents.DecrementAcesOnSecondServe);
+
+
         } else {
             pointFinished();
             send({type: MatchDataEvents.IncrementAcesOnFirstServe});
+            pointLog.push(MatchDataEvents.DecrementAcesOnFirstServe);
         }
     }
 

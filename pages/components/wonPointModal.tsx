@@ -52,6 +52,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             if (shotType == "forehand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementForehandWinner});
+                    pointLog.push(MatchDataEvents.DecrementForehandWinner);
                 } else {
                     send({type: MatchDataEvents.IncrementForehandWin});
                     pointLog.push(MatchDataEvents.DecrementForehandWin);
@@ -59,6 +60,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             } else if (shotType == "backhand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementBackhandWinner});
+                    pointLog.push(MatchDataEvents.DecrementBackhandWinner);
                 } else {
                     send({type: MatchDataEvents.IncrementBackhandWin});
                     pointLog.push(MatchDataEvents.DecrementBackhandWin);
@@ -68,6 +70,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             if (shotType == "forehand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementForehandVolleyWinner});
+                    pointLog.push(MatchDataEvents.DecrementForehandVolleyWinner);
                 } else {
                     send({type: MatchDataEvents.IncrementForehandVolleyWin});
                     pointLog.push(MatchDataEvents.DecrementForehandVolleyWin);
@@ -75,6 +78,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             } else if (shotType == "backhand") {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementBackhandVolleyWinner});
+                    pointLog.push(MatchDataEvents.DecrementBackhandVolleyWinner);
                 } else {
                     send({type: MatchDataEvents.IncrementBackhandVolleyWin});
                     pointLog.push(MatchDataEvents.DecrementBackhandVolleyWin);
@@ -84,14 +88,18 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
         if (shotType == "overhead") {
             if (winner) {
                 send({type: MatchDataEvents.IncrementOverheadWinner});
+                pointLog.push(MatchDataEvents.DecrementOverheadWinner);
             } else {
                 send({type: MatchDataEvents.IncrementOverheadWin});
+                pointLog.push(MatchDataEvents.DecrementOverheadWin);
             }
         }
         if (isServing) {
             send({type: MatchDataEvents.IncrementPointsWonOnServe});
+            pointLog.push(MatchDataEvents.DecrementPointsWonOnServe);
         } else {
             send({type: MatchDataEvents.IncrementPointsWonOnReturn});
+            pointLog.push(MatchDataEvents.DecrementPointsWonOnReturn);
         }
         setWinningModalVisible(false);
         setWinner(false);
