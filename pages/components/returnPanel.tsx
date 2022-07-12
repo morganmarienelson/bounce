@@ -12,6 +12,7 @@ interface ReturnPanelProps {
     onWinningButtonClick: () => void;
     onLosingButtonClick: () => void;
     send: (event: any) => any;
+    pointLog: Array<String>;
 }
 
 const ReturnPanel: React.FC<ReturnPanelProps> = ({
@@ -22,6 +23,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                                      setShowReturnButtons,
                                                      setShowServeButtons,
                                                      send,
+                                                     pointLog,
                                                  }) => {
     const onInClick = () => {
         setShowReturnButtons(true);
@@ -33,7 +35,14 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
     };
 
     const pointUndone = () => {
-        message.success("The last point has been removed from record", 2);
+        if (pointLog.length == 0) {
+            message.error("There is not a recorded point to undo", 2)
+        } else {
+            if (pointLog.pop() == MatchDataEvents.IncrementForehandWin) {
+                send({type: MatchDataEvents.DecrementForehandWin});
+            }
+            message.success("The last point has been removed from record", 2);
+        }
     };
 
     return (

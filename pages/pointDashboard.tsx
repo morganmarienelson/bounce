@@ -6,6 +6,7 @@ import ServingPanel from "./components/servingPanel";
 import LostPointModal from "./components/lostPointModal";
 import WonPointModal from "./components/wonPointModal";
 import styles from "./components/css/pointDashboard.module.css";
+import {string} from "prop-types";
 
 interface PointDashboardProps {
     setShowDashboard: (showDashboard: boolean) => void;
@@ -22,6 +23,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
     const [winningModalVisible, setWinningModalVisible] = useState(false);
     const [isServing, setIsServing] = useState(false);
     const [secondServe, setSecondServe] = useState(false);
+    const [pointLog, setPointLog] = useState(Array<String>);
 
     const pointFinished = () => {
         message.success("Point has been recorded", 1);
@@ -68,6 +70,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                         onWinningButtonClick={onWinningButtonClick}
                         onLosingButtonClick={onLosingButtonClick}
                         send={send}
+                        pointLog={pointLog}
                     />
                 </div>
                 <div className={styles.col}>
@@ -103,6 +106,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                 pointFinished={pointFinished}
                 onModalCancel={onModalCancel}
                 isServing={isServing}
+                pointLog={pointLog}
             />
         </div>
     );

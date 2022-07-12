@@ -11,6 +11,7 @@ interface WonPointModalProps {
     onModalCancel: () => void;
     send: (event: any) => any;
     isServing: boolean;
+    pointLog: Array<String>;
 }
 
 const WonPointModal: React.FC<WonPointModalProps> = ({
@@ -19,7 +20,8 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                                                          pointFinished,
                                                          onModalCancel,
                                                          send,
-                                                         isServing
+                                                         isServing,
+                                                         pointLog
                                                      }) => {
     const [atBaseline, setAtBaseline] = useState(true);
     const [shotType, setShotType] = useState("");
@@ -52,6 +54,9 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                     send({type: MatchDataEvents.IncrementForehandWinner});
                 } else {
                     send({type: MatchDataEvents.IncrementForehandWin});
+                    pointLog.push(MatchDataEvents.IncrementForehandWin);
+                    console.log(pointLog)
+                    console.log(pointLog[0])
                 }
             } else if (shotType == "backhand") {
                 if (winner) {

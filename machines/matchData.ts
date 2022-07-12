@@ -34,8 +34,9 @@ interface PointOutcomes {
 }
 
 export enum MatchDataEvents {
-    IncrementBackhandWin = "incrementBackhandWin",
     IncrementForehandWin = "incrementForehandWin",
+    DecrementForehandWin = "decrementForehandWin",
+    IncrementBackhandWin = "incrementBackhandWin",
     IncrementBackhandVolleyWin = "incrementBackhandVolleyWin",
     IncrementForehandVolleyWin = "incrementForehandVolleyWin",
     IncrementOverheadWin = "incrementOverheadWin",
@@ -70,6 +71,7 @@ export const matchData = createMachine({
         context: {} as PointOutcomes,
         events: {} as
             | { type: MatchDataEvents.IncrementForehandWin }
+            | { type: MatchDataEvents.DecrementForehandWin }
             | { type: MatchDataEvents.IncrementBackhandWin }
             | { type: MatchDataEvents.IncrementForehandVolleyWin }
             | { type: MatchDataEvents.IncrementBackhandVolleyWin }
@@ -135,6 +137,12 @@ export const matchData = createMachine({
             actions: assign({
                 pointsWonByForehand: (context: PointOutcomes, event) =>
                     context.pointsWonByForehand + 1,
+            }),
+        },
+        decrementForehandWin: {
+            actions: assign({
+                pointsWonByForehand: (context: PointOutcomes, event) =>
+                    context.pointsWonByForehand - 1,
             }),
         },
         incrementBackhandWin: {

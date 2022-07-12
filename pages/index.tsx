@@ -13,7 +13,7 @@ function PointInput() {
             {showDashboard ? (
                 <>
                     <PointDashboard setShowDashboard={setShowDashboard} send={send}/>
-                    Ace First: {JSON.stringify(state.context.acesOnFirstServe)}
+                    FW: {JSON.stringify(state.context.pointsWonByForehand)}
                     Ace Second: {JSON.stringify(state.context.acesOnSecondServe)}
                     W serve: {JSON.stringify(state.context.pointsWonOnServe)}
                 </>
