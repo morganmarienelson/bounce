@@ -1,17 +1,19 @@
 import React from "react";
 import {Meter} from "grommet";
 import {Grommet, TableBody, TableCell, TableHeader, TableRow, Table} from "grommet/components";
-import {Col, Progress, Row} from "antd";
+import {Card, Col, Progress, Row, Statistic} from "antd";
 
 interface ServingDataProps {
     state: any;
 }
 
 const ServingData: React.FC<ServingDataProps> = ({state}) => {
-
     const totalServePoints =
         +JSON.stringify(state.context.pointsWonOnServe) +
         +JSON.stringify(state.context.pointsLostOnServe);
+
+    const percentWonOnServe =
+        +((+JSON.stringify(state.context.pointsWonOnServe) / (totalServePoints)) * 100).toPrecision(2);
 
     const firstServePercentage =
         +((+JSON.stringify(state.context.madeFirstServes) / (totalServePoints)) * 100).toPrecision(2);
@@ -22,6 +24,34 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
 
     return (
         <div>
+            <h1>Serving Statistics</h1>
+            <Row gutter={16}>
+                <Col span={12}>
+                    <Card>
+                        <Statistic
+                            title="Percentage of Points Won on Serve"
+                            value={percentWonOnServe}
+                            valueStyle={{
+                                color: '#3f8600',
+                            }}
+                            suffix="%"
+                        />
+                    </Card>
+                </Col>
+                <Col span={12}>
+                    <Card>
+                        <Statistic
+                            title="Percentage of Points Lost on Serve"
+                            value={percentWonOnServe}
+                            precision={2}
+                            valueStyle={{
+                                color: '#cf1322',
+                            }}
+                            suffix="%"
+                        />
+                    </Card>
+                </Col>
+            </Row>
             <Grommet>
                 <h1>First Serve Percentage</h1>
                 <Meter
