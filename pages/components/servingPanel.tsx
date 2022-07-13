@@ -51,6 +51,24 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         }
     }
 
+    const onNotReturned = () => {
+        if (secondServe) {
+            send({type: MatchDataEvents.IncrementNotReturnedSecondServes});
+            pointLog.push(MatchDataEvents.DecrementNotReturnedSecondServes);
+            send({type: MatchDataEvents.IncrementMadeSecondServes});
+            pointLog.push(MatchDataEvents.DecrementMadeSecondServes);
+        } else {
+            send({type: MatchDataEvents.IncrementNotReturnedFirstServes});
+            pointLog.push(MatchDataEvents.DecrementNotReturnedFirstServes)
+            send({type: MatchDataEvents.IncrementMadeFirstServes});
+            pointLog.push(MatchDataEvents.DecrementMadeFirstServes)
+        }
+        send({type: MatchDataEvents.IncrementPointsWonOnServe});
+        pointLog.push(MatchDataEvents.DecrementPointsWonOnServe);
+        pointFinished();
+    }
+
+
     const onAceClick = () => {
         if (secondServe) {
             send({type: MatchDataEvents.IncrementAcesOnSecondServe});
@@ -66,7 +84,6 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         send({type: MatchDataEvents.IncrementPointsWonOnServe});
         pointLog.push(MatchDataEvents.DecrementPointsWonOnServe);
         pointFinished();
-
     }
 
     return (
@@ -86,6 +103,19 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                 onClick={onAceClick}
                             >
                                 <div className={styles.btnTitle}>Ace</div>
+                            </Button>
+                        </div>
+                        <div className={styles.btnCol}>
+                            <Button
+                                className={styles.serveBtn}
+                                type="primary"
+                                style={{
+                                    background: "#26CC3E ",
+                                    border: "rgba(37, 187, 57, 0.986)",
+                                }}
+                                onClick={onNotReturned}
+                            >
+                                <div className={styles.btnTitle}>Not Returned</div>
                             </Button>
                         </div>
                         <div className={styles.btnCol}>

@@ -1,6 +1,7 @@
 import React from "react";
 import {Meter} from "grommet";
-import {Grommet} from "grommet/components";
+import {Grommet, TableBody, TableCell, TableHeader, TableRow, Table} from "grommet/components";
+import {Col, Progress, Row} from "antd";
 
 interface ServingDataProps {
     state: any;
@@ -26,7 +27,6 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                 <Meter
                     values={[{
                         value: firstServePercentage,
-                        label: 'sixty',
                     }]}
                     type="circle"
                     margin="medium"
@@ -37,7 +37,6 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                 <Meter
                     values={[{
                         value: secondServePercentage,
-                        label: 'sixty',
                     }]}
                     type="circle"
                     margin="medium"
