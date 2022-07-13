@@ -2,6 +2,7 @@ import {Button} from "antd";
 import React, {useState} from "react";
 import styles from "./css/servePanel.module.css";
 import {MatchDataEvents} from "../../machines/matchData";
+import ServeLocationModal from "./serveLocationModal";
 
 interface ServingPanelProps {
     pointFinished: () => void;
@@ -32,6 +33,8 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                                                        send,
                                                        pointLog
                                                    }) => {
+    const [serveLocationModalVisible, setServeLocationModalVisible] = useState(false);
+
     const onInClick = () => {
         setShowServeButtons(true);
         setShowReturnButtons(false);
@@ -52,6 +55,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
     }
 
     const onNotReturned = () => {
+        setServeLocationModalVisible(true);
         if (secondServe) {
             send({type: MatchDataEvents.IncrementNotReturnedSecondServes});
             pointLog.push(MatchDataEvents.DecrementNotReturnedSecondServes);
@@ -65,11 +69,11 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         }
         send({type: MatchDataEvents.IncrementPointsWonOnServe});
         pointLog.push(MatchDataEvents.DecrementPointsWonOnServe);
-        pointFinished();
     }
 
 
     const onAceClick = () => {
+        setServeLocationModalVisible(true);
         if (secondServe) {
             send({type: MatchDataEvents.IncrementAcesOnSecondServe});
             pointLog.push(MatchDataEvents.DecrementAcesOnSecondServe);
@@ -83,7 +87,6 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         }
         send({type: MatchDataEvents.IncrementPointsWonOnServe});
         pointLog.push(MatchDataEvents.DecrementPointsWonOnServe);
-        pointFinished();
     }
 
     return (
@@ -188,6 +191,9 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                     </Button>
                 </div>
             </div>
+            <ServeLocationModal serveLocationModalVisible={serveLocationModalVisible}
+                                setServeLocationModalVisible={setServeLocationModalVisible}
+                                pointFinished={pointFinished} send={send} pointLog={pointLog}/>
         </>
     );
 };

@@ -558,7 +558,7 @@ export const matchData = createMachine({
         decrementAcesOnSecondServe: {
             actions: assign({
                 acesOnSecondServe: (context: PointOutcomes, event) =>
-                    context.acesOnSecondServe + 1,
+                    context.acesOnSecondServe - 1,
             }),
         },
         incrementMadeFirstServes: {
