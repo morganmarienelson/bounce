@@ -12,6 +12,7 @@ interface WonPointModalProps {
     send: (event: any) => any;
     isServing: boolean;
     pointLog: Array<String>;
+    secondServe: boolean;
 }
 
 const WonPointModal: React.FC<WonPointModalProps> = ({
@@ -21,7 +22,8 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                                                          onModalCancel,
                                                          send,
                                                          isServing,
-                                                         pointLog
+                                                         pointLog,
+                                                         secondServe,
                                                      }) => {
     const [atBaseline, setAtBaseline] = useState(true);
     const [shotType, setShotType] = useState("");
@@ -95,11 +97,19 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             }
         }
         if (isServing) {
+            if (secondServe) {
+                send({type: MatchDataEvents.IncrementMadeSecondServes});
+                pointLog.push(MatchDataEvents.DecrementMadeSecondServes);
+            } else {
+                send({type: MatchDataEvents.IncrementMadeFirstServes});
+                pointLog.push(MatchDataEvents.DecrementMadeFirstServes);
+            }
             send({type: MatchDataEvents.IncrementPointsWonOnServe});
             pointLog.push(MatchDataEvents.DecrementPointsWonOnServe);
         } else {
             send({type: MatchDataEvents.IncrementPointsWonOnReturn});
             pointLog.push(MatchDataEvents.DecrementPointsWonOnReturn);
+            pointLog.push("filler");
         }
         setWinningModalVisible(false);
         setWinner(false);

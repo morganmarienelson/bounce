@@ -12,6 +12,7 @@ interface LostPointModalProps {
     send: (event: any) => any;
     isServing: boolean;
     pointLog: Array<String>;
+    secondServe: boolean;
 }
 
 const LostPointModal: React.FC<LostPointModalProps> = ({
@@ -21,7 +22,8 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                                                            onModalCancel,
                                                            send,
                                                            isServing,
-                                                           pointLog
+                                                           pointLog,
+                                                           secondServe
                                                        }) => {
     const [atBaseline, setAtBaseline] = useState(true);
     const [shotType, setShotType] = useState("");
@@ -95,11 +97,19 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
             }
         }
         if (isServing) {
+            if (secondServe) {
+                send({type: MatchDataEvents.IncrementMadeSecondServes});
+                pointLog.push(MatchDataEvents.DecrementMadeSecondServes);
+            } else {
+                send({type: MatchDataEvents.IncrementMadeFirstServes});
+                pointLog.push(MatchDataEvents.DecrementMadeFirstServes);
+            }
             send({type: MatchDataEvents.IncrementPointsLostOnServe});
             pointLog.push(MatchDataEvents.DecrementPointsLostOnServe);
         } else {
             send({type: MatchDataEvents.IncrementPointsLostOnReturn});
             pointLog.push(MatchDataEvents.DecrementPointsLostOnReturn);
+            pointLog.push("filler");
         }
         setLosingModalVisible(false);
         pointFinished();

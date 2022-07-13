@@ -33,14 +33,27 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
     const onMissReturn = () => {
         send({type: MatchDataEvents.IncrementMissedReturns});
         pointLog.push(MatchDataEvents.DecrementMissedReturns);
+        send({type: MatchDataEvents.IncrementPointsLostOnReturn});
+        pointLog.push(MatchDataEvents.DecrementPointsLostOnReturn);
+        pointLog.push("filler");
+        pointFinished();
     };
 
     const pointUndone = () => {
         if (pointLog.length == 0) {
             message.error("There is not a recorded point to undo", 2)
         } else {
-            send({type: pointLog.pop()});
-            message.success("The last point has been removed from record", 2);
+            const lastEntry = pointLog.pop();
+            if (lastEntry == "filler") {
+                send({type: pointLog.pop()});
+                send({type: pointLog.pop()});
+                message.success("The last point has been removed from record", 2);
+            } else {
+                send({type: lastEntry});
+                send({type: pointLog.pop()});
+                send({type: pointLog.pop()});
+                message.success("The last point has been removed from record", 2);
+            }
         }
     };
 

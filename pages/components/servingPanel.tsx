@@ -40,28 +40,33 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
 
     const onFaultClick = () => {
         if (secondServe) {
-            pointFinished();
             send({type: MatchDataEvents.IncrementDoubleFaults});
             pointLog.push(MatchDataEvents.DecrementDoubleFaults);
+            send({type: MatchDataEvents.IncrementPointsLostOnServe});
+            pointLog.push(MatchDataEvents.DecrementPointsLostOnServe);
+            pointLog.push("filler");
+            pointFinished();
         } else {
             setSecondServe(true);
-            send({type: MatchDataEvents.IncrementMissedFirstServes});
-            pointLog.push(MatchDataEvents.DecrementMissedFirstServes);
         }
     }
 
     const onAceClick = () => {
         if (secondServe) {
-            pointFinished();
             send({type: MatchDataEvents.IncrementAcesOnSecondServe});
             pointLog.push(MatchDataEvents.DecrementAcesOnSecondServe);
-
-
+            send({type: MatchDataEvents.IncrementMadeSecondServes});
+            pointLog.push(MatchDataEvents.DecrementMadeSecondServes);
         } else {
-            pointFinished();
             send({type: MatchDataEvents.IncrementAcesOnFirstServe});
-            pointLog.push(MatchDataEvents.DecrementAcesOnFirstServe);
+            pointLog.push(MatchDataEvents.DecrementAcesOnFirstServe)
+            send({type: MatchDataEvents.IncrementMadeFirstServes});
+            pointLog.push(MatchDataEvents.DecrementMadeFirstServes)
         }
+        send({type: MatchDataEvents.IncrementPointsWonOnServe});
+        pointLog.push(MatchDataEvents.DecrementPointsWonOnServe);
+        pointFinished();
+
     }
 
     return (

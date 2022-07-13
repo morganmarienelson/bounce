@@ -30,6 +30,8 @@ interface PointOutcomes {
     doubleFaults: number;
     acesOnFirstServe: number;
     acesOnSecondServe: number;
+    madeFirstServes: number;
+    madeSecondServes: number;
 
 }
 
@@ -92,6 +94,10 @@ export enum MatchDataEvents {
     DecrementAcesOnFirstServe = "decrementAcesOnFirstServe",
     IncrementAcesOnSecondServe = "incrementAcesOnSecondServe",
     DecrementAcesOnSecondServe = "decrementAcesOnSecondServe",
+    IncrementMadeFirstServes = "incrementMadeFirstServes",
+    DecrementMadeFirstServes = "decrementMadeFirstServes",
+    IncrementMadeSecondServes = "incrementMadeSecondServes",
+    DecrementMadeSecondServes = "decrementMadeSecondServes",
 }
 
 export const matchData = createMachine({
@@ -155,7 +161,11 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.IncrementAcesOnFirstServe }
             | { type: MatchDataEvents.DecrementAcesOnFirstServe }
             | { type: MatchDataEvents.IncrementAcesOnSecondServe }
-            | { type: MatchDataEvents.DecrementAcesOnSecondServe },
+            | { type: MatchDataEvents.DecrementAcesOnSecondServe }
+            | { type: MatchDataEvents.IncrementMadeFirstServes }
+            | { type: MatchDataEvents.DecrementMadeFirstServes }
+            | { type: MatchDataEvents.IncrementMadeSecondServes }
+            | { type: MatchDataEvents.DecrementMadeSecondServes },
     },
     context: {
         pointsWonByForehand: 0,
@@ -187,6 +197,8 @@ export const matchData = createMachine({
         doubleFaults: 0,
         acesOnFirstServe: 0,
         acesOnSecondServe: 0,
+        madeFirstServes: 0,
+        madeSecondServes: 0,
     },
     on: {
         incrementForehandWin: {
@@ -481,16 +493,12 @@ export const matchData = createMachine({
             actions: assign({
                 missedReturns: (context: PointOutcomes, event) =>
                     context.missedReturns + 1,
-                pointsLostOnReturn: (context: PointOutcomes, event) =>
-                    context.pointsLostOnReturn + 1,
             }),
         },
         decrementMissedReturns: {
             actions: assign({
                 missedReturns: (context: PointOutcomes, event) =>
                     context.missedReturns + 1,
-                pointsLostOnReturn: (context: PointOutcomes, event) =>
-                    context.pointsLostOnReturn - 1,
             }),
         },
         incrementMissedFirstServes: {
@@ -509,48 +517,60 @@ export const matchData = createMachine({
             actions: assign({
                 doubleFaults: (context: PointOutcomes, event) =>
                     context.doubleFaults + 1,
-                pointsLostOnServe: (context: PointOutcomes, event) =>
-                    context.pointsLostOnServe + 1,
             }),
         },
         decrementDoubleFaults: {
             actions: assign({
                 doubleFaults: (context: PointOutcomes, event) =>
                     context.doubleFaults + 1,
-                pointsLostOnServe: (context: PointOutcomes, event) =>
-                    context.pointsLostOnServe - 1,
             }),
         },
         incrementAcesOnFirstServe: {
             actions: assign({
                 acesOnFirstServe: (context: PointOutcomes, event) =>
                     context.acesOnFirstServe + 1,
-                pointsWonOnServe: (context: PointOutcomes, event) =>
-                    context.pointsWonOnServe + 1,
             }),
         },
         decrementAcesOnFirstServe: {
             actions: assign({
                 acesOnFirstServe: (context: PointOutcomes, event) =>
                     context.acesOnFirstServe + 1,
-                pointsWonOnServe: (context: PointOutcomes, event) =>
-                    context.pointsWonOnServe - 1,
             }),
         },
         incrementAcesOnSecondServe: {
             actions: assign({
                 acesOnSecondServe: (context: PointOutcomes, event) =>
                     context.acesOnSecondServe + 1,
-                pointsWonOnServe: (context: PointOutcomes, event) =>
-                    context.pointsWonOnServe + 1,
             }),
         },
         decrementAcesOnSecondServe: {
             actions: assign({
                 acesOnSecondServe: (context: PointOutcomes, event) =>
                     context.acesOnSecondServe + 1,
-                pointsWonOnServe: (context: PointOutcomes, event) =>
-                    context.pointsWonOnServe - 1,
+            }),
+        },
+        incrementMadeFirstServes: {
+            actions: assign({
+                madeFirstServes: (context: PointOutcomes, event) =>
+                    context.madeFirstServes + 1,
+            }),
+        },
+        decrementMadeFirstServes: {
+            actions: assign({
+                madeFirstServes: (context: PointOutcomes, event) =>
+                    context.madeFirstServes - 1,
+            }),
+        },
+        incrementMadeSecondServes: {
+            actions: assign({
+                madeSecondServes: (context: PointOutcomes, event) =>
+                    context.madeSecondServes + 1,
+            }),
+        },
+        decrementMadeSecondServes: {
+            actions: assign({
+                madeSecondServes: (context: PointOutcomes, event) =>
+                    context.madeSecondServes - 1,
             }),
         },
     },

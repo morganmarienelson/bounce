@@ -1,24 +1,28 @@
 import MatchStats from "./matchStats";
 import PointDashboard from "./pointDashboard";
-import { useState } from "react";
-import { useMachine } from "@xstate/react";
-import { matchData } from "../machines/matchData";
+import {useState} from "react";
+import {useMachine} from "@xstate/react";
+import {matchData} from "../machines/matchData";
 
 function PointInput() {
-  const [showDashboard, setShowDashboard] = useState(true);
-  const [state, send] = useMachine(matchData);
+    const [showDashboard, setShowDashboard] = useState(true);
+    const [state, send] = useMachine(matchData);
 
-  return (
-    <>
-      {showDashboard ? (
+    return (
         <>
-          <PointDashboard setShowDashboard={setShowDashboard} send={send} />
+            {showDashboard ? (
+                <>
+                    <PointDashboard setShowDashboard={setShowDashboard} send={send}/>
+                    {JSON.stringify(state.context.pointsWonOnServe)}
+                    {JSON.stringify(state.context.pointsLostOnServe)}
+                    {JSON.stringify(state.context.madeFirstServes)}
+                    {JSON.stringify(state.context.madeSecondServes)}
+                </>
+            ) : (
+                <MatchStats setShowDashboard={setShowDashboard} state={state}/>
+            )}
         </>
-      ) : (
-        <MatchStats setShowDashboard={setShowDashboard} state={state} />
-      )}
-    </>
-  );
+    );
 }
 
 export default PointInput;
