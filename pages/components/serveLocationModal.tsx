@@ -31,7 +31,24 @@ const ServeLocationModal: React.FC<ServeLocationModalProps> = ({
     };
 
     const onModalOk = () => {
+        if (serveLocation == "alley") {
+            send({type: MatchDataEvents.IncrementNotReturnedServesToAlley});
+            pointLog.push(MatchDataEvents.DecrementNotReturnedServesToAlley);
+        } else if (serveLocation == "center") {
+            send({type: MatchDataEvents.IncrementNotReturnedServesToCenter});
+            pointLog.push(MatchDataEvents.IncrementNotReturnedServesToCenter);
+        } else if (serveLocation == "body") {
+            send({type: MatchDataEvents.IncrementNotReturnedServesToBody});
+            pointLog.push(MatchDataEvents.IncrementNotReturnedServesToBody);
+        }
 
+        if (sideOfCourt == "ad") {
+            send({type: MatchDataEvents.IncrementNotReturnedServesAdSide});
+            pointLog.push(MatchDataEvents.DecrementNotReturnedServesAdSide);
+        } else if (serveLocation == "deuce") {
+            send({type: MatchDataEvents.IncrementNotReturnedServesDeuceSide});
+            pointLog.push(MatchDataEvents.IncrementNotReturnedServesDeuceSide);
+        }
         setServeLocationModalVisible(false);
         pointFinished();
     };
