@@ -547,7 +547,7 @@ export const matchData = createMachine({
     decrementMissedReturns: {
       actions: assign({
         missedReturns: (context: PointOutcomes, event) =>
-          context.missedReturns + 1,
+          context.missedReturns - 1,
       }),
     },
     incrementMissedFirstServes: {
@@ -571,7 +571,7 @@ export const matchData = createMachine({
     decrementDoubleFaults: {
       actions: assign({
         doubleFaults: (context: PointOutcomes, event) =>
-          context.doubleFaults + 1,
+          context.doubleFaults - 1,
       }),
     },
     incrementAcesOnFirstServe: {
