@@ -2,7 +2,6 @@ import React from "react";
 import {Meter} from "grommet";
 import {Grommet, TableBody, TableCell, TableHeader, TableRow, Table, Chart, Box, Heading} from "grommet/components";
 import styles from "./css/serveDataPanel.module.css";
-import {Progress} from "antd";
 
 interface ServingDataProps {
     state: any;

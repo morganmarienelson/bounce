@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "antd/dist/antd.css";
-import {Col, Form, Modal, Radio, Row, Switch} from "antd";
+import { Form, Modal, Radio } from "antd";
 import styles from "./css/modal.module.css";
 import {MatchDataEvents} from "../../machines/matchData";
 
