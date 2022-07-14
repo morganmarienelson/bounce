@@ -116,7 +116,8 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
     setAtBaseline(true);
     pointFinished();
   };
-
+  //TODO: clear data on ok and close
+  //TODO: Make form fields required
   return (
     <Modal
       visible={losingModalVisible}

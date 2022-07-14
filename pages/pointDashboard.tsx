@@ -25,11 +25,11 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
     const [pointLog, setPointLog] = useState(Array<String>);
 
     const pointFinished = () => {
-        message.success("Point has been recorded", 1);
         setShowServeButtons(false);
         setShowReturnButtons(false);
         setIsServing(false);
         setSecondServe(false);
+        message.success("Point has been recorded", 1);
     };
 
     const confirmStop = () => {
