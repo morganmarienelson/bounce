@@ -1,0 +1,29 @@
+.row {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 30px;
+    margin: 20px auto 0;
+}
+
+.servePercentages {
+    grid-column: span 1 / span 1;
+}
+
+.unreturnedRow {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: 30px;
+    margin: 20px auto 0;
+}
+
+.twoCol {
+    grid-column: span 2 / span 2;
+    width: 100%;
+}
+
+.threeCol {
+    grid-column: span 3 / span 3;
+    width: 100%;
+}
