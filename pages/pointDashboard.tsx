@@ -50,13 +50,6 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
         setLosingModalVisible(true);
     };
 
-    const onModalCancel = () => {
-        setLosingModalVisible(false);
-        setWinningModalVisible(false);
-        setShowServeButtons(false);
-        setShowReturnButtons(false);
-    };
-
     return (
         <div className={styles.page}>
             <div className={styles.row}>
@@ -93,12 +86,13 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
             <LostPointModal
                 losingModalVisible={losingModalVisible}
                 setLosingModalVisible={setLosingModalVisible}
-                onModalCancel={onModalCancel}
                 pointFinished={pointFinished}
                 send={send}
                 isServing={isServing}
                 pointLog={pointLog}
                 secondServe={secondServe}
+                setShowServeButtons={setShowServeButtons}
+                setShowReturnButtons={setShowReturnButtons}
             />
 
             <WonPointModal
@@ -106,7 +100,8 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                 winningModalVisible={winningModalVisible}
                 setWinningModalVisible={setWinningModalVisible}
                 pointFinished={pointFinished}
-                onModalCancel={onModalCancel}
+                setShowServeButtons={setShowServeButtons}
+                setShowReturnButtons={setShowReturnButtons}
                 isServing={isServing}
                 pointLog={pointLog}
                 secondServe={secondServe}
