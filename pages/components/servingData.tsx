@@ -7,11 +7,9 @@ import {
     TableHeader,
     TableRow,
     Table,
-    Chart,
-    Box,
-    Heading,
 } from "grommet/components";
 import styles from "./css/serveDataPanel.module.css";
+import {VictoryPie} from "victory-pie";
 
 interface ServingDataProps {
     state: any;
@@ -57,11 +55,6 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
         +JSON.stringify(state.context.acesOnSecondServe) +
         +JSON.stringify(state.context.acesOnFirstServe);
 
-    const percentNotReturnedServesToAlley = +(
-        (+JSON.stringify(state.context.notReturnedServesToAlley) /
-            totalNotReturnedServes) *
-        100
-    ).toPrecision(2);
 
     const percentNotReturnedServesToCenter = +(
         (+JSON.stringify(state.context.notReturnedServesToCenter) /
@@ -74,6 +67,13 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
             totalNotReturnedServes) *
         100
     ).toPrecision(2);
+
+
+    const unreturnedServeLocationData = [
+        {x: "Alley", y: +JSON.stringify(state.context.notReturnedServesToAlley)},
+        {x: "Body", y: +JSON.stringify(state.context.notReturnedServesToBody)},
+        {x: "Center", y: +JSON.stringify(state.context.notReturnedServesToCenter)},
+    ];
 
     const totalAces = +JSON.stringify(state.context.acesOnFirstServe) + +JSON.stringify(state.context.acesOnSecondServe);
 
@@ -92,140 +92,144 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
     };
 
     return (
-        <div>
-            <h1>Serving Statistics</h1>
-            <div className={styles.row}>
-                <div className={styles.servePercentages}>
-                    <h4>Percent of Total Points Won On Serve</h4>
-                    <h1>{percentOfTotalPointsWonOnServe}%</h1>
+        <div className={styles.fullPage}>
+            <div className={styles.heading}>Serving Statistics</div>
+            <div className={styles.body}>
+                <div className={styles.row}>
+                    <div className={styles.servePercentages}>
+                        <div className={styles.percentHeading}>Total Points Won On Serve</div>
+                        <div className={styles.locationChart}>
+                            <Grommet>
+                                <Meter
+                                    value={percentOfTotalPointsWonOnServe}
+                                    type="circle"
+                                    margin="small"
+                                    size="small"
+                                    thickness="medium"
+                                    color={checkSuccess(percentOfTotalPointsWonOnServe)}
+                                />
+                            </Grommet>
+                        </div>
+                    </div>
+                    <div className={styles.servePercentages}>
+                        <div className={styles.percentHeading}>Serving Points Won</div>
+                        <div className={styles.locationChart}>
+                            <Grommet>
+                                <Meter
+                                    value={percentOfServingPointsWon}
+                                    type="circle"
+                                    margin="small"
+                                    size="small"
+                                    thickness="medium"
+                                    color={checkSuccess(percentOfServingPointsWon)}
+                                />
+                            </Grommet>
+                        </div>
+                    </div>
+                    <div className={styles.servePercentages}>
+                        <div className={styles.percentHeading}>First Serve Percentage</div>
+                        <div className={styles.locationChart}>
+                            <Grommet>
+                                <Meter
+                                    value={firstServePercentage}
+                                    type="circle"
+                                    margin="small"
+                                    size="small"
+                                    thickness="medium"
+                                    color={checkSuccess(firstServePercentage)}
+                                />
+                            </Grommet>
+                        </div>
+                    </div>
+                    <div className={styles.servePercentagesLastRow}>
+                        <div className={styles.percentHeading}>Second Serve Percentage</div>
+                        <div className={styles.locationChart}>
+                            <Grommet>
+                                <Meter
+                                    value={secondServePercentage}
+                                    type="circle"
+                                    margin="small"
+                                    size="small"
+                                    thickness="medium"
+                                    color={checkSuccess(secondServePercentage)}
+                                />
+                            </Grommet>
+                        </div>
+                    </div>
                 </div>
-                <div className={styles.servePercentages}>
-                    <h4>Percent of Serving Points Won</h4>
-                    <h1>{percentOfServingPointsWon}%</h1>
-                </div>
-                <div className={styles.servePercentages}>
-                    <h4>First Serve Percentage</h4>
-                    <h1>{firstServePercentage}%</h1>
-                </div>
-                <div className={styles.servePercentages}>
-                    <h4>Second Serve Percentage</h4>
-                    <h1>{secondServePercentage}%</h1>
-                </div>
-            </div>
-            <div className={styles.unreturnedRow}>
-                <div className={styles.twoCol}>
-                    <h2>Unreturned Serves</h2>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableCell scope="col" border="bottom">
-                                    Type
-                                </TableCell>
-                                <TableCell scope="col" border="bottom">
-                                    Value
-                                </TableCell>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            <TableRow>
-                                <TableCell scope="row">
-                                    <div className={styles.tableCell}>Aces</div>
-                                </TableCell>
-                                <TableCell>
-                                    {totalAces}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell scope="row">
-                                    <div className={styles.tableCell}> Deuce Side</div>
-                                </TableCell>
-                                <TableCell>
-                                    {+JSON.stringify(state.context.notReturnedServesDeuceSide)}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell scope="row">
-                                    <div className={styles.tableCell}> Ad Side</div>
-                                </TableCell>
-                                <TableCell>
-                                    {+JSON.stringify(state.context.notReturnedServesAdSide)}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell scope="row">
-                                    <div className={styles.tableCell}> First Serves</div>
-                                </TableCell>
-                                <TableCell>
-                                    {totalNotReturnedFirstServes}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell scope="row">
-                                    <div className={styles.tableCell}> Second Serves</div>
-                                </TableCell>
-                                <TableCell>
-                                    {totalNotReturnedSecondServes}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell scope="row">
-                                    <h4>Total Points Won By Unreturned Serves </h4>
-                                </TableCell>
-                                <TableCell>
-                                    {totalNotReturnedServes}
-                                </TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>.
-
-                </div>
-                <div className={styles.servePercentages}>
-                    <Grommet>
-                        <h3>Alley</h3>
-                        <Meter
-                            values={[
-                                {
-                                    value: percentNotReturnedServesToAlley,
-                                },
-                            ]}
-                            type="circle"
-                            margin="small"
-                            size="small"
-                            thickness="medium"
+                <div className={styles.rowHeading}>Unreturned Serves</div>
+                <div className={styles.unreturnedRow}>
+                    <div className={styles.serveTable}>
+                        <Table className={styles.table}>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableCell scope="col" border="bottom">
+                                        Type
+                                    </TableCell>
+                                    <TableCell scope="col" border="bottom">
+                                        Value
+                                    </TableCell>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell scope="row">
+                                        <div className={styles.tableCell}>Aces</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        {totalAces}
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell scope="row">
+                                        <div className={styles.tableCell}> Deuce Side</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        {+JSON.stringify(state.context.notReturnedServesDeuceSide)}
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell scope="row">
+                                        <div className={styles.tableCell}> Ad Side</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        {+JSON.stringify(state.context.notReturnedServesAdSide)}
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell scope="row">
+                                        <div className={styles.tableCell}> First Serves</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        {totalNotReturnedFirstServes}
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell scope="row">
+                                        <div className={styles.tableCell}> Second Serves</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        {totalNotReturnedSecondServes}
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell scope="row">
+                                        <div className={styles.tableTotal}>Total Points Won By Unreturned Serves</div>
+                                    </TableCell>
+                                    <TableCell>
+                                        {totalNotReturnedServes}
+                                    </TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>.
+                    </div>
+                    <div className={styles.percentRow}>
+                        <VictoryPie
+                            data={unreturnedServeLocationData}
+                            colorScale={["blue", "yellow", "red"]}
+                            radius={100}
                         />
-                    </Grommet>
-                </div>
-                <div className={styles.servePercentages}>
-                    <Grommet>
-                        <h3>Body</h3>
-                        <Meter
-                            values={[
-                                {
-                                    value: percentNotReturnedServesToBody,
-                                },
-                            ]}
-                            type="circle"
-                            margin="small"
-                            size="small"
-                            thickness="medium"
-                        />
-                    </Grommet>
-                </div>
-                <div className={styles.servePercentages}>
-                    <Grommet>
-                        <h3>Center</h3>
-                        <Meter
-                            values={[
-                                {
-                                    value: percentNotReturnedServesToCenter,
-                                },
-                            ]}
-                            type="circle"
-                            margin="small"
-                            size="small"
-                            thickness="medium"
-                        />
-                    </Grommet>
+                    </div>
                 </div>
             </div>
         </div>

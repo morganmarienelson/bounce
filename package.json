@@ -12,6 +12,7 @@
     "@xstate/react": "^3.0.0",
     "antd": "^4.21.2",
     "chart.js": "^3.8.0",
+    "framework7-react": "^7.0.6",
     "grommet": "^2.24.0",
     "mongodb": "^3.7.3",
     "mongoose": "^6.4.3",
@@ -19,7 +20,9 @@
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "recharts": "^2.1.12",
     "styled-components": "^5.3.5",
+    "victory-pie": "^36.5.3",
     "xstate": "^4.32.1",
     "zustand": "^4.0.0-rc.1"
   },
