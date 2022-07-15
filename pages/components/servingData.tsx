@@ -78,12 +78,12 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
     };
 
     return (
-        <div className={styles.fullPage}>
+        <div>
             <div className={styles.heading}>Serving Statistics</div>
             <div className={styles.body}>
                 <div className={styles.row}>
-                    <div className={styles.servePercentages}>
-                        <div className={styles.percentHeading}>Total Points Won On Serve</div>
+                    <div className={styles.returnCol}>
+                        <div className={styles.returnHeading}>Total Points Won On Serve</div>
                         <div className={styles.meter}>
                             <Grommet>
                                 <Meter
@@ -99,8 +99,8 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                             <div className={styles.percent}>{percentOfTotalPointsWonOnServe}%</div>
                         </div>
                     </div>
-                    <div className={styles.servePercentages}>
-                        <div className={styles.percentHeading}>Serving Points Won</div>
+                    <div className={styles.returnCol}>
+                        <div className={styles.returnHeading}>Serving Points Won</div>
                         <div className={styles.meter}>
                             <Grommet>
                                 <Meter
@@ -116,8 +116,8 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                             <div className={styles.percent}>{percentOfServingPointsWon}%</div>
                         </div>
                     </div>
-                    <div className={styles.servePercentages}>
-                        <div className={styles.percentHeading}>First Serve Percentage</div>
+                    <div className={styles.returnCol}>
+                        <div className={styles.returnHeading}>First Serve Percentage</div>
                         <div className={styles.meter}>
                             <Grommet>
                                 <Meter
@@ -134,7 +134,7 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                         </div>
                     </div>
                     <div className={styles.servePercentagesLastRow}>
-                        <div className={styles.percentHeading}>Second Serve Percentage</div>
+                        <div className={styles.returnHeading}>Second Serve Percentage</div>
                         <div className={styles.meter}>
                             <Grommet>
                                 <Meter

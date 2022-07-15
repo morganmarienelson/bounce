@@ -6,6 +6,7 @@ import {Grommet} from "grommet/components";
 import React, {useState} from "react";
 import styles from "./components/css/matchStats.module.css";
 import ServingData from "./components/servingData";
+import ReturnData from "./components/returnData";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;
@@ -43,8 +44,10 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
                     </Nav>
                 </Header>
             </Grommet>
-            <ServingData state={state}/>
-            <ServingData state={state}/>
+            <div className={styles.fullPage}>
+                <ServingData state={state}/>
+                <ReturnData state={state}/>
+            </div>
         </div>
     );
 };

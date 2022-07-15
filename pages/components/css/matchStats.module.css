@@ -6,6 +6,13 @@
     margin: 20px auto 0;
 }
 
+
+.fullPage {
+    background-color: #cccce0;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
 .barCol {
     grid-column: span 2/ span 2;
     padding: 0 50px 40px 0;

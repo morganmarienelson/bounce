@@ -6,7 +6,7 @@
     margin-top: 20px;
 }
 
-.servePercentages {
+.returnCol {
     width: 100%;
     grid-column: span 1 / span 1;
     margin: 10px auto;
@@ -54,11 +54,6 @@
     padding: 20px 20px 0 20px;
 }
 
-.fullPage {
-    background-color: #cccce0;
-    width: 100%;
-}
-
 .body {
     background-color: white;
     width: 95%;
@@ -66,7 +61,7 @@
     border-radius: 7px;
 }
 
-.percentHeading {
+.returnHeading {
     font-size: 20px;
     font-weight: 500;
     display: flex;
