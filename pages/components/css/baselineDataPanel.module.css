@@ -1,0 +1,23 @@
+.heading {
+    margin: auto;
+    font-size: 40px;
+    font-weight: 500;
+    padding: 20px 20px 0 20px;
+
+}
+
+.body {
+    background-color: white;
+    width: 95%;
+    margin: auto;
+    border-radius: 7px;
+}
+
+.row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0;
+    margin-top: 20px;
+
+}
