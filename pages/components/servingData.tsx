@@ -55,20 +55,6 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
         +JSON.stringify(state.context.acesOnSecondServe) +
         +JSON.stringify(state.context.acesOnFirstServe);
 
-
-    const percentNotReturnedServesToCenter = +(
-        (+JSON.stringify(state.context.notReturnedServesToCenter) /
-            totalNotReturnedServes) *
-        100
-    ).toPrecision(2);
-
-    const percentNotReturnedServesToBody = +(
-        (+JSON.stringify(state.context.notReturnedServesToBody) /
-            totalNotReturnedServes) *
-        100
-    ).toPrecision(2);
-
-
     const unreturnedServeLocationData = [
         {x: "Alley", y: +JSON.stringify(state.context.notReturnedServesToAlley)},
         {x: "Body", y: +JSON.stringify(state.context.notReturnedServesToBody)},
@@ -98,7 +84,7 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                 <div className={styles.row}>
                     <div className={styles.servePercentages}>
                         <div className={styles.percentHeading}>Total Points Won On Serve</div>
-                        <div className={styles.locationChart}>
+                        <div className={styles.meter}>
                             <Grommet>
                                 <Meter
                                     value={percentOfTotalPointsWonOnServe}
@@ -106,14 +92,16 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
+                                    background="#B2B2B2"
                                     color={checkSuccess(percentOfTotalPointsWonOnServe)}
                                 />
                             </Grommet>
+                            <div className={styles.percent}>{percentOfTotalPointsWonOnServe}%</div>
                         </div>
                     </div>
                     <div className={styles.servePercentages}>
                         <div className={styles.percentHeading}>Serving Points Won</div>
-                        <div className={styles.locationChart}>
+                        <div className={styles.meter}>
                             <Grommet>
                                 <Meter
                                     value={percentOfServingPointsWon}
@@ -121,14 +109,16 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
+                                    background="#B2B2B2"
                                     color={checkSuccess(percentOfServingPointsWon)}
                                 />
                             </Grommet>
+                            <div className={styles.percent}>{percentOfServingPointsWon}%</div>
                         </div>
                     </div>
                     <div className={styles.servePercentages}>
                         <div className={styles.percentHeading}>First Serve Percentage</div>
-                        <div className={styles.locationChart}>
+                        <div className={styles.meter}>
                             <Grommet>
                                 <Meter
                                     value={firstServePercentage}
@@ -137,13 +127,15 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(firstServePercentage)}
+                                    background="#B2B2B2"
                                 />
                             </Grommet>
+                            <div className={styles.percent}>{firstServePercentage}%</div>
                         </div>
                     </div>
                     <div className={styles.servePercentagesLastRow}>
                         <div className={styles.percentHeading}>Second Serve Percentage</div>
-                        <div className={styles.locationChart}>
+                        <div className={styles.meter}>
                             <Grommet>
                                 <Meter
                                     value={secondServePercentage}
@@ -152,15 +144,18 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(secondServePercentage)}
+                                    background="#B2B2B2"
+
                                 />
                             </Grommet>
+                            <div className={styles.percent}>{secondServePercentage}%</div>
                         </div>
                     </div>
                 </div>
                 <div className={styles.rowHeading}>Unreturned Serves</div>
                 <div className={styles.unreturnedRow}>
                     <div className={styles.serveTable}>
-                        <Table className={styles.table}>
+                        <Table>
                             <TableHeader>
                                 <TableRow>
                                     <TableCell scope="col" border="bottom">
@@ -224,11 +219,14 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                         </Table>.
                     </div>
                     <div className={styles.percentRow}>
-                        <VictoryPie
-                            data={unreturnedServeLocationData}
-                            colorScale={["blue", "yellow", "red"]}
-                            radius={100}
-                        />
+                        <div className={styles.pieChartHeading}>Serve Locations</div>
+                        <div className={styles.pieChart}>
+                            <VictoryPie
+                                data={unreturnedServeLocationData}
+                                colorScale={["#ff71ce", "#01cdfe", "#05ffa1"]}
+                                radius={140}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

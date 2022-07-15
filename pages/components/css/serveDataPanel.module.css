@@ -28,23 +28,22 @@
 .unreturnedRow {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 30px;
     margin: 20px auto 0;
 }
 
 .serveTable {
-    grid-column: span 3 / span 3;
+    grid-column: span 2/ span 2;
     width: 100%;
     border-right: solid 2px;
     padding: 0 20px;
     font-size: 18px;
     display: flex;
-    justify-content: center;
 }
 
 .percentRow {
-    grid-column: span 2 / span 2;
+    grid-column: span 1 / span 1;
     width: 100%;
 }
 
@@ -80,12 +79,12 @@
     font-weight: 400;
     display: flex;
     justify-content: center;
-    padding: 0 10px 15px;
+    margin: auto;
 }
 
 .rowHeading {
     margin: auto;
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 500;
     padding: 20px 20px 0 20px;
 }
@@ -94,7 +93,7 @@
     font-weight: 500;
 }
 
-.locationChart {
+.meter {
     margin: auto;
     display: flex;
     justify-content: center;
@@ -105,6 +104,18 @@
     font-weight: 500;
     padding: 8px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pieChart {
+    margin: 0;
+    padding: 0;
+}
+
+.pieChartHeading {
+    font-size: 25px;
+    font-weight: 400;
     display: flex;
     justify-content: center;
 }
