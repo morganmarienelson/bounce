@@ -49,13 +49,13 @@
 
 .heading {
     margin: auto;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 500;
     padding: 20px 20px 0 20px;
 }
 
 .fullPage {
-    background-color: #cfcfcf;
+    background-color: #cccce0;
     width: 100%;
 }
 

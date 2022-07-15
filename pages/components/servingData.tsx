@@ -223,7 +223,7 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                         <div className={styles.pieChart}>
                             <VictoryPie
                                 data={unreturnedServeLocationData}
-                                colorScale={["#ff71ce", "#01cdfe", "#05ffa1"]}
+                                colorScale={["#9600ff", "#00b8ff", "#00fff9"]}
                                 radius={140}
                             />
                         </div>
