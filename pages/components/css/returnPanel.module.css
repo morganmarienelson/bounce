@@ -32,7 +32,7 @@
 .btnTitle {
     text-align: center;
     color: white;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 500;
 }
 
@@ -82,6 +82,10 @@
     .undo {
         height: 60px;
     }
+    .btnTitle,
+    .winLostBtn {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 800px) {
@@ -89,16 +93,18 @@
         font-size: 30px;
     }
 
-    .btnTitle,
-    .winLostBtn {
-        font-size: 25px;
-    }
-
     .panelRow {
         width: 100%;
     }
+    .missBtn {
+        grid-column: span 2 / span 2;
+    }
+    .panelBtn {
+        width: 100%;
+        height: 100px;
+    }
 
-    .panelTitle {
-        margin-top: px;
+    .hiddenBtn {
+        height: 300px;
     }
 }

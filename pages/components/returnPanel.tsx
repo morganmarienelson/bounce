@@ -86,7 +86,9 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 onClick={onMissReturnFirstServe}
                             >
                                 <div className={styles.btnTitle}>
-                                    Missed First Serve
+                                    Missed First
+                                    <br></br>
+                                    Serve Return
                                 </div>
                             </Button>
                         </div>
@@ -101,7 +103,9 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 onClick={onMissReturnSecondServe}
                             >
                                 <div className={styles.btnTitle}>
-                                    Missed Second Serve
+                                    Missed Second
+                                    <br></br>
+                                    Serve Return
                                 </div>
                             </Button>
                         </div>
