@@ -1,7 +1,7 @@
 import {Button, Header, Heading, Nav} from "grommet/components";
 import "antd/dist/antd.css";
 import {Modal} from "antd";
-import {Close} from "grommet-icons";
+import { LinkPrevious} from "grommet-icons";
 import {Grommet} from "grommet/components";
 import React, {useState} from "react";
 import styles from "./components/css/matchStats.module.css";
@@ -18,7 +18,7 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
     const onExit = () => {
         Modal.confirm({
             title:
-                "Are you sure that you want to exit? The data for this match has not been saved.",
+                "Are you sure that you want to exit? You will go back to recording data for this match.",
             okType: "danger",
             onOk: () => {
                 setShowDashboard(true);
@@ -36,9 +36,8 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
                     <Nav direction="column">
                         <Button
                             secondary
-                            style={{marginLeft: 63}}
-                            icon={<Close/>}
-                            color="#FF5858 "
+                            style={{marginLeft: 63,  transform: 'rotate(180deg)'}}
+                            icon={<LinkPrevious color={'white'}/>}
                             hoverIndicator
                             onClick={onExit}
                         />
