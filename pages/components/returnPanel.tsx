@@ -123,7 +123,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                     <>
                         <div className={styles.btnCol}>
                             <Button
-                                className={styles.panelBtn}
+                                className={styles.wonLostBtn}
                                 type="primary"
                                 style={{
                                     background: "#26CC3E ",
@@ -131,12 +131,12 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 }}
                                 onClick={onWinningButtonClick}
                             >
-                                <div className={styles.winLostBtn}>Won</div>
+                                <div className={styles.wonLostBtnTitle}>Won</div>
                             </Button>
                         </div>
                         <div className={styles.btnCol}>
                             <Button
-                                className={styles.panelBtn}
+                                className={styles.wonLostBtn}
                                 type="primary"
                                 style={{
                                     background: "#FF0000",
@@ -144,7 +144,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 }}
                                 onClick={onLosingButtonClick}
                             >
-                                <div className={styles.winLostBtn}>Lost</div>
+                                <div className={styles.wonLostBtnTitle}>Lost</div>
                             </Button>
                         </div>
                     </>

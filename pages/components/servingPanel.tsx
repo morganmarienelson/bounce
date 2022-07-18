@@ -106,10 +106,12 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                 }}
                 onClick={onNotReturned}
               >
-                <div className={styles.btnTitle}>Not Returned</div>
+                <div className={styles.btnTitle}>Not
+                  <br></br>
+                  Returned</div>
               </Button>
             </div>
-            <div className={styles.btnCol}>
+            <div className={styles.faultCol}>
               <Button
                 className={styles.serveBtn}
                 type="primary"
@@ -140,7 +142,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
           <>
             <div className={styles.serveInCol}>
               <Button
-                className={styles.serveInBtn}
+                className={styles.wonLostBtn}
                 type="primary"
                 style={{
                   background: "#26CC3E ",
@@ -148,12 +150,12 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                 }}
                 onClick={onWinningButtonClick}
               >
-                <div className={styles.winLostBtn}>Won</div>
+                <div className={styles.wonLostBtnTitle}>Won</div>
               </Button>
             </div>
             <div className={styles.serveInCol}>
               <Button
-                className={styles.serveInBtn}
+                className={styles.wonLostBtn}
                 type="primary"
                 style={{
                   background: "#FF0000",
@@ -161,7 +163,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                 }}
                 onClick={onLosingButtonClick}
               >
-                <div className={styles.winLostBtn}>Lost</div>
+                <div className={styles.wonLostBtnTitle}>Lost</div>
               </Button>
             </div>
           </>
