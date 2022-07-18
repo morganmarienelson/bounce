@@ -28,7 +28,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                                                          secondServe,
                                                      }) => {
     const [atBaseline, setAtBaseline] = useState(true);
-    const [shotType, setShotType] = useState("");
+    const [shotType, setShotType] = useState("forehand");
     const [winner, setWinner] = useState(false);
 
     const onSelectedAtNet = (checked: boolean) => {
@@ -116,7 +116,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
         setWinningModalVisible(false);
         setWinner(false);
         setAtBaseline(true);
-        setShotType("");
+        setShotType("forehand");
         pointFinished();
     };
 
@@ -125,17 +125,17 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
         setWinningModalVisible(false);
         setWinner(false);
         setAtBaseline(true);
-        setShotType("");
+        setShotType("forehand");
         setShowServeButtons(false);
         setShowReturnButtons(false);
     };
 
-    //TODO: Make form fields required
     return (
         <Modal
             visible={winningModalVisible}
             onCancel={onModalCancel}
             onOk={onModalOk}
+            destroyOnClose={true}
         >
             <div className={styles.title}>Point Information</div>
             <Form

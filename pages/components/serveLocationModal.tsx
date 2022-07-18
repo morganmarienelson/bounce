@@ -19,8 +19,8 @@ const ServeLocationModal: React.FC<ServeLocationModalProps> = ({
                                                                    send,
                                                                    pointLog,
                                                                }) => {
-    const [serveLocation, setServeLocation] = useState("");
-    const [sideOfCourt, setSideOfCourt] = useState("");
+    const [serveLocation, setServeLocation] = useState("alley");
+    const [sideOfCourt, setSideOfCourt] = useState("deuce");
 
     const onLocationSelected = (e: any) => {
         setServeLocation(e.target.value);
@@ -50,23 +50,23 @@ const ServeLocationModal: React.FC<ServeLocationModalProps> = ({
             pointLog.push(MatchDataEvents.IncrementNotReturnedServesDeuceSide);
         }
         setServeLocationModalVisible(false);
-        setServeLocation("");
-        setSideOfCourt("");
+        setServeLocation("alley");
+        setSideOfCourt("deuce");
         pointFinished();
     };
 
     const onModalCancel = () => {
         setServeLocationModalVisible(false);
-        setServeLocation("");
-        setSideOfCourt("");
+        setServeLocation("alley");
+        setSideOfCourt("deuce");
     };
 
-    //TODO: Make form fields required
     return (
         <Modal
             visible={serveLocationModalVisible}
             onCancel={onModalCancel}
             onOk={onModalOk}
+            destroyOnClose={true}
         >
             <div className={styles.title}>Serve Information</div>
             <Form

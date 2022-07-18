@@ -28,7 +28,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                                                            secondServe,
                                                        }) => {
     const [atBaseline, setAtBaseline] = useState(true);
-    const [shotType, setShotType] = useState("");
+    const [shotType, setShotType] = useState("forehand");
     const [unforcedError, setUnforcedError] = useState(false);
 
     const onSelectedAtNet = (checked: boolean) => {
@@ -115,7 +115,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
         }
         setLosingModalVisible(false);
         setUnforcedError(false);
-        setShotType("");
+        setShotType("forehand");
         setAtBaseline(true);
         pointFinished();
     };
@@ -124,17 +124,17 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
         setLosingModalVisible(false);
         setUnforcedError(false);
         setAtBaseline(true);
-        setShotType("");
+        setShotType("forehand");
         setShowServeButtons(false);
         setShowReturnButtons(false);
     };
 
-    //TODO: Make form fields required
     return (
         <Modal
             visible={losingModalVisible}
             onCancel={onModalCancel}
             onOk={onModalOk}
+            destroyOnClose={true}
         >
             <div className={styles.title}>Point Information</div>
             <Form name="Match Information" scrollToFirstError className={styles.form}>
@@ -143,7 +143,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                         <div className={styles.label}>Unforced Error:</div>
                     </Col>
                     <Col>
-                        <Form.Item valuePropName="checked">
+                        <Form.Item valuePropName="checked" >
                             <Switch onChange={onSelectedUnforcedError}/>
                         </Form.Item>
                     </Col>
@@ -159,8 +159,9 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                     </Col>
                 </Row>
                 <div className={styles.label}>Shot Type:</div>
-                <Form.Item>
-                    <Radio.Group size="large" value={shotType} onChange={onShotSelected}>
+                <Form.Item
+                >
+                    <Radio.Group size="large" value={shotType} onChange={onShotSelected}  >
                         <Radio value="forehand">
                             <div className={styles.radioLabel}>Forehand</div>
                         </Radio>

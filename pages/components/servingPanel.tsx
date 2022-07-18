@@ -173,12 +173,12 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
             type="primary"
             className={styles.stopBtn}
             style={{
-              background: "#ff0000",
-              border: "#ff0000",
+              background: "#480096",
+              border: "#480096",
             }}
             onClick={confirmStop}
           >
-            <div className={styles.btnTitle}>Stop</div>
+            <div className={styles.btnTitle}>View Match Statistics</div>
           </Button>
         </div>
       </div>

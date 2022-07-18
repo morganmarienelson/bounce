@@ -34,7 +34,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
 
     const confirmStop = () => {
         Modal.confirm({
-            title: "Are you sure you want to stop recording data for this match? You will be able to come back and keep recording data for this match later.",
+            title: "Are you sure you want to stop recording data? You can return to this page later. The previously recorded data will be kept.",
             okType: "danger",
             onOk: () => {
                 setShowDashboard(false);
