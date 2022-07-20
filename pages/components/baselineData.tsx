@@ -15,7 +15,7 @@ import {
     Legend,
     Filler
 } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import {Chart, ArcElement} from 'chart.js'
 Chart.register(ArcElement);
 
@@ -215,13 +215,13 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
           <div className={styles.doughnutChartCol}>
             <div className={styles.meterHeader}>Winning Shot Types</div>
             <div className={styles.doughnutChart}>
-          <Doughnut data={winningShotType} options={options} />
+          <Pie data={winningShotType} options={options} />
             </div>
           </div>
           <div className={styles.doughnutChartCol}>
             <div className={styles.meterHeader}>Losing Shot Types</div>
             <div className={styles.doughnutChart}>
-              <Doughnut data={losingShotType} options={options} />
+              <Pie data={losingShotType} options={options} />
             </div>
           </div>
           <div className={styles.accuracy}>

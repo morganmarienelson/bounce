@@ -9,8 +9,7 @@ import {
     Table,
 } from "grommet/components";
 import styles from "./css/serveDataPanel.module.css";
-import {VictoryPie} from "victory-pie";
-import {Doughnut} from "react-chartjs-2";
+import {Pie} from "react-chartjs-2";
 
 interface ServingDataProps {
     state: any;
@@ -234,7 +233,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                     <div className={styles.percentRow}>
                         <div className={styles.pieChartHeading}>Unreturned Serve Locations</div>
                         <div className={styles.pieChart}>
-                            <Doughnut data={unreturnedServeLocation} options={options} />
+                            <Pie data={unreturnedServeLocation} options={options} />
                         </div>
                     </div>
                 </div>
