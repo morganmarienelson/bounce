@@ -1,5 +1,5 @@
 import styles from "./css/baselineDataPanel.module.css";
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Grommet,
 } from "grommet/components";
@@ -55,26 +55,15 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
     +JSON.stringify(state.context.pointsLostByBackhandUnforcedError)
   );
 
-  const percentWonByForehand = +(
-    (+JSON.stringify(state.context.pointsWonByForehand) /
-      totalBaselinePointsWon) *
-    100
-  ).toPrecision(2);
-  const percentWonByBackhand = +(
-    (+JSON.stringify(state.context.pointsWonByBackhand) /
-      totalBaselinePointsWon) *
-    100
-  ).toPrecision(2);
-  const percentWonByForehandWinner = +(
-    (+JSON.stringify(state.context.pointsWonByForehandWinner) /
-      totalBaselinePointsWon) *
-    100
-  ).toPrecision(2);
-  const percentWonByBackhandWinner = +(
-    (+JSON.stringify(state.context.pointsWonByBackhandWinner) /
-      totalBaselinePointsWon) *
-    100
-  ).toPrecision(2);
+  const percentPointsWonOnBaseline = +(totalBaselinePointsWon/totalPoints * 100).toPrecision(2);
+
+  const percentBaselinePointsWon = +(totalBaselinePointsWon/(totalBaselinePointsWon + totalBaselinePointsLost) * 100).toPrecision(2);
+
+  const percentPointsWonByWinners = +(  (  +JSON.stringify(state.context.pointsWonByForehandWinner) +
+      +JSON.stringify(state.context.pointsWonByBackhandWinner))/(totalBaselinePointsWon) * 100).toPrecision(2);
+
+  const percentPointsLostByUnforcedError = +(  (  +JSON.stringify(state.context.pointsLostByForehandUnforcedError) +
+      +JSON.stringify(state.context.pointsLostByBackhandUnforcedError))/(totalBaselinePointsLost) * 100).toPrecision(2);
 
   const totalForehands =
     +JSON.stringify(state.context.pointsWonByForehand) +
@@ -108,27 +97,6 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
     100
   ).toPrecision(2);
 
-  const percentLostByForehand = +(
-    (+JSON.stringify(state.context.pointsLostByForehand) /
-      totalBaselinePointsLost) *
-    100
-  ).toPrecision(2);
-  const percentLostByBackhand = +(
-    (+JSON.stringify(state.context.pointsLostByBackhand) /
-      totalBaselinePointsLost) *
-    100
-  ).toPrecision(2);
-  const percentLostByForehandWinner = +(
-    (+JSON.stringify(state.context.pointsLostByForehandUnforcedError) /
-      totalBaselinePointsLost) *
-    100
-  ).toPrecision(2);
-  const percentLostByBackhandWinner = +(
-    (+JSON.stringify(state.context.pointsLostByBackhandUnforcedError) /
-      totalBaselinePointsLost) *
-    100
-  ).toPrecision(2);
-
   const checkSuccess = (value: number) => {
     if (value >= 75) {
       return "#69E53B";
@@ -140,12 +108,6 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
   };
 
   const winningShotType = {
-    backgroundColor: [
-      "rgd(2, 88, 355)",
-      "blue",
-      "green",
-      "purple",
-    ],
     labels: ["Forehand", "Forehand Winner", "Backhand", "Backhand Winner"],
     datasets: [
       {
@@ -163,12 +125,6 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
   };
 
   const losingShotType = {
-    backgroundColor: [
-      "rgd(2, 88, 355)",
-      "blue",
-      "green",
-      "purple",
-    ],
     labels: ["Missed Forehand", "Forehand Unforced Error", "Missed Backhand", "Backhand Unforced Error"],
     datasets: [
       {
@@ -193,6 +149,77 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
     <div>
       <div className={styles.heading}>Baseline Statistics</div>
       <div className={styles.body}>
+        <div className={styles.firstRow}>
+          <div className={styles.percentagesCol}>
+            <div className={styles.baselineMeterHeading}>Total Points Won On Baseline</div>
+            <div className={styles.meter}>
+              <Grommet>
+                <Meter
+                    value={percentPointsWonOnBaseline}
+                    type="circle"
+                    margin="small"
+                    size="small"
+                    thickness="medium"
+                    background="#B2B2B2"
+                    color={checkSuccess(percentPointsWonOnBaseline)}
+                />
+              </Grommet>
+              <div className={styles.baselinePercent}>{percentPointsWonOnBaseline}%</div>
+            </div>
+          </div>
+          <div className={styles.percentagesCol}>
+            <div className={styles.baselineMeterHeading}>Baseline Points Won</div>
+            <div className={styles.meter}>
+              <Grommet>
+                <Meter
+                    value={percentBaselinePointsWon}
+                    type="circle"
+                    margin="small"
+                    size="small"
+                    thickness="medium"
+                    background="#B2B2B2"
+                    color={checkSuccess(percentBaselinePointsWon)}
+                />
+              </Grommet>
+              <div className={styles.baselinePercent}>{percentBaselinePointsWon}%</div>
+            </div>
+          </div>
+          <div className={styles.percentagesCol}>
+            <div className={styles.baselineMeterHeading}>Points Won By Winners</div>
+            <div className={styles.meter}>
+              <Grommet>
+                <Meter
+                    value={percentPointsWonByWinners}
+                    type="circle"
+                    margin="small"
+                    size="small"
+                    thickness="medium"
+                    color={checkSuccess(percentPointsWonByWinners)}
+                    background="#B2B2B2"
+                />
+              </Grommet>
+              <div className={styles.baselinePercent}>{percentPointsWonByWinners}%</div>
+            </div>
+          </div>
+          <div className={styles.servePercentagesLastRow}>
+            <div className={styles.baselineMeterHeading}>Points Lost by Unforced Error</div>
+            <div className={styles.meter}>
+              <Grommet>
+                <Meter
+                    value={percentPointsLostByUnforcedError}
+                    type="circle"
+                    margin="small"
+                    size="small"
+                    thickness="medium"
+                    color={checkSuccess(percentPointsLostByUnforcedError)}
+                    background="#B2B2B2"
+
+                />
+              </Grommet>
+              <div className={styles.baselinePercent}>{percentPointsLostByUnforcedError}%</div>
+            </div>
+          </div>
+        </div>
         <div className={styles.row}>
           <div className={styles.doughnutChartCol}>
             <div className={styles.meterHeader}>Winning Shot Types</div>
