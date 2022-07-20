@@ -26,6 +26,17 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
         });
     };
 
+    const checkSuccess = (value: number) => {
+        if (value >= 75) {
+            return "#69E53B";
+        } else if (value > 50) {
+            return " #EEFB46";
+        } else {
+            return "red";
+        }
+    };
+
+
     return (
         <div>
             <Grommet>
@@ -45,9 +56,9 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
                 </Header>
             </Grommet>
             <div className={styles.fullPage}>
-                <ServingData state={state}/>
-                <ReturnData state={state}/>
-                <BaselineData state={state}/>
+                <ServingData state={state} checkSuccess={checkSuccess}/>
+                <ReturnData state={state} checkSuccess={checkSuccess}/>
+                <BaselineData state={state} checkSuccess={checkSuccess}/>
             </div>
         </div>
     );

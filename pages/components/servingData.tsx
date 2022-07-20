@@ -10,12 +10,14 @@ import {
 } from "grommet/components";
 import styles from "./css/serveDataPanel.module.css";
 import {VictoryPie} from "victory-pie";
+import {Doughnut} from "react-chartjs-2";
 
 interface ServingDataProps {
     state: any;
+    checkSuccess: (value: number)  => string;
 }
 
-const ServingData: React.FC<ServingDataProps> = ({state}) => {
+const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
     const totalServePoints =
         +JSON.stringify(state.context.pointsWonOnServe) +
         +JSON.stringify(state.context.pointsLostOnServe);
@@ -67,15 +69,26 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
 
     const totalNotReturnedSecondServes = +JSON.stringify(state.context.acesOnSecondServe) + +JSON.stringify(state.context.notReturnedSecondServes);
 
-    const checkSuccess = (value: number) => {
-        if (value >= 75) {
-            return "#69E53B";
-        } else if (value > 50) {
-            return " #EEFB46";
-        } else {
-            return "red";
-        }
+    const unreturnedServeLocation = {
+        labels: ["Alley", "Body", "Center"],
+        datasets: [
+            {
+                label: "Winning Shot Type",
+                data: [  +JSON.stringify(state.context.notReturnedServesToAlley), +JSON.stringify(state.context.notReturnedServesToBody), +JSON.stringify(state.context.notReturnedServesToCenter)],
+                backgroundColor: [
+                    "#ccff00",
+                    "#0033ff",
+                    "#00ff99",
+                ],
+                hoverOffset: 4,
+            },
+        ],
     };
+
+    const options = {
+        responsive: true
+    };
+
 
     return (
         <div>
@@ -219,13 +232,9 @@ const ServingData: React.FC<ServingDataProps> = ({state}) => {
                         </Table>.
                     </div>
                     <div className={styles.percentRow}>
-                        <div className={styles.pieChartHeading}>Serve Locations</div>
+                        <div className={styles.pieChartHeading}>Unreturned Serve Locations</div>
                         <div className={styles.pieChart}>
-                            <VictoryPie
-                                data={unreturnedServeLocationData}
-                                colorScale={["#9600ff", "#00b8ff", "#00fff9"]}
-                                radius={140}
-                            />
+                            <Doughnut data={unreturnedServeLocation} options={options} />
                         </div>
                     </div>
                 </div>

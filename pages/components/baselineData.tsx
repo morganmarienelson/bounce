@@ -32,9 +32,10 @@ ChartJS.register(
 
 interface BaselineDataProps {
   state: any;
+  checkSuccess: (value: number)  => string;
 }
 
-const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
+const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
   const totalPoints =
     +JSON.stringify(state.context.pointsWonOnServe) +
     +JSON.stringify(state.context.pointsLostOnServe) +
@@ -96,16 +97,6 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
     (totalWinningBackhands / totalBackhands) *
     100
   ).toPrecision(2);
-
-  const checkSuccess = (value: number) => {
-    if (value >= 75) {
-      return "#69E53B";
-    } else if (value > 50) {
-      return " #EEFB46";
-    } else {
-      return "red";
-    }
-  };
 
   const winningShotType = {
     labels: ["Forehand", "Forehand Winner", "Backhand", "Backhand Winner"],

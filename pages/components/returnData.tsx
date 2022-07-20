@@ -7,9 +7,10 @@ import styles from "./css/returnDataPanel.module.css";
 
 interface ReturnDataProps {
     state: any;
+    checkSuccess: (value: number)  => string;
 }
 
-const ReturnData: React.FC<ReturnDataProps> = ({state}) => {
+const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
     const totalReturnPoints =
         +JSON.stringify(state.context.pointsWonOnReturn) +
         +JSON.stringify(state.context.pointsLostOnReturn);
@@ -28,17 +29,6 @@ const ReturnData: React.FC<ReturnDataProps> = ({state}) => {
         (+JSON.stringify(state.context.pointsWonOnReturn) / totalPoints) *
         100
     ).toPrecision(2);
-
-
-    const checkSuccess = (value: number) => {
-        if (value >= 75) {
-            return "#69E53B";
-        } else if (value > 50) {
-            return " #EEFB46";
-        } else {
-            return "red";
-        }
-    };
 
     return (
         <div>

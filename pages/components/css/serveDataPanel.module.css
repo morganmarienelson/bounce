@@ -104,13 +104,13 @@
 }
 
 .pieChart {
-    margin: 0;
+    margin: 20px;
     padding: 0;
 }
 
 .pieChartHeading {
     font-size: 25px;
-    font-weight: 400;
+    font-weight: 500;
     display: flex;
     justify-content: center;
 }
