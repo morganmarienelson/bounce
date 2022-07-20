@@ -7,6 +7,7 @@ import React, {useState} from "react";
 import styles from "./components/css/matchStats.module.css";
 import ServingData from "./components/servingData";
 import ReturnData from "./components/returnData";
+import BaselineData from "./components/baselineData";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;
@@ -46,6 +47,7 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
             <div className={styles.fullPage}>
                 <ServingData state={state}/>
                 <ReturnData state={state}/>
+                <BaselineData state={state}/>
             </div>
         </div>
     );

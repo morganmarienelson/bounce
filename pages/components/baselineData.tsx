@@ -1,15 +1,34 @@
 import styles from "./css/baselineDataPanel.module.css";
-import React from "react";
-import { VictoryPie } from "victory-pie";
+import React, { Component } from 'react';
 import {
   Grommet,
-  Table,
-  TableBody,
-  TableCell,
-  TableHeader,
-  TableRow,
 } from "grommet/components";
 import { Meter } from "grommet";
+import {
+  Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+} from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+import {Chart, ArcElement} from 'chart.js'
+Chart.register(ArcElement);
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+)
 
 interface BaselineDataProps {
   state: any;
@@ -110,13 +129,6 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
     100
   ).toPrecision(2);
 
-  const losingShotType = [
-    { x: "Forehand", y: percentLostByForehand },
-    { x: "Backhand", y: percentLostByBackhand },
-    { x: "Forehand Unforced Error", y: percentLostByForehandWinner },
-    { x: "Backhand Unforced Error", y: percentLostByBackhandWinner },
-  ];
-
   const checkSuccess = (value: number) => {
     if (value >= 75) {
       return "#69E53B";
@@ -128,27 +140,53 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
   };
 
   const winningShotType = {
-    width: 200,
-    animationEnabled: true,
-    title: {
-      text: "Winning Shot Break Down",
-    },
-    data: [
+    backgroundColor: [
+      "rgd(2, 88, 355)",
+      "blue",
+      "green",
+      "purple",
+    ],
+    labels: ["Forehand", "Forehand Winner", "Backhand", "Backhand Winner"],
+    datasets: [
       {
-        type: "pie",
-        showInLegend: true,
-        legendText: "{label}",
-        toolTipContent: "{label}: <strong>{y}%</strong>",
-        indexLabel: "{y}%",
-        indexLabelPlacement: "inside",
-        dataPoints: [
-          { label: "Forehand", y: percentWonByForehand },
-          { label: "Backhand", y: percentWonByBackhand },
-          { label: "Forehand Winner", y: percentWonByForehandWinner },
-          { label: "Backhand Winner", y: percentWonByBackhandWinner },
+        label: "Winning Shot Type",
+        data: [ +JSON.stringify(state.context.pointsWonByForehand), +JSON.stringify(state.context.pointsWonByForehandWinner), +JSON.stringify(state.context.pointsWonByBackhand), +JSON.stringify(state.context.pointsWonByBackhandWinner)],
+        backgroundColor: [
+          "#ccff00",
+          "#0033ff",
+          "#00ff99",
+          "#00ffff",
         ],
+        hoverOffset: 4,
       },
     ],
+  };
+
+  const losingShotType = {
+    backgroundColor: [
+      "rgd(2, 88, 355)",
+      "blue",
+      "green",
+      "purple",
+    ],
+    labels: ["Missed Forehand", "Forehand Unforced Error", "Missed Backhand", "Backhand Unforced Error"],
+    datasets: [
+      {
+        label: "Losing Shot Type",
+        data: [ +JSON.stringify(state.context.pointsLostByForehand), +JSON.stringify(state.context.pointsLostByForehandUnforcedError), +JSON.stringify(state.context.pointsLostByBackhand), +JSON.stringify(state.context.pointsLostByBackhandUnforcedError)],
+        backgroundColor: [
+          "#ff1111",
+          "#fffc0b",
+          "#ff8600",
+          "#cc0c0c",
+        ],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
+  const options = {
+ responsive: true
   };
 
   return (
@@ -156,12 +194,23 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
       <div className={styles.heading}>Baseline Statistics</div>
       <div className={styles.body}>
         <div className={styles.row}>
-          <div className={styles.pieChart}></div>
-          <div className={styles.pieChart}></div>
+          <div className={styles.doughnutChartCol}>
+            <div className={styles.meterHeader}>Winning Shot Types</div>
+            <div className={styles.doughnutChart}>
+          <Doughnut data={winningShotType} options={options} />
+            </div>
+          </div>
+          <div className={styles.doughnutChartCol}>
+            <div className={styles.meterHeader}>Losing Shot Types</div>
+            <div className={styles.doughnutChart}>
+              <Doughnut data={losingShotType} options={options} />
+            </div>
+          </div>
           <div className={styles.accuracy}>
-            <div className={styles.meterHeader}>Forehand Accuracy</div>
-            <Grommet>
+            <div className={styles.meterHeader}>Forehand Accuracy: {forehandAccuracy}%</div>
+            <div className={styles.meterCol}>
               <div className={styles.meter}>
+            <Grommet>
                 <Meter
                   value={forehandAccuracy}
                   type="circle"
@@ -171,9 +220,11 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
                   background="#B2B2B2"
                   color={checkSuccess(forehandAccuracy)}
                 />
-              </div>
             </Grommet>
-            <div className={styles.meterHeader}>Backhand Accuracy</div>
+              </div>
+            </div>
+            <div className={styles.meterHeader}>Backhand Accuracy: {backhandAccuracy}%</div>
+            <div className={styles.meterCol}>
             <div className={styles.meter}>
               <Grommet>
                 <Meter
@@ -186,6 +237,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state }) => {
                   color={checkSuccess(backhandAccuracy)}
                 />
               </Grommet>
+            </div>
             </div>
           </div>
         </div>
