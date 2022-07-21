@@ -87,9 +87,6 @@
 }
 
 @media (max-width: 1000px) {
-    .undo {
-        height: 60px;
-    }
     .btnTitle,
     .wonLostBtnTitle {
         font-size: 18px;
@@ -99,6 +96,9 @@
 @media (max-width: 800px) {
     .panelTitle {
         font-size: 30px;
+    }
+    .undo {
+        width:100%;
     }
 
     .panelRow {

@@ -49,7 +49,7 @@
     justify-content: center;
 }
 
-.stopBtn {
+.matchStatsBtn {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     width: 50%;
@@ -72,17 +72,20 @@
     font-weight: 500;
 }
 
-.btnTitle {
+.btnTitle, .matchTitle {
     text-align: center;
     color: white;
     font-size: 22px;
     font-weight: 500;
 }
 
-@media (max-width: 1000px) {
-    .stopBtn {
-        height: 60px;
+@media (max-width: 1200px) {
+    .matchTitle {
+        font-size: 18px;
     }
+}
+
+@media (max-width: 1000px) {
     .btnTitle,
     .serveInBtn, .wonLostBtnTitle {
         font-size: 18px;
@@ -90,6 +93,9 @@
 }
 
 @media (max-width: 800px) {
+    .matchStatsBtn {
+        width:100%;
+    }
     .panelRow {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 0px;
