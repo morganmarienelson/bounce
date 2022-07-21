@@ -10,7 +10,7 @@
     width: 100%;
     grid-column: span 1 / span 1;
     margin: 10px auto;
-    border-right: solid 2px;
+    border-right: solid 2px silver;
 }
 
 .servePercentagesLastRow {
@@ -49,7 +49,7 @@
 
 .heading {
     margin: auto;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 500;
     padding: 20px 20px 0 20px;
 }
@@ -113,4 +113,116 @@
     font-weight: 500;
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 10px 30px;
+    }
+    .returnHeading {
+        font-size: 25px;
+        border-bottom: solid 1px silver;
+        margin-right: 50px;
+    }
+    .returnCol {
+        border-right: none;
+    }
+    .percent {
+        font-size: 30px;
+    }
+    .pieChartHeading {
+        font-size: 22px;
+
+    }
+
+
+}
+
+@media (max-width:1000px) {
+    .unreturnedRow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .serveTable {
+        grid-column: span 1/ span 1;
+    }
+    .pieChartHeading {
+        font-size: 25px;
+
+    }
+    .serveTable {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:800px) {
+    .returnHeading {
+        font-size: 20px;
+    }
+    .heading {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        font-weight: 500;
+        padding: 10px 20px 0 20px;
+    }
+    .unreturnedRow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .serveTable {
+        grid-column: span 1/ span 1;
+    }
+}
+
+@media (max-width:750px) {
+    .row, .unreturnedRow {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+    .rowHeading {
+     display: flex;
+        justify-content: center;
+        border-top: 1px silver solid;
+        padding: 10px;
+
+    }
+    .serveTable {
+        border-right: none;
+    }
+    .pieChartHeading {
+       margin-top: 20px;
+        border-top: 1px silver solid;
+        padding: 10px;
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .serveTable {
+        font-size: 18px;
+    }
+    .returnHeading {
+        font-size: 25px;
+        margin-right: 130px;
+    }
+    .returnCol, .servePercentagesLastRow {
+        margin: 0px 40px;
+    }
+
+    .percent {
+        padding-right: 80px;
+    }
+    .pieChart {
+        margin: 0px 100px;
+        padding: 20px
+    }
+
+}
+
+@media (max-width:600px) {
+    .percent {
+        padding-right: 80px;
+    }
+    .pieChart {
+        margin: 0px 50px;
+        padding: 20px
+    }
+
 }
