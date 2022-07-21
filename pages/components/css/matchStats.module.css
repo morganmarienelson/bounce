@@ -46,10 +46,6 @@
 }
 
 @media (max-width: 800px) {
-    .heading {
-        font-size: 18px;
-    }
-
     .tableCol {
         font-size: 17px;
     }
