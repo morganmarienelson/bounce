@@ -11,4 +11,4 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Technology Used 
-React.js, Next.js, Typescript, CSS, Ant Design, Grommet, Tailwind, and XState
+React.js, Next.js, Typescript, CSS, Ant Design, Grommet, Tailwind, XState, and Chart.js
