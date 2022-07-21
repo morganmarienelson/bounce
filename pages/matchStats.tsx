@@ -8,6 +8,7 @@ import styles from "./components/css/matchStats.module.css";
 import ServingData from "./components/servingData";
 import ReturnData from "./components/returnData";
 import BaselineData from "./components/baselineData";
+import NetData from "./components/netData";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;
@@ -59,6 +60,7 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
                 <ServingData state={state} checkSuccess={checkSuccess}/>
                 <ReturnData state={state} checkSuccess={checkSuccess}/>
                 <BaselineData state={state} checkSuccess={checkSuccess}/>
+                <NetData state={state} checkSuccess={checkSuccess}/>
             </div>
         </div>
     );

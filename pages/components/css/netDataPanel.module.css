@@ -13,21 +13,36 @@
     border-radius: 7px;
 }
 
-.row {
+.secondRow {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap:20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap:40px;
+    margin: 0px auto;
+    padding: 0 30px;
+}
+
+.rowHeading {
+    margin: auto;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 20px 20px 0 20px;
 }
 
 .doughnutChartCol {
     margin: auto;
-    padding: 0;
+    padding: 40px;
     width: 100%;
+}
+
+.border{
+    margin: 0px 30px;
+    border-top: solid 1px silver;
 }
 
 .doughnutChart{
     margin-top: 10px;
+    padding: 20px;
 }
 
 .accuracy {
@@ -40,7 +55,7 @@
 .meterHeader {
     display: flex;
     justify-content: center;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 500;
 }
 
@@ -50,30 +65,17 @@
     margin: auto;
 }
 
-.border{
-    margin: 0px 30px;
-    border-top: solid 1px silver;
-}
-
-
-.baselineMeterLastCol {
-    width: 100%;
-    margin: 10px auto;
-    grid-column: span 1 / span 1;
-    border-right: none;
-}
-
-.rowHeading {
-    margin: auto;
-    font-size: 30px;
-    font-weight: 500;
-    padding: 20px 20px 0 20px;
-}
-
 .meter {
     margin: auto;
     display: flex;
     justify-content: center;
+}
+
+.accuracyMeter {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 0px 30px;
 }
 
 .firstRow {
@@ -81,6 +83,13 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 0;
+    margin-top: 20px;
+}
+.thirdRow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 60px;
     margin-top: 20px;
 }
 
@@ -92,8 +101,15 @@
     border-right: solid 2px;
 }
 
+.netMeterLastCol {
+    width: 100%;
+    margin: 10px auto;
+    grid-column: span 1 / span 1;
+    border-right: none;
+}
 
-.baselineMeterHeading {
+
+.netMeterHeading {
     font-size: 20px;
     font-weight: 500;
     display: flex;
@@ -101,7 +117,7 @@
     padding: 8px;
 }
 
-.baselinePercent {
+.netPercent {
     font-size: 30px;
     font-weight: 400;
     display: flex;

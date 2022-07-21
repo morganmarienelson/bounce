@@ -75,9 +75,9 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                 label: "Winning Shot Type",
                 data: [  +JSON.stringify(state.context.notReturnedServesToAlley), +JSON.stringify(state.context.notReturnedServesToBody), +JSON.stringify(state.context.notReturnedServesToCenter)],
                 backgroundColor: [
-                    "#ccff00",
-                    "#0033ff",
-                    "#00ff99",
+                    "#779be7",
+                    "#e777d3",
+                    "#77e78b",
                 ],
                 hoverOffset: 4,
             },
@@ -165,6 +165,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                     </div>
                 </div>
                 <div className={styles.rowHeading}>Unreturned Serves</div>
+                <div className={styles.border}></div>
                 <div className={styles.unreturnedRow}>
                     <div className={styles.serveTable}>
                         <Table>

@@ -105,10 +105,10 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
         label: "Winning Shot Type",
         data: [ +JSON.stringify(state.context.pointsWonByForehand), +JSON.stringify(state.context.pointsWonByForehandWinner), +JSON.stringify(state.context.pointsWonByBackhand), +JSON.stringify(state.context.pointsWonByBackhandWinner)],
         backgroundColor: [
-          "#ccff00",
-          "#0033ff",
-          "#00ff99",
-          "#00ffff",
+          "#77e78b",
+          "#e7c377",
+          "#dd7880",
+          "#4b6292",
         ],
         hoverOffset: 4,
       },
@@ -122,10 +122,10 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
         label: "Losing Shot Type",
         data: [ +JSON.stringify(state.context.pointsLostByForehand), +JSON.stringify(state.context.pointsLostByForehandUnforcedError), +JSON.stringify(state.context.pointsLostByBackhand), +JSON.stringify(state.context.pointsLostByBackhandUnforcedError)],
         backgroundColor: [
-          "#ff1111",
-          "#fffc0b",
-          "#ff8600",
-          "#cc0c0c",
+          "#19e4e2",
+          "#79c328",
+          "#e0631b",
+          "#97101c",
         ],
         hoverOffset: 4,
       },
@@ -192,7 +192,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
               <div className={styles.baselinePercent}>{percentPointsWonByWinners}%</div>
             </div>
           </div>
-          <div className={styles.servePercentagesLastRow}>
+          <div className={styles.baselineMeterLastCol}>
             <div className={styles.baselineMeterHeading}>Points Lost by Unforced Error</div>
             <div className={styles.meter}>
               <Grommet>
@@ -211,6 +211,8 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
             </div>
           </div>
         </div>
+        <div className={styles.rowHeading}>Baseline Shot Break Down</div>
+        <div className={styles.border}></div>
         <div className={styles.row}>
           <div className={styles.doughnutChartCol}>
             <div className={styles.meterHeader}>Winning Shot Types</div>
@@ -225,7 +227,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
             </div>
           </div>
           <div className={styles.accuracy}>
-            <div className={styles.meterHeader}>Forehand Accuracy: {forehandAccuracy}%</div>
+            <div className={styles.baselineMeterHeading}>Forehand Accuracy: {forehandAccuracy}%</div>
             <div className={styles.meterCol}>
               <div className={styles.meter}>
             <Grommet>
@@ -241,7 +243,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
             </Grommet>
               </div>
             </div>
-            <div className={styles.meterHeader}>Backhand Accuracy: {backhandAccuracy}%</div>
+            <div className={styles.baselineMeterHeading}>Backhand Accuracy: {backhandAccuracy}%</div>
             <div className={styles.meterCol}>
             <div className={styles.meter}>
               <Grommet>

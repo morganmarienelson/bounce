@@ -27,6 +27,7 @@
     grid-column: span 1 / span 1;
     margin: 10px auto;
     border-right: solid 2px;
+    padding: 0px 50px;
 }
 
 .returnColLastCol {
@@ -37,7 +38,7 @@
 }
 
 .returnHeading {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
     display: flex;
     justify-content: center;
