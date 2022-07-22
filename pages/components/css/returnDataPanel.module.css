@@ -87,6 +87,14 @@
         display: flex;
         justify-content: center;
     }
+    .numberMissed {
+        font-size: 30px;
+    }
+    .numberMissedCol{
+        width: 90%;
+      display: flex;
+        justify-content: space-between;
+    }
 
 }
 
@@ -113,12 +121,36 @@
     .returnHeading {
         font-size: 22px;
     }
+    .returnColLastCol {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 10px 20px;
+    }
+    .numberMissedCol{
+        width: 100%;
+        display: grid;
+    }
+
+
 }
 
-@media (max-width:600px) {
-    .returnCol {
-        grid-column: span 2 / span 2;
+@media (max-width:800px) {
+
+    .returnColLastCol {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: 0;
     }
+    .numberMissedCol{
+        width: 100%;
+        grid-column: span 1 / span 1;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+
 }
 
 
