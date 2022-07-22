@@ -13,9 +13,6 @@ function PointInput() {
             {showDashboard ? (
                 <>
                     <PointDashboard setShowDashboard={setShowDashboard} send={send}/>
-                    <div>
-                        { +JSON.stringify(state.context.pointsWonOnServe)}
-                    </div>
 
                 </>
             ) : (

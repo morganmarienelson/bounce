@@ -176,8 +176,6 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.DecrementPointsLostOnReturn }
             | { type: MatchDataEvents.IncrementPointsLostOnServe }
             | { type: MatchDataEvents.DecrementPointsLostOnServe }
-            | { type: MatchDataEvents.IncrementMissedReturns }
-            | { type: MatchDataEvents.DecrementMissedReturns }
             | { type: MatchDataEvents.IncrementMissedFirstServes }
             | { type: MatchDataEvents.DecrementMissedFirstServes }
             | { type: MatchDataEvents.IncrementDoubleFaults }

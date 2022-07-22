@@ -6,7 +6,6 @@ import ServingPanel from "./components/servingPanel";
 import LostPointModal from "./components/lostPointModal";
 import WonPointModal from "./components/wonPointModal";
 import styles from "./components/css/pointDashboard.module.css";
-import {MatchDataEvents} from "../machines/matchData";
 
 interface PointDashboardProps {
     setShowDashboard: (showDashboard: boolean) => void;

@@ -240,13 +240,13 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
         <div className={styles.border}></div>
         <div className={styles.row}>
           <div className={styles.doughnutChartCol}>
-            <div className={styles.meterHeader}>Winning Shot Types</div>
+            <div className={styles.pieHeader}>Winning Shot Types</div>
             <div className={styles.doughnutChart}>
           <Pie data={winningShotType} options={options} />
             </div>
           </div>
           <div className={styles.doughnutChartCol}>
-            <div className={styles.meterHeader}>Losing Shot Types</div>
+            <div className={styles.pieHeader}>Losing Shot Types</div>
             <div className={styles.doughnutChart}>
               <Pie data={losingShotType} options={options} />
             </div>

@@ -1,5 +1,5 @@
 .heading {
-    margin: auto;
+    margin: 10px auto auto auto;
     font-size: 40px;
     font-weight: 500;
     padding: 20px 20px 0 20px;
@@ -24,6 +24,7 @@
     margin: auto;
     padding: 0;
     width: 100%;
+    grid-column: span 1 / span 1;
 }
 
 .doughnutChart{
@@ -37,7 +38,7 @@
     width: 100%;
 }
 
-.meterHeader {
+.pieHeader {
     display: flex;
     justify-content: center;
     font-size: 25px;
@@ -89,7 +90,7 @@
     width: 100%;
     grid-column: span 1 / span 1;
     margin: 10px auto;
-    border-right: solid 2px;
+    border-right: solid 2px silver;
 }
 
 
@@ -107,4 +108,107 @@
     display: flex;
     justify-content: center;
     margin: auto;
+}
+
+
+@media (max-width: 1200px) {
+    .firstRow{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 0 30px;
+    }
+
+    .doughnutChartCol {
+        margin: auto;
+        padding: 0;
+    }
+
+    .pieHeader {
+        margin-top: 20px;
+    }
+
+    .row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: auto;
+    }
+    .percentagesCol {
+        border-right: none;
+    }
+    .baselineMeterHeading {
+        font-size: 23px;
+        border-bottom: solid 1px silver;
+        margin-right: 50px;
+    }
+    .baselinePercent {
+        font-size: 30px;
+    }
+    .accuracy {
+        grid-column: span 2 / span 2;
+        padding: 0;
+        margin: auto;
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+}
+
+@media (max-width:900px) {
+    .heading {
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+        padding: 10px 20px 0 20px;
+    }
+
+}
+
+@media (max-width:800px) {
+    .baselineMeterHeading {
+        font-size: 20px;
+    }
+    .row {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .doughnutChartCol {
+        margin: auto;
+        padding: 0;
+        width: 70%;
+    }
+    .accuracy {
+        grid-column: span 1 / span 1;
+        padding: 0;
+        margin: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width:750px) {
+    .firstRow{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .percentagesCol, .baselineMeterLastCol {
+        margin: 0 40px;
+    }
+    .baselineMeterHeading {
+        font-size: 23px;
+        margin-right: 130px;
+    }
+    .baselinePercent {
+        padding-right: 80px;
+    }
+
+}
+
+@media (max-width:600px) {
+    .baselinePercent {
+        padding-right: 80px;
+    }
+
+    .doughnutChartCol {
+        margin: auto;
+        padding: 0;
+        width: 90%;
+    }
+
 }
