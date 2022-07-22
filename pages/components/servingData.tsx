@@ -88,6 +88,38 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
         responsive: true
     };
 
+    const checkFirstServeSuccess = (value: number) => {
+        if (value >= 90) {
+            return "#129729";
+        } else if (value > 70) {
+            return "#7ae200";
+        } else if (value > 60) {
+            return "#ffe91a";
+        }
+        else if (value > 50) {
+            return "#ff6600";
+        }
+        else {
+            return "#de0000";
+        }
+    };
+
+    const checkSecondServeSuccess = (value: number) => {
+        if (value >= 90) {
+            return "#129729";
+        } else if (value > 80) {
+            return "#7ae200";
+        } else if (value > 70) {
+            return "#ffe91a";
+        }
+        else if (value > 60) {
+            return "#ff6600";
+        }
+        else {
+            return "#de0000";
+        }
+    };
+
 
     return (
         <div>
@@ -138,7 +170,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    color={checkSuccess(firstServePercentage)}
+                                    color={checkFirstServeSuccess(firstServePercentage)}
                                     background="#B2B2B2"
                                 />
                             </Grommet>
@@ -155,7 +187,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    color={checkSuccess(secondServePercentage)}
+                                    color={checkSecondServeSuccess(secondServePercentage)}
                                     background="#B2B2B2"
 
                                 />

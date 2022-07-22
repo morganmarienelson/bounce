@@ -3,9 +3,39 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 30px;
-    margin: 20px auto 0;
+    margin: auto;
 }
 
 .col {
     grid-column: span 1 / span 1;
+}
+
+.resetBtnRow{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.resetBtn{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    height: 60px;
+}
+
+.resetBtnTitle{
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+    .resetBtn{
+        height: 50px;
+    }
+    .resetBtnTitle{
+        font-size: 20px;
+    }
+    .resetBtnRow{
+       margin-top: 20px;
+    }
 }

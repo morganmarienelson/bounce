@@ -136,6 +136,31 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
  responsive: true
   };
 
+  const checkPointsWonByWinner = (value: number) => {
+    if (value >= 50) {
+      return "#129729";
+    }
+    else {
+      return "#7ae200";
+    }
+  };
+
+  const checkPointsByUnforcedErrors = (value: number) => {
+    if (value < 20) {
+      return "#129729";
+    } else if (value < 40) {
+      return "#7ae200";
+    } else if (value < 60) {
+      return "#ffe91a";
+    }
+    else if (value < 70) {
+      return "#ff6600";
+    }
+    else {
+      return "#de0000";
+    }
+  };
+
   return (
     <div>
       <div className={styles.heading}>Baseline Statistics</div>
@@ -185,7 +210,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     margin="small"
                     size="small"
                     thickness="medium"
-                    color={checkSuccess(percentPointsWonByWinners)}
+                    color={checkPointsWonByWinner(percentPointsWonByWinners)}
                     background="#B2B2B2"
                 />
               </Grommet>
@@ -202,7 +227,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     margin="small"
                     size="small"
                     thickness="medium"
-                    color={checkSuccess(percentPointsLostByUnforcedError)}
+                    color={checkPointsByUnforcedErrors(percentPointsLostByUnforcedError)}
                     background="#B2B2B2"
 
                 />
