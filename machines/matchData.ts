@@ -121,6 +121,7 @@ export enum MatchDataEvents {
     DecrementNotReturnedServesToBody = "decrementNotReturnedServesToBody",
     IncrementNotReturnedServesToCenter = "incrementNotReturnedServesToCenter",
     DecrementNotReturnedServesToCenter = "decrementNotReturnedServesToCenter",
+    NewMatch = "newMatch",
 }
 
 export const matchData = createMachine({
@@ -175,8 +176,6 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.DecrementPointsLostOnReturn }
             | { type: MatchDataEvents.IncrementPointsLostOnServe }
             | { type: MatchDataEvents.DecrementPointsLostOnServe }
-            | { type: MatchDataEvents.IncrementMissedReturns }
-            | { type: MatchDataEvents.DecrementMissedReturns }
             | { type: MatchDataEvents.IncrementMissedFirstServes }
             | { type: MatchDataEvents.DecrementMissedFirstServes }
             | { type: MatchDataEvents.IncrementDoubleFaults }
@@ -202,7 +201,8 @@ export const matchData = createMachine({
             | { type: MatchDataEvents.IncrementNotReturnedServesToAlley }
             | { type: MatchDataEvents.DecrementNotReturnedServesToAlley }
             | { type: MatchDataEvents.IncrementNotReturnedServesToCenter }
-            | { type: MatchDataEvents.DecrementNotReturnedServesToCenter },
+            | { type: MatchDataEvents.DecrementNotReturnedServesToCenter }
+        | { type: MatchDataEvents.NewMatch },
     },
     context: {
         pointsWonByForehand: 0,
@@ -756,3 +756,4 @@ export const matchData = createMachine({
         },
     },
 });
+

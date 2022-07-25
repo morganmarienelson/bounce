@@ -70,13 +70,17 @@ const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
                         </div>
                     </div>
                     <div className={styles.returnColLastCol}>
-                        <div className={styles.returnHeading}>Missed First Serve Returns</div>
+                        <div className={styles.numberMissedCol}>
+                        <div className={styles.missedReturnsHeading}>Missed First Serve Returns:</div>
                         <div
                             className={styles.numberMissed}>{+JSON.stringify(state.context.missedFirstServeReturns)}</div>
-                        <div className={styles.returnHeading}>Missed Second Serve Returns</div>
+                        </div>
+                        <div className={styles.numberMissedCol}>
+                        <div className={styles.missedReturnsHeading}>Missed Second Serve Returns:</div>
                         <div
                             className={styles.numberMissed}>{+JSON.stringify(state.context.missedSecondServeReturns)}</div>
-                    </div>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import {
     Table,
 } from "grommet/components";
 import styles from "./css/serveDataPanel.module.css";
+import globalStyles from "./css/pointDashboard.module.css";
 import {Pie} from "react-chartjs-2";
 
 interface ServingDataProps {
@@ -88,15 +89,47 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
         responsive: true
     };
 
+    const checkFirstServeSuccess = (value: number) => {
+        if (value >= 90) {
+            return "#129729";
+        } else if (value > 70) {
+            return "#7ae200";
+        } else if (value > 60) {
+            return "#ffe91a";
+        }
+        else if (value > 50) {
+            return "#ff6600";
+        }
+        else {
+            return "#de0000";
+        }
+    };
+
+    const checkSecondServeSuccess = (value: number) => {
+        if (value >= 90) {
+            return "#129729";
+        } else if (value > 80) {
+            return "#7ae200";
+        } else if (value > 70) {
+            return "#ffe91a";
+        }
+        else if (value > 60) {
+            return "#ff6600";
+        }
+        else {
+            return "#de0000";
+        }
+    };
+
 
     return (
         <div>
-            <div className={styles.heading}>Serving Statistics</div>
-            <div className={styles.body}>
-                <div className={styles.row}>
-                    <div className={styles.returnCol}>
-                        <div className={styles.returnHeading}>Total Points Won On Serve</div>
-                        <div className={styles.meter}>
+            <div className={globalStyles.heading}>Serving Statistics</div>
+            <div className={globalStyles.body}>
+                <div className={globalStyles.percentagesRow}>
+                    <div className={globalStyles.percentagesCol}>
+                        <div className={globalStyles.percentagesHeading}>Total Points Won On Serve</div>
+                        <div className={globalStyles.meter}>
                             <Grommet>
                                 <Meter
                                     value={percentOfTotalPointsWonOnServe}
@@ -108,12 +141,12 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     color={checkSuccess(percentOfTotalPointsWonOnServe)}
                                 />
                             </Grommet>
-                            <div className={styles.percent}>{percentOfTotalPointsWonOnServe}%</div>
+                            <div className={globalStyles.percent}>{percentOfTotalPointsWonOnServe}%</div>
                         </div>
                     </div>
-                    <div className={styles.returnCol}>
-                        <div className={styles.returnHeading}>Serving Points Won</div>
-                        <div className={styles.meter}>
+                    <div className={globalStyles.percentagesCol}>
+                        <div className={globalStyles.percentagesHeading}>Serving Points Won</div>
+                        <div className={globalStyles.meter}>
                             <Grommet>
                                 <Meter
                                     value={percentOfServingPointsWon}
@@ -125,12 +158,12 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     color={checkSuccess(percentOfServingPointsWon)}
                                 />
                             </Grommet>
-                            <div className={styles.percent}>{percentOfServingPointsWon}%</div>
+                            <div className={globalStyles.percent}>{percentOfServingPointsWon}%</div>
                         </div>
                     </div>
-                    <div className={styles.returnCol}>
-                        <div className={styles.returnHeading}>First Serve Percentage</div>
-                        <div className={styles.meter}>
+                    <div className={globalStyles.percentagesCol}>
+                        <div className={globalStyles.percentagesHeading}>First Serve Percentage</div>
+                        <div className={globalStyles.meter}>
                             <Grommet>
                                 <Meter
                                     value={firstServePercentage}
@@ -138,16 +171,16 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    color={checkSuccess(firstServePercentage)}
+                                    color={checkFirstServeSuccess(firstServePercentage)}
                                     background="#B2B2B2"
                                 />
                             </Grommet>
-                            <div className={styles.percent}>{firstServePercentage}%</div>
+                            <div className={globalStyles.percent}>{firstServePercentage}%</div>
                         </div>
                     </div>
-                    <div className={styles.servePercentagesLastRow}>
-                        <div className={styles.returnHeading}>Second Serve Percentage</div>
-                        <div className={styles.meter}>
+                    <div className={globalStyles.percentagesColLastCol}>
+                        <div className={globalStyles.percentagesHeading}>Second Serve Percentage</div>
+                        <div className={globalStyles.meter}>
                             <Grommet>
                                 <Meter
                                     value={secondServePercentage}
@@ -155,17 +188,17 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    color={checkSuccess(secondServePercentage)}
+                                    color={checkSecondServeSuccess(secondServePercentage)}
                                     background="#B2B2B2"
 
                                 />
                             </Grommet>
-                            <div className={styles.percent}>{secondServePercentage}%</div>
+                            <div className={globalStyles.percent}>{secondServePercentage}%</div>
                         </div>
                     </div>
                 </div>
-                <div className={styles.rowHeading}>Unreturned Serves</div>
-                <div className={styles.border}></div>
+                <div className={globalStyles.rowHeading}>Unreturned Serves</div>
+                <div className={globalStyles.border}></div>
                 <div className={styles.unreturnedRow}>
                     <div className={styles.serveTable}>
                         <Table>

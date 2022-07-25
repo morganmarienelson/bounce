@@ -28,12 +28,18 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
     };
 
     const checkSuccess = (value: number) => {
-        if (value >= 75) {
-            return "#69E53B";
-        } else if (value > 50) {
-            return " #EEFB46";
-        } else {
-            return "red";
+        if (value >= 85) {
+            return "#129729";
+        } else if (value > 70) {
+            return "#7ae200";
+        } else if (value > 60) {
+        return "#ffe91a";
+        }
+        else if (value > 50) {
+            return "#ff6600";
+        }
+    else {
+            return "#de0000";
         }
     };
 

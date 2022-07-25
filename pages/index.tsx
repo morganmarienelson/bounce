@@ -13,6 +13,7 @@ function PointInput() {
             {showDashboard ? (
                 <>
                     <PointDashboard setShowDashboard={setShowDashboard} send={send}/>
+
                 </>
             ) : (
                 <MatchStats setShowDashboard={setShowDashboard} state={state}/>

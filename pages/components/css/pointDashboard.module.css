@@ -3,9 +3,174 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 30px;
-    margin: 20px auto 0;
+    margin: auto;
 }
 
 .col {
     grid-column: span 1 / span 1;
+}
+
+.resetBtnRow{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.resetBtn{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    height: 60px;
+}
+
+.resetBtnTitle{
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.heading {
+    font-size: 35px;
+    font-weight: 500;
+    padding: 20px 20px 0 20px;
+}
+
+.body {
+    background-color: white;
+    width: 95%;
+    margin: auto;
+    border-radius: 7px;
+}
+
+.percentagesRow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 0;
+}
+
+.percentagesCol {
+    width: 95%;
+    grid-column: span 1 / span 1;
+    margin: 10px auto;
+    border-right: solid 2px silver;
+}
+
+.percentagesColLastCol {
+    width: 100%;
+    margin: 10px auto;
+    grid-column: span 1 / span 1;
+}
+
+.percent {
+    font-size: 30px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.rowHeading {
+    margin: auto;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 20px 20px 0 20px;
+}
+
+.percentagesHeading {
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
+
+.meter {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 1200px) {
+    .percentagesRow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 0 30px;
+    }
+    .percentagesCol, .percentagesColLastCol {
+        border-right: none;
+        padding-top: 10px;
+    }
+
+    .percentagesHeading {
+        font-size: 18px;
+        border-bottom: solid 1px silver;
+        margin-right: 50px;
+    }
+    .percent {
+        font-size: 30px;
+    }
+
+
+}
+@media (max-width: 1000px) {
+    .resetBtn{
+        height: 50px;
+    }
+    .resetBtnTitle{
+        font-size: 20px;
+    }
+    .resetBtnRow{
+       margin-top: 20px;
+    }
+}
+
+
+@media (max-width:900px) {
+    .heading {
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+        padding: 20px 20px 0 20px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .resetBtnTitle{
+        font-size: 18px;
+    }
+}
+
+@media (max-width:750px) {
+    .percentagesRow{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .percentagesCol, .percentagesColLastCol {
+        margin: 0 40px;
+    }
+    .rowHeading {
+        display: flex;
+        justify-content: center;
+        border-top: 1px silver solid;
+        padding: 10px;
+
+    }
+    .percentagesHeading {
+        font-size: 20px;
+        margin-right: 130px;
+    }
+    .percent {
+        padding-right: 80px;
+    }
+}
+
+@media (max-width:600px) {
+    .percent {
+        padding-right: 80px;
+    }
+    .pieChart {
+        margin: 0px 50px;
+        padding: 20px
+    }
+
 }

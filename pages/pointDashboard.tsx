@@ -1,4 +1,4 @@
-import {message, Modal} from "antd";
+import {Button, message, Modal} from "antd";
 import "antd/dist/antd.css";
 import React, {useState} from "react";
 import ReturnPanel from "./components/returnPanel";
@@ -50,6 +50,17 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
         setLosingModalVisible(true);
     };
 
+    const onReset= () => {
+        Modal.confirm({
+            title: "Are you sure you want to reset the match? This will clear all previously recorded data from memory. This action cannot be undone.",
+            okType: "danger",
+            onOk: () => {
+                window.location.reload();
+            },
+        });
+    };
+
+
     return (
         <div className={styles.page}>
             <div className={styles.row}>
@@ -82,7 +93,19 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                     />
                 </div>
             </div>
-
+            <div className={styles.resetBtnRow}>
+                <Button
+                    type="primary"
+                    className={styles.resetBtn}
+                    style={{
+                        background: "#FF0000",
+                        border: "#ff0000",
+                    }}
+                    onClick={onReset}
+                >
+                    <div className={styles.resetBtnTitle}>Reset Match</div>
+                </Button>
+            </div>
             <LostPointModal
                 losingModalVisible={losingModalVisible}
                 setLosingModalVisible={setLosingModalVisible}

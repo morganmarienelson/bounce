@@ -1,4 +1,5 @@
 import styles from "./css/baselineDataPanel.module.css";
+import globalStyles from "./css/pointDashboard.module.css";
 import React from 'react';
 import {
   Grommet,
@@ -136,14 +137,39 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
  responsive: true
   };
 
+  const checkPointsWonByWinner = (value: number) => {
+    if (value >= 50) {
+      return "#129729";
+    }
+    else {
+      return "#7ae200";
+    }
+  };
+
+  const checkPointsByUnforcedErrors = (value: number) => {
+    if (value < 20) {
+      return "#129729";
+    } else if (value < 40) {
+      return "#7ae200";
+    } else if (value < 60) {
+      return "#ffe91a";
+    }
+    else if (value < 70) {
+      return "#ff6600";
+    }
+    else {
+      return "#de0000";
+    }
+  };
+
   return (
     <div>
-      <div className={styles.heading}>Baseline Statistics</div>
-      <div className={styles.body}>
-        <div className={styles.firstRow}>
-          <div className={styles.percentagesCol}>
-            <div className={styles.baselineMeterHeading}>Total Points Won On Baseline</div>
-            <div className={styles.meter}>
+      <div className={globalStyles.heading}>Baseline Statistics</div>
+      <div className={globalStyles.body}>
+        <div className={globalStyles.percentagesRow}>
+          <div className={globalStyles.percentagesCol}>
+            <div className={globalStyles.percentagesHeading}>Total Points Won On Baseline</div>
+            <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
                     value={percentPointsWonOnBaseline}
@@ -155,12 +181,12 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     color={checkSuccess(percentPointsWonOnBaseline)}
                 />
               </Grommet>
-              <div className={styles.baselinePercent}>{percentPointsWonOnBaseline}%</div>
+              <div className={globalStyles.percent}>{percentPointsWonOnBaseline}%</div>
             </div>
           </div>
-          <div className={styles.percentagesCol}>
-            <div className={styles.baselineMeterHeading}>Baseline Points Won</div>
-            <div className={styles.meter}>
+          <div className={globalStyles.percentagesCol}>
+            <div className={globalStyles.percentagesHeading}>Baseline Points Won</div>
+            <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
                     value={percentBaselinePointsWon}
@@ -172,12 +198,12 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     color={checkSuccess(percentBaselinePointsWon)}
                 />
               </Grommet>
-              <div className={styles.baselinePercent}>{percentBaselinePointsWon}%</div>
+              <div className={globalStyles.percent}>{percentBaselinePointsWon}%</div>
             </div>
           </div>
-          <div className={styles.percentagesCol}>
-            <div className={styles.baselineMeterHeading}>Points Won By Winners</div>
-            <div className={styles.meter}>
+          <div className={globalStyles.percentagesCol}>
+            <div className={globalStyles.percentagesHeading}>Points Won By Winners</div>
+            <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
                     value={percentPointsWonByWinners}
@@ -185,16 +211,16 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     margin="small"
                     size="small"
                     thickness="medium"
-                    color={checkSuccess(percentPointsWonByWinners)}
+                    color={checkPointsWonByWinner(percentPointsWonByWinners)}
                     background="#B2B2B2"
                 />
               </Grommet>
-              <div className={styles.baselinePercent}>{percentPointsWonByWinners}%</div>
+              <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
             </div>
           </div>
-          <div className={styles.baselineMeterLastCol}>
-            <div className={styles.baselineMeterHeading}>Points Lost by Unforced Error</div>
-            <div className={styles.meter}>
+          <div className={globalStyles.percentagesColLastCol}>
+            <div className={globalStyles.percentagesHeading}>Points Lost by Unforced Error</div>
+            <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
                     value={percentPointsLostByUnforcedError}
@@ -202,33 +228,33 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     margin="small"
                     size="small"
                     thickness="medium"
-                    color={checkSuccess(percentPointsLostByUnforcedError)}
+                    color={checkPointsByUnforcedErrors(percentPointsLostByUnforcedError)}
                     background="#B2B2B2"
 
                 />
               </Grommet>
-              <div className={styles.baselinePercent}>{percentPointsLostByUnforcedError}%</div>
+              <div className={globalStyles.percent}>{percentPointsLostByUnforcedError}%</div>
             </div>
           </div>
         </div>
-        <div className={styles.rowHeading}>Baseline Shot Break Down</div>
-        <div className={styles.border}></div>
+        <div className={globalStyles.rowHeading}>Baseline Shot Break Down</div>
+        <div className={globalStyles.border}></div>
         <div className={styles.row}>
           <div className={styles.doughnutChartCol}>
-            <div className={styles.meterHeader}>Winning Shot Types</div>
+            <div className={styles.pieHeader}>Winning Shot Types</div>
             <div className={styles.doughnutChart}>
           <Pie data={winningShotType} options={options} />
             </div>
           </div>
           <div className={styles.doughnutChartCol}>
-            <div className={styles.meterHeader}>Losing Shot Types</div>
+            <div className={styles.pieHeader}>Losing Shot Types</div>
             <div className={styles.doughnutChart}>
               <Pie data={losingShotType} options={options} />
             </div>
           </div>
           <div className={styles.accuracy}>
-            <div className={styles.baselineMeterHeading}>Forehand Accuracy: {forehandAccuracy}%</div>
-            <div className={styles.meterCol}>
+            <div className={styles.accuracyCol}>
+            <div className={styles.accuracyMeterHeading}>Forehand Accuracy: {forehandAccuracy}%</div>
               <div className={styles.meter}>
             <Grommet>
                 <Meter
@@ -241,10 +267,10 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                   color={checkSuccess(forehandAccuracy)}
                 />
             </Grommet>
-              </div>
             </div>
-            <div className={styles.baselineMeterHeading}>Backhand Accuracy: {backhandAccuracy}%</div>
-            <div className={styles.meterCol}>
+            </div>
+            <div className={styles.accuracyCol}>
+            <div className={styles.accuracyMeterHeading}>Backhand Accuracy: {backhandAccuracy}%</div>
             <div className={styles.meter}>
               <Grommet>
                 <Meter
@@ -258,7 +284,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                 />
               </Grommet>
             </div>
-            </div>
+          </div>
           </div>
         </div>
       </div>

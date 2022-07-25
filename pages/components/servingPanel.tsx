@@ -171,14 +171,14 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
         <div className={styles.stopBtnCol}>
           <Button
             type="primary"
-            className={styles.stopBtn}
+            className={styles.matchStatsBtn}
             style={{
               background: "#480096",
               border: "#480096",
             }}
             onClick={confirmStop}
           >
-            <div className={styles.btnTitle}>View Match Statistics</div>
+            <div className={styles.matchTitle}>View Match <br></br> Statistics</div>
           </Button>
         </div>
       </div>

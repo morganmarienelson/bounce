@@ -17,6 +17,7 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import {Chart, ArcElement} from 'chart.js'
+import globalStyles from "./css/pointDashboard.module.css";
 Chart.register(ArcElement);
 
 ChartJS.register(
@@ -161,12 +162,12 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
 
     return (
         <div>
-            <div className={styles.heading}>Net Statistics</div>
-            <div className={styles.body}>
-                <div className={styles.firstRow}>
-                    <div className={styles.percentagesCol}>
-                        <div className={styles.netMeterHeading}>Total Points Won On Net</div>
-                        <div className={styles.meter}>
+            <div className={globalStyles.heading}>Net Statistics</div>
+            <div className={globalStyles.body}>
+                <div className={globalStyles.percentagesRow}>
+                    <div className={globalStyles.percentagesCol}>
+                        <div className={globalStyles.percentagesHeading}>Total Points Won On Net</div>
+                        <div className={globalStyles.meter}>
                             <Grommet>
                                 <Meter
                                     value={percentPointsWonAtNet}
@@ -178,12 +179,12 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     color={checkSuccess(percentPointsWonAtNet)}
                                 />
                             </Grommet>
-                            <div className={styles.netPercent}>{percentPointsWonAtNet}%</div>
+                            <div className={globalStyles.percent}>{percentPointsWonAtNet}%</div>
                         </div>
                     </div>
-                    <div className={styles.percentagesCol}>
-                        <div className={styles.netMeterHeading}>Net Points Won</div>
-                        <div className={styles.meter}>
+                    <div className={globalStyles.percentagesCol}>
+                        <div className={globalStyles.percentagesHeading}>Net Points Won</div>
+                        <div className={globalStyles.meter}>
                             <Grommet>
                                 <Meter
                                     value={percentNetPointsWon}
@@ -195,12 +196,12 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     color={checkSuccess(percentNetPointsWon)}
                                 />
                             </Grommet>
-                            <div className={styles.netPercent}>{percentNetPointsWon}%</div>
+                            <div className={globalStyles.percent}>{percentNetPointsWon}%</div>
                         </div>
                     </div>
-                    <div className={styles.percentagesCol}>
-                        <div className={styles.netMeterHeading}>Net Points Won By Winners</div>
-                        <div className={styles.meter}>
+                    <div className={globalStyles.percentagesCol}>
+                        <div className={globalStyles.percentagesHeading}>Net Points Won By Winners</div>
+                        <div className={globalStyles.meter}>
                             <Grommet>
                                 <Meter
                                     value={percentPointsWonByWinners}
@@ -212,12 +213,12 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     background="#B2B2B2"
                                 />
                             </Grommet>
-                            <div className={styles.netPercent}>{percentPointsWonByWinners}%</div>
+                            <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
                         </div>
                     </div>
-                    <div className={styles.netMeterLastCol}>
-                        <div className={styles.netMeterHeading}>Net Points Lost by Unforced Error</div>
-                        <div className={styles.meter}>
+                    <div className={globalStyles.percentagesColLastCol}>
+                        <div className={globalStyles.percentagesHeading}>Net Points Lost by Unforced Error</div>
+                        <div className={globalStyles.meter}>
                             <Grommet>
                                 <Meter
                                     value={percentPointsLostByUnforcedError}
@@ -230,30 +231,31 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
 
                                 />
                             </Grommet>
-                            <div className={styles.netPercent}>{percentPointsLostByUnforcedError}%</div>
+                            <div className={globalStyles.percent}>{percentPointsLostByUnforcedError}%</div>
                         </div>
                     </div>
                 </div>
-                <div className={styles.rowHeading}>Net Shot Break Down</div>
+                <div className={globalStyles.rowHeading}>Net Shot Break Down</div>
+                <div className={styles.border}></div>
                 <div className={styles.secondRow}>
                     <div className={styles.doughnutChartCol}>
-                        <div className={styles.meterHeader}>Winning Shot Types</div>
+                        <div className={styles.pieHeader}>Winning Shot Types</div>
                         <div className={styles.doughnutChart}>
                             <Pie data={winningShotType} options={options} />
                         </div>
                     </div>
                     <div className={styles.doughnutChartCol}>
-                        <div className={styles.meterHeader}>Losing Shot Types</div>
+                        <div className={styles.pieHeader}>Losing Shot Types</div>
                         <div className={styles.doughnutChart}>
                             <Pie data={losingShotType} options={options} />
                         </div>
                     </div>
                 </div>
-                <div className={styles.border}></div>
+                <div className={globalStyles.border}></div>
                     <div className={styles.thirdRow}>
                         <div>
-                            <div className={styles.netMeterHeading}>Forehand Volley Accuracy</div>
-                            <div className={styles.accuracyMeter}>
+                            <div className={styles.accuracyMeterHeading}>Forehand Volley Accuracy: {forehandVolleyAccuracy}%</div>
+                            <div className={styles.meter}>
                                 <Grommet>
                                     <Meter
                                         value={forehandVolleyAccuracy}
@@ -265,12 +267,11 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         color={checkSuccess(forehandVolleyAccuracy)}
                                     />
                                 </Grommet>
-                                <div className={styles.netPercent}>{forehandVolleyAccuracy}%</div>
                             </div>
                         </div>
                         <div>
-                            <div className={styles.netMeterHeading}>Backhand Volley Accuracy </div>
-                            <div className={styles.accuracyMeter}>
+                            <div className={styles.accuracyMeterHeading}>Backhand Volley Accuracy: {backhandVolleyAccuracy}%  </div>
+                            <div className={styles.meter}>
                                 <Grommet>
                                     <Meter
                                         value={backhandVolleyAccuracy}
@@ -282,12 +283,11 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         color={checkSuccess(backhandVolleyAccuracy)}
                                     />
                                 </Grommet>
-                                <div className={styles.netPercent}>{backhandVolleyAccuracy}%</div>
                             </div>
                         </div>
                         <div>
-                            <div className={styles.netMeterHeading}>Overhead Accuracy</div>
-                            <div className={styles.accuracyMeter}>
+                            <div className={styles.accuracyMeterHeading}>Overhead Accuracy: {overheadAccuracy}%</div>
+                            <div className={styles.meter}>
                                 <Grommet>
                                     <Meter
                                         value={overheadAccuracy}
@@ -299,7 +299,6 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         background="#B2B2B2"
                                     />
                                 </Grommet>
-                                <div className={styles.netPercent}>{overheadAccuracy}%</div>
                             </div>
                         </div>
                     </div>
