@@ -1,43 +1,15 @@
-.heading {
-    margin: 10px auto auto auto;
-    font-size: 40px;
-    font-weight: 500;
-    padding: 20px 20px 0 20px;
-
-}
-
-.body {
-    background-color: white;
-    width: 95%;
-    margin: auto;
-    border-radius: 7px;
-}
-
 .secondRow {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap:40px;
-    margin: 0px auto;
+    margin: 0 auto;
     padding: 0 30px;
 }
-
-.rowHeading {
-    margin: auto;
-    font-size: 30px;
-    font-weight: 500;
-    padding: 20px 20px 0 20px;
-}
-
 .doughnutChartCol {
     margin: auto;
     padding: 40px;
     width: 100%;
-}
-
-.border{
-    margin: 0px 30px;
-    border-top: solid 1px silver;
 }
 
 .doughnutChart{
@@ -52,24 +24,13 @@
     width: 100%;
 }
 
-.meterHeader {
+.pieHeader {
     display: flex;
     justify-content: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
 }
 
-.meterCol {
-    width: 100%;
-    grid-column: span 1 / span 1;
-    margin: auto;
-}
-
-.meter {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-}
 
 .accuracyMeter {
     margin: auto;
@@ -78,38 +39,14 @@
     padding: 0px 30px;
 }
 
-.firstRow {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 0;
-    margin-top: 20px;
-}
 .thirdRow {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 60px;
-    margin-top: 20px;
+    column-gap: 0;
 }
 
-
-.percentagesCol {
-    width: 100%;
-    grid-column: span 1 / span 1;
-    margin: 10px auto;
-    border-right: solid 2px;
-}
-
-.netMeterLastCol {
-    width: 100%;
-    margin: 10px auto;
-    grid-column: span 1 / span 1;
-    border-right: none;
-}
-
-
-.netMeterHeading {
+.accuracyMeterHeading {
     font-size: 20px;
     font-weight: 500;
     display: flex;
@@ -117,10 +54,115 @@
     padding: 8px;
 }
 
-.netPercent {
-    font-size: 30px;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    margin: auto;
+
+@media (max-width: 1300px) {
+
+    .doughnutChart{
+        margin-top: 10px;
+        padding: 20px;
+    }
+
+    .doughnutChartCol {
+        margin: auto;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .pieHeader {
+        margin-top: 20px;
+    }
+    .accuracyMeterHeading {
+        font-size: 23px;
+        padding-top: 10px;
+        margin-top: 20px;
+        border-top: solid 1px silver;
+    }
+    .baselinePercent {
+        font-size: 30px;
+    }
+    .accuracy {
+        grid-column: span 2 / span 2;
+        padding: 0;
+        margin: auto;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .accuracyCol{
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        grid-column: span 1 / span 1;
+    }
+
+
+
+}
+
+@media (max-width:1000px) {
+    .thirdRow {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        margin: 0 30px;
+    }
+
+}
+
+
+@media (max-width:900px) {
+    .thirdRow {
+        margin: 0 30px;
+    }
+
+ .accuracyMeterHeading {
+        font-size: 20px;
+    }
+
+    .secondRow {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .doughnutChartCol {
+        margin: auto;
+        padding: 20px;
+        width: 70%;
+    }
+    .accuracy {
+        grid-column: span 1 / span 1;
+        padding: 0;
+        margin: auto;
+        width: 100%;
+    }
+
+}
+
+@media (max-width:750px) {
+    .accuracyCol {
+        grid-column: span 2 / span 2;
+        width: 100%;
+        margin: 10px auto;
+        border-top: solid 1px silver;
+    }
+
+    .thirdRow {
+        margin: 0 50px;
+    }
+
+    .doughnutChartCol {
+        width: 90%;
+    }
+
+    .accuracyMeterHeading {
+        padding-top: 10px;
+        border-top: none;
+        margin: auto;
+        font-size: 23px;
+    }
+
+}
+@media (max-width:600px) {
+    .doughnutChartCol {
+        margin: auto;
+        padding: 0;
+    }
 }

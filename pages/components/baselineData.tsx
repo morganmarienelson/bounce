@@ -1,4 +1,5 @@
 import styles from "./css/baselineDataPanel.module.css";
+import globalStyles from "./css/pointDashboard.module.css";
 import React from 'react';
 import {
   Grommet,
@@ -163,12 +164,12 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
 
   return (
     <div>
-      <div className={styles.heading}>Baseline Statistics</div>
-      <div className={styles.body}>
-        <div className={styles.firstRow}>
-          <div className={styles.percentagesCol}>
-            <div className={styles.baselineMeterHeading}>Total Points Won On Baseline</div>
-            <div className={styles.meter}>
+      <div className={globalStyles.heading}>Baseline Statistics</div>
+      <div className={globalStyles.body}>
+        <div className={globalStyles.percentagesRow}>
+          <div className={globalStyles.percentagesCol}>
+            <div className={globalStyles.percentagesHeading}>Total Points Won On Baseline</div>
+            <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
                     value={percentPointsWonOnBaseline}
@@ -180,12 +181,12 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     color={checkSuccess(percentPointsWonOnBaseline)}
                 />
               </Grommet>
-              <div className={styles.baselinePercent}>{percentPointsWonOnBaseline}%</div>
+              <div className={globalStyles.percent}>{percentPointsWonOnBaseline}%</div>
             </div>
           </div>
-          <div className={styles.percentagesCol}>
-            <div className={styles.baselineMeterHeading}>Baseline Points Won</div>
-            <div className={styles.meter}>
+          <div className={globalStyles.percentagesCol}>
+            <div className={globalStyles.percentagesHeading}>Baseline Points Won</div>
+            <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
                     value={percentBaselinePointsWon}
@@ -197,12 +198,12 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     color={checkSuccess(percentBaselinePointsWon)}
                 />
               </Grommet>
-              <div className={styles.baselinePercent}>{percentBaselinePointsWon}%</div>
+              <div className={globalStyles.percent}>{percentBaselinePointsWon}%</div>
             </div>
           </div>
-          <div className={styles.percentagesCol}>
-            <div className={styles.baselineMeterHeading}>Points Won By Winners</div>
-            <div className={styles.meter}>
+          <div className={globalStyles.percentagesCol}>
+            <div className={globalStyles.percentagesHeading}>Points Won By Winners</div>
+            <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
                     value={percentPointsWonByWinners}
@@ -214,12 +215,12 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     background="#B2B2B2"
                 />
               </Grommet>
-              <div className={styles.baselinePercent}>{percentPointsWonByWinners}%</div>
+              <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
             </div>
           </div>
-          <div className={styles.baselineMeterLastCol}>
-            <div className={styles.baselineMeterHeading}>Points Lost by Unforced Error</div>
-            <div className={styles.meter}>
+          <div className={globalStyles.percentagesColLastCol}>
+            <div className={globalStyles.percentagesHeading}>Points Lost by Unforced Error</div>
+            <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
                     value={percentPointsLostByUnforcedError}
@@ -232,12 +233,12 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
 
                 />
               </Grommet>
-              <div className={styles.baselinePercent}>{percentPointsLostByUnforcedError}%</div>
+              <div className={globalStyles.percent}>{percentPointsLostByUnforcedError}%</div>
             </div>
           </div>
         </div>
-        <div className={styles.rowHeading}>Baseline Shot Break Down</div>
-        <div className={styles.border}></div>
+        <div className={globalStyles.rowHeading}>Baseline Shot Break Down</div>
+        <div className={globalStyles.border}></div>
         <div className={styles.row}>
           <div className={styles.doughnutChartCol}>
             <div className={styles.pieHeader}>Winning Shot Types</div>
@@ -253,8 +254,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
           </div>
           <div className={styles.accuracy}>
             <div className={styles.accuracyCol}>
-            <div className={styles.accuracyMeterHeading}>Forehand Accuracy: {forehandAccuracy}%</div>
-            <div className={styles.meterCol}>
+            <div className={globalStyles.percentagesHeading}>Forehand Accuracy: {forehandAccuracy}%</div>
               <div className={styles.meter}>
             <Grommet>
                 <Meter
@@ -267,12 +267,10 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                   color={checkSuccess(forehandAccuracy)}
                 />
             </Grommet>
-              </div>
             </div>
             </div>
             <div className={styles.accuracyCol}>
-            <div className={styles.accuracyMeterHeading}>Backhand Accuracy: {backhandAccuracy}%</div>
-            <div className={styles.meterCol}>
+            <div className={globalStyles.percentagesHeading}>Backhand Accuracy: {backhandAccuracy}%</div>
             <div className={styles.meter}>
               <Grommet>
                 <Meter
@@ -285,7 +283,6 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                   color={checkSuccess(backhandAccuracy)}
                 />
               </Grommet>
-            </div>
             </div>
           </div>
           </div>
