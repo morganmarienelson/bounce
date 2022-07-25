@@ -254,8 +254,8 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                 <div className={globalStyles.border}></div>
                     <div className={styles.thirdRow}>
                         <div>
-                            <div className={globalStyles.percentagesHeading}>Forehand Volley Accuracy</div>
-                            <div className={globalStyles.meter}>
+                            <div className={styles.accuracyMeterHeading}>Forehand Volley Accuracy: {forehandVolleyAccuracy}%</div>
+                            <div className={styles.meter}>
                                 <Grommet>
                                     <Meter
                                         value={forehandVolleyAccuracy}
@@ -267,12 +267,11 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         color={checkSuccess(forehandVolleyAccuracy)}
                                     />
                                 </Grommet>
-                                <div className={globalStyles.percent}>{forehandVolleyAccuracy}%</div>
                             </div>
                         </div>
                         <div>
-                            <div className={globalStyles.percentagesHeading}>Backhand Volley Accuracy </div>
-                            <div className={globalStyles.meter}>
+                            <div className={styles.accuracyMeterHeading}>Backhand Volley Accuracy: {backhandVolleyAccuracy}%  </div>
+                            <div className={styles.meter}>
                                 <Grommet>
                                     <Meter
                                         value={backhandVolleyAccuracy}
@@ -284,12 +283,11 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         color={checkSuccess(backhandVolleyAccuracy)}
                                     />
                                 </Grommet>
-                                <div className={globalStyles.percent}>{backhandVolleyAccuracy}%</div>
                             </div>
                         </div>
                         <div>
-                            <div className={globalStyles.percentagesHeading}>Overhead Accuracy</div>
-                            <div className={globalStyles.meter}>
+                            <div className={styles.accuracyMeterHeading}>Overhead Accuracy: {overheadAccuracy}%</div>
+                            <div className={styles.meter}>
                                 <Grommet>
                                     <Meter
                                         value={overheadAccuracy}
@@ -301,7 +299,6 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         background="#B2B2B2"
                                     />
                                 </Grommet>
-                                <div className={globalStyles.percent}>{overheadAccuracy}%</div>
                             </div>
                         </div>
                     </div>
