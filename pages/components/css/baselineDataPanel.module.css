@@ -102,6 +102,14 @@
     padding: 8px;
 }
 
+.accuracyMeterHeading {
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
+
 .baselinePercent {
     font-size: 30px;
     font-weight: 400;
@@ -114,12 +122,11 @@
 @media (max-width: 1200px) {
     .firstRow{
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin: 0 30px;
     }
 
     .doughnutChartCol {
         margin: auto;
-        padding: 0;
+        padding: 20px;
     }
 
     .pieHeader {
@@ -135,8 +142,12 @@
     }
     .baselineMeterHeading {
         font-size: 23px;
-        border-bottom: solid 1px silver;
-        margin-right: 50px;
+    }
+    .accuracyMeterHeading {
+        font-size: 23px;
+        padding-top: 10px;
+        margin-top: 20px;
+        border-top: solid 1px silver;
     }
     .baselinePercent {
         font-size: 30px;
@@ -146,7 +157,19 @@
         padding: 0;
         margin: auto;
         width: 100%;
+        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .accuracyCol{
+        margin: auto;
+        padding: 0;
+        width: 100%;
+        grid-column: span 1 / span 1;
+    }
+    .rowHeading{
+        display: flex;
+        justify-content: center;
     }
 
 
@@ -163,7 +186,7 @@
 }
 
 @media (max-width:800px) {
-    .baselineMeterHeading {
+    .baselineMeterHeading, .accuracyMeterHeading {
         font-size: 20px;
     }
     .row {
@@ -180,6 +203,7 @@
         margin: auto;
         width: 100%;
     }
+
 }
 
 @media (max-width:750px) {
@@ -187,28 +211,26 @@
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
-    .percentagesCol, .baselineMeterLastCol {
-        margin: 0 40px;
+    .accuracyCol {
+        grid-column: span 2 / span 2;
+        width: 100%;
+        margin: 10px auto;
+        border-top: solid 1px silver;
     }
-    .baselineMeterHeading {
+
+    .accuracyMeterHeading, .baselineMeterHeading {
+        padding-top: 10px;
+        border-top: none;
+        margin: auto;
         font-size: 23px;
-        margin-right: 130px;
-    }
-    .baselinePercent {
-        padding-right: 80px;
     }
 
 }
 
 @media (max-width:600px) {
-    .baselinePercent {
-        padding-right: 80px;
-    }
-
     .doughnutChartCol {
         margin: auto;
         padding: 0;
         width: 90%;
     }
-
 }

@@ -87,7 +87,7 @@
 
 @media (max-width: 1000px) {
     .btnTitle,
-    .serveInBtn, .wonLostBtnTitle {
+    .serveInBtn, .wonLostBtnTitle, .matchStatsBtn {
         font-size: 18px;
     }
 }
