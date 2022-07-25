@@ -44,6 +44,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 0;
+    margin-left: 15px;
 }
 
 .accuracyMeterHeading {
