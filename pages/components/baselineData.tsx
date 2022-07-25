@@ -254,7 +254,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
           </div>
           <div className={styles.accuracy}>
             <div className={styles.accuracyCol}>
-            <div className={globalStyles.percentagesHeading}>Forehand Accuracy: {forehandAccuracy}%</div>
+            <div className={styles.accuracyMeterHeading}>Forehand Accuracy: {forehandAccuracy}%</div>
               <div className={styles.meter}>
             <Grommet>
                 <Meter
@@ -270,7 +270,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
             </div>
             </div>
             <div className={styles.accuracyCol}>
-            <div className={globalStyles.percentagesHeading}>Backhand Accuracy: {backhandAccuracy}%</div>
+            <div className={styles.accuracyMeterHeading}>Backhand Accuracy: {backhandAccuracy}%</div>
             <div className={styles.meter}>
               <Grommet>
                 <Meter
