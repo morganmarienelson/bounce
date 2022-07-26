@@ -29,13 +29,6 @@
     font-size: 25px;
     font-weight: 500;
 }
-
-.meterCol {
-    width: 100%;
-    grid-column: span 1 / span 1;
-    margin: auto;
-}
-
 .meter {
     margin: auto;
     display: flex;
@@ -70,9 +63,6 @@
     .row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         margin: auto;
-    }
-    .baselinePercent {
-        font-size: 30px;
     }
     .accuracy {
         grid-column: span 2 / span 2;

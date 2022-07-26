@@ -1,34 +1,7 @@
-.row {
-    width: 95%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 30px;
-    margin: 20px auto 0;
-}
-
-
 .fullPage {
     background-color: #cccce0;
     width: 100%;
     padding-bottom: 20px;
-}
-
-.barCol {
-    grid-column: span 2/ span 2;
-    padding: 0 50px 40px 0;
-    border-right: solid;
-    margin-bottom: 20px;
-}
-
-.tableCol {
-    grid-column: span 1/ span 1;
-    font-size: 18px;
-    margin: auto;
-}
-
-.heading {
-    font-size: 20px;
-    font-weight: 500;
 }
 
 .header {
@@ -39,62 +12,4 @@
 .headingTitle {
     padding-top: 10px;
     color: white;
-}
-
-.tableCell {
-    font-weight: 600;
-}
-
-@media (max-width: 800px) {
-    .tableCol {
-        font-size: 17px;
-    }
-}
-
-@media (max-width: 1000px) {
-    .tableCol {
-        font-size: 16px;
-        grid-column: span 2/ span 2;
-    }
-
-    .barCol {
-        grid-column: span 3/ span 3;
-    }
-
-    .row {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 800px) {
-    .row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .tableCol {
-        grid-column: span 1/ span 1;
-        font-size: 17px;
-    }
-
-    .barCol {
-        grid-column: span 1/ span 1;
-    }
-}
-
-@media (max-width: 750px) {
-    .row {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-
-    .barCol {
-        padding: 0 5px 40px 5px;
-        border-bottom: solid;
-        border-right: none;
-        font-size: 20px;
-    }
-
-    .tableCol {
-        font-size: 20px;
-        margin: auto auto 20px auto;
-    }
 }

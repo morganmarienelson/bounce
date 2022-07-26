@@ -17,20 +17,6 @@
     padding: 20px;
 }
 
-.accuracyMeterHeading {
-    font-size: 20px;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    padding: 8px;
-}
-
-.accuracy {
-    grid-column: span 1 / span 1;
-    padding: 0;
-    margin: auto;
-    width: 100%;
-}
 
 .pieHeader {
     display: flex;
@@ -79,10 +65,7 @@
         margin-top: 20px;
     }
     .accuracyMeterHeading {
-        font-size: 18px;
         border-bottom: silver 1px solid;
-    }
-    .accuracyMeterHeading {
         margin: 0 70px;
         font-size: 20px;
     }
