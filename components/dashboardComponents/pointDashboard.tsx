@@ -34,7 +34,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
 
     const confirmStop = () => {
         Modal.confirm({
-            title: "Are you sure you want to stop recording data? You can return to this page later. The previously recorded data will be kept.",
+            title: "Are you sure you want to leave this page? You will not be able to record any new data for this match.",
             okType: "danger",
             onOk: () => {
                 setShowDashboard(false);
@@ -49,17 +49,6 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
     const onLosingButtonClick = () => {
         setLosingModalVisible(true);
     };
-
-    const onReset= () => {
-        Modal.confirm({
-            title: "Are you sure you want to reset the match? This will clear all previously recorded data from memory. This action cannot be undone.",
-            okType: "danger",
-            onOk: () => {
-                window.location.reload();
-            },
-        });
-    };
-
 
     return (
         <div className={styles.page}>
@@ -92,19 +81,6 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                         pointLog={pointLog}
                     />
                 </div>
-            </div>
-            <div className={styles.resetBtnRow}>
-                <Button
-                    type="primary"
-                    className={styles.resetBtn}
-                    style={{
-                        background: "#FF0000",
-                        border: "#ff0000",
-                    }}
-                    onClick={onReset}
-                >
-                    <div className={styles.resetBtnTitle}>Reset Match</div>
-                </Button>
             </div>
             <LostPointModal
                 losingModalVisible={losingModalVisible}

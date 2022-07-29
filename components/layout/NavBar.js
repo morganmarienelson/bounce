@@ -1,10 +1,9 @@
 import Link from "next/link";
 import {Button, Grommet, Heading} from "grommet/components";
-import { Box, Header, Menu, Nav, ResponsiveContext } from 'grommet';
+import {Header,  Nav } from 'grommet';
 import styles from "./navBar.module.css"
 import React from "react";
-
-import {ColorModeSwitcher} from "../ColorModeSwitch";
+import {Home} from "grommet-icons";
 
 
 function NavBar() {
@@ -13,9 +12,18 @@ function NavBar() {
              <Grommet>
                  <Header className={styles.header}>
                      <Heading className={styles.headingTitle}>
-                         <a href='/'>  Bounce </a>
+                         Bounce
                      </Heading>
-                     <ColorModeSwitcher/>
+                     <Nav direction="column">
+                         <Link href='/'>
+                         <Button
+                             secondary
+                             style={{marginLeft: 63}}
+                             icon={<Home color={'white'}/>}
+                             hoverIndicator
+                         />
+                         </Link>
+                     </Nav>
               </Header>
               </Grommet>
 

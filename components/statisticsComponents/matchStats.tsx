@@ -1,9 +1,6 @@
-import {Button, Header, Heading, Nav} from "grommet/components";
 import "antd/dist/antd.css";
 import {Modal} from "antd";
-import { LinkPrevious} from "grommet-icons";
-import {Grommet} from "grommet/components";
-import React, {useState} from "react";
+import React from "react";
 import styles from "./css/matchStats.module.css";
 import ServingData from "./statisticsSections/servingData";
 import ReturnData from "./statisticsSections/returnData";
@@ -46,22 +43,6 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
 
     return (
         <div>
-            <Grommet>
-                <Header className={styles.header}>
-                    <Heading size="medium" className={styles.headingTitle}>
-                        Match Statistics
-                    </Heading>
-                    <Nav direction="column">
-                        <Button
-                            secondary
-                            style={{marginLeft: 63,  transform: 'rotate(180deg)'}}
-                            icon={<LinkPrevious color={'white'}/>}
-                            hoverIndicator
-                            onClick={onExit}
-                        />
-                    </Nav>
-                </Header>
-            </Grommet>
             <div className={styles.fullPage}>
                 <ServingData state={state} checkSuccess={checkSuccess}/>
                 <ReturnData state={state} checkSuccess={checkSuccess}/>

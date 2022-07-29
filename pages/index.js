@@ -2,14 +2,15 @@ import {ColorModeSwitcher} from "../components/ColorModeSwitch";
 import {Nav} from "grommet";
 import {Button} from "grommet/components";
 import React from "react";
-import {Home, Scorecard, Database, LinkPrevious} from "grommet-icons"
+import { Scorecard, Database} from "grommet-icons"
 import Link from "next/link";
 
 
 function HomePage(){
     return(
         <>
-           <h1>Home page</h1>
+            <ColorModeSwitcher/>
+            <div style={{margin: 60}}>
             <Nav direction="column">
                 <Link href='/dashboard'><Button
                     secondary
@@ -21,8 +22,10 @@ function HomePage(){
                     secondary
                     icon={<Database color={'black'}/>}
                     hoverIndicator
+                    label="View Previous Match"
                 /></Link>
             </Nav>
+            </div>
         </>
     )
 }
