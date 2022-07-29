@@ -1,28 +1,24 @@
 import Link from "next/link";
+import {Button, Grommet, Heading} from "grommet/components";
+import { Box, Header, Menu, Nav, ResponsiveContext } from 'grommet';
+import styles from "./navBar.module.css"
+import React from "react";
+
+import {ColorModeSwitcher} from "../ColorModeSwitch";
 
 
 function NavBar() {
     return (
         <>
-        <header>
+             <Grommet>
+                 <Header className={styles.header}>
+                     <Heading className={styles.headingTitle}>
+                         <a href='/'>  Bounce </a>
+                     </Heading>
+                     <ColorModeSwitcher/>
+              </Header>
+              </Grommet>
 
-        </header>
-        <div>
-            Nav Bar
-        </div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link href='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link href='/dashboard'>Dashboard</Link>
-                    </li>
-                    <li>
-                        <Link href='/matchLog'>Match Logs</Link>
-                    </li>
-                </ul>
-            </nav>
             </>
         )
 

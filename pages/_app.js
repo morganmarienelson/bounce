@@ -7,7 +7,6 @@ import {getCookie, setCookies} from "cookies-next";
 
 export default function MyApp(props) {
     const {Component, pageProps} = props;
-    const preferredColorScheme = useColorScheme();
     const [colorScheme, setColorScheme ] = useState(props.colorScheme);
 
     const toggleColorScheme = (value) => {
@@ -18,13 +17,15 @@ export default function MyApp(props) {
 }
 
     return (
-        <Layout>
+
             <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+                <Layout>
                 <MantineProvider theme={{colorScheme}} withGlobalStyles withNormalizeCSS>
                     <Component {...pageProps} />
                 </MantineProvider>
+                </Layout>
             </ColorSchemeProvider>
-        </Layout>
+
 );
 }
 
