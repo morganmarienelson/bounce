@@ -3,7 +3,7 @@ import {Meter} from "grommet";
 import {
     Grommet,
 } from "grommet/components";
-import styles from "./css/returnDataPanel.module.css";
+import styles from "../css/returnDataPanel.module.css";
 
 interface ReturnDataProps {
     state: any;
@@ -45,7 +45,7 @@ const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="#B2B2B2"
+                                    background="pages/components/statisticsSections/returnData#B2B2B2"
                                     color={checkSuccess(percentOfTotalPointsWonOnReturn)}
                                 />
                             </Grommet>
@@ -62,7 +62,7 @@ const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="#B2B2B2"
+                                    background="pages/components/statisticsSections/returnData#B2B2B2"
                                     color={checkSuccess(percentOfReturnPointsWon)}
                                 />
                             </Grommet>

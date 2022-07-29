@@ -1,11 +1,11 @@
 import {Button, message, Modal} from "antd";
 import "antd/dist/antd.css";
 import React, {useState} from "react";
-import ReturnPanel from "./components/returnPanel";
-import ServingPanel from "./components/servingPanel";
-import LostPointModal from "./components/lostPointModal";
-import WonPointModal from "./components/wonPointModal";
-import styles from "./components/css/pointDashboard.module.css";
+import ReturnPanel from "./returnPanel";
+import ServingPanel from "./servingPanel";
+import LostPointModal from "./dashboardModals/lostPointModal";
+import WonPointModal from "./dashboardModals/wonPointModal";
+import styles from "./css/pointDashboard.module.css";
 
 interface PointDashboardProps {
     setShowDashboard: (showDashboard: boolean) => void;

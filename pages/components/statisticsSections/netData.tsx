@@ -1,4 +1,4 @@
-import styles from "./css/netDataPanel.module.css";
+import styles from "../css/netDataPanel.module.css";
 import React from 'react';
 import {
     Grommet,
@@ -17,7 +17,7 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import {Chart, ArcElement} from 'chart.js'
-import globalStyles from "./css/pointDashboard.module.css";
+import globalStyles from "../css/pointDashboard.module.css";
 Chart.register(ArcElement);
 
 ChartJS.register(
@@ -175,7 +175,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="#B2B2B2"
+                                    background="pages/components/statisticsSections/netData#B2B2B2"
                                     color={checkSuccess(percentPointsWonAtNet)}
                                 />
                             </Grommet>
@@ -192,7 +192,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="#B2B2B2"
+                                    background="pages/components/statisticsSections/netData#B2B2B2"
                                     color={checkSuccess(percentNetPointsWon)}
                                 />
                             </Grommet>
@@ -210,7 +210,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(percentPointsWonByWinners)}
-                                    background="#B2B2B2"
+                                    background="pages/components/statisticsSections/netData#B2B2B2"
                                 />
                             </Grommet>
                             <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
@@ -227,7 +227,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(percentPointsLostByUnforcedError)}
-                                    background="#B2B2B2"
+                                    background="pages/components/statisticsSections/netData#B2B2B2"
 
                                 />
                             </Grommet>
@@ -263,7 +263,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         margin="small"
                                         size="small"
                                         thickness="medium"
-                                        background="#B2B2B2"
+                                        background="pages/components/statisticsSections/netData#B2B2B2"
                                         color={checkSuccess(forehandVolleyAccuracy)}
                                     />
                                 </Grommet>
@@ -279,7 +279,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         margin="small"
                                         size="small"
                                         thickness="medium"
-                                        background="#B2B2B2"
+                                        background="pages/components/statisticsSections/netData#B2B2B2"
                                         color={checkSuccess(backhandVolleyAccuracy)}
                                     />
                                 </Grommet>
@@ -296,7 +296,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         size="small"
                                         thickness="medium"
                                         color={checkSuccess(overheadAccuracy)}
-                                        background="#B2B2B2"
+                                        background="pages/components/statisticsSections/netData#B2B2B2"
                                     />
                                 </Grommet>
                             </div>

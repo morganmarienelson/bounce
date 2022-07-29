@@ -4,11 +4,11 @@ import {Modal} from "antd";
 import { LinkPrevious} from "grommet-icons";
 import {Grommet} from "grommet/components";
 import React, {useState} from "react";
-import styles from "./components/css/matchStats.module.css";
-import ServingData from "./components/servingData";
-import ReturnData from "./components/returnData";
-import BaselineData from "./components/baselineData";
-import NetData from "./components/netData";
+import styles from "./css/matchStats.module.css";
+import ServingData from "./servingData";
+import ReturnData from "./statisticsSections/returnData";
+import BaselineData from "./statisticsSections/baselineData";
+import NetData from "./statisticsSections/netData";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;

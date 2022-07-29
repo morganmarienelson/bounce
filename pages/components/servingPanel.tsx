@@ -2,7 +2,7 @@ import { Button } from "antd";
 import React, { useState } from "react";
 import styles from "./css/servePanel.module.css";
 import { MatchDataEvents } from "../../machines/matchData";
-import ServeLocationModal from "./serveLocationModal";
+import ServeLocationModal from "./dashboardModals/serveLocationModal";
 
 interface ServingPanelProps {
   pointFinished: () => void;
