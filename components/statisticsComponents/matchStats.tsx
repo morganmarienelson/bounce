@@ -5,7 +5,7 @@ import { LinkPrevious} from "grommet-icons";
 import {Grommet} from "grommet/components";
 import React, {useState} from "react";
 import styles from "./css/matchStats.module.css";
-import ServingData from "./servingData";
+import ServingData from "./statisticsSections/servingData";
 import ReturnData from "./statisticsSections/returnData";
 import BaselineData from "./statisticsSections/baselineData";
 import NetData from "./statisticsSections/netData";

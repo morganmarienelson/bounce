@@ -1,19 +1,11 @@
-import { Fragment} from "react";
-import Link from 'next/link';
+import {ColorModeSwitcher} from "../components/ColorModeSwitch";
 
 function HomePage(){
     return(
-        <Fragment>
-            <h1>Dashboard</h1>
-            <ul></ul>
-            <li>
-                <Link href="/dashboard">
-                    Go to dashboard
-                </Link>
-            </li>
-        </Fragment>
-
-
+        <>
+        <ColorModeSwitcher/>
+           <h1>Home page</h1>
+        </>
     )
 }
 

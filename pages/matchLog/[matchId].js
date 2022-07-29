@@ -4,7 +4,7 @@ function MatchDetails(){
     const router = useRouter();
     return(
         <div>
-            this is the statistics page
+            This is the previous match data
         </div>
 
     )

@@ -1,8 +1,8 @@
-import MatchStats from "./matchStats";
-import PointDashboard from "./pointDashboard";
+import MatchStats from "./statisticsComponents/matchStats";
+import PointDashboard from "./dashboardComponents/pointDashboard";
 import {useState} from "react";
 import {useMachine} from "@xstate/react";
-import {matchData} from "../../machines/matchData";
+import {matchData} from "../machines/matchData";
 
 function PointInput() {
     const [showDashboard, setShowDashboard] = useState(true);

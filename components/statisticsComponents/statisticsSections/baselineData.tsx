@@ -1,5 +1,5 @@
 import styles from "../css/baselineDataPanel.module.css";
-import globalStyles from "../css/pointDashboard.module.css";
+import globalStyles from "../../dashboardComponents/css/pointDashboard.module.css";
 import React from 'react';
 import {
   Grommet,
@@ -177,7 +177,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     margin="small"
                     size="small"
                     thickness="medium"
-                    background="pages/components/statisticsSections/baselineData#B2B2B2"
+                    background="components/statisticsComponents/statisticsSections/baselineData#B2B2B2"
                     color={checkSuccess(percentPointsWonOnBaseline)}
                 />
               </Grommet>
@@ -194,7 +194,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     margin="small"
                     size="small"
                     thickness="medium"
-                    background="pages/components/statisticsSections/baselineData#B2B2B2"
+                    background="components/statisticsComponents/statisticsSections/baselineData#B2B2B2"
                     color={checkSuccess(percentBaselinePointsWon)}
                 />
               </Grommet>
@@ -212,7 +212,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     size="small"
                     thickness="medium"
                     color={checkPointsWonByWinner(percentPointsWonByWinners)}
-                    background="pages/components/statisticsSections/baselineData#B2B2B2"
+                    background="components/statisticsComponents/statisticsSections/baselineData#B2B2B2"
                 />
               </Grommet>
               <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
@@ -229,7 +229,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     size="small"
                     thickness="medium"
                     color={checkPointsByUnforcedErrors(percentPointsLostByUnforcedError)}
-                    background="pages/components/statisticsSections/baselineData#B2B2B2"
+                    background="components/statisticsComponents/statisticsSections/baselineData#B2B2B2"
 
                 />
               </Grommet>
@@ -263,7 +263,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                   margin="small"
                   size="small"
                   thickness="medium"
-                  background="pages/components/statisticsSections/baselineData#B2B2B2"
+                  background="components/statisticsComponents/statisticsSections/baselineData#B2B2B2"
                   color={checkSuccess(forehandAccuracy)}
                 />
             </Grommet>
@@ -279,7 +279,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                   margin="small"
                   size="small"
                   thickness="medium"
-                  background="pages/components/statisticsSections/baselineData#B2B2B2"
+                  background="components/statisticsComponents/statisticsSections/baselineData#B2B2B2"
                   color={checkSuccess(backhandAccuracy)}
                 />
               </Grommet>

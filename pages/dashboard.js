@@ -1,4 +1,4 @@
-import PointInput from "./components/pointInput";
+import PointInput from "../components/pointInput";
 
 function DashboardPage(){
     return(
