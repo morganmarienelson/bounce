@@ -6,6 +6,7 @@ import ServingData from "./statisticsSections/servingData";
 import ReturnData from "./statisticsSections/returnData";
 import BaselineData from "./statisticsSections/baselineData";
 import NetData from "./statisticsSections/netData";
+import SaveMatchPanel from "./statisticsSections/saveMatchPanel";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;
@@ -48,6 +49,7 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
                 <ReturnData state={state} checkSuccess={checkSuccess}/>
                 <BaselineData state={state} checkSuccess={checkSuccess}/>
                 <NetData state={state} checkSuccess={checkSuccess}/>
+                <SaveMatchPanel/>
             </div>
         </div>
     );
