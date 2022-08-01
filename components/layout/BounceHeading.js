@@ -21,6 +21,7 @@ function BounceHeading() {
                      <Heading className={styles.headingTitle}>
                          Bounce
                      </Heading>
+                     {/*
                      <Nav direction="column">
                          <Button
                              secondary
@@ -30,6 +31,7 @@ function BounceHeading() {
                              onClick={onUserSettings}
                          />
                      </Nav>
+                      */}
               </Header>
               </Grommet>
 

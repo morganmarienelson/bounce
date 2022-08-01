@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
     return (
         <>
         <Head>
-            <title>Next Tailwind Theme</title>
+            <title>Bounce</title>,
         </Head>
             <div>
                 <BounceHeading/>
