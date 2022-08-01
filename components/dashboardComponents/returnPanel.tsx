@@ -51,6 +51,15 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
         pointFinished();
     };
 
+    const onDoubleFault = () => {
+        send({type: MatchDataEvents.IncrementPointsWonOnReturn});
+        pointLog.push(MatchDataEvents.IncrementPointsWonOnReturn);
+        pointLog.push("filler");
+        pointLog.push("filler");
+        setShowServeButtons(false);
+        pointFinished();
+    };
+
     const pointUndone = () => {
         if (pointLog.length == 0) {
             message.error("There is not a recorded point to undo", 2);
@@ -86,9 +95,10 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 onClick={onMissReturnFirstServe}
                             >
                                 <div className={styles.btnTitle}>
-                                    Missed First
+                                    Missed     <br></br>
+                                    First
                                     <br></br>
-                                    Serve Return
+                                    Serve
                                 </div>
                             </Button>
                         </div>
@@ -103,13 +113,27 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 onClick={onMissReturnSecondServe}
                             >
                                 <div className={styles.btnTitle}>
-                                    Missed Second
+                                    Missed     <br></br>
+                                    Second
                                     <br></br>
-                                    Serve Return
+                                    Serve
                                 </div>
                             </Button>
                         </div>
-                        <div className={styles.btnCol}>
+                        <div className={styles.faultCol}>
+                            <Button
+                                className={styles.panelBtn}
+                                type="primary"
+                                style={{
+                                    background: "#26CC3E ",
+                                    border: "rgba(37, 187, 57, 0.986)",
+                                }}
+                                onClick={onDoubleFault}
+                            >
+                                <div className={styles.btnTitle}>Double <br></br> Fault</div>
+                            </Button>
+                        </div>
+                        <div className={styles.inCol}>
                             <Button
                                 className={styles.panelBtn}
                                 type="primary"
@@ -121,7 +145,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                     </>
                 ) : (
                     <>
-                        <div className={styles.btnCol}>
+                        <div className={styles.inCol}>
                             <Button
                                 className={styles.wonLostBtn}
                                 type="primary"
@@ -134,7 +158,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 <div className={styles.wonLostBtnTitle}>Won</div>
                             </Button>
                         </div>
-                        <div className={styles.btnCol}>
+                        <div className={styles.inCol}>
                             <Button
                                 className={styles.wonLostBtn}
                                 type="primary"
