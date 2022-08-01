@@ -1,13 +1,20 @@
 .btnContainer{
-    margin: 60px;
+    vertical-align: center;
+    padding:120px
 }
 
 .btnCol{
     display: flex;
     justify-content: center;
+    margin: 10px 0;
 }
 
 .btn {
-    background-color: white;
-    widows: 100%;
+    font-size: 30px;
+    color: pink;
+}
+
+.btnLabel{
+    font-size: 30px;
+    color: black;
 }

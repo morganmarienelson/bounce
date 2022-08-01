@@ -9,16 +9,16 @@ import styles from "./homepage.module.css"
 
 const HomePageNav = () => {
     return (
-    <div className={styles.btnContainer}>
-        <Nav direction="column">
+        <Nav direction="column" className={styles.btnContainer}>
             <div className={styles.btnCol}>
             <Link href='/dashboard'>
                 <div className={styles.btn}>
                     <Button
-                        secondary
-                        icon={<Scorecard color={'black'}/>}
-                        hoverIndicator
-                        label="New Match"
+                        primary
+                        icon={<Scorecard color={'white'}/>}
+                        label="Record New Match"
+                        size={"large"}
+                        color={"#480096"}
                     />
                 </div>
               </Link>
@@ -27,14 +27,15 @@ const HomePageNav = () => {
             <Link href='/matchLog'>
                 <div className={styles.btn}>
                 <Button
-                secondary
-                icon={<Database color={'black'}/>}
-                hoverIndicator
+                primary
+                icon={<Database color={'white'}/>}
                 label="View Previous Match"
+                size={"large"}
+                color={"#480096"}
+
             />    </div></Link>
             </div>
         </Nav>
-    </div>
     );
 
 }
