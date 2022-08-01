@@ -66,9 +66,15 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
         } else {
             const lastEntry = pointLog.pop();
             if (lastEntry == "filler") {
-                send({type: pointLog.pop()});
-                send({type: pointLog.pop()});
-                message.success("The last point has been removed from record", 2);
+                const nextEntry = pointLog.pop();
+                if (nextEntry == "filler"){
+                    send({type: pointLog.pop()});
+                    message.success("The last point has been removed from record", 2);
+                } else{
+                    send({type: nextEntry});
+                    send({type: pointLog.pop()});
+                    message.success("The last point has been removed from record", 2);
+                }
             } else {
                 send({type: lastEntry});
                 send({type: pointLog.pop()});

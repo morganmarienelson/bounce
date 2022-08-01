@@ -10,8 +10,7 @@ export function ColorModeSwitcher() {
                 onClick={()=> toggleColorScheme()}
                 size="2xl"
                 sx={(theme) => ({
-                    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[1]: theme.colors.gray[0],
-                    color: theme.colorScheme === "dark" ? theme.colors.yellow[4]: theme.colors.blue[6]
+                    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[1]: theme.colors.gray[7],
                 })}>
             {colorScheme === "dark" ? (
                 <Sun />) : (

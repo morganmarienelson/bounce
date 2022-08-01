@@ -59,7 +59,6 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
     setServeLocationModalVisible(true);
     if (secondServe) {
       send({ type: MatchDataEvents.IncrementNotReturnedSecondServes });
-      pointLog.push(MatchDataEvents.DecrementNotReturnedSecondServes);
     } else {
       send({ type: MatchDataEvents.IncrementNotReturnedFirstServes });
       pointLog.push(MatchDataEvents.DecrementNotReturnedFirstServes);
