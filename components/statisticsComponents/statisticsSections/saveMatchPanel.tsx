@@ -5,16 +5,22 @@ import SaveMatchModal from "../saveMatchModal";
 
 const SaveMatchPanel = () => {
     const [showSaveMatchModal, setShowSaveMatchModal] = useState(false);
+    const [matchSaved, setMatchSaved] = useState(false);
 
     const confirmExit = () => {
-        Modal.confirm({
-            title: "Are you sure that you want to go to the home screen? This match has not been saved.",
-            okType: "danger",
-            onOk: () => {
-                window.location.replace("/");
+        if (!matchSaved){
+            Modal.confirm({
+                title: "Are you sure that you want to go to the home screen? This match has not been saved.",
+                okType: "danger",
+                onOk: () => {
+                    window.location.replace("/");
 
-            },
-        });
+                },
+            });
+        } else {
+            window.location.replace("/");
+        }
+
     };
 
     const saveMatch = () => {
@@ -44,12 +50,15 @@ const SaveMatchPanel = () => {
                     border: "#480096",
                 }}
                 onClick={saveMatch}
-                className={styles.saveBtn}>
+                className={styles.saveBtn}
+                disabled={matchSaved}
+
+            >
 
                 <div className={styles.btnTitle}> Save Match </div>
             </Button>
             </div>
-            <SaveMatchModal setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal}/>
+            <SaveMatchModal setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal} setMatchSaved={setMatchSaved}/>
         </div>
 
     )

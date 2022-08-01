@@ -29,7 +29,7 @@ const HomePageNav = () => {
                 <Button
                 primary
                 icon={<Database color={'white'}/>}
-                label="View Previous Match"
+                label="View Previous Matches"
                 size={"large"}
                 color={"#480096"}
 
