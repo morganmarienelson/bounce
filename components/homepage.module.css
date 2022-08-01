@@ -1,0 +1,13 @@
+.btnContainer{
+    margin: 60px;
+}
+
+.btnCol{
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background-color: white;
+    widows: 100%;
+}

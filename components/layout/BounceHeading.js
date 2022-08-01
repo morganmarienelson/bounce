@@ -2,11 +2,18 @@ import Link from "next/link";
 import {Button, Grommet, Heading} from "grommet/components";
 import {Header,  Nav } from 'grommet';
 import styles from "./navBar.module.css"
-import React from "react";
-import {Home} from "grommet-icons";
+import React, {useState} from "react";
+import {UserSettings} from "grommet-icons";
+import SettingsModal from "./settingsModal";
 
 
-function NavBar() {
+function BounceHeading() {
+    const [showSettingsModal, setShowSettingsModal ] = useState(false);
+
+    const onUserSettings = () => {
+        setShowSettingsModal(true);
+    }
+
     return (
         <>
              <Grommet>
@@ -15,21 +22,22 @@ function NavBar() {
                          Bounce
                      </Heading>
                      <Nav direction="column">
-                         <Link href='/'>
                          <Button
                              secondary
                              style={{marginLeft: 63}}
-                             icon={<Home color={'white'}/>}
+                             icon={<UserSettings color={'white'}/>}
                              hoverIndicator
+                             onClick={onUserSettings}
                          />
-                         </Link>
                      </Nav>
               </Header>
               </Grommet>
+
+            <SettingsModal settingsModalVisible={showSettingsModal} setSettingsModalVisible={setShowSettingsModal}/>
 
             </>
         )
 
 }
 
-export default NavBar;
+export default BounceHeading;

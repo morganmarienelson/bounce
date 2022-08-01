@@ -1,5 +1,5 @@
 import Head from "next/head";
-import NavBar from "./NavBar";
+import BounceHeading from "./BounceHeading";
 
 const Layout = ({ children }) => {
     return (
@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
             <title>Next Tailwind Theme</title>
         </Head>
             <div>
-                <NavBar/>
+                <BounceHeading/>
                 <main>
                     {children}
                 </main>
