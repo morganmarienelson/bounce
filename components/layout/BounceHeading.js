@@ -1,9 +1,7 @@
-import Link from "next/link";
-import {Button, Grommet, Heading} from "grommet/components";
-import {Header,  Nav } from 'grommet';
+import {Grommet, Heading} from "grommet/components";
+import {Header } from 'grommet';
 import styles from "./navBar.module.css"
 import React, {useState} from "react";
-import {UserSettings} from "grommet-icons";
 import SettingsModal from "./settingsModal";
 
 

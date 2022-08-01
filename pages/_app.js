@@ -1,6 +1,5 @@
 import Layout from "../components/layout/Layout";
 import {MantineProvider, ColorSchemeProvider} from "@mantine/core";
-import {useColorScheme} from "@mantine/hooks";
 import {useState} from "react";
 import {getCookie, setCookies} from "cookies-next";
 
