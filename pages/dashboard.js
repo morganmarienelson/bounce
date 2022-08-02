@@ -1,9 +1,10 @@
 import PointInput from "../components/pointInput";
 
-function DashboardPage(){
+
+function Dashboard() {
     return(
         <PointInput/>
     )
 }
 
-export default DashboardPage;
+export default Dashboard;

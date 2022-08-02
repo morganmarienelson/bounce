@@ -2,7 +2,7 @@ import Layout from "../components/layout/Layout";
 import {MantineProvider, ColorSchemeProvider} from "@mantine/core";
 import {useState} from "react";
 import {getCookie, setCookies} from "cookies-next";
-
+import { SessionProvider } from 'next-auth/react';
 
 export default function MyApp(props) {
     const {Component, pageProps} = props;
@@ -16,7 +16,7 @@ export default function MyApp(props) {
 }
 
     return (
-
+        <SessionProvider session={props.session}>
             <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
                 <Layout>
                 <MantineProvider theme={{colorScheme}} withGlobalStyles withNormalizeCSS>
@@ -24,6 +24,7 @@ export default function MyApp(props) {
                 </MantineProvider>
                 </Layout>
             </ColorSchemeProvider>
+        </SessionProvider>
 
 );
 }
