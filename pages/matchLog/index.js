@@ -1,6 +1,7 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {getSession, signIn} from "next-auth/react";
+import styles from "../../components/matchLog.module.css"
 
 function StatisticsPage(props){
     const router = useRouter();
@@ -39,9 +40,9 @@ function StatisticsPage(props){
         <div>
             {matches.map((match) => {
                 return (
-                    <div key={match.id}>
-                        {match.id}
-                    </div>
+                        <div key={match.id} className={styles.matchLog}>
+                            {match.playerName} vs {match.opponentName} {match.id}
+                        </div>
                 )
             })}
         </div>
