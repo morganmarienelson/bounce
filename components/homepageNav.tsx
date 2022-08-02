@@ -2,12 +2,28 @@ import {Nav} from "grommet";
 import Link from "next/link";
 import {Button} from "grommet/components";
 import {Database, Scorecard} from "grommet-icons";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./homepage.module.css"
+import {getSession, signIn} from "next-auth/react";
 
 
 
 const HomePageNav = () => {
+    const [showPreviousButton, setShowPreviousButton] = useState(false)
+
+    useEffect(() => {
+        const securePage = async () => {
+            const session = await getSession();
+            if (!session) {
+                setShowPreviousButton(false)
+            } else {
+                setShowPreviousButton(true)
+            }
+        }
+        securePage();
+    }, [])
+
+
     return (
         <Nav direction="column" className={styles.btnContainer}>
             <div className={styles.btnCol}>
@@ -24,6 +40,9 @@ const HomePageNav = () => {
               </Link>
             </div>
             <div className={styles.btnCol}>
+                {showPreviousButton && (
+
+
             <Link href='/matchLog'>
                 <div className={styles.btn}>
                 <Button
@@ -34,6 +53,7 @@ const HomePageNav = () => {
                 color={"#480096"}
 
             />    </div></Link>
+                )}
             </div>
         </Nav>
     );

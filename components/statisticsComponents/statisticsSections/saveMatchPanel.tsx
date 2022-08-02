@@ -1,14 +1,28 @@
 import {Button, Modal} from "antd";
 import styles from "../css/savePanel.module.css"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import SaveMatchModal from "../saveMatchModal";
+import {getSession, signIn} from "next-auth/react";
 
 const SaveMatchPanel = () => {
     const [showSaveMatchModal, setShowSaveMatchModal] = useState(false);
     const [matchSaved, setMatchSaved] = useState(false);
+    const [signedIn, setSignedIn] = useState(false)
+
+    useEffect(() => {
+        const securePage = async () => {
+            const session = await getSession();
+            if (!session) {
+                setSignedIn(false);
+            } else {
+                setSignedIn(true);
+            }
+        }
+        securePage();
+    }, [])
 
     const confirmExit = () => {
-        if (!matchSaved){
+        if (!matchSaved && signedIn){
             Modal.confirm({
                 title: "Are you sure that you want to go to the home screen? This match has not been saved.",
                 okType: "danger",
@@ -17,14 +31,15 @@ const SaveMatchPanel = () => {
 
                 },
             });
-        } else {
+        }
+        else {
             window.location.replace("/");
         }
 
     };
 
     const saveMatch = () => {
-        setShowSaveMatchModal(true);
+            setShowSaveMatchModal(true);
     }
 
     return (
@@ -42,6 +57,7 @@ const SaveMatchPanel = () => {
                 <div className={styles.btnTitle}>Back to Home</div>
             </Button>
             </div>
+            {signedIn && (
             <div className={styles.btn}>
             <Button
                 type="primary"
@@ -52,12 +68,12 @@ const SaveMatchPanel = () => {
                 onClick={saveMatch}
                 className={styles.saveBtn}
                 disabled={matchSaved}
-
             >
 
                 <div className={styles.btnTitle}> Save Match </div>
             </Button>
             </div>
+                )}
             <SaveMatchModal setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal} setMatchSaved={setMatchSaved}/>
         </div>
 
