@@ -10,11 +10,11 @@ interface SaveMatchModalProps{
 }
 
 const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModal, setMatchSaved}) => {
+    const [match, setMatch] = useState([]);
 
     const onModalOk = () => {
         setShowModal(false);
         setMatchSaved(true);
-        saveMatch();
     };
 
     const onModalCancel = () => {
@@ -23,13 +23,14 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
     };
 
     const onFinish = (values: any) => {
-        saveMatch(values);
+        setMatch(values);
+        saveMatch();
     };
 
-    const saveMatch = async (values : any) => {
+    const saveMatch = async () => {
         const response = await fetch('api/matches', {
             method: 'POST',
-            body: JSON.stringify({values }),
+            body: JSON.stringify({ match }),
             headers: {
             'Content-Type': 'application/json',
             },

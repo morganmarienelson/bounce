@@ -41,7 +41,12 @@ function StatisticsPage(props){
             {matches.map((match) => {
                 return (
                         <div key={match.id} className={styles.matchLog}>
-                            {match.playerName} vs {match.opponentName} {match.id}
+                            <div className={styles.names}>
+                                {match.playerName} vs {match.opponentName}
+                            </div>
+                            <div className={styles.names}>
+                                {match.id}
+                            </div>
                         </div>
                 )
             })}
