@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import SettingsModal from "./settingsModal";
 import Link from "next/link";
 import { signIn, signOut, useSession} from "next-auth/react";
+import {redirect} from "next/dist/server/api-utils";
 
 
 function BounceHeading() {
@@ -17,10 +18,9 @@ function BounceHeading() {
                      <Heading className={styles.headingTitle}>
                          Bounce
                      </Heading>
-                     <Nav direction="row" className={` ${!session && loading ? 'loading' : 'loaded' }`}>
+                     <Nav direction="row">
                          {!loading && !session && (
                         <Link href="/api/auth/signin" onClick={e => {
-                            e.preventDefault()
                             signIn('github')
                         }}>
                             <a>Sign In</a>
@@ -28,7 +28,6 @@ function BounceHeading() {
                          )}
                          { session && (
                          <Link href="/api/auth/signout" onClick={e => {
-                             e.preventDefault()
                              signOut()
                          }}>
                              <a>Sign Out</a>
