@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Form, Input, Modal, Radio, Select} from "antd";
 import styles from "../dashboardComponents/css/modal.module.css";
@@ -10,15 +10,30 @@ interface SaveMatchModalProps{
 }
 
 const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModal, setMatchSaved}) => {
+    const [match, setMatch ] = useState([])
+
     const onModalOk = () => {
         setShowModal(false);
         setMatchSaved(true);
+        saveMatch();
     };
 
     const onModalCancel = () => {
         setShowModal(false);
 
     };
+
+    const saveMatch = async () => {
+        const response = await fetch('api/matches', {
+            method: 'POST',
+            body: JSON.stringify({match }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        })
+        const data = await response.json();
+        console.log(data);
+    }
 
     return (
         <Modal
