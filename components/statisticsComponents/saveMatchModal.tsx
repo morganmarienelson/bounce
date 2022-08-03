@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Button, Form, Input, Modal, Radio, Select} from "antd";
 import styles from "../dashboardComponents/css/modal.module.css";
@@ -10,18 +10,24 @@ interface SaveMatchModalProps{
 }
 
 const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModal, setMatchSaved}) => {
+    const [componentDisabled, setComponentDisabled] = useState(false);
 
     const onModalOk = () => {
-        setShowModal(false);
-        setMatchSaved(true);
-    };
-
-    const onModalCancel = () => {
-        setShowModal(false);
-
+        if (componentDisabled){
+            setMatchSaved(true);
+            setShowModal(false);
+        } else {
+            Modal.confirm({
+                title: "Are you sure that you want to close this form? You did not press submit.",
+                onOk: () => {
+                    setShowModal(false);
+                },
+            });
+        }
     };
 
     const onFinish = async (values: any) => {
+        setComponentDisabled(true);
         const match = values;
         const response = await fetch('api/matches', {
             method: 'POST',
@@ -43,12 +49,13 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
     return (
         <Modal
             visible={showModal}
-            onCancel={onModalCancel}
+            onCancel={onModalOk}
             onOk={onModalOk}
             destroyOnClose={true}
         >
             <div className={styles.title}>Match Information</div>
-            <Form name="Match Information" scrollToFirstError className={styles.form} onFinish={onFinish} validateMessages={validateMessages}>
+            <Form name="Match Information" scrollToFirstError className={styles.form} onFinish={onFinish} validateMessages={validateMessages}
+                  disabled={componentDisabled}>
                 <Form.Item label="Player's Name" name="playerName"  rules={[
                     {
                         required: true,
@@ -107,7 +114,7 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
                 </Form.Item>
                 <Form.Item
                 >
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit" >
                         Submit
                     </Button>
                 </Form.Item>
