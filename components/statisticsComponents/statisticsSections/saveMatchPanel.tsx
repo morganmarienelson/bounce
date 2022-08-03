@@ -3,11 +3,13 @@ import styles from "../css/savePanel.module.css"
 import {useEffect, useState} from "react";
 import SaveMatchModal from "../saveMatchModal";
 import {getSession, signIn} from "next-auth/react";
+import {useRouter} from "next/router";
 
 const SaveMatchPanel = () => {
     const [showSaveMatchModal, setShowSaveMatchModal] = useState(false);
     const [matchSaved, setMatchSaved] = useState(false);
     const [signedIn, setSignedIn] = useState(false)
+    const router = useRouter();
 
     useEffect(() => {
         const securePage = async () => {
@@ -27,13 +29,13 @@ const SaveMatchPanel = () => {
                 title: "Are you sure that you want to go to the home screen? This match has not been saved.",
                 okType: "danger",
                 onOk: () => {
-                    window.location.replace("/");
+                    router.push("/");
 
                 },
             });
         }
         else {
-            window.location.replace("/");
+            router.push("/");
         }
 
     };

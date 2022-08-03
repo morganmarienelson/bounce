@@ -6,7 +6,7 @@ export default function handler(req, res){
     } else if (req.method === "POST"){
         const match = req.body.match;
         const newMatch = {
-            id: 3,
+            id: Date.now(),
             playerName: match.playerName,
             opponentName: match.opponentName,
             courtType: match.courtType,

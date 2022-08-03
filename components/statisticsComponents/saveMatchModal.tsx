@@ -32,7 +32,6 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
         })
         const data = await response.json();
         matches.push(data);
-        console.log(matches);
     };
 
 
@@ -103,18 +102,10 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
                         <Radio value="8"> 8 Game Pro Set </Radio>
                     </Radio.Group>
                 </Form.Item >
-                <Form.Item label="Additional Notes"  name="notes"    rules={[
-                    {
-                        required: true,
-                    },
-                ]}>
+                <Form.Item label="Additional Notes"  name="notes">
                     <Input.TextArea />
                 </Form.Item>
                 <Form.Item
-                    wrapperCol={{
-                        span: 12,
-                        offset: 6,
-                    }}
                 >
                     <Button type="primary" htmlType="submit">
                         Submit
