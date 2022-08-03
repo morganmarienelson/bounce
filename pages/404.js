@@ -6,8 +6,6 @@ import {Button} from "grommet/components";
 
 
 function PageNotFound(){
-
-
     return (
         <div className={styles.container}>
             <div className={styles.text}>
@@ -24,7 +22,6 @@ function PageNotFound(){
                                border: "#480096",
                            }}
                        >
-
                            <div className={styles.btnLabel}> Back To Home</div>
                        </Button>
                    </Link>

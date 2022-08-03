@@ -1,8 +1,7 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {getSession, signIn} from "next-auth/react";
-import styles from "../../components/matchLog.module.css"
-import Link from "next/link";
+import styles from "../../css/matchLog.module.css"
 
 function StatisticsPage(props){
     const router = useRouter();

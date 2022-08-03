@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import "antd/dist/antd.css";
 import {Button, Form, Input, Modal, Radio, Select} from "antd";
 import styles from "../dashboardComponents/css/modal.module.css";
-
+import {matches} from "../../data/matches";
 interface SaveMatchModalProps{
     showModal : boolean;
     setShowModal: (showModal: boolean) => void;
@@ -10,7 +10,6 @@ interface SaveMatchModalProps{
 }
 
 const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModal, setMatchSaved}) => {
-    const [match, setMatch] = useState([]);
 
     const onModalOk = () => {
         setShowModal(false);
@@ -22,21 +21,20 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
 
     };
 
-    const onFinish = (values: any) => {
-        setMatch(values);
-        saveMatch();
-    };
-
-    const saveMatch = async () => {
+    const onFinish = async (values: any) => {
+        const match = values;
         const response = await fetch('api/matches', {
             method: 'POST',
             body: JSON.stringify({ match }),
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
         })
         const data = await response.json();
-    }
+        matches.push(data);
+        console.log(matches);
+    };
+
 
     const validateMessages = {
         required: '${label} is required!',
@@ -56,8 +54,8 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
                     {
                         required: true,
                     },
-                ]}>
-                    <Input />
+                ]} >
+                    <Input  />
                 </Form.Item>
                 <Form.Item label="Opponent's Name" name="opponentName"     rules={[
                     {

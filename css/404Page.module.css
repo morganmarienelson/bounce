@@ -2,7 +2,7 @@
     width: 90%;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin: 40px auto;
+    margin: 50px auto;
 }
 
 .pic{
@@ -12,7 +12,7 @@
 }
 
 .text{
-    margin: auto;
+    margin: auto 20px auto auto;
     grid-column: span 2 / span 2;
 }
 
@@ -71,9 +71,13 @@
 @media (max-width:800px) {
     .container {
         grid-template-columns: repeat(1, minmax(0, 1fr));
+        margin: 20px auto;
     }
     .pic{
-        margin-bottom: 20px;
+        margin: 20px;
+    }
+    .text{
+       margin: auto
     }
 
 }
