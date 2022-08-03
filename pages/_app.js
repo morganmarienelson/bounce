@@ -12,8 +12,7 @@ export default function MyApp(props) {
     const nextColorScheme = value || (colorScheme === "dark" ? 'light' : "dark" );
     setColorScheme(nextColorScheme);
     setCookies('mantine-color-scheme', nextColorScheme, {maxAge: 60*60*24*30});
-
-}
+    }
 
     return (
         <SessionProvider session={props.session}>

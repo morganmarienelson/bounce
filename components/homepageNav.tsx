@@ -4,7 +4,7 @@ import {Button} from "grommet/components";
 import {Database, Scorecard} from "grommet-icons";
 import React, {useEffect, useState} from "react";
 import styles from "./homepage.module.css"
-import {getSession, signIn} from "next-auth/react";
+import {getSession} from "next-auth/react";
 
 
 
@@ -41,8 +41,6 @@ const HomePageNav = () => {
             </div>
             <div className={styles.btnCol}>
                 {showPreviousButton && (
-
-
             <Link href='/matchLog'>
                 <div className={styles.btn}>
                 <Button
