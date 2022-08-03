@@ -1,6 +1,6 @@
 export const matches = [
     {
-        id: "4/20/2020",
+        id: 1,
         playerName: "Morgan",
         opponentName: "Colin",
         courtType: "Grass",
@@ -10,7 +10,7 @@ export const matches = [
         notes: "first test data",
     },
     {
-        id:  "4/21/2020",
+        id:  2,
         playerName: "Elaine",
         opponentName: "Linds",
         courtType: "Grass",
