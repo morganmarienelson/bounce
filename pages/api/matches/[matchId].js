@@ -1,5 +1,4 @@
 import {prevMatchStats} from "../../../data/prevMatchStats";
-import {matches} from "../../../data/matches";
 
 export default function handler (req, res){
     const {matchId} = req.query;
@@ -9,7 +8,6 @@ export default function handler (req, res){
     } else if (req.method === "DELETE"){
         const deleteMatch = prevMatchStats.find(stats => stats.id === parseInt(matchId));
         const index = prevMatchStats.findIndex(stats => stats.id === parseInt(matchId));
-        matches.splice(index, 1);
         prevMatchStats.splice(index, 1);
         res.status(200).json(deleteMatch);
     }

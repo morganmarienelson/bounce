@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import "antd/dist/antd.css";
-import {Col, Form, Modal, Radio, Row, Switch} from "antd";
+import {Modal} from "antd";
 import styles from "../css/prevMatchDetailsModal.module.css";
 
 interface PrevMatchDetailsModalProps {

@@ -7,6 +7,7 @@ import NewReturnData from "./newReturnData";
 import NewBaselineStats from "./newBaselineStats";
 import NewNetStats from "./newNetStats";
 import SaveMatchPanel from "./saveMatchPanel";
+import BackToHomeHeading from "../backToHomeHeading";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;
@@ -14,17 +15,6 @@ interface MatchStatsProps {
 }
 
 const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
-    const onExit = () => {
-        Modal.confirm({
-            title:
-                "Are you sure that you want to exit? You will go back to recording data for this match.",
-            okType: "danger",
-            onOk: () => {
-                setShowDashboard(true);
-            },
-        });
-    };
-
     const checkSuccess = (value: number) => {
         if (value >= 85) {
             return "#129729";
@@ -44,6 +34,7 @@ const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, stat
 
     return (
         <div>
+            <BackToHomeHeading/>
             <div className={styles.fullPage}>
                 <NewServingStats state={state} checkSuccess={checkSuccess}/>
                 <NewReturnData state={state} checkSuccess={checkSuccess}/>

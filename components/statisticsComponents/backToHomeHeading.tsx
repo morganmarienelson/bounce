@@ -1,12 +1,12 @@
 import {Grommet, Heading} from "grommet/components";
 import {Header, Nav} from 'grommet';
-import styles from "../../layout/BounceHeading.module.css"
+import styles from "../layout/BounceHeading.module.css"
 import Link from "next/Link";
-import {Home, LinkPrevious} from "grommet-icons";
+import {Home} from "grommet-icons";
 import React from "react";
 
 
-const PrevMatchLogHeading = () => {
+const BackToHomeHeading = () => {
     return (
         <>
             <Grommet>
@@ -28,4 +28,4 @@ const PrevMatchLogHeading = () => {
 
 }
 
-export default PrevMatchLogHeading;
+export default BackToHomeHeading;

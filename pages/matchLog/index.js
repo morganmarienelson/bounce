@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {getSession, signIn} from "next-auth/react";
 import styles from "../../css/matchLog.module.css"
 import {useRouter} from "next/router";
-import PrevMatchLogHeading from "../../components/statisticsComponents/prevStatsComponents/prevMatchLogHeading";
+import BackToHomeHeading from "../../components/statisticsComponents/backToHomeHeading";
 import {Nav} from "grommet";
 import PrevMatchDetailsModal from "../../components/statisticsComponents/prevStatsComponents/prevMatchDetailsModal";
 import {Modal} from "antd";
@@ -26,11 +26,6 @@ function StatisticsPage(props){
         } else {
             setLoading(false);
         }
-    }
-    const fetchMatchDetails = async () => {
-        const response = await fetch('api/matches')
-        const data = await response.json();
-        setMatches(data)
     }
 
     useEffect(() => {
@@ -67,7 +62,7 @@ function StatisticsPage(props){
 
     return(
         <>
-        <PrevMatchLogHeading/>
+        <BackToHomeHeading/>
         <div>
             {matches.map((match) => {
                 return (

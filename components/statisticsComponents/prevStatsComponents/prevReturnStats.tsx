@@ -14,8 +14,6 @@ const PrevReturnStats: React.FC<PrevReturnStatsProps> = ({stats, checkSuccess}) 
     const percentOfTotalPointsWonOnReturn = stats.percentOfTotalPointsWonOnReturn;
     const percentOfReturnPointsWon= stats.percentOfReturnPointsWon;
 
-
-
     return (
         <div>
             <div className={styles.heading}>Return Statistics</div>

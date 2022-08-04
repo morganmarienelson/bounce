@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Button, Form, Input, Modal, Radio, Select} from "antd";
 import styles from "../../dashboardComponents/css/modal.module.css";
-import {matches} from "../../../data/matches";
+//import {matches} from "../../../data/matches";
 interface SaveMatchModalProps{
     showModal : boolean;
     setShowModal: (showModal: boolean) => void;
@@ -28,16 +28,16 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
 
     const onFinish = async (values: any) => {
         setComponentDisabled(true);
-        const match = values;
-        const response = await fetch('api/matches', {
-            method: 'POST',
-            body: JSON.stringify({ match }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        const data = await response.json();
-        matches.push(data);
+        // const match = values;
+        // const response = await fetch('api/matches', {
+        //     method: 'POST',
+        //     body: JSON.stringify({ match }),
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // })
+        // const data = await response.json();
+        // matches.push(data);
     };
 
 
