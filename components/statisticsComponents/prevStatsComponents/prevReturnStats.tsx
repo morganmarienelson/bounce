@@ -5,30 +5,16 @@ import {
 } from "grommet/components";
 import styles from "../css/returnDataPanel.module.css";
 
-interface ReturnDataProps {
-    state: any;
+interface PrevReturnStatsProps {
+    stats: any;
     checkSuccess: (value: number)  => string;
 }
 
-const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
-    const totalReturnPoints =
-        +JSON.stringify(state.context.pointsWonOnReturn) +
-        +JSON.stringify(state.context.pointsLostOnReturn);
+const PrevReturnStats: React.FC<PrevReturnStatsProps> = ({stats, checkSuccess}) => {
+    const percentOfTotalPointsWonOnReturn = stats.percentOfTotalPointsWonOnReturn;
+    const percentOfReturnPointsWon= stats.percentOfReturnPointsWon;
 
-    const totalPoints =
-        totalReturnPoints +
-        +JSON.stringify(state.context.pointsWonOnServe) +
-        +JSON.stringify(state.context.pointsLostOnServe);
 
-    const percentOfReturnPointsWon = +(
-        (+JSON.stringify(state.context.pointsWonOnReturn) / totalReturnPoints) *
-        100
-    ).toPrecision(2);
-
-    const percentOfTotalPointsWonOnReturn = +(
-        (+JSON.stringify(state.context.pointsWonOnReturn) / totalPoints) *
-        100
-    ).toPrecision(2);
 
     return (
         <div>
@@ -45,7 +31,7 @@ const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/returnData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newReturnData#B2B2B2"
                                     color={checkSuccess(percentOfTotalPointsWonOnReturn)}
                                 />
                             </Grommet>
@@ -62,7 +48,7 @@ const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/returnData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newReturnData#B2B2B2"
                                     color={checkSuccess(percentOfReturnPointsWon)}
                                 />
                             </Grommet>
@@ -71,20 +57,20 @@ const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
                     </div>
                     <div className={styles.returnColLastCol}>
                         <div className={styles.numberMissedCol}>
-                        <div className={styles.missedReturnsHeading}>Missed First Serve Returns:</div>
-                        <div
-                            className={styles.numberMissed}>{+JSON.stringify(state.context.missedFirstServeReturns)}</div>
+                            <div className={styles.missedReturnsHeading}>Missed First Serve Returns:</div>
+                            <div
+                                className={styles.numberMissed}>{stats.missedFirstServeReturns}</div>
                         </div>
                         <div className={styles.numberMissedCol}>
-                        <div className={styles.missedReturnsHeading}>Missed Second Serve Returns:</div>
-                        <div
-                            className={styles.numberMissed}>{+JSON.stringify(state.context.missedSecondServeReturns)}</div>
+                            <div className={styles.missedReturnsHeading}>Missed Second Serve Returns:</div>
+                            <div
+                                className={styles.numberMissed}>{stats.missedSecondServeReturns}</div>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default ReturnData;
+export default PrevReturnStats;

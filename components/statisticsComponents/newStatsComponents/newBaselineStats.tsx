@@ -36,7 +36,7 @@ interface BaselineDataProps {
   checkSuccess: (value: number)  => string;
 }
 
-const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
+const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
   const totalPoints =
     +JSON.stringify(state.context.pointsWonOnServe) +
     +JSON.stringify(state.context.pointsLostOnServe) +
@@ -177,7 +177,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     margin="small"
                     size="small"
                     thickness="medium"
-                    background="components/statisticsComponents/newStatsComponents/baselineData#B2B2B2"
+                    background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
                     color={checkSuccess(percentPointsWonOnBaseline)}
                 />
               </Grommet>
@@ -194,7 +194,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     margin="small"
                     size="small"
                     thickness="medium"
-                    background="components/statisticsComponents/newStatsComponents/baselineData#B2B2B2"
+                    background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
                     color={checkSuccess(percentBaselinePointsWon)}
                 />
               </Grommet>
@@ -212,7 +212,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     size="small"
                     thickness="medium"
                     color={checkPointsWonByWinner(percentPointsWonByWinners)}
-                    background="components/statisticsComponents/newStatsComponents/baselineData#B2B2B2"
+                    background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
                 />
               </Grommet>
               <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
@@ -229,7 +229,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                     size="small"
                     thickness="medium"
                     color={checkPointsByUnforcedErrors(percentPointsLostByUnforcedError)}
-                    background="components/statisticsComponents/newStatsComponents/baselineData#B2B2B2"
+                    background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
 
                 />
               </Grommet>
@@ -263,7 +263,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                   margin="small"
                   size="small"
                   thickness="medium"
-                  background="components/statisticsComponents/newStatsComponents/baselineData#B2B2B2"
+                  background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
                   color={checkSuccess(forehandAccuracy)}
                 />
             </Grommet>
@@ -279,7 +279,7 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
                   margin="small"
                   size="small"
                   thickness="medium"
-                  background="components/statisticsComponents/newStatsComponents/baselineData#B2B2B2"
+                  background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
                   color={checkSuccess(backhandAccuracy)}
                 />
               </Grommet>
@@ -292,4 +292,4 @@ const BaselineData: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
   );
 };
 
-export default BaselineData;
+export default NewBaselineStats;

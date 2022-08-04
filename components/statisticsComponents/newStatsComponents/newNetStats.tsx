@@ -36,7 +36,7 @@ interface NetDataProps {
     checkSuccess: (value: number)  => string;
 }
 
-const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
+const NewNetStats: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
     const totalPoints =
         +JSON.stringify(state.context.pointsWonOnServe) +
         +JSON.stringify(state.context.pointsLostOnServe) +
@@ -175,7 +175,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                     color={checkSuccess(percentPointsWonAtNet)}
                                 />
                             </Grommet>
@@ -192,7 +192,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                     color={checkSuccess(percentNetPointsWon)}
                                 />
                             </Grommet>
@@ -210,7 +210,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(percentPointsWonByWinners)}
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                 />
                             </Grommet>
                             <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
@@ -227,7 +227,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(percentPointsLostByUnforcedError)}
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
 
                                 />
                             </Grommet>
@@ -263,7 +263,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         margin="small"
                                         size="small"
                                         thickness="medium"
-                                        background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                        background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                         color={checkSuccess(forehandVolleyAccuracy)}
                                     />
                                 </Grommet>
@@ -279,7 +279,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         margin="small"
                                         size="small"
                                         thickness="medium"
-                                        background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                        background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                         color={checkSuccess(backhandVolleyAccuracy)}
                                     />
                                 </Grommet>
@@ -296,7 +296,7 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
                                         size="small"
                                         thickness="medium"
                                         color={checkSuccess(overheadAccuracy)}
-                                        background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                        background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                     />
                                 </Grommet>
                             </div>
@@ -307,4 +307,4 @@ const NetData: React.FC<NetDataProps> = ({ state, checkSuccess }) => {
     );
 };
 
-export default NetData;
+export default NewNetStats;

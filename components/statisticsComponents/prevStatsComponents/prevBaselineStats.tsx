@@ -30,12 +30,12 @@ ChartJS.register(
     Filler
 )
 
-interface PrevBaselineDataProps {
+interface PrevBaselineStatsProps {
    stats : any;
     checkSuccess: (value: number)  => string;
 }
 
-const PrevBaselineData: React.FC<PrevBaselineDataProps> = ({ stats, checkSuccess }) => {
+const PrevBaselineStats: React.FC<PrevBaselineStatsProps> = ({ stats, checkSuccess }) => {
     const percentPointsWonOnBaseline = stats.percentPointsWonOnBaseline;
     const percentBaselinePointsWon = stats.percentBaselinePointsWon;
     const percentPointsWonByWinners= stats.percentPointsWonByWinnersOnBaseline;
@@ -238,4 +238,4 @@ const PrevBaselineData: React.FC<PrevBaselineDataProps> = ({ stats, checkSuccess
     );
 };
 
-export default PrevBaselineData;
+export default PrevBaselineStats;

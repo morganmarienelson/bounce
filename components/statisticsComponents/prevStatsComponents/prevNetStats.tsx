@@ -31,12 +31,12 @@ ChartJS.register(
     Filler
 )
 
-interface PrevNetDataProps {
+interface PrevNetStatsProps {
     stats: any;
     checkSuccess: (value: number)  => string;
 }
 
-const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
+const PrevNetStats: React.FC<PrevNetStatsProps> = ({ stats, checkSuccess }) => {
     const percentPointsWonAtNet =stats.percentPointsWonAtNet;
     const percentNetPointsWon = stats.percentNetPointsWon;
     const percentPointsWonByWinners = stats.percentPointsWonByWinnersAtNet;
@@ -102,7 +102,7 @@ const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                     color={checkSuccess(percentPointsWonAtNet)}
                                 />
                             </Grommet>
@@ -119,7 +119,7 @@ const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                     color={checkSuccess(percentNetPointsWon)}
                                 />
                             </Grommet>
@@ -137,7 +137,7 @@ const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(percentPointsWonByWinners)}
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                 />
                             </Grommet>
                             <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
@@ -154,7 +154,7 @@ const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(percentPointsLostByUnforcedError)}
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
 
                                 />
                             </Grommet>
@@ -190,7 +190,7 @@ const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                     color={checkSuccess(forehandVolleyAccuracy)}
                                 />
                             </Grommet>
@@ -206,7 +206,7 @@ const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                     color={checkSuccess(backhandVolleyAccuracy)}
                                 />
                             </Grommet>
@@ -223,7 +223,7 @@ const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(overheadAccuracy)}
-                                    background="components/statisticsComponents/newStatsComponents/netData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
                                 />
                             </Grommet>
                         </div>
@@ -234,4 +234,4 @@ const PrevNetData: React.FC<PrevNetDataProps> = ({ stats, checkSuccess }) => {
     );
 };
 
-export default PrevNetData;
+export default PrevNetStats;

@@ -12,69 +12,27 @@ import styles from "../css/serveDataPanel.module.css";
 import globalStyles from "../../dashboardComponents/css/pointDashboard.module.css";
 import {Pie} from "react-chartjs-2";
 
-interface ServingDataProps {
-    state: any;
+interface PrevServingStatsProps {
+    stats: any;
     checkSuccess: (value: number)  => string;
 }
 
-const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
-    const totalServePoints =
-        +JSON.stringify(state.context.pointsWonOnServe) +
-        +JSON.stringify(state.context.pointsLostOnServe);
-
-    const totalPoints =
-        totalServePoints +
-        +JSON.stringify(state.context.pointsWonOnReturn) +
-        +JSON.stringify(state.context.pointsLostOnReturn);
-
-    const percentOfServingPointsWon = +(
-        (+JSON.stringify(state.context.pointsWonOnServe) / totalServePoints) *
-        100
-    ).toPrecision(2);
-
-    const percentOfTotalPointsWonOnServe = +(
-        (+JSON.stringify(state.context.pointsWonOnServe) / totalPoints) *
-        100
-    ).toPrecision(2);
-
-    const firstServePercentage = +(
-        (+JSON.stringify(state.context.madeFirstServes) / totalServePoints) *
-        100
-    ).toPrecision(2);
-
-    const totalHitSecondServes =
-        +JSON.stringify(state.context.madeSecondServes) +
-        +JSON.stringify(state.context.doubleFaults);
-
-    const secondServePercentage = +(
-        (+JSON.stringify(state.context.madeSecondServes) / totalHitSecondServes) *
-        100
-    ).toPrecision(2);
-
-    const totalNotReturnedServes =
-        +JSON.stringify(state.context.notReturnedFirstServes) +
-        +JSON.stringify(state.context.notReturnedSecondServes) +
-        +JSON.stringify(state.context.acesOnSecondServe) +
-        +JSON.stringify(state.context.acesOnFirstServe);
-
-    const unreturnedServeLocationData = [
-        {x: "Alley", y: +JSON.stringify(state.context.notReturnedServesToAlley)},
-        {x: "Body", y: +JSON.stringify(state.context.notReturnedServesToBody)},
-        {x: "Center", y: +JSON.stringify(state.context.notReturnedServesToCenter)},
-    ];
-
-    const totalAces = +JSON.stringify(state.context.acesOnFirstServe) + +JSON.stringify(state.context.acesOnSecondServe);
-
-    const totalNotReturnedFirstServes = +JSON.stringify(state.context.acesOnFirstServe) + +JSON.stringify(state.context.notReturnedFirstServes);
-
-    const totalNotReturnedSecondServes = +JSON.stringify(state.context.acesOnSecondServe) + +JSON.stringify(state.context.notReturnedSecondServes);
+const PrevServingStats: React.FC<PrevServingStatsProps> = ({stats, checkSuccess}) => {
+    const percentOfTotalPointsWonOnServe = stats.percentOfTotalPointsWonOnServe;
+    const percentOfServingPointsWon = stats.percentOfServingPointsWon;
+    const firstServePercentage = stats.firstServePercentage;
+    const secondServePercentage = stats.secondServePercentage;
+    const totalAces = stats.totalAces;
+    const totalNotReturnedFirstServes = stats.totalNotReturnedFirstServes;
+    const totalNotReturnedSecondServes = stats.totalNotReturnedSecondServes;
+    const totalNotReturnedServes = stats.totalNotReturnedServes;
 
     const unreturnedServeLocation = {
         labels: ["Alley", "Body", "Center"],
         datasets: [
             {
                 label: "Winning Shot Type",
-                data: [  +JSON.stringify(state.context.notReturnedServesToAlley), +JSON.stringify(state.context.notReturnedServesToBody), +JSON.stringify(state.context.notReturnedServesToCenter)],
+                data: [ stats.notReturnedServesToAlley, stats.notReturnedServesToBody, stats.notReturnedServesToCenter],
                 backgroundColor: [
                     "#779be7",
                     "#e777d3",
@@ -137,7 +95,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/servingData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newServingStats#B2B2B2"
                                     color={checkSuccess(percentOfTotalPointsWonOnServe)}
                                 />
                             </Grommet>
@@ -154,7 +112,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/servingData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newServingStats#B2B2B2"
                                     color={checkSuccess(percentOfServingPointsWon)}
                                 />
                             </Grommet>
@@ -172,7 +130,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkFirstServeSuccess(firstServePercentage)}
-                                    background="components/statisticsComponents/newStatsComponents/servingData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newServingStats#B2B2B2"
                                 />
                             </Grommet>
                             <div className={globalStyles.percent}>{firstServePercentage}%</div>
@@ -189,7 +147,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSecondServeSuccess(secondServePercentage)}
-                                    background="components/statisticsComponents/newStatsComponents/servingData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/newServingStats#B2B2B2"
 
                                 />
                             </Grommet>
@@ -226,7 +184,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                         <div className={styles.tableCell}> Deuce Side</div>
                                     </TableCell>
                                     <TableCell>
-                                        {+JSON.stringify(state.context.notReturnedServesDeuceSide)}
+                                        {stats.notReturnedServesDeuceSide}
                                     </TableCell>
                                 </TableRow>
                                 <TableRow>
@@ -234,7 +192,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                         <div className={styles.tableCell}> Ad Side</div>
                                     </TableCell>
                                     <TableCell>
-                                        {+JSON.stringify(state.context.notReturnedServesAdSide)}
+                                        {stats.notReturnedServesAdSide}
                                     </TableCell>
                                 </TableRow>
                                 <TableRow>
@@ -276,4 +234,4 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
     );
 };
 
-export default ServingData;
+export default PrevServingStats;

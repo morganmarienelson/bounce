@@ -3,6 +3,10 @@ import React from "react";
 import styles from "../css/matchStats.module.css";
 import PrevBaselineData from "./prevBaselineStats";
 import PrevNetData from "./prevNetStats";
+import PrevServingStats from "./prevServingStats";
+import PrevReturnStats from "./prevReturnStats";
+import PrevBaselineStats from "./prevBaselineStats";
+import PrevNetStats from "./prevNetStats";
 
 interface PrevMatchStatsProps {
     stats: any
@@ -30,8 +34,10 @@ const PrevMatchStatsDisplay: React.FC<PrevMatchStatsProps> = ({stats}) => {
     return (
         <div>
             <div className={styles.fullPage}>
-                <PrevBaselineData stats={stats} checkSuccess={checkSuccess}/>
-                <PrevNetData stats={stats} checkSuccess={checkSuccess}/>
+                <PrevServingStats stats={stats} checkSuccess={checkSuccess}/>
+                <PrevReturnStats stats={stats} checkSuccess={checkSuccess}/>
+                <PrevBaselineStats stats={stats} checkSuccess={checkSuccess}/>
+                <PrevNetStats stats={stats} checkSuccess={checkSuccess}/>
             </div>
         </div>
     );
