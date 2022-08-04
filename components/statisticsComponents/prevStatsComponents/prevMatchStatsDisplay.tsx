@@ -1,12 +1,11 @@
 import "antd/dist/antd.css";
 import React from "react";
 import styles from "../css/matchStats.module.css";
-import PrevBaselineData from "./prevBaselineStats";
-import PrevNetData from "./prevNetStats";
 import PrevServingStats from "./prevServingStats";
 import PrevReturnStats from "./prevReturnStats";
 import PrevBaselineStats from "./prevBaselineStats";
 import PrevNetStats from "./prevNetStats";
+import PrevMatchStatsDisplayHeading from "./prevMatchStatsDisplayHeading";
 
 interface PrevMatchStatsProps {
     stats: any
@@ -32,6 +31,8 @@ const PrevMatchStatsDisplay: React.FC<PrevMatchStatsProps> = ({stats}) => {
 
 
     return (
+        <>
+            <PrevMatchStatsDisplayHeading stats={stats}/>
         <div>
             <div className={styles.fullPage}>
                 <PrevServingStats stats={stats} checkSuccess={checkSuccess}/>
@@ -40,6 +41,7 @@ const PrevMatchStatsDisplay: React.FC<PrevMatchStatsProps> = ({stats}) => {
                 <PrevNetStats stats={stats} checkSuccess={checkSuccess}/>
             </div>
         </div>
+        </>
     );
 };
 

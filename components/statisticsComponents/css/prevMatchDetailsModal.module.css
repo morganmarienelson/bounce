@@ -1,0 +1,23 @@
+.title{
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+}
+
+.textContainer{
+    font-weight: 400;
+    font-size: 23px;
+    width: 100%;
+    margin: 10px 30px;
+    text-align: center;
+}
+
+.label{
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: start;
+}

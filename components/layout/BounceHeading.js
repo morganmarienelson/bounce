@@ -5,7 +5,6 @@ import React, {useState} from "react";
 import SettingsModal from "./settingsModal";
 import Link from "next/link";
 import { signIn, signOut, useSession} from "next-auth/react";
-import {redirect} from "next/dist/server/api-utils";
 
 
 function BounceHeading() {

@@ -102,7 +102,7 @@ const PrevNetStats: React.FC<PrevNetStatsProps> = ({ stats, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
+                                    background="#B2B2B2"
                                     color={checkSuccess(percentPointsWonAtNet)}
                                 />
                             </Grommet>
@@ -119,7 +119,7 @@ const PrevNetStats: React.FC<PrevNetStatsProps> = ({ stats, checkSuccess }) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
+                                    background="#B2B2B2"
                                     color={checkSuccess(percentNetPointsWon)}
                                 />
                             </Grommet>
@@ -137,7 +137,7 @@ const PrevNetStats: React.FC<PrevNetStatsProps> = ({ stats, checkSuccess }) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSuccess(percentPointsWonByWinners)}
-                                    background="components/statisticsComponents/newStatsComponents/newNetStats#B2B2B2"
+                                    background="#B2B2B2"
                                 />
                             </Grommet>
                             <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
