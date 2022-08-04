@@ -1,10 +1,13 @@
 import {useEffect, useState} from "react";
 import {getSession, signIn} from "next-auth/react";
 import styles from "../../css/matchLog.module.css"
+import {useRouter} from "next/router";
 
 function StatisticsPage(props){
     const [loading, setLoading] = useState(true)
     const [matches, setMatches] = useState([])
+    const router = useRouter();
+    const [stats, setStats] = useState([])
 
     useEffect(() => {
         const fetchMatches = async () => {
@@ -28,9 +31,11 @@ function StatisticsPage(props){
         return <h2>Loading...</h2>
     }
 
-    // const showMatchHandler = () => {
-    //     router.push('/matchLog/' + props.id)
-    // }
+    const showMatchHandler = (id ) => {
+        router.push('/matchLog/' + id)
+    }
+
+
 
     return(
         <div>
@@ -38,9 +43,9 @@ function StatisticsPage(props){
                 return (
                         <div key={match.id} className={styles.matchLog}>
                             <div className={styles.names}>
-                           {/*<a onClick={showMatchHandler}>*/}
+                           <a onClick={() => showMatchHandler(match.id)}>
                                {match.playerName} vs {match.opponentName}
-                           {/*</a>*/}
+                           </a>
                             </div>
                             <div className={styles.names}>
                                 {match.id}

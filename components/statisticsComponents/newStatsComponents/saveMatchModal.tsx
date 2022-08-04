@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Button, Form, Input, Modal, Radio, Select} from "antd";
-import styles from "../dashboardComponents/css/modal.module.css";
-import {matches} from "../../data/matches";
+import styles from "../../dashboardComponents/css/modal.module.css";
+import {matches} from "../../../data/matches";
 interface SaveMatchModalProps{
     showModal : boolean;
     setShowModal: (showModal: boolean) => void;

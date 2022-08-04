@@ -1,7 +1,7 @@
 import {Button, Modal} from "antd";
 import styles from "../css/savePanel.module.css"
 import {useEffect, useState} from "react";
-import SaveMatchModal from "../saveMatchModal";
+import SaveMatchModal from "./saveMatchModal";
 import {getSession, signIn} from "next-auth/react";
 import {useRouter} from "next/router";
 

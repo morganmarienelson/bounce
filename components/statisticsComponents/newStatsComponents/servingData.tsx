@@ -137,7 +137,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/statisticsSections/servingData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/servingData#B2B2B2"
                                     color={checkSuccess(percentOfTotalPointsWonOnServe)}
                                 />
                             </Grommet>
@@ -154,7 +154,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/statisticsSections/servingData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/servingData#B2B2B2"
                                     color={checkSuccess(percentOfServingPointsWon)}
                                 />
                             </Grommet>
@@ -172,7 +172,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkFirstServeSuccess(firstServePercentage)}
-                                    background="components/statisticsComponents/statisticsSections/servingData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/servingData#B2B2B2"
                                 />
                             </Grommet>
                             <div className={globalStyles.percent}>{firstServePercentage}%</div>
@@ -189,7 +189,7 @@ const ServingData: React.FC<ServingDataProps> = ({state, checkSuccess}) => {
                                     size="small"
                                     thickness="medium"
                                     color={checkSecondServeSuccess(secondServePercentage)}
-                                    background="components/statisticsComponents/statisticsSections/servingData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/servingData#B2B2B2"
 
                                 />
                             </Grommet>

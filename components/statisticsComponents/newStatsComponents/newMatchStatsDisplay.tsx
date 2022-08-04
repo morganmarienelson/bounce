@@ -1,19 +1,19 @@
 import "antd/dist/antd.css";
 import {Modal} from "antd";
 import React from "react";
-import styles from "./css/matchStats.module.css";
-import ServingData from "./statisticsSections/servingData";
-import ReturnData from "./statisticsSections/returnData";
-import BaselineData from "./statisticsSections/baselineData";
-import NetData from "./statisticsSections/netData";
-import SaveMatchPanel from "./statisticsSections/saveMatchPanel";
+import styles from "../css/matchStats.module.css";
+import ServingData from "./servingData";
+import ReturnData from "./returnData";
+import BaselineData from "./baselineData";
+import NetData from "./netData";
+import SaveMatchPanel from "./saveMatchPanel";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;
     state: any;
 }
 
-const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
+const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
     const onExit = () => {
         Modal.confirm({
             title:
@@ -55,4 +55,4 @@ const MatchStats: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
     );
 };
 
-export default MatchStats;
+export default NewMatchStatsDisplay;

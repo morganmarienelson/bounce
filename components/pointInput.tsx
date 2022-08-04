@@ -1,4 +1,4 @@
-import MatchStats from "./statisticsComponents/matchStats";
+import NewMatchStatsDisplay from "./statisticsComponents/newStatsComponents/newMatchStatsDisplay";
 import PointDashboard from "./dashboardComponents/pointDashboard";
 import {useState} from "react";
 import {useMachine} from "@xstate/react";
@@ -16,7 +16,7 @@ function PointInput() {
 
                 </>
             ) : (
-                <MatchStats setShowDashboard={setShowDashboard} state={state}/>
+                <NewMatchStatsDisplay setShowDashboard={setShowDashboard} state={state}/>
             )}
         </>
     );

@@ -45,7 +45,7 @@ const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/statisticsSections/returnData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/returnData#B2B2B2"
                                     color={checkSuccess(percentOfTotalPointsWonOnReturn)}
                                 />
                             </Grommet>
@@ -62,7 +62,7 @@ const ReturnData: React.FC<ReturnDataProps> = ({state, checkSuccess}) => {
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/statisticsSections/returnData#B2B2B2"
+                                    background="components/statisticsComponents/newStatsComponents/returnData#B2B2B2"
                                     color={checkSuccess(percentOfReturnPointsWon)}
                                 />
                             </Grommet>
