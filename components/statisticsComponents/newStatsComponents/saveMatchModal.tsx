@@ -2,14 +2,15 @@ import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Button, Form, Input, Modal, Radio, Select} from "antd";
 import styles from "../../dashboardComponents/css/modal.module.css";
-//import {matches} from "../../../data/matches";
+import {prevMatchStats} from "../../../data/prevMatchStats";
 interface SaveMatchModalProps{
     showModal : boolean;
     setShowModal: (showModal: boolean) => void;
     setMatchSaved: (setSaved: boolean) => void;
+    state: any
 }
 
-const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModal, setMatchSaved}) => {
+const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, state, setShowModal, setMatchSaved}) => {
     const [componentDisabled, setComponentDisabled] = useState(false);
 
     const onModalOk = () => {
@@ -28,16 +29,17 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModa
 
     const onFinish = async (values: any) => {
         setComponentDisabled(true);
-        // const match = values;
-        // const response = await fetch('api/matches', {
-        //     method: 'POST',
-        //     body: JSON.stringify({ match }),
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        // })
-        // const data = await response.json();
-        // matches.push(data);
+        const match = values;
+        const response = await fetch('api/matches', {
+            method: 'POST',
+            body: JSON.stringify({ match }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        const data = await response.json();
+        prevMatchStats.push(data);
+        console.log(prevMatchStats);
     };
 
 

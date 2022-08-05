@@ -7,7 +7,6 @@ import { SessionProvider } from 'next-auth/react';
 export default function MyApp(props) {
     const {Component, pageProps} = props;
     const [colorScheme, setColorScheme ] = useState(props.colorScheme);
-
     const toggleColorScheme = (value) => {
     const nextColorScheme = value || (colorScheme === "dark" ? 'light' : "dark" );
     setColorScheme(nextColorScheme);

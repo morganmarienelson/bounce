@@ -1,11 +1,15 @@
 import {Button, Modal} from "antd";
 import styles from "../css/savePanel.module.css"
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import SaveMatchModal from "./saveMatchModal";
-import {getSession, signIn} from "next-auth/react";
+import {getSession} from "next-auth/react";
 import {useRouter} from "next/router";
 
-const SaveMatchPanel = () => {
+interface SaveMatchPanelProps{
+    state: any;
+}
+
+const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {
     const [showSaveMatchModal, setShowSaveMatchModal] = useState(false);
     const [matchSaved, setMatchSaved] = useState(false);
     const [signedIn, setSignedIn] = useState(false)
@@ -83,7 +87,7 @@ const SaveMatchPanel = () => {
             </Button>
             </div>
                 )}
-            <SaveMatchModal setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal} setMatchSaved={setMatchSaved}/>
+            <SaveMatchModal state={state} setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal} setMatchSaved={setMatchSaved}/>
         </div>
 
     )

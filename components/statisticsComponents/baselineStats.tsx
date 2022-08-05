@@ -1,5 +1,5 @@
-import styles from "../css/baselineDataPanel.module.css";
-import globalStyles from "../../dashboardComponents/css/pointDashboard.module.css";
+import styles from "./css/baselineStats.module.css";
+import globalStyles from "./css/matchStatsDisplay.module.css";
 import React from 'react';
 import {
   Grommet,
@@ -32,79 +32,18 @@ ChartJS.register(
 )
 
 interface BaselineDataProps {
-  state: any;
+  matchStats: any;
   checkSuccess: (value: number)  => string;
 }
 
-const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) => {
-  const totalPoints =
-    +JSON.stringify(state.context.pointsWonOnServe) +
-    +JSON.stringify(state.context.pointsLostOnServe) +
-    +JSON.stringify(state.context.pointsWonOnReturn) +
-    +JSON.stringify(state.context.pointsLostOnReturn);
-
-  const totalBaselinePointsWon = +(
-    +JSON.stringify(state.context.pointsWonByForehand) +
-    +JSON.stringify(state.context.pointsWonByBackhand) +
-    +JSON.stringify(state.context.pointsWonByForehandWinner) +
-    +JSON.stringify(state.context.pointsWonByBackhandWinner)
-  );
-
-  const totalBaselinePointsLost = +(
-    +JSON.stringify(state.context.pointsLostByForehand) +
-    +JSON.stringify(state.context.pointsLostByBackhand) +
-    +JSON.stringify(state.context.pointsLostByForehandUnforcedError) +
-    +JSON.stringify(state.context.pointsLostByBackhandUnforcedError)
-  );
-
-  const percentPointsWonOnBaseline = +(totalBaselinePointsWon/totalPoints * 100).toPrecision(2);
-
-  const percentBaselinePointsWon = +(totalBaselinePointsWon/(totalBaselinePointsWon + totalBaselinePointsLost) * 100).toPrecision(2);
-
-  const percentPointsWonByWinners = +(  (  +JSON.stringify(state.context.pointsWonByForehandWinner) +
-      +JSON.stringify(state.context.pointsWonByBackhandWinner))/(totalBaselinePointsWon) * 100).toPrecision(2);
-
-  const percentPointsLostByUnforcedError = +(  (  +JSON.stringify(state.context.pointsLostByForehandUnforcedError) +
-      +JSON.stringify(state.context.pointsLostByBackhandUnforcedError))/(totalBaselinePointsLost) * 100).toPrecision(2);
-
-  const totalForehands =
-    +JSON.stringify(state.context.pointsWonByForehand) +
-    +JSON.stringify(
-      state.context.pointsLostByForehand +
-        +JSON.stringify(state.context.pointsWonByForehandWinner) +
-        +JSON.stringify(state.context.pointsLostByForehandUnforcedError)
-    );
-
-  const totalWinningForehands =
-    +JSON.stringify(state.context.pointsWonByForehand) +
-    +JSON.stringify(state.context.pointsWonByForehandWinner);
-
-  const forehandAccuracy = +(
-    (totalWinningForehands / totalForehands) *
-    100
-  ).toPrecision(2);
-
-  const totalBackhands =
-    +JSON.stringify(state.context.pointsWonByBackhand) +
-    +JSON.stringify(state.context.pointsLostByBackhand) +
-    +JSON.stringify(state.context.pointsLostByBackhandUnforcedError) +
-    +JSON.stringify(state.context.pointsWonByBackhandWinner);
-
-  const totalWinningBackhands =
-    +JSON.stringify(state.context.pointsWonByBackhand) +
-    +JSON.stringify(state.context.pointsWonByBackhandWinner);
-
-  const backhandAccuracy = +(
-    (totalWinningBackhands / totalBackhands) *
-    100
-  ).toPrecision(2);
+const BaselineStats: React.FC<BaselineDataProps> = ({ matchStats, checkSuccess }) => {
 
   const winningShotType = {
     labels: ["Forehand", "Forehand Winner", "Backhand", "Backhand Winner"],
     datasets: [
       {
         label: "Winning Shot Type",
-        data: [ +JSON.stringify(state.context.pointsWonByForehand), +JSON.stringify(state.context.pointsWonByForehandWinner), +JSON.stringify(state.context.pointsWonByBackhand), +JSON.stringify(state.context.pointsWonByBackhandWinner)],
+        data: [matchStats.pointsWonByForehandOnBaseline, matchStats.pointsWonByForehandWinnerOnBaseline, matchStats.pointsWonByBackhandOnBaseline, matchStats.pointsWonByBackhandWinnerOnBaseline],
         backgroundColor: [
           "#77e78b",
           "#e7c377",
@@ -121,7 +60,7 @@ const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) 
     datasets: [
       {
         label: "Losing Shot Type",
-        data: [ +JSON.stringify(state.context.pointsLostByForehand), +JSON.stringify(state.context.pointsLostByForehandUnforcedError), +JSON.stringify(state.context.pointsLostByBackhand), +JSON.stringify(state.context.pointsLostByBackhandUnforcedError)],
+        data: [ matchStats.pointsLostByForehandOnBaseline, matchStats.pointsLostByForehandUnforcedErrorOnBaseline, matchStats.pointsLostByBackhandOnBaseline, matchStats.pointsLostByBackhandUnforcedErrorOnBaseline],
         backgroundColor: [
           "#19e4e2",
           "#79c328",
@@ -172,16 +111,16 @@ const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) 
             <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
-                    value={percentPointsWonOnBaseline}
+                    value={matchStats.percentPointsWonOnBaseline}
                     type="circle"
                     margin="small"
                     size="small"
                     thickness="medium"
-                    background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
-                    color={checkSuccess(percentPointsWonOnBaseline)}
+                    background="#B2B2B2"
+                    color={checkSuccess(matchStats.percentPointsWonOnBaseline)}
                 />
               </Grommet>
-              <div className={globalStyles.percent}>{percentPointsWonOnBaseline}%</div>
+              <div className={globalStyles.percent}>{matchStats.percentPointsWonOnBaseline}%</div>
             </div>
           </div>
           <div className={globalStyles.percentagesCol}>
@@ -189,16 +128,16 @@ const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) 
             <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
-                    value={percentBaselinePointsWon}
+                    value={matchStats.percentBaselinePointsWon}
                     type="circle"
                     margin="small"
                     size="small"
                     thickness="medium"
-                    background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
-                    color={checkSuccess(percentBaselinePointsWon)}
+                    background="#B2B2B2"
+                    color={checkSuccess(matchStats.percentBaselinePointsWon)}
                 />
               </Grommet>
-              <div className={globalStyles.percent}>{percentBaselinePointsWon}%</div>
+              <div className={globalStyles.percent}>{matchStats.percentBaselinePointsWon}%</div>
             </div>
           </div>
           <div className={globalStyles.percentagesCol}>
@@ -206,16 +145,16 @@ const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) 
             <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
-                    value={percentPointsWonByWinners}
+                    value={matchStats.percentPointsWonByWinnersOnBaseline}
                     type="circle"
                     margin="small"
                     size="small"
                     thickness="medium"
-                    color={checkPointsWonByWinner(percentPointsWonByWinners)}
-                    background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
+                    color={checkPointsWonByWinner(matchStats.percentPointsWonByWinnersOnBaseline)}
+                    background="#B2B2B2"
                 />
               </Grommet>
-              <div className={globalStyles.percent}>{percentPointsWonByWinners}%</div>
+              <div className={globalStyles.percent}>{matchStats.percentPointsWonByWinnersOnBaseline}%</div>
             </div>
           </div>
           <div className={globalStyles.percentagesColLastCol}>
@@ -223,17 +162,17 @@ const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) 
             <div className={globalStyles.meter}>
               <Grommet>
                 <Meter
-                    value={percentPointsLostByUnforcedError}
+                    value={matchStats.percentPointsLostByUnforcedErrorOnBaseline}
                     type="circle"
                     margin="small"
                     size="small"
                     thickness="medium"
-                    color={checkPointsByUnforcedErrors(percentPointsLostByUnforcedError)}
-                    background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
+                    color={checkPointsByUnforcedErrors(matchStats.percentPointsLostByUnforcedErrorOnBaseline)}
+                    background="#B2B2B2"
 
                 />
               </Grommet>
-              <div className={globalStyles.percent}>{percentPointsLostByUnforcedError}%</div>
+              <div className={globalStyles.percent}>{matchStats.percentPointsLostByUnforcedErrorOnBaseline}%</div>
             </div>
           </div>
         </div>
@@ -254,33 +193,33 @@ const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) 
           </div>
           <div className={styles.accuracy}>
             <div className={styles.accuracyCol}>
-            <div className={styles.accuracyMeterHeading}>Forehand Accuracy: {forehandAccuracy}%</div>
+            <div className={styles.accuracyMeterHeading}>Forehand Accuracy: {matchStats.forehandAccuracyOnBaseline}%</div>
               <div className={styles.meter}>
             <Grommet>
                 <Meter
-                  value={forehandAccuracy}
+                  value={matchStats.forehandAccuracyOnBaseline}
                   type="circle"
                   margin="small"
                   size="small"
                   thickness="medium"
-                  background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
-                  color={checkSuccess(forehandAccuracy)}
+                  background="#B2B2B2"
+                  color={checkSuccess(matchStats.forehandAccuracyOnBaseline)}
                 />
             </Grommet>
             </div>
             </div>
             <div className={styles.accuracyCol}>
-            <div className={styles.accuracyMeterHeading}>Backhand Accuracy: {backhandAccuracy}%</div>
+            <div className={styles.accuracyMeterHeading}>Backhand Accuracy: {matchStats.backhandAccuracyOnBaseline}%</div>
             <div className={styles.meter}>
               <Grommet>
                 <Meter
-                  value={backhandAccuracy}
+                  value={matchStats.backhandAccuracyOnBaseline}
                   type="circle"
                   margin="small"
                   size="small"
                   thickness="medium"
-                  background="components/statisticsComponents/newStatsComponents/newBaselineStats#B2B2B2"
-                  color={checkSuccess(backhandAccuracy)}
+                  background="#B2B2B2"
+                  color={checkSuccess(matchStats.backhandAccuracyOnBaseline)}
                 />
               </Grommet>
             </div>
@@ -292,4 +231,4 @@ const NewBaselineStats: React.FC<BaselineDataProps> = ({ state, checkSuccess }) 
   );
 };
 
-export default NewBaselineStats;
+export default BaselineStats;

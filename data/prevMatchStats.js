@@ -38,7 +38,7 @@ export const prevMatchStats = [
         pointsLostByForehandVolley: 4,
         pointsLostByForehandVolleyUnforcedError: 3,
         pointsLostByBackhandVolley: 1,
-        pointsLostByBackhandUnforcedError: 30,
+        pointsLostByBackhandVolleyUnforcedError: 30,
         pointsLostByOverhead:3,
         pointsLostByOverheadUnforcedError: 0,
         percentOfTotalPointsWonOnServe: 20,
@@ -57,7 +57,7 @@ export const prevMatchStats = [
         percentOfTotalPointsWonOnReturn: 30,
         percentOfReturnPointsWon: 4,
         missedSecondServeReturns: 6,
-        missedFirstServeReturns: 7.
+        missedFirstServeReturns: 7,
 
     },
     {
@@ -118,6 +118,6 @@ export const prevMatchStats = [
         percentOfTotalPointsWonOnReturn: 30,
         percentOfReturnPointsWon: 4,
         missedSecondServeReturns: 6,
-        missedFirstServeReturns: 7.
+        missedFirstServeReturns: 7,
     },
 ]

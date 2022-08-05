@@ -3,37 +3,36 @@ import {Meter} from "grommet";
 import {
     Grommet,
 } from "grommet/components";
-import styles from "../css/returnDataPanel.module.css";
+import styles from "./css/returnStats.module.css";
+import globalStyles from "./css/matchStatsDisplay.module.css";
 
-interface PrevReturnStatsProps {
-    stats: any;
+interface ReturnDataProps {
+    matchStats: any;
     checkSuccess: (value: number)  => string;
 }
 
-const PrevReturnStats: React.FC<PrevReturnStatsProps> = ({stats, checkSuccess}) => {
-    const percentOfTotalPointsWonOnReturn = stats.percentOfTotalPointsWonOnReturn;
-    const percentOfReturnPointsWon= stats.percentOfReturnPointsWon;
+const ReturnStats: React.FC<ReturnDataProps> = ({matchStats, checkSuccess}) => {
 
     return (
         <div>
-            <div className={styles.heading}>Return Statistics</div>
-            <div className={styles.body}>
+            <div className={globalStyles.heading}>Return Statistics</div>
+            <div className={globalStyles.body}>
                 <div className={styles.row}>
                     <div className={styles.returnCol}>
                         <div className={styles.returnHeading}>Total Points Won On Return</div>
                         <div className={styles.meter}>
                             <Grommet>
                                 <Meter
-                                    value={percentOfTotalPointsWonOnReturn}
+                                    value={matchStats.percentOfTotalPointsWonOnReturn}
                                     type="circle"
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/newReturnData#B2B2B2"
-                                    color={checkSuccess(percentOfTotalPointsWonOnReturn)}
+                                    background="#B2B2B2"
+                                    color={checkSuccess(matchStats.percentOfTotalPointsWonOnReturn)}
                                 />
                             </Grommet>
-                            <div className={styles.percent}>{percentOfTotalPointsWonOnReturn}%</div>
+                            <div className={styles.percent}>{matchStats.percentOfTotalPointsWonOnReturn}%</div>
                         </div>
                     </div>
                     <div className={styles.returnCol}>
@@ -41,34 +40,34 @@ const PrevReturnStats: React.FC<PrevReturnStatsProps> = ({stats, checkSuccess}) 
                         <div className={styles.meter}>
                             <Grommet>
                                 <Meter
-                                    value={percentOfReturnPointsWon}
+                                    value={matchStats.percentOfReturnPointsWon}
                                     type="circle"
                                     margin="small"
                                     size="small"
                                     thickness="medium"
-                                    background="components/statisticsComponents/newStatsComponents/newReturnData#B2B2B2"
-                                    color={checkSuccess(percentOfReturnPointsWon)}
+                                    background="#B2B2B2"
+                                    color={checkSuccess(matchStats.percentOfReturnPointsWon)}
                                 />
                             </Grommet>
-                            <div className={styles.percent}>{percentOfReturnPointsWon}%</div>
+                            <div className={styles.percent}>{matchStats.percentOfReturnPointsWon}%</div>
                         </div>
                     </div>
                     <div className={styles.returnColLastCol}>
                         <div className={styles.numberMissedCol}>
-                            <div className={styles.missedReturnsHeading}>Missed First Serve Returns:</div>
-                            <div
-                                className={styles.numberMissed}>{stats.missedFirstServeReturns}</div>
+                        <div className={styles.missedReturnsHeading}>Missed First Serve Returns:</div>
+                        <div
+                            className={styles.numberMissed}>{matchStats.missedFirstServeReturns}</div>
                         </div>
                         <div className={styles.numberMissedCol}>
-                            <div className={styles.missedReturnsHeading}>Missed Second Serve Returns:</div>
-                            <div
-                                className={styles.numberMissed}>{stats.missedSecondServeReturns}</div>
+                        <div className={styles.missedReturnsHeading}>Missed Second Serve Returns:</div>
+                        <div
+                            className={styles.numberMissed}>{matchStats.missedSecondServeReturns}</div>
                         </div>
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default PrevReturnStats;
+export default ReturnStats;
