@@ -13,8 +13,6 @@
     "@emotion/styled": "^11.9.3",
     "@mantine/core": "^5.0.0",
     "@mantine/hooks": "^5.0.0",
-    "@mui/material": "^5.9.2",
-    "@prisma/client": "^4.1.0",
     "@xstate/react": "^3.0.0",
     "antd": "^4.21.2",
     "chart.js": "^3.8.0",

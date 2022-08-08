@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 import PrevMatchDetailsModal from "./statisticsComponents/prevStatsComponents/prevMatchDetailsModal";
 
 function Matches({match, fetchMatches}){
-    const Router = useRouter();
+    const router = useRouter();
     const [matchDetails, setMatchDetails] = useState([])
     const [isModalVisible, setIsModalVisible] = useState(false)
 

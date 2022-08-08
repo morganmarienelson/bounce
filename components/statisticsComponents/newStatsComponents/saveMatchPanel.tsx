@@ -39,14 +39,7 @@ const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {
             });
         }
         else {
-            Modal.confirm({
-                title: "Are you sure that you want to go to the home screen? You will not be able to view this match's data again.",
-                okType: "danger",
-                onOk: () => {
-                    router.push("/");
-
-                },
-            });
+            router.push("/");
         }
 
     };

@@ -19,7 +19,7 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, state, setS
             setShowModal(false);
         } else {
             Modal.confirm({
-                title: "Are you sure that you want to close this form? You did not press submit.",
+                title: "Are you sure that you want to close this form? This match is not saved. You did not press submit.",
                 onOk: () => {
                     setShowModal(false);
                 },
