@@ -5,26 +5,26 @@ import {useState} from "react";
 import {useRouter} from "next/router";
 import PrevMatchDetailsModal from "./statisticsComponents/prevStatsComponents/prevMatchDetailsModal";
 
-function Matches({match, fetchMatches}){
+function Matches(match: any, fetchMatches: any){
     const router = useRouter();
     const [matchDetails, setMatchDetails] = useState([])
     const [isModalVisible, setIsModalVisible] = useState(false)
 
-    const showMatchHandler = (id ) => {
-        router.push('/matchLog/' + id)
+    const showMatchHandler = (id : number) => {
+      //  router.push('/matches/' + id)
     }
 
-    const showMatchDetails = async (match) =>{
+    const showMatchDetails = async (match: any) =>{
         setMatchDetails(match);
         setIsModalVisible(true);
     }
 
-    const deleteMatch = (id) => {
+    const deleteMatch = (id: number) => {
         Modal.confirm({
             title: "Are you sure that you want to delete this match?" ,
             okType: "danger",
             onOk: async () => {
-                const response = await fetch(`/api/matches/${id}`, {
+                const response = await fetch(`/api/match/${id}`, {
                     method: 'DELETE'
                 })
                 const data = await response.json()

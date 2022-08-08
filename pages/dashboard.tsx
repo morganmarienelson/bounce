@@ -14,7 +14,6 @@ function Dashboard() {
             {showDashboard ? (
                 <>
                     <PointDashboard setShowDashboard={setShowDashboard} send={send}/>
-
                 </>
             ) : (
                 <NewMatchStatsDisplay setShowDashboard={setShowDashboard} state={state}/>

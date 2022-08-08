@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import catPic from '../pictures/catPic.jpg'
 import Link from "next/link";
-import styles from "../css/404Page.module.css"
+import styles from "../css/404Page.module.scss"
 import {Button} from "grommet/components";
 
 

@@ -1,0 +1,126 @@
+@import '../../../styles/_globalSass.scss';
+@import '../../../styles/mixin';
+
+.panelTitle {
+    width: 100%;
+    font-size: 40px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    @include twoColPanel(){
+        font-size: 30px;
+    }
+}
+
+.panelRow {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 20px auto 0;
+
+    @include twoColPanel(){
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 0;
+        width: 100%;
+    }
+}
+
+.btnCol {
+    grid-column: span 2 / span 2;
+}
+
+.twoSingleBtns {
+    grid-column: span 1 / span 1;
+    @include twoColPanel(){
+        grid-column: span 1/ span 1;
+    }
+}
+
+.undoOrViewCol {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    grid-column: span 1 / span 1;
+}
+
+.btnTitle {
+    text-align: center;
+    color: white;
+    font-size: $panel-btn-font-size;
+    font-weight: 500;
+    @include shrinkBtnFont(){
+        font-size: 18px;
+    }
+}
+
+.undoOrViewCol {
+    grid-column: span 3 / span 3;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+
+.hiddenBtn {
+    width: 100%;
+    height: 300px;
+    box-shadow: $btn-box-shadow;
+}
+
+.wonLostBtnTitle {
+    text-align: center;
+    color: white;
+    font-size: $panel-btn-font-size;
+    font-weight: 500;
+    @include shrinkBtnFont(){
+        font-size: 18px;
+    }
+}
+
+.panelBtn {
+    width: 100%;
+    height: 150px;
+    box-shadow: $btn-box-shadow;
+    @include twoColPanel(){
+        width: 100%;
+        height: 100px;
+    }
+}
+
+.faultCol{
+    grid-column: span 1 / span 1;
+    @include twoColPanel(){
+        grid-column: span 2/ span 2;
+    }
+}
+
+.inCol {
+    grid-column: span 3/ span 3;
+    @include twoColPanel(){
+        grid-column: span 2/ span 2;
+    }
+}
+
+.wonLostBtn {
+    width: 100%;
+    height: 150px;
+    box-shadow: $btn-box-shadow;
+}
+
+.undoOrView {
+    box-shadow: $btn-box-shadow;
+    width: 50%;
+    height: 80px;
+    margin-top: 60px;
+
+    @include shrinkBtnFont(){
+        width:100%;
+    }
+}
+
+.undoOrView:hover {
+    background-color: rgb(238, 238, 238);
+    border-color: rgb(238, 238, 238);
+}

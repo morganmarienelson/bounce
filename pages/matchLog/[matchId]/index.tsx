@@ -2,7 +2,7 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import PrevMatchStatsDisplayHeading
     from "../../../components/statisticsComponents/prevStatsComponents/prevMatchStatsDisplayHeading";
-import styles from "../../../components/statisticsComponents/css/matchStatsDisplay.module.css";
+import styles from "../../../components/statisticsComponents/css/matchStatsDisplay.module.scss";
 import ServingStats from "../../../components/statisticsComponents/servingStats";
 import ReturnStats from "../../../components/statisticsComponents/returnStats";
 import BaselineStats from "../../../components/statisticsComponents/baselineStats";
