@@ -1,0 +1,14 @@
+.matchLog {
+    margin: 10px;
+    border: 2px gray solid;
+    background-color: 	#F5F5F5;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.names{
+    font-size: 20px;
+    font-weight: 500;
+}

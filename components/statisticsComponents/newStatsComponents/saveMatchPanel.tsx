@@ -1,30 +1,51 @@
 import {Button, Modal} from "antd";
 import styles from "../css/savePanel.module.css"
-import {useState} from "react";
-import SaveMatchModal from "../saveMatchModal";
+import React, {useEffect, useState} from "react";
+import SaveMatchModal from "./saveMatchModal";
+import {getSession} from "next-auth/react";
+import {useRouter} from "next/router";
 
-const SaveMatchPanel = () => {
+interface SaveMatchPanelProps{
+    state: any;
+}
+
+const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {
     const [showSaveMatchModal, setShowSaveMatchModal] = useState(false);
     const [matchSaved, setMatchSaved] = useState(false);
+    const [signedIn, setSignedIn] = useState(false)
+    const router = useRouter();
+
+    useEffect(() => {
+        const securePage = async () => {
+            const session = await getSession();
+            if (!session) {
+                setSignedIn(false);
+            } else {
+                setSignedIn(true);
+            }
+        }
+        securePage();
+    }, [])
 
     const confirmExit = () => {
-        if (!matchSaved){
+        if (!matchSaved && signedIn){
             Modal.confirm({
                 title: "Are you sure that you want to go to the home screen? This match has not been saved.",
                 okType: "danger",
                 onOk: () => {
-                    window.location.replace("/");
+                    router.push("/");
 
                 },
             });
-        } else {
-            window.location.replace("/");
+        }
+        else {
+            router.push("/");
         }
 
     };
 
     const saveMatch = () => {
-        setShowSaveMatchModal(true);
+            setShowSaveMatchModal(true);
     }
 
     return (
@@ -42,6 +63,7 @@ const SaveMatchPanel = () => {
                 <div className={styles.btnTitle}>Back to Home</div>
             </Button>
             </div>
+            {signedIn && (
             <div className={styles.btn}>
             <Button
                 type="primary"
@@ -52,13 +74,13 @@ const SaveMatchPanel = () => {
                 onClick={saveMatch}
                 className={styles.saveBtn}
                 disabled={matchSaved}
-
             >
 
                 <div className={styles.btnTitle}> Save Match </div>
             </Button>
             </div>
-            <SaveMatchModal setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal} setMatchSaved={setMatchSaved}/>
+                )}
+            <SaveMatchModal state={state} setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal} setMatchSaved={setMatchSaved}/>
         </div>
 
     )

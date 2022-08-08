@@ -1,17 +1,52 @@
+import {useEffect, useState} from "react";
+import {getSession, signIn} from "next-auth/react";
+import styles from "../../css/matchLog.module.css"
 import {useRouter} from "next/router";
+import BackToHomeHeading from "../../components/statisticsComponents/backToHomeHeading";
+import Matches from "../../components/matches";
 
-function StatisticsPage(props){
-    const router = useRouter();
+function StatisticsPage(){
+    const [loading, setLoading] = useState(true)
+    const [matches, setMatches] = useState([])
 
-    function showMatchHandler(){
-        router.push('/' + props.id);
+    const fetchMatches = async () => {
+        const response = await fetch('api/matches')
+        const data = await response.json();
+        setMatches(data)
     }
-    return(
-        <div>
-            this is the match log page
-        </div>
+    const securePage = async () => {
+        const session = await getSession();
+        if (!session) {
+            signIn()
+        } else {
+            setLoading(false);
+        }
+    }
 
+    useEffect(() => {
+        securePage();
+        fetchMatches();
+    }, [])
+
+    if (loading) {
+        return <h2>Loading...</h2>
+    }
+
+    return(
+        <>
+        <BackToHomeHeading/>
+        <div>
+            {matches.map((match) => {
+                return (
+                        <div key={match.id} className={styles.matchLog}>
+                            <Matches match={match} fetchMatches={fetchMatches}/>
+                        </div>
+                )
+            })}
+        </div>
+        </>
     )
 }
 
 export default StatisticsPage;
+

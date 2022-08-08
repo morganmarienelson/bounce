@@ -1,22 +1,8 @@
-.heading {
-    margin: 10px auto auto auto;
-    font-size: 35px;
-    font-weight: 500;
-    padding: 20px 20px 0 20px;
-}
-
-.body {
-    width: 95%;
-    margin: auto;
-    border-radius: 7px;
-}
-
 .row {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 0;
-
 }
 
 .returnCol {
