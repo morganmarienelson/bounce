@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Form, Modal, Radio} from "antd";
-import styles from "../css/modal.module.css";
+import styles from "../css/modal.module.scss";
 import {MatchDataEvents} from "../../../machines/matchData";
+import {ServeLocations} from "../../../types";
 
 interface ServeLocationModalProps {
     serveLocationModalVisible: boolean;
@@ -31,18 +32,17 @@ const ServeLocationModal: React.FC<ServeLocationModalProps> = ({
     };
 
     const onModalOk = () => {
-        if (serveLocation == "alley") {
+        if (serveLocation == ServeLocations.alley) {
             send({type: MatchDataEvents.IncrementNotReturnedServesToAlley});
             pointLog.push(MatchDataEvents.DecrementNotReturnedServesToAlley);
-        } else if (serveLocation == "center") {
+        } else if (serveLocation == ServeLocations.center) {
             send({type: MatchDataEvents.IncrementNotReturnedServesToCenter});
             pointLog.push(MatchDataEvents.IncrementNotReturnedServesToCenter);
         } else {
             send({type: MatchDataEvents.IncrementNotReturnedServesToBody});
             pointLog.push(MatchDataEvents.IncrementNotReturnedServesToBody);
         }
-
-        if (sideOfCourt == "ad") {
+        if (sideOfCourt == ServeLocations.ad) {
             send({type: MatchDataEvents.IncrementNotReturnedServesAdSide});
             pointLog.push(MatchDataEvents.DecrementNotReturnedServesAdSide);
         } else {
@@ -50,16 +50,16 @@ const ServeLocationModal: React.FC<ServeLocationModalProps> = ({
             pointLog.push(MatchDataEvents.IncrementNotReturnedServesDeuceSide);
         }
         setServeLocationModalVisible(false);
-        setServeLocation("alley");
-        setSideOfCourt("deuce");
+        setServeLocation(ServeLocations.alley);
+        setSideOfCourt(ServeLocations.deuce);
         pointFinished();
     };
 
     const onModalCancel = () => {
         pointLog.pop();
         setServeLocationModalVisible(false);
-        setServeLocation("alley");
-        setSideOfCourt("deuce");
+        setServeLocation(ServeLocations.alley);
+        setSideOfCourt(ServeLocations.deuce);
     };
 
     return (
@@ -82,10 +82,10 @@ const ServeLocationModal: React.FC<ServeLocationModalProps> = ({
                         value={sideOfCourt}
                         onChange={onSideOfCourtSelected}
                     >
-                        <Radio value="deuce">
+                        <Radio value={ServeLocations.deuce}>
                             <div className={styles.radioLabel}>Deuce Side</div>
                         </Radio>
-                        <Radio value="ad">
+                        <Radio value={ServeLocations.ad}>
                             <div className={styles.radioLabel}>Ad Side</div>
                         </Radio>
                     </Radio.Group>
@@ -97,13 +97,13 @@ const ServeLocationModal: React.FC<ServeLocationModalProps> = ({
                         value={serveLocation}
                         onChange={onLocationSelected}
                     >
-                        <Radio value="alley">
+                        <Radio value={ServeLocations.alley}>
                             <div className={styles.radioLabel}>Alley</div>
                         </Radio>
-                        <Radio value="body">
+                        <Radio value={ServeLocations.body}>
                             <div className={styles.radioLabel}>Body</div>
                         </Radio>
-                        <Radio value="center">
+                        <Radio value={ServeLocations.center}>
                             <div className={styles.radioLabel}>Center</div>
                         </Radio>
                     </Radio.Group>

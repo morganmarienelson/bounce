@@ -4,10 +4,11 @@ import {
     Grommet,
 } from "grommet/components";
 import styles from "./css/returnStats.module.css";
-import globalStyles from "./css/matchStatsDisplay.module.css";
+import globalStyles from "./css/matchStatsDisplay.module.scss";
+import {MatchStats} from "../../types/interfaces";
 
 interface ReturnDataProps {
-    matchStats: any;
+    matchStats: MatchStats;
     checkSuccess: (value: number)  => string;
 }
 

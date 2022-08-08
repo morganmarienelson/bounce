@@ -2,9 +2,10 @@ import React from "react";
 import "antd/dist/antd.css";
 import {Modal} from "antd";
 import styles from "../css/prevMatchDetailsModal.module.css";
+import {MatchDetails} from "../../../types/interfaces";
 
 interface PrevMatchDetailsModalProps {
-    matchDetails: any;
+    matchDetails: MatchDetails;
     prevMatchDetailsModalVisible: boolean;
     setPrevMatchDetailsModalVisible: ( prevMatchDetailsModalVisible: boolean) => void;
 }

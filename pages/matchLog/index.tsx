@@ -1,9 +1,8 @@
 import {useEffect, useState} from "react";
 import {getSession, signIn} from "next-auth/react";
 import styles from "../../css/matchLog.module.css"
-import {useRouter} from "next/router";
 import BackToHomeHeading from "../../components/statisticsComponents/backToHomeHeading";
-import Matches from "../../components/matches";
+import MatchLogTable from "../../components/matchLogTable";
 
 function StatisticsPage(){
     const [loading, setLoading] = useState(true)
@@ -36,10 +35,10 @@ function StatisticsPage(){
         <>
         <BackToHomeHeading/>
         <div>
-            {matches.map((match) => {
+            {matches.map((match: any) => {
                 return (
                         <div key={match.id} className={styles.matchLog}>
-                            <Matches match={match} fetchMatches={fetchMatches}/>
+                            <MatchLogTable match={match} fetchMatches={fetchMatches}/>
                         </div>
                 )
             })}

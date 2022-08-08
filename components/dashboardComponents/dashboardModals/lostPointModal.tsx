@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Col, Form, Modal, Radio, Row, Switch} from "antd";
-import styles from "../css/modal.module.css";
+import styles from "../css/modal.module.scss";
 import {MatchDataEvents} from "../../../machines/matchData";
+import {ShotTypes} from "../../../types";
 
 interface LostPointModalProps {
     losingModalVisible: boolean;
@@ -15,6 +16,7 @@ interface LostPointModalProps {
     pointLog: Array<String>;
     secondServe: boolean;
 }
+
 
 const LostPointModal: React.FC<LostPointModalProps> = ({
                                                            losingModalVisible,
@@ -53,7 +55,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
 
     const onModalOk = () => {
         if (atBaseline) {
-            if (shotType == "forehand") {
+            if (shotType == ShotTypes.forehand) {
                 if (unforcedError) {
                     send({type: MatchDataEvents.IncrementForehandUnforcedError});
                     pointLog.push(MatchDataEvents.DecrementForehandUnforcedError);
@@ -61,7 +63,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                     send({type: MatchDataEvents.IncrementForehandLoss});
                     pointLog.push(MatchDataEvents.DecrementForehandLoss);
                 }
-            } else if (shotType == "backhand") {
+            } else if (shotType == ShotTypes.backhand) {
                 if (unforcedError) {
                     send({type: MatchDataEvents.IncrementBackhandUnforcedError});
                     pointLog.push(MatchDataEvents.DecrementBackhandUnforcedError);
@@ -71,7 +73,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                 }
             }
         } else {
-            if (shotType == "forehand") {
+            if (shotType == ShotTypes.forehand) {
                 if (unforcedError) {
                     send({type: MatchDataEvents.IncrementForehandVolleyUnforcedError});
                     pointLog.push(MatchDataEvents.DecrementForehandVolleyUnforcedError);
@@ -79,7 +81,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                     send({type: MatchDataEvents.IncrementForehandVolleyLoss});
                     pointLog.push(MatchDataEvents.DecrementForehandVolleyLoss);
                 }
-            } else if (shotType == "backhand") {
+            } else if (shotType == ShotTypes.backhand) {
                 if (unforcedError) {
                     send({type: MatchDataEvents.IncrementBackhandVolleyUnforcedError});
                     pointLog.push(MatchDataEvents.DecrementBackhandVolleyUnforcedError);
@@ -89,7 +91,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                 }
             }
         }
-        if (shotType == "overhead") {
+        if (shotType == ShotTypes.overhead) {
             if (unforcedError) {
                 send({type: MatchDataEvents.IncrementOverheadUnforcedError});
                 pointLog.push(MatchDataEvents.DecrementOverheadUnforcedError);
@@ -111,11 +113,11 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
         } else {
             send({type: MatchDataEvents.IncrementPointsLostOnReturn});
             pointLog.push(MatchDataEvents.DecrementPointsLostOnReturn);
-            pointLog.push("filler");
+            pointLog.push(ShotTypes.filler);
         }
         setLosingModalVisible(false);
         setUnforcedError(false);
-        setShotType("forehand");
+        setShotType(ShotTypes.forehand);
         setAtBaseline(true);
         pointFinished();
     };
@@ -124,7 +126,7 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
         setLosingModalVisible(false);
         setUnforcedError(false);
         setAtBaseline(true);
-        setShotType("forehand");
+        setShotType(ShotTypes.forehand);
         setShowServeButtons(false);
         setShowReturnButtons(false);
     };
@@ -162,13 +164,13 @@ const LostPointModal: React.FC<LostPointModalProps> = ({
                 <Form.Item
                 >
                     <Radio.Group size="large" value={shotType} onChange={onShotSelected}  >
-                        <Radio value="forehand">
+                        <Radio value={ShotTypes.forehand}>
                             <div className={styles.radioLabel}>Forehand</div>
                         </Radio>
-                        <Radio value="backhand">
+                        <Radio value={ShotTypes.backhand}>
                             <div className={styles.radioLabel}>Backhand</div>
                         </Radio>
-                        <Radio value="overhead">
+                        <Radio value={ShotTypes.overhead}>
                             <div className={styles.radioLabel}>Overhead</div>
                         </Radio>
                     </Radio.Group>

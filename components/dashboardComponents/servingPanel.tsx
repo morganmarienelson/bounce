@@ -1,8 +1,9 @@
 import { Button } from "antd";
 import React, { useState } from "react";
-import styles from "./css/servePanel.module.css";
+import styles from "./css/returnAndServePanel.module.scss";
 import { MatchDataEvents } from "../../machines/matchData";
 import ServeLocationModal from "./dashboardModals/serveLocationModal";
+import {ShotTypes} from "../../types";
 
 interface ServingPanelProps {
   pointFinished: () => void;
@@ -48,7 +49,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
       pointLog.push(MatchDataEvents.DecrementDoubleFaults);
       send({ type: MatchDataEvents.IncrementPointsLostOnServe });
       pointLog.push(MatchDataEvents.DecrementPointsLostOnServe);
-      pointLog.push("filler");
+      pointLog.push(ShotTypes.filler);
       pointFinished();
     } else {
       setSecondServe(true);
@@ -82,9 +83,9 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
       <div className={styles.panelRow}>
         {!showServeButtons ? (
           <>
-            <div className={styles.btnCol}>
+            <div className={styles.twoSingleBtns}>
               <Button
-                className={styles.serveBtn}
+                className={styles.panelBtn}
                 type="primary"
                 style={{
                   background: "#26CC3E ",
@@ -95,9 +96,9 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                 <div className={styles.btnTitle}>Ace</div>
               </Button>
             </div>
-            <div className={styles.btnCol}>
+            <div className={styles.twoSingleBtns}>
               <Button
-                className={styles.serveBtn}
+                className={styles.panelBtn}
                 type="primary"
                 style={{
                   background: "#26CC3E ",
@@ -112,7 +113,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
             </div>
             <div className={styles.faultCol}>
               <Button
-                className={styles.serveBtn}
+                className={styles.panelBtn}
                 type="primary"
                 style={{
                   background: "#FF0000",
@@ -127,9 +128,9 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                 )}
               </Button>
             </div>
-            <div className={styles.serveInCol}>
+            <div className={styles.inCol}>
               <Button
-                className={styles.serveInBtn}
+                className={styles.panelBtn}
                 type="primary"
                 onClick={onInClick}
               >
@@ -139,7 +140,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
           </>
         ) : (
           <>
-            <div className={styles.serveInCol}>
+            <div className={styles.inCol}>
               <Button
                 className={styles.wonLostBtn}
                 type="primary"
@@ -152,7 +153,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                 <div className={styles.wonLostBtnTitle}>Won</div>
               </Button>
             </div>
-            <div className={styles.serveInCol}>
+            <div className={styles.inCol}>
               <Button
                 className={styles.wonLostBtn}
                 type="primary"
@@ -167,17 +168,17 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
             </div>
           </>
         )}
-        <div className={styles.stopBtnCol}>
+        <div className={styles.undoOrViewCol}>
           <Button
             type="primary"
-            className={styles.matchStatsBtn}
+            className={styles.undoOrView}
             style={{
               background: "#480096",
               border: "#480096",
             }}
             onClick={confirmStop}
           >
-            <div className={styles.matchTitle}>View Match <br></br> Statistics</div>
+            <div className={styles.btnTitle}>View Match <br></br> Statistics</div>
           </Button>
         </div>
       </div>

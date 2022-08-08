@@ -7,7 +7,7 @@ import { signIn, signOut, useSession} from "next-auth/react";
 
 
 function BounceHomePageHeading() {
-    const { data: session, loading } = useSession()
+    const { data: session, status: loading } = useSession()
     return (
              <Grommet>
                  <Header className={styles.header}>

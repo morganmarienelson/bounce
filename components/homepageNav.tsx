@@ -41,12 +41,12 @@ const HomePageNav = () => {
             </div>
             <div className={styles.btnCol}>
                 {showPreviousButton && (
-            <Link href='/matchLog'>
+            <Link href='/index'>
                 <div className={styles.btn}>
                 <Button
                 primary
                 icon={<Database color={'white'}/>}
-                label="View Previous Matches"
+                label="View Previous Match"
                 size={"large"}
                 color={"#480096"}
 

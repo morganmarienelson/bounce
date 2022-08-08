@@ -1,6 +1,6 @@
 import {assign, createMachine} from "xstate";
 
-interface PointOutcomes {
+export interface PointOutcomes {
     pointsWonByForehand: number;
     pointsWonByBackhand: number;
     pointsWonByForehandVolley: number;

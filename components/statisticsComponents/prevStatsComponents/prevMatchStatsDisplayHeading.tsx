@@ -4,9 +4,10 @@ import styles from "../../BounceHeading.module.css"
 import Link from "next/Link";
 import {LinkPrevious,Home} from "grommet-icons";
 import React from "react";
+import {MatchDetails} from "../../../types/interfaces";
 
 interface PrevMatchStatsDisplayHeadingProps{
-    stats: any
+    stats: MatchDetails
 }
 
 
@@ -25,7 +26,7 @@ const PrevMatchStatsDisplayHeading: React.FC<PrevMatchStatsDisplayHeadingProps> 
                                 <Home color={"white"}/>
                             </a>
                         </Link>
-                        <Link href="/matchLog">
+                        <Link href="/index">
                             <a>
                                 <LinkPrevious color={"white"} transform={"rotate(180)"}/>
                             </a>

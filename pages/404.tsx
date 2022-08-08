@@ -16,7 +16,7 @@ function PageNotFound(){
                <div className={styles.button}>
                    <Link href='/'>
                        <Button
-                           type="primary"
+                           type="submit"
                            style={{
                                background: "#480096",
                                border: "#480096",

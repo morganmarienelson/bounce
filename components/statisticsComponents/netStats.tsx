@@ -17,7 +17,8 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import {Chart, ArcElement} from 'chart.js'
-import globalStyles from "./css/matchStatsDisplay.module.css";
+import globalStyles from "./css/matchStatsDisplay.module.scss";
+import {MatchStats} from "../../types/interfaces";
 Chart.register(ArcElement);
 
 ChartJS.register(
@@ -32,7 +33,7 @@ ChartJS.register(
 )
 
 interface NetDataProps {
-    matchStats: any;
+    matchStats: MatchStats;
     checkSuccess: (value: number)  => string;
 }
 

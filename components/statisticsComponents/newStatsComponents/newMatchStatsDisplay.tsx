@@ -1,69 +1,17 @@
 import "antd/dist/antd.css";
 import React, {useEffect, useState} from "react";
-import styles from "../css/matchStatsDisplay.module.css";
+import styles from "../css/matchStatsDisplay.module.scss";
 import ServingStats from "../servingStats";
 import ReturnStats from "../returnStats";
 import BaselineStats from "../baselineStats";
 import NetStats from "../netStats";
 import SaveMatchPanel from "./saveMatchPanel";
 import BackToHomeHeading from "../backToHomeHeading";
+import {MatchStats} from "../../../types/interfaces";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;
     state: any;
-}
-
-export interface MatchStats{
-    percentPointsWonOnBaseline: number,
-    percentBaselinePointsWon: number,
-    percentPointsWonByWinnersOnBaseline: number,
-    percentPointsLostByUnforcedErrorOnBaseline: number,
-    pointsWonByForehandOnBaseline:number,
-    pointsWonByForehandWinnerOnBaseline: number,
-    pointsWonByBackhandOnBaseline: number,
-    pointsWonByBackhandWinnerOnBaseline: number,
-    pointsLostByForehandOnBaseline: number,
-    pointsLostByForehandUnforcedErrorOnBaseline: number,
-    pointsLostByBackhandOnBaseline: number,
-    pointsLostByBackhandUnforcedErrorOnBaseline: number,
-    forehandAccuracyOnBaseline: number,
-    backhandAccuracyOnBaseline: number,
-    percentPointsWonAtNet: number,
-    percentNetPointsWon: number,
-    percentPointsWonByWinnersAtNet: number,
-    percentPointsLostByUnforcedErrorAtNet: number,
-    forehandVolleyAccuracy: number,
-    backhandVolleyAccuracy: number,
-    overheadAccuracy: number,
-    pointsWonByForehandVolley: number,
-    pointsWonByForehandVolleyWinner: number,
-    pointsWonByBackhandVolley: number,
-    pointsWonByBackhandVolleyWinner: number,
-    pointsWonByOverhead: number,
-    pointsWonByOverheadWinner: number,
-    pointsLostByForehandVolley: number,
-    pointsLostByForehandVolleyUnforcedError: number,
-    pointsLostByBackhandVolley: number,
-    pointsLostByBackhandVolleyUnforcedError: number,
-    pointsLostByOverhead:number,
-    pointsLostByOverheadUnforcedError: number,
-    percentOfTotalPointsWonOnServe: number,
-    percentOfServingPointsWon: number,
-    firstServePercentage: number,
-    secondServePercentage: number,
-    totalAces: number,
-    notReturnedServesDeuceSide: number,
-    notReturnedServesAdSide: number,
-    totalNotReturnedFirstServes: number,
-    totalNotReturnedSecondServes: number,
-    totalNotReturnedServes: number,
-    notReturnedServesToAlley: number,
-    notReturnedServesToBody: number,
-    notReturnedServesToCenter: number,
-    percentOfTotalPointsWonOnReturn: number,
-    percentOfReturnPointsWon: number
-    missedSecondServeReturns: number,
-    missedFirstServeReturns: number,
 }
 
 const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, state}) => {
@@ -121,159 +69,101 @@ const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, stat
             missedFirstServeReturns: 0,
         }
     );
-    const totalServePoints =
-        +JSON.stringify(state.context.pointsWonOnServe) +
-        +JSON.stringify(state.context.pointsLostOnServe);
+    const totalServePoints = state.context.pointsWonOnServe + state.context.pointsLostOnServe;
 
-    const totalReturnPoints =
-        +JSON.stringify(state.context.pointsWonOnReturn) +
-        +JSON.stringify(state.context.pointsLostOnReturn);
+    const totalReturnPoints = state.context.pointsWonOnReturn + state.context.pointsLostOnReturn;
 
-    const totalPoints =
-        totalServePoints +
-        totalReturnPoints;
+    const totalPoints = totalServePoints + totalReturnPoints;
 
-    const percentOfReturnPointsWon = +(
-        (+JSON.stringify(state.context.pointsWonOnReturn) / totalReturnPoints) *
+    const percentOfReturnPointsWon = +((state.context.pointsWonOnReturn / totalReturnPoints) *
         100
     ).toPrecision(2);
 
-    const percentOfTotalPointsWonOnReturn = +(
-        (+JSON.stringify(state.context.pointsWonOnReturn) / totalPoints) *
-        100
-    ).toPrecision(2);
+    const percentOfTotalPointsWonOnReturn = +((state.context.pointsWonOnReturn / totalPoints) *
+        100).toPrecision(2);
 
     const percentOfServingPointsWon = +(
-        (+JSON.stringify(state.context.pointsWonOnServe) / totalServePoints) *
+       (state.context.pointsWonOnServe / totalServePoints) *
         100
     ).toPrecision(2);
 
     const percentOfTotalPointsWonOnServe = +(
-        (+JSON.stringify(state.context.pointsWonOnServe) / totalPoints) *
-        100
-    ).toPrecision(2);
+        (state.context.pointsWonOnServe / totalPoints) *
+        100).toPrecision(2);
 
-    const firstServePercentage = +(
-        (+JSON.stringify(state.context.madeFirstServes) / totalServePoints) *
-        100
-    ).toPrecision(2);
+    const firstServePercentage = +((state.context.madeFirstServes / totalServePoints) *
+        100).toPrecision(2);
 
-    const totalHitSecondServes =
-        +JSON.stringify(state.context.madeSecondServes) +
-        +JSON.stringify(state.context.doubleFaults);
+    const totalHitSecondServes = state.context.madeSecondServes + state.context.doubleFaults;
 
-    const secondServePercentage = +(
-        (+JSON.stringify(state.context.madeSecondServes) / totalHitSecondServes) *
-        100
-    ).toPrecision(2);
+    const secondServePercentage = +((state.context.madeSecondServes / totalHitSecondServes) * 100).toPrecision(2);
 
-    const totalNotReturnedServes =
-        +JSON.stringify(state.context.notReturnedFirstServes) +
-        +JSON.stringify(state.context.notReturnedSecondServes) +
-        +JSON.stringify(state.context.acesOnSecondServe) +
-        +JSON.stringify(state.context.acesOnFirstServe);
+    const totalNotReturnedServes = state.context.notReturnedFirstServes + state.context.notReturnedSecondServes + state.context.acesOnSecondServe + state.context.acesOnFirstServe;
 
-    const totalAces = +JSON.stringify(state.context.acesOnFirstServe) + +JSON.stringify(state.context.acesOnSecondServe);
+    const totalAces = state.context.acesOnFirstServe + state.context.acesOnSecondServe;
 
-    const totalNotReturnedFirstServes = +JSON.stringify(state.context.acesOnFirstServe) + +JSON.stringify(state.context.notReturnedFirstServes);
+    const totalNotReturnedFirstServes = state.context.acesOnFirstServe + state.context.notReturnedFirstServes;
 
-    const totalNotReturnedSecondServes = +JSON.stringify(state.context.acesOnSecondServe) + +JSON.stringify(state.context.notReturnedSecondServes);
+    const totalNotReturnedSecondServes = state.context.acesOnSecondServe + state.context.notReturnedSecondServes;
 
-    const totalBaselinePointsWon = +(
-        +JSON.stringify(state.context.pointsWonByForehand) +
-        +JSON.stringify(state.context.pointsWonByBackhand) +
-        +JSON.stringify(state.context.pointsWonByForehandWinner) +
-        +JSON.stringify(state.context.pointsWonByBackhandWinner)
-    );
+    const totalBaselinePointsWon = state.context.pointsWonByForehand + state.context.pointsWonByBackhand + state.context.pointsWonByForehandWinner + state.context.pointsWonByBackhandWinner;
 
-    const totalBaselinePointsLost = +(
-        +JSON.stringify(state.context.pointsLostByForehand) +
-        +JSON.stringify(state.context.pointsLostByBackhand) +
-        +JSON.stringify(state.context.pointsLostByForehandUnforcedError) +
-        +JSON.stringify(state.context.pointsLostByBackhandUnforcedError)
-    );
+    const totalBaselinePointsLost = state.context.pointsLostByForehand + state.context.pointsLostByBackhand + state.context.pointsLostByForehandUnforcedError + state.context.pointsLostByBackhandUnforcedError;
 
     const percentPointsWonOnBaseline = +(totalBaselinePointsWon/totalPoints * 100).toPrecision(2);
 
     const percentBaselinePointsWon = +(totalBaselinePointsWon/(totalBaselinePointsWon + totalBaselinePointsLost) * 100).toPrecision(2);
 
-    const percentPointsWonByWinnersOnBaseline = +(  (  +JSON.stringify(state.context.pointsWonByForehandWinner) +
-        +JSON.stringify(state.context.pointsWonByBackhandWinner))/(totalBaselinePointsWon) * 100).toPrecision(2);
+    const percentPointsWonByWinnersOnBaseline = +((  state.context.pointsWonByForehandWinner +
+       state.context.pointsWonByBackhandWinner)/(totalBaselinePointsWon) * 100).toPrecision(2);
 
-    const percentPointsLostByUnforcedErrorOnBaseline = +(  (  +JSON.stringify(state.context.pointsLostByForehandUnforcedError) +
-        +JSON.stringify(state.context.pointsLostByBackhandUnforcedError))/(totalBaselinePointsLost) * 100).toPrecision(2);
+    const percentPointsLostByUnforcedErrorOnBaseline = +((state.context.pointsLostByForehandUnforcedError +
+       state.context.pointsLostByBackhandUnforcedError)/(totalBaselinePointsLost) * 100).toPrecision(2);
 
-    const totalForehands =
-        +JSON.stringify(state.context.pointsWonByForehand) +
-        +JSON.stringify(
-            state.context.pointsLostByForehand +
-            +JSON.stringify(state.context.pointsWonByForehandWinner) +
-            +JSON.stringify(state.context.pointsLostByForehandUnforcedError)
-        );
+    const totalForehands = state.context.pointsWonByForehand + state.context.pointsLostByForehand + state.context.pointsWonByForehandWinner + state.context.pointsLostByForehandUnforcedError;
 
-    const totalWinningForehands =
-        +JSON.stringify(state.context.pointsWonByForehand) +
-        +JSON.stringify(state.context.pointsWonByForehandWinner);
+    const totalWinningForehands = state.context.pointsWonByForehand + state.context.pointsWonByForehandWinner;
 
-    const forehandAccuracy = +(
-        (totalWinningForehands / totalForehands) *
-        100
-    ).toPrecision(2);
+    const forehandAccuracy = +((totalWinningForehands / totalForehands) * 100).toPrecision(2);
 
-    const totalBackhands =
-        +JSON.stringify(state.context.pointsWonByBackhand) +
-        +JSON.stringify(state.context.pointsLostByBackhand) +
-        +JSON.stringify(state.context.pointsLostByBackhandUnforcedError) +
-        +JSON.stringify(state.context.pointsWonByBackhandWinner);
+    const totalBackhands = state.context.pointsWonByBackhand + state.context.pointsLostByBackhand + state.context.pointsLostByBackhandUnforcedError + state.context.pointsWonByBackhandWinner;
 
-    const totalWinningBackhands =
-        +JSON.stringify(state.context.pointsWonByBackhand) +
-        +JSON.stringify(state.context.pointsWonByBackhandWinner);
+    const totalWinningBackhands = state.context.pointsWonByBackhand + state.context.pointsWonByBackhandWinner;
 
-    const backhandAccuracy = +(
-        (totalWinningBackhands / totalBackhands) *
-        100
-    ).toPrecision(2);
+    const backhandAccuracy = +((totalWinningBackhands / totalBackhands) * 100).toPrecision(2);
 
-    const totalNetPointsWon = +(
-        +JSON.stringify(state.context.pointsWonByForehandVolley) +
-        +JSON.stringify(state.context.pointsWonByBackhandVolley) +
-        +JSON.stringify(state.context.pointsWonByForehandVolleyWinner) +
-        +JSON.stringify(state.context.pointsWonByBackhandVolley) +
-        +JSON.stringify(state.context.pointsWonByOverhead) +
-        +JSON.stringify(state.context.pointsWonByOverheadWinner)
-    );
+    const totalNetPointsWon =
+       state.context.pointsWonByForehandVolley + state.context.pointsWonByBackhandVolley +
+        state.context.pointsWonByForehandVolleyWinner + state.context.pointsWonByBackhandVolley +
+        state.context.pointsWonByOverhead + state.context.pointsWonByOverheadWinner;
 
-    const totalNetPointsLost = +(
-        +JSON.stringify(state.context.pointsLostByForehandVolley) +
-        +JSON.stringify(state.context.pointsLostByBackhandVolley) +
-        +JSON.stringify(state.context.pointsLostByForehandVolleyUnforcedError) +
-        +JSON.stringify(state.context.pointsLostByBackhandVolleyUnforcedError) +
-        +JSON.stringify(state.context.pointsLostByOverhead) +
-        +JSON.stringify(state.context.pointsLostByOverheadUnforcedError)
-    );
+    const totalNetPointsLost =
+       state.context.pointsLostByForehandVolley +
+        state.context.pointsLostByBackhandVolley +
+        state.context.pointsLostByForehandVolleyUnforcedError +
+        state.context.pointsLostByBackhandVolleyUnforcedError +
+        state.context.pointsLostByOverhead +
+      state.context.pointsLostByOverheadUnforcedError;
 
     const percentPointsWonAtNet = +(totalNetPointsWon/totalPoints * 100).toPrecision(2);
 
     const percentNetPointsWon = +(totalNetPointsWon/(totalNetPointsWon + totalNetPointsLost) * 100).toPrecision(2);
 
-    const percentPointsWonByWinnersAtNet = +(  (  +JSON.stringify(state.context.pointsWonByForehandVolleyWinner) +
-        +JSON.stringify(state.context.pointsWonByBackhandVolleyWinner) +         +JSON.stringify(state.context.pointsWonByOverheadWinner) )/(totalNetPointsWon) * 100).toPrecision(2);
+    const percentPointsWonByWinnersAtNet = +((state.context.pointsWonByForehandVolleyWinner +
+       state.context.pointsWonByBackhandVolleyWinner + state.context.pointsWonByOverheadWinner )/(totalNetPointsWon) * 100).toPrecision(2);
 
-    const percentPointsLostByUnforcedErrorAtNet = +(  (  +JSON.stringify(state.context.pointsLostByForehandVolleyUnforcedError) +
-        +JSON.stringify(state.context.pointsLostByBackhandVolleyUnforcedError) + +JSON.stringify(state.context.pointsLostByOverheadUnforcedError))/(totalNetPointsLost) * 100).toPrecision(2);
+    const percentPointsLostByUnforcedErrorAtNet = +((state.context.pointsLostByForehandVolleyUnforcedError +
+     state.context.pointsLostByBackhandVolleyUnforcedError + state.context.pointsLostByOverheadUnforcedError)/(totalNetPointsLost) * 100).toPrecision(2);
 
     const totalForehandVolleys =
-        +JSON.stringify(state.context.pointsWonByForehandVolley) +
-        +JSON.stringify(
+        state.context.pointsWonByForehandVolley +
             state.context.pointsLostByForehandVolley +
-            +JSON.stringify(state.context.pointsWonByForehandVolleyWinner) +
-            +JSON.stringify(state.context.pointsLostByForehandVolleyUnforcedError)
-        );
+           state.context.pointsWonByForehandVolleyWinner +
+            state.context.pointsLostByForehandVolleyUnforcedError;
 
     const totalWinningForehandVolleys =
-        +JSON.stringify(state.context.pointsWonByForehandVolley) +
-        +JSON.stringify(state.context.pointsWonByForehandVolleyWinner);
+       state.context.pointsWonByForehandVolley +
+       state.context.pointsWonByForehandVolleyWinner;
 
     const forehandVolleyAccuracy = +(
         (totalWinningForehandVolleys / totalForehandVolleys) *
@@ -281,29 +171,29 @@ const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, stat
     ).toPrecision(2);
 
     const totalBackhandVolleys =
-        +JSON.stringify(state.context.pointsWonByBackhandVolley) +
-        +JSON.stringify(state.context.pointsLostByBackhandVolley) +
-        +JSON.stringify(state.context.pointsLostByBackhandVolleyUnforcedError) +
-        +JSON.stringify(state.context.pointsWonByBackhandVolleyWinner);
+        state.context.pointsWonByBackhandVolley +
+        state.context.pointsLostByBackhandVolley +
+        state.context.pointsLostByBackhandVolleyUnforcedError +
+       state.context.pointsWonByBackhandVolleyWinner;
 
     const totalWinningBackhandVolleys =
-        +JSON.stringify(state.context.pointsWonByBackhandVolley) +
-        +JSON.stringify(state.context.pointsWonByBackhandVolleyWinner);
+        state.context.pointsWonByBackhandVolley +
+        state.context.pointsWonByBackhandVolleyWinner;
 
-    const backhandVolleyAccuracy = +(
-        (totalWinningBackhandVolleys / totalBackhandVolleys) *
+    const backhandVolleyAccuracy = +((
+        totalWinningBackhandVolleys / totalBackhandVolleys *
         100
-    ).toPrecision(2);
+    ).toPrecision(2));
 
     const totalOverheads=
-        +JSON.stringify(state.context.pointsWonByOverhead) +
-        +JSON.stringify(state.context.pointsLostByOverhead) +
-        +JSON.stringify(state.context.pointsWonByOverheadWinner) +
-        +JSON.stringify(state.context.pointsLostByOverheadUnforcedError);
+        state.context.pointsWonByOverhead +
+        state.context.pointsLostByOverhead +
+        state.context.pointsWonByOverheadWinner +
+        state.context.pointsLostByOverheadUnforcedError;
 
     const totalWinningOverheads =
-        +JSON.stringify(state.context.pointsWonByOverhead) +
-        +JSON.stringify(state.context.pointsWonByOverheadWinner);
+        state.context.pointsWonByOverhead +
+        state.context.pointsWonByOverheadWinner;
 
     const overheadAccuracy = +(
         (totalWinningOverheads / totalOverheads) *
@@ -337,30 +227,30 @@ const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, stat
             firstServePercentage: firstServePercentage,
             secondServePercentage: secondServePercentage,
             totalAces: totalAces,
-            notReturnedServesDeuceSide: +JSON.stringify(state.context.notReturnedServesDeuceSide),
-            notReturnedServesAdSide: +JSON.stringify(state.context.notReturnedServesAdSide),
+            notReturnedServesDeuceSide: state.context.notReturnedServesDeuceSide,
+            notReturnedServesAdSide: state.context.notReturnedServesAdSide,
             totalNotReturnedFirstServes: totalNotReturnedFirstServes,
             totalNotReturnedSecondServes: totalNotReturnedSecondServes,
             totalNotReturnedServes: totalNotReturnedServes,
-            notReturnedServesToAlley: +JSON.stringify(state.context.notReturnedServesToAlley),
-            notReturnedServesToBody:  +JSON.stringify(state.context.notReturnedServesToBody),
-            notReturnedServesToCenter: +JSON.stringify(state.context.notReturnedServesToCenter),
+            notReturnedServesToAlley: state.context.notReturnedServesToAlley,
+            notReturnedServesToBody: state.context.notReturnedServesToBody,
+            notReturnedServesToCenter:state.context.notReturnedServesToCenter,
             percentOfTotalPointsWonOnReturn: percentOfTotalPointsWonOnReturn,
             percentOfReturnPointsWon: percentOfReturnPointsWon,
-            missedSecondServeReturns: +JSON.stringify(state.context.missedSecondServeReturns),
-            missedFirstServeReturns: +JSON.stringify(state.context.missedFirstServeReturns),
+            missedSecondServeReturns: state.context.missedSecondServeReturns,
+            missedFirstServeReturns: state.context.missedFirstServeReturns,
             percentPointsWonOnBaseline: percentPointsWonOnBaseline,
             percentBaselinePointsWon: percentBaselinePointsWon,
             percentPointsWonByWinnersOnBaseline: percentPointsWonByWinnersOnBaseline,
             percentPointsLostByUnforcedErrorOnBaseline: percentPointsLostByUnforcedErrorOnBaseline,
-            pointsWonByForehandOnBaseline:+JSON.stringify(state.context.pointsWonByForehand),
-            pointsWonByForehandWinnerOnBaseline: +JSON.stringify(state.context.pointsWonByForehandWinner),
-            pointsWonByBackhandOnBaseline: +JSON.stringify(state.context.pointsWonByBackhand),
-            pointsWonByBackhandWinnerOnBaseline: +JSON.stringify(state.context.pointsWonByBackhandWinner),
-            pointsLostByForehandOnBaseline: +JSON.stringify(state.context.pointsLostByForehand),
-            pointsLostByForehandUnforcedErrorOnBaseline: +JSON.stringify(state.context.pointsLostByForehandUnforcedError),
-            pointsLostByBackhandOnBaseline: +JSON.stringify(state.context.pointsLostByBackhand),
-            pointsLostByBackhandUnforcedErrorOnBaseline:  +JSON.stringify(state.context.pointsLostByBackhandUnforcedError),
+            pointsWonByForehandOnBaseline:state.context.pointsWonByForehand,
+            pointsWonByForehandWinnerOnBaseline: state.context.pointsWonByForehandWinner,
+            pointsWonByBackhandOnBaseline:state.context.pointsWonByBackhand,
+            pointsWonByBackhandWinnerOnBaseline: state.context.pointsWonByBackhandWinner,
+            pointsLostByForehandOnBaseline: state.context.pointsLostByForehand,
+            pointsLostByForehandUnforcedErrorOnBaseline: state.context.pointsLostByForehandUnforcedError,
+            pointsLostByBackhandOnBaseline: state.context.pointsLostByBackhand,
+            pointsLostByBackhandUnforcedErrorOnBaseline: state.context.pointsLostByBackhandUnforcedError,
             forehandAccuracyOnBaseline: forehandAccuracy,
             backhandAccuracyOnBaseline: backhandAccuracy,
             percentPointsWonAtNet: percentPointsWonAtNet,
@@ -370,18 +260,18 @@ const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, stat
             forehandVolleyAccuracy: forehandVolleyAccuracy,
             backhandVolleyAccuracy: backhandVolleyAccuracy,
             overheadAccuracy: overheadAccuracy,
-            pointsWonByForehandVolley: +JSON.stringify(state.context.pointsWonByForehandVolley),
-            pointsWonByForehandVolleyWinner: +JSON.stringify(state.context.pointsWonByForehandVolleyWinner),
-            pointsWonByBackhandVolley: +JSON.stringify(state.context.pointsWonByBackhandVolley),
-            pointsWonByBackhandVolleyWinner: +JSON.stringify(state.context.pointsWonByBackhandVolleyWinner),
-            pointsWonByOverhead: +JSON.stringify(state.context.pointsWonByOverhead),
-            pointsWonByOverheadWinner: +JSON.stringify(state.context.pointsWonByOverheadWinner),
-            pointsLostByForehandVolley: +JSON.stringify(state.context.pointsLostByForehandVolley),
-            pointsLostByForehandVolleyUnforcedError: +JSON.stringify(state.context.pointsLostByForehandVolleyUnforcedError),
-            pointsLostByBackhandVolley: +JSON.stringify(state.context.pointsLostByBackhandVolley),
-            pointsLostByBackhandVolleyUnforcedError: +JSON.stringify(state.context.pointsLostByBackhandVolleyUnforcedError),
-            pointsLostByOverhead: +JSON.stringify(state.context.pointsLostByOverhead),
-            pointsLostByOverheadUnforcedError: +JSON.stringify(state.context.pointsLostByOverheadUnforcedError),
+            pointsWonByForehandVolley: state.context.pointsWonByForehandVolley,
+            pointsWonByForehandVolleyWinner: state.context.pointsWonByForehandVolleyWinner,
+            pointsWonByBackhandVolley: state.context.pointsWonByBackhandVolley,
+            pointsWonByBackhandVolleyWinner: state.context.pointsWonByBackhandVolleyWinner,
+            pointsWonByOverhead: state.context.pointsWonByOverhead,
+            pointsWonByOverheadWinner: state.context.pointsWonByOverheadWinner,
+            pointsLostByForehandVolley: state.context.pointsLostByForehandVolley,
+            pointsLostByForehandVolleyUnforcedError: state.context.pointsLostByForehandVolleyUnforcedError,
+            pointsLostByBackhandVolley: state.context.pointsLostByBackhandVolley,
+            pointsLostByBackhandVolleyUnforcedError: state.context.pointsLostByBackhandVolleyUnforcedError,
+            pointsLostByOverhead: state.context.pointsLostByOverhead,
+            pointsLostByOverheadUnforcedError: state.context.pointsLostByOverheadUnforcedError,
         } as MatchStats;
         setMatchStats(stats);
     }

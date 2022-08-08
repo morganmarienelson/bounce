@@ -1,11 +1,13 @@
+$label-font-size: 18px;
+
 .label {
-    font-size: 18px;
+    font-size: $label-font-size;
     margin-right: 20px;
     font-weight: 500;
 }
 
 .radioLabel {
-    font-size: 18px;
+    font-size: $label-font-size;
     font-weight: 480;
     margin-top: 20px;
 }

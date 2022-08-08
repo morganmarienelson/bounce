@@ -1,8 +1,9 @@
 import {Button, message} from "antd";
 import React from "react";
-import styles from "./css/returnPanel.module.css";
+import styles from "./css/returnAndServePanel.module.scss";
 import {Undo} from "grommet-icons";
 import {MatchDataEvents} from "../../machines/matchData";
+import {ShotTypes} from "../../types";
 
 interface ReturnPanelProps {
     pointFinished: () => void;
@@ -46,7 +47,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
         pointLog.push(MatchDataEvents.DecrementMissedSecondServeReturns);
         send({type: MatchDataEvents.IncrementPointsLostOnReturn});
         pointLog.push(MatchDataEvents.DecrementPointsLostOnReturn);
-        pointLog.push("filler");
+        pointLog.push(ShotTypes.filler);
         setShowServeButtons(false);
         pointFinished();
     };
@@ -54,8 +55,8 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
     const onDoubleFault = () => {
         send({type: MatchDataEvents.IncrementPointsWonOnReturn});
         pointLog.push(MatchDataEvents.IncrementPointsWonOnReturn);
-        pointLog.push("filler");
-        pointLog.push("filler");
+        pointLog.push(ShotTypes.filler);
+        pointLog.push(ShotTypes.filler);
         setShowServeButtons(false);
         pointFinished();
     };
@@ -65,9 +66,9 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
             message.error("There is not a recorded point to undo", 2);
         } else {
             const lastEntry = pointLog.pop();
-            if (lastEntry == "filler") {
+            if (lastEntry == ShotTypes.filler) {
                 const nextEntry = pointLog.pop();
-                if (nextEntry == "filler"){
+                if (nextEntry == ShotTypes.filler){
                     send({type: pointLog.pop()});
                     message.success("The last point has been removed from record", 2);
                 } else{
@@ -90,7 +91,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
             <div className={styles.panelRow}>
                 {!showReturnButtons ? (
                     <>
-                        <div className={styles.missBtn}>
+                        <div className={styles.twoSingleBtns}>
                             <Button
                                 className={styles.panelBtn}
                                 type="primary"
@@ -108,7 +109,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 </div>
                             </Button>
                         </div>
-                        <div className={styles.missBtn}>
+                        <div className={styles.twoSingleBtns}>
                             <Button
                                 className={styles.panelBtn}
                                 type="primary"
@@ -179,9 +180,9 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                         </div>
                     </>
                 )}
-                <div className={styles.undoCol}>
+                <div className={styles.undoOrViewCol}>
                     <Button
-                        className={styles.undo}
+                        className={styles.undoOrView}
                         type="default"
                         icon={<Undo/>}
                         onClick={pointUndone}

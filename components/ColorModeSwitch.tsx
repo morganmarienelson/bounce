@@ -8,7 +8,7 @@ export function ColorModeSwitcher() {
         <Group position="center" mt="xl">
             <ActionIcon
                 onClick={()=> toggleColorScheme()}
-                size="2xl"
+                size="xl"
                 sx={(theme) => ({
                     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[1]: theme.colors.gray[7],
                 })}>

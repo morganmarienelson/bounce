@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Layout = ({ children }) => {
+const Layout = ( props: any ) => {
     return (
         <>
         <Head>
@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
         </Head>
             <div>
                 <main>
-                    {children}
+                    {props.children}
                 </main>
             </div>
         </>

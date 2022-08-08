@@ -1,13 +1,14 @@
 import Layout from "../components/layout/Layout";
 import {MantineProvider, ColorSchemeProvider} from "@mantine/core";
-import {useState} from "react";
+import { useState} from "react";
 import {getCookie, setCookies} from "cookies-next";
 import { SessionProvider } from 'next-auth/react';
+import {NextPageContext} from "next";
 
-export default function MyApp(props) {
+const MyApp = (props: any) => {
     const {Component, pageProps} = props;
     const [colorScheme, setColorScheme ] = useState(props.colorScheme);
-    const toggleColorScheme = (value) => {
+    const toggleColorScheme = (value:any) => {
     const nextColorScheme = value || (colorScheme === "dark" ? 'light' : "dark" );
     setColorScheme(nextColorScheme);
     setCookies('mantine-color-scheme', nextColorScheme, {maxAge: 60*60*24*30});
@@ -27,6 +28,8 @@ export default function MyApp(props) {
 );
 }
 
-MyApp.getInitialProps = ({ctx}) => ({
+export const getServerSideProps = (ctx: NextPageContext) => ({
     colorScheme: getCookie('mantine-color-scheme', ctx) || 'n ',
 })
+
+export default MyApp;

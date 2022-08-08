@@ -1,0 +1,103 @@
+@import "../../../styles/mixin";
+
+.row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap:20px;
+
+    @include statsPanelToTwoCol(){
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: auto;
+    }
+
+    @include statsHeadingShrink(){
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+.doughnutChartCol {
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    grid-column: span 1 / span 1;
+
+    @include statsPanelToTwoCol(){
+        padding: 10px;
+    }
+
+    @include statsHeadingShrink(){
+        padding: 0;
+        width: 70%;
+    }
+
+    @include statsPanelToOneCol(){
+        width: 90%;
+    }
+}
+
+.doughnutChart{
+    margin-top: 10px;
+
+    @include statsPanelToTwoCol(){
+        padding: 20px;
+    }
+}
+
+.accuracy {
+    grid-column: span 1 / span 1;
+    padding: 0;
+    margin: auto;
+    width: 100%;
+
+    @include statsPanelToTwoCol(){
+        grid-column: span 2 / span 2;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include statsPanelToOneCol(){
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+.pieHeader {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 500;
+    @include statsPanelToTwoCol(){
+        margin-top: 20px;
+    }
+}
+
+.meter {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.accuracyMeterHeading {
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+
+    @include statsPanelToTwoCol(){
+        font-size: 17px;
+        border-bottom: silver 1px solid;
+        margin: 0 30px;
+    }
+    @include statsPanelToOneCol(){
+        margin: 0 70px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .accuracyCol {
+        grid-column: span 1 / span 1;
+        width: 100%;
+    }
+}

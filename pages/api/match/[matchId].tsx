@@ -1,6 +1,6 @@
 import {prevMatchStats} from "../../../data/prevMatchStats";
 
-export default function handler (req, res){
+export default function handler (req: any, res: any){
     const {matchId} = req.query;
     if (req.method === "GET"){
         const data = prevMatchStats.find(stats => stats.id === parseInt(matchId));

@@ -1,5 +1,5 @@
-import styles from "./css/baselineStats.module.css";
-import globalStyles from "./css/matchStatsDisplay.module.css";
+import styles from "./css/baselineStats.module.scss";
+import globalStyles from "./css/matchStatsDisplay.module.scss";
 import React from 'react';
 import {
   Grommet,
@@ -18,6 +18,7 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import {Chart, ArcElement} from 'chart.js'
+import {MatchStats} from "../../types/interfaces";
 Chart.register(ArcElement);
 
 ChartJS.register(
@@ -32,7 +33,7 @@ ChartJS.register(
 )
 
 interface BaselineDataProps {
-  matchStats: any;
+  matchStats: MatchStats;
   checkSuccess: (value: number)  => string;
 }
 

@@ -9,10 +9,11 @@ import {
     Table,
 } from "grommet/components";
 import styles from "./css/serveStats.module.css";
-import globalStyles from "./css/matchStatsDisplay.module.css";
+import globalStyles from "./css/matchStatsDisplay.module.scss";
 import {Pie} from "react-chartjs-2";
+import {MatchStats} from "../../types/interfaces";
 interface ServingDataProps {
-    matchStats: any;
+    matchStats: MatchStats;
     checkSuccess: (value: number)  => string;
 }
 

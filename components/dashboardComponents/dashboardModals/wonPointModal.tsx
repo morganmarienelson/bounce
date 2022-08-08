@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Col, Form, Modal, Radio, Row, Switch} from "antd";
-import styles from "../css/modal.module.css";
+import styles from "../css/modal.module.scss";
 import {MatchDataEvents} from "../../../machines/matchData";
+import {ShotTypes} from "../../../types";
 
 interface WonPointModalProps {
     winningModalVisible: boolean;
@@ -53,7 +54,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
 
     const onModalOk = () => {
         if (atBaseline) {
-            if (shotType == "forehand") {
+            if (shotType == ShotTypes.forehand) {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementForehandWinner});
                     pointLog.push(MatchDataEvents.DecrementForehandWinner);
@@ -61,7 +62,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                     send({type: MatchDataEvents.IncrementForehandWin});
                     pointLog.push(MatchDataEvents.DecrementForehandWin);
                 }
-            } else if (shotType == "backhand") {
+            } else if (shotType == ShotTypes.backhand) {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementBackhandWinner});
                     pointLog.push(MatchDataEvents.DecrementBackhandWinner);
@@ -71,7 +72,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                 }
             }
         } else {
-            if (shotType == "forehand") {
+            if (shotType == ShotTypes.forehand) {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementForehandVolleyWinner});
                     pointLog.push(MatchDataEvents.DecrementForehandVolleyWinner);
@@ -79,7 +80,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                     send({type: MatchDataEvents.IncrementForehandVolleyWin});
                     pointLog.push(MatchDataEvents.DecrementForehandVolleyWin);
                 }
-            } else if (shotType == "backhand") {
+            } else if (shotType == ShotTypes.backhand) {
                 if (winner) {
                     send({type: MatchDataEvents.IncrementBackhandVolleyWinner});
                     pointLog.push(MatchDataEvents.DecrementBackhandVolleyWinner);
@@ -89,7 +90,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                 }
             }
         }
-        if (shotType == "overhead") {
+        if (shotType == ShotTypes.overhead) {
             if (winner) {
                 send({type: MatchDataEvents.IncrementOverheadWinner});
                 pointLog.push(MatchDataEvents.DecrementOverheadWinner);
@@ -111,12 +112,12 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
         } else {
             send({type: MatchDataEvents.IncrementPointsWonOnReturn});
             pointLog.push(MatchDataEvents.DecrementPointsWonOnReturn);
-            pointLog.push("filler");
+            pointLog.push(ShotTypes.filler);
         }
         setWinningModalVisible(false);
         setWinner(false);
         setAtBaseline(true);
-        setShotType("forehand");
+        setShotType(ShotTypes.forehand);
         pointFinished();
     };
 
@@ -125,7 +126,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
         setWinningModalVisible(false);
         setWinner(false);
         setAtBaseline(true);
-        setShotType("forehand");
+        setShotType(ShotTypes.forehand);
         setShowServeButtons(false);
         setShowReturnButtons(false);
     };
@@ -166,13 +167,13 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
                 <div className={styles.label}>Shot Type:</div>
                 <Form.Item>
                     <Radio.Group size="large" value={shotType} onChange={onShotSelected}>
-                        <Radio value="forehand">
+                        <Radio value={ShotTypes.forehand}>
                             <div className={styles.radioLabel}>Forehand</div>
                         </Radio>
-                        <Radio value="backhand">
+                        <Radio value={ShotTypes.backhand}>
                             <div className={styles.radioLabel}>Backhand</div>
                         </Radio>
-                        <Radio value="overhead">
+                        <Radio value={ShotTypes.overhead}>
                             <div className={styles.radioLabel}>Overhead</div>
                         </Radio>
                     </Radio.Group>

@@ -1,6 +1,6 @@
 import {prevMatchStats} from "../../../data/prevMatchStats";
 
-export default function handler(req, res) {
+export default function handler(req: any, res: any) {
     if (req.method === "GET") {
         res.status(200).json(prevMatchStats)
         } else if (req.method === "POST"){

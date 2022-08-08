@@ -26,7 +26,7 @@ function MatchDetails(){
         fetchData();
     }, [])
 
-    const checkSuccess = (value) => {
+    const checkSuccess = (value: number) => {
         if (value >= 85) {
             return "#129729";
         } else if (value > 70) {

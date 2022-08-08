@@ -34,7 +34,6 @@ const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {
                 okType: "danger",
                 onOk: () => {
                     router.push("/");
-
                 },
             });
         }
