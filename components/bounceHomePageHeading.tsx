@@ -1,6 +1,6 @@
 import { Grommet, Heading } from "grommet/components";
 import { Header, Nav } from "grommet";
-import styles from "../css/bounceHeading.module.css";
+import styles from "../css/bounceHeading.module.css"
 import React from "react";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";

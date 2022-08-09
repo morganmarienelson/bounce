@@ -8,8 +8,8 @@ import {
     TableRow,
     Table,
 } from "grommet/components";
-import styles from "./css/serveStats.module.css";
-import globalStyles from "./css/matchStatsDisplay.module.scss";
+import styles from "../../css/statistics/serveStats.module.css";
+import globalStyles from "../../css/statistics/matchStatsDisplay.module.scss";
 import {Pie} from "react-chartjs-2";
 import {MatchStats} from "../../types/matchStats";
 

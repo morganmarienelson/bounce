@@ -1,6 +1,6 @@
 import "antd/dist/antd.css";
 import React, {useEffect, useState} from "react";
-import styles from "../css/matchStatsDisplay.module.scss";
+import styles from "../../../css/statistics/matchStatsDisplay.module.scss"
 import ServingStats from "../servingStats";
 import ReturnStats from "../returnStats";
 import BaselineStats from "../baselineStats";

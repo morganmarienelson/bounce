@@ -6,6 +6,7 @@ export enum MatchDetailsInit{
     setting="",
     matchType= "",
     notes="",
+    id = 0,
     percentPointsWonOnBaseline= 0,
     percentBaselinePointsWon= 0,
     percentPointsWonByWinnersOnBaseline= 0,

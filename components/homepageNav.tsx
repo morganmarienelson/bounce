@@ -41,7 +41,7 @@ const HomePageNav = () => {
             </div>
             <div className={styles.btnCol}>
                 {showPreviousButton && (
-            <Link href='/index'>
+            <Link href='/matches'>
                 <div className={styles.btn}>
                 <Button
                 primary

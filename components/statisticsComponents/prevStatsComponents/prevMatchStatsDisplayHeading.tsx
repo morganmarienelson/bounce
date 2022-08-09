@@ -26,7 +26,7 @@ const PrevMatchStatsDisplayHeading: React.FC<PrevMatchStatsDisplayHeadingProps> 
                                 <Home color={"white"}/>
                             </a>
                         </Link>
-                        <Link href="/index">
+                        <Link href="/matches">
                             <a>
                                 <LinkPrevious color={"white"} transform={"rotate(180)"}/>
                             </a>

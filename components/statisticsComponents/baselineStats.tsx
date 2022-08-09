@@ -1,5 +1,5 @@
-import styles from "./css/baselineStats.module.scss";
-import globalStyles from "./css/matchStatsDisplay.module.scss";
+import styles from "../../css/statistics/baselineStats.module.scss";
+import globalStyles from "../../css/statistics/matchStatsDisplay.module.scss";
 import React from 'react';
 import {
   Grommet,

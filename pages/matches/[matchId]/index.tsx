@@ -2,7 +2,7 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import PrevMatchStatsDisplayHeading
     from "../../../components/statisticsComponents/prevStatsComponents/prevMatchStatsDisplayHeading";
-import styles from "../../../components/statisticsComponents/css/matchStatsDisplay.module.scss";
+import styles from "../../../css/statistics/matchStatsDisplay.module.scss"
 import ServingStats from "../../../components/statisticsComponents/servingStats";
 import ReturnStats from "../../../components/statisticsComponents/returnStats";
 import BaselineStats from "../../../components/statisticsComponents/baselineStats";
@@ -19,12 +19,11 @@ function MatchDetails(){
     useEffect(() => {
         const fetchData = async () => {
             const matchId = router.query.matchId
-            const response = await fetch(`/api/matches/${matchId}`, {
+            const response = await fetch(`/api/match/${matchId}`, {
                 method: 'GET'
             })
             const data = await response.json()
             setStats(data);
-            console.log(data);
         }
         fetchData();
     }, [])

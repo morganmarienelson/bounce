@@ -1,6 +1,6 @@
 import {Button, message} from "antd";
 import React from "react";
-import styles from "./css/returnAndServePanel.module.scss";
+import styles from "../../css/dashboard/returnAndServePanel.module.scss"
 import {Undo} from "grommet-icons";
 import {MatchDataEvents} from "../../enums/matchDataEvents";
 import {ShotTypes} from "../../enums/shotTypes";

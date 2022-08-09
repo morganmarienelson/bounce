@@ -6,6 +6,7 @@ export interface MatchDetails{
     setting:string,
     matchType: string,
     notes:string,
+    id: number,
     percentPointsWonOnBaseline: number,
     percentBaselinePointsWon: number,
     percentPointsWonByWinnersOnBaseline: number,

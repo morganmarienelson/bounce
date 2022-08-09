@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import React, { useState } from "react";
-import styles from "./css/returnAndServePanel.module.scss";
+import styles from "../../css/dashboard/returnAndServePanel.module.scss"
 import { MatchDataEvents} from "../../enums/matchDataEvents";
 import ServeLocationModal from "./dashboardModals/serveLocationModal";
 import {

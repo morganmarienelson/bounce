@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Col, Form, Modal, Radio, Row, Switch} from "antd";
-import styles from "../css/modal.module.scss";
+import styles from "../../../css/dashboard/modal.module.scss";
 import {MatchDataEvents} from "../../../enums/matchDataEvents";
 import {ShotTypes} from "../../../enums/shotTypes";
 

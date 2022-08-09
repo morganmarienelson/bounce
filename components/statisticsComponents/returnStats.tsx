@@ -3,8 +3,8 @@ import {Meter} from "grommet";
 import {
     Grommet,
 } from "grommet/components";
-import styles from "./css/returnStats.module.css";
-import globalStyles from "./css/matchStatsDisplay.module.scss";
+import styles from "../../css/statistics/returnStats.module.css";
+import globalStyles from "../../css/statistics/matchStatsDisplay.module.scss";
 import {MatchStats} from "../../types/matchStats";
 
 interface ReturnDataProps {
