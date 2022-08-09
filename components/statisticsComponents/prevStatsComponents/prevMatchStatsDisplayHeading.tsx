@@ -1,10 +1,10 @@
 import {Grommet, Heading} from "grommet/components";
 import {Header, Nav} from 'grommet';
-import styles from "../../BounceHeading.module.css"
+import styles from "../../../css/bounceHeading.module.css"
 import Link from "next/Link";
 import {LinkPrevious,Home} from "grommet-icons";
 import React from "react";
-import {MatchDetails} from "../../../types/interfaces";
+import {MatchDetails} from "../../../types/matchDetails";
 
 interface PrevMatchStatsDisplayHeadingProps{
     stats: MatchDetails

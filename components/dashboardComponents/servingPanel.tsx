@@ -1,9 +1,11 @@
 import { Button } from "antd";
 import React, { useState } from "react";
 import styles from "./css/returnAndServePanel.module.scss";
-import { MatchDataEvents } from "../../machines/matchData";
+import { MatchDataEvents} from "../../enums/matchDataEvents";
 import ServeLocationModal from "./dashboardModals/serveLocationModal";
-import {ShotTypes} from "../../types";
+import {
+ShotTypes
+} from "../../enums/shotTypes";
 
 interface ServingPanelProps {
   pointFinished: () => void;

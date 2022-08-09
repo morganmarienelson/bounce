@@ -2,8 +2,9 @@ import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Form, Modal, Radio} from "antd";
 import styles from "../css/modal.module.scss";
-import {MatchDataEvents} from "../../../machines/matchData";
-import {ServeLocations} from "../../../types";
+import {MatchDataEvents} from "../../../enums/matchDataEvents";
+import {ServeLocations
+} from "../../../enums/serveLocations";
 
 interface ServeLocationModalProps {
     serveLocationModalVisible: boolean;
@@ -73,7 +74,7 @@ const ServeLocationModal: React.FC<ServeLocationModalProps> = ({
             <Form
                 name="Match Information"
                 scrollToFirstError
-                style={{marginLeft: 30}}
+                className={styles.form}
             >
                 <div className={styles.label}>Side Of Court:</div>
                 <Form.Item>

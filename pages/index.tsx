@@ -1,13 +1,11 @@
-import {ColorModeSwitcher} from "../components/ColorModeSwitch";
 import React from "react";
 import HomepageNav from "../components/homepageNav";
-import BounceHomePageHeading from "../components/BounceHomePageHeading";
+import BounceHomePageHeading from "../components/bounceHomePageHeading";
 
 function HomePage(){
     return(
         <>
             <BounceHomePageHeading/>
-            <ColorModeSwitcher/>
             <HomepageNav/>
         </>
     )

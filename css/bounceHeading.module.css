@@ -3,6 +3,10 @@
     padding: 15px;
 }
 
+.navCol{
+    margin: auto;
+}
+
 .headingTitle {
     color: white;
 }

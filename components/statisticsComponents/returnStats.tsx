@@ -5,7 +5,7 @@ import {
 } from "grommet/components";
 import styles from "./css/returnStats.module.css";
 import globalStyles from "./css/matchStatsDisplay.module.scss";
-import {MatchStats} from "../../types/interfaces";
+import {MatchStats} from "../../types/matchStats";
 
 interface ReturnDataProps {
     matchStats: MatchStats;

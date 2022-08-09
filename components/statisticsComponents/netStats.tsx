@@ -18,7 +18,8 @@ import {
 import { Pie } from "react-chartjs-2";
 import {Chart, ArcElement} from 'chart.js'
 import globalStyles from "./css/matchStatsDisplay.module.scss";
-import {MatchStats} from "../../types/interfaces";
+import {MatchStats} from "../../types/matchStats";
+
 Chart.register(ArcElement);
 
 ChartJS.register(

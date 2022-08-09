@@ -4,9 +4,10 @@ import React, {useEffect, useState} from "react";
 import SaveMatchModal from "./saveMatchModal";
 import {getSession} from "next-auth/react";
 import {useRouter} from "next/router";
+import {MatchStats} from "../../../types/matchStats";
 
 interface SaveMatchPanelProps{
-    state: any;
+    state: MatchStats;
 }
 
 const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {

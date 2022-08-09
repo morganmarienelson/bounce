@@ -2,8 +2,8 @@ import {Button, message} from "antd";
 import React from "react";
 import styles from "./css/returnAndServePanel.module.scss";
 import {Undo} from "grommet-icons";
-import {MatchDataEvents} from "../../machines/matchData";
-import {ShotTypes} from "../../types";
+import {MatchDataEvents} from "../../enums/matchDataEvents";
+import {ShotTypes} from "../../enums/shotTypes";
 
 interface ReturnPanelProps {
     pointFinished: () => void;

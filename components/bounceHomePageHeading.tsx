@@ -1,9 +1,10 @@
 import { Grommet, Heading } from "grommet/components";
 import { Header, Nav } from "grommet";
-import styles from "./BounceHeading.module.css";
+import styles from "../css/bounceHeading.module.css";
 import React from "react";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
+import {ColorModeSwitcher} from "./colorModeSwitch";
 
 function BounceHomePageHeading() {
   const { data: session } = useSession();
@@ -12,6 +13,10 @@ function BounceHomePageHeading() {
       <Header className={styles.header}>
         <Heading className={styles.headingTitle}>Bounce</Heading>
         <Nav direction="row">
+            <div className={styles.navCol}>
+            <ColorModeSwitcher/>
+            </div>
+            <div className={styles.navCol}>
           {!session && (
             <Link
               href="/api/auth/signin"
@@ -32,6 +37,7 @@ function BounceHomePageHeading() {
               <a className={styles.a}>Sign Out</a>
             </Link>
           )}
+            </div>
         </Nav>
       </Header>
     </Grommet>

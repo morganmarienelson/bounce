@@ -4,11 +4,3 @@ export enum ShotTypes {
     overhead ="overhead",
     filler = "filler",
 }
-
-export enum ServeLocations{
-    alley= "alley",
-    center = "center",
-    ad = "ad",
-    deuce = "deuce",
-    body = "body",
-}

@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Col, Form, Modal, Radio, Row, Switch} from "antd";
 import styles from "../css/modal.module.scss";
-import {MatchDataEvents} from "../../../machines/matchData";
-import {ShotTypes} from "../../../types";
+import {MatchDataEvents} from "../../../enums/matchDataEvents";
+import {ShotTypes} from "../../../enums/shotTypes";
 
 interface WonPointModalProps {
     winningModalVisible: boolean;
@@ -142,7 +142,7 @@ const WonPointModal: React.FC<WonPointModalProps> = ({
             <Form
                 name="Match Information"
                 scrollToFirstError
-                style={{marginLeft: 30}}
+                className={styles.form}
             >
                 <Row>
                     <Col>

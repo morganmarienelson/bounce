@@ -3,11 +3,13 @@ import "antd/dist/antd.css";
 import {Button, Form, Input, Modal, Radio, Select} from "antd";
 import styles from "../../dashboardComponents/css/modal.module.scss";
 import {prevMatchStats} from "../../../data/prevMatchStats";
+import {MatchStats} from "../../../types/matchStats";
+
 interface SaveMatchModalProps{
     showModal : boolean;
     setShowModal: (showModal: boolean) => void;
     setMatchSaved: (setSaved: boolean) => void;
-    state: any
+    state: MatchStats;
 }
 
 const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, state, setShowModal, setMatchSaved}) => {

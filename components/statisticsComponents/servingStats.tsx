@@ -11,7 +11,8 @@ import {
 import styles from "./css/serveStats.module.css";
 import globalStyles from "./css/matchStatsDisplay.module.scss";
 import {Pie} from "react-chartjs-2";
-import {MatchStats} from "../../types/interfaces";
+import {MatchStats} from "../../types/matchStats";
+
 interface ServingDataProps {
     matchStats: MatchStats;
     checkSuccess: (value: number)  => string;

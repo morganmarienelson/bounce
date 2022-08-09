@@ -8,10 +8,13 @@ import ReturnStats from "../../../components/statisticsComponents/returnStats";
 import BaselineStats from "../../../components/statisticsComponents/baselineStats";
 import NetStats from "../../../components/statisticsComponents/netStats";
 import React from "react";
+import {MatchDetailsInit} from "../../../enums/matchDetailsInit";
 
 function MatchDetails(){
     const router = useRouter();
-    const [stats, setStats] = useState([]);
+    const [stats, setStats] = useState(
+        MatchDetailsInit
+    );
 
     useEffect(() => {
         const fetchData = async () => {

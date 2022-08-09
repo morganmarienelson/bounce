@@ -7,7 +7,7 @@ import BaselineStats from "../baselineStats";
 import NetStats from "../netStats";
 import SaveMatchPanel from "./saveMatchPanel";
 import BackToHomeHeading from "../backToHomeHeading";
-import {MatchStats} from "../../../types/interfaces";
+import {MatchStats} from "../../../types/matchStats";
 
 interface MatchStatsProps {
     setShowDashboard: (showDashboard: boolean) => void;
