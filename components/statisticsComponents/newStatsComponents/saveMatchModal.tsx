@@ -1,36 +1,28 @@
-import React, {useState} from "react";
+import React from "react";
 import "antd/dist/antd.css";
 import {Button, Form, Input, Modal, Radio, Select} from "antd";
 import styles from "../../../css/dashboard/modal.module.scss";
-import {prevMatchStats} from "../../../data/prevMatchStats";
-import {MatchStats} from "../../../types/matchStats";
+import {useRouter} from "next/router";
 
 interface SaveMatchModalProps{
     showModal : boolean;
     setShowModal: (showModal: boolean) => void;
-    setMatchSaved: (setSaved: boolean) => void;
-    state: MatchStats;
 }
 
-const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, state, setShowModal, setMatchSaved}) => {
-    const [componentDisabled, setComponentDisabled] = useState(false);
+const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModal}) => {
+    const router = useRouter();
 
     const onModalOk = () => {
-        if (componentDisabled){
-            setMatchSaved(true);
-            setShowModal(false);
-        } else {
             Modal.confirm({
                 title: "Are you sure that you want to close this form? This match is not saved. You did not press submit.",
                 onOk: () => {
                     setShowModal(false);
                 },
             });
-        }
     };
 
     const onFinish = async (values: any) => {
-        setComponentDisabled(true);
+        router.push("/");
         const match = values;
         const response = await fetch('api/matches', {
             method: 'POST',
@@ -40,8 +32,6 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, state, setS
             },
         })
         const data = await response.json();
-        prevMatchStats.push(data);
-        console.log(prevMatchStats);
     };
 
 
@@ -59,7 +49,7 @@ const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, state, setS
         >
             <div className={styles.title}>Match Information</div>
             <Form name="Match Information" scrollToFirstError className={styles.form} onFinish={onFinish} validateMessages={validateMessages}
-                  disabled={componentDisabled}>
+                 >
                 <Form.Item label="Player's Name" name="playerName"  rules={[
                     {
                         required: true,

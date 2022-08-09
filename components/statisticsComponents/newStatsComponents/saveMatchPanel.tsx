@@ -12,7 +12,6 @@ interface SaveMatchPanelProps{
 
 const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {
     const [showSaveMatchModal, setShowSaveMatchModal] = useState(false);
-    const [matchSaved, setMatchSaved] = useState(false);
     const [signedIn, setSignedIn] = useState(false)
     const router = useRouter();
 
@@ -29,7 +28,6 @@ const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {
     }, [])
 
     const confirmExit = () => {
-        if (!matchSaved && signedIn){
             Modal.confirm({
                 title: "Are you sure that you want to go to the home screen? This match has not been saved.",
                 okType: "danger",
@@ -37,11 +35,6 @@ const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {
                     router.push("/");
                 },
             });
-        }
-        else {
-            router.push("/");
-        }
-
     };
 
     const saveMatch = () => {
@@ -73,14 +66,13 @@ const SaveMatchPanel: React.FC<SaveMatchPanelProps> = ({state}) => {
                 }}
                 onClick={saveMatch}
                 className={styles.saveBtn}
-                disabled={matchSaved}
             >
 
                 <div className={styles.btnTitle}> Save Match </div>
             </Button>
             </div>
                 )}
-            <SaveMatchModal state={state} setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal} setMatchSaved={setMatchSaved}/>
+            <SaveMatchModal setShowModal={setShowSaveMatchModal} showModal={showSaveMatchModal} />
         </div>
 
     )

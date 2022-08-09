@@ -7,7 +7,6 @@ import PrevMatchDetailsModal from "../../components/statisticsComponents/prevSta
 import {useRouter} from "next/router";
 import {MatchDetailsInit} from "../../enums/matchDetailsInit";
 import {Modal} from "antd";
-import {MatchDetails} from "../../types/matchDetails";
 
 function StatisticsPage(){
     const [loading, setLoading] = useState(true)
@@ -20,7 +19,7 @@ function StatisticsPage(){
         router.push('/matches/' + id)
     }
 
-    const showMatchDetails = async (match: MatchDetails) =>{
+    const showMatchDetails = async (match: any) =>{
         setMatchDetails(match);
         console.log(match);
         setIsModalVisible(true);

@@ -14,9 +14,6 @@ function BounceHomePageHeading() {
         <Heading className={styles.headingTitle}>Bounce</Heading>
         <Nav direction="row">
             <div className={styles.navCol}>
-            <ColorModeSwitcher/>
-            </div>
-            <div className={styles.navCol}>
           {!session && (
             <Link
               href="/api/auth/signin"
@@ -37,6 +34,9 @@ function BounceHomePageHeading() {
               <a className={styles.a}>Sign Out</a>
             </Link>
           )}
+            </div>
+            <div className={styles.navCol}>
+                <ColorModeSwitcher/>
             </div>
         </Nav>
       </Header>
