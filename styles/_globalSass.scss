@@ -17,3 +17,9 @@ $response-text-font-size: 18px;
 $title-font-size: 25px;
 
 $border-color: silver;
+
+%center-text {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

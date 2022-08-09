@@ -1,11 +1,12 @@
+@import '../styles/globalSass';
+
 .btnContainer{
     vertical-align: center;
     padding:120px;
 }
 
 .btnCol{
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
     margin: 10px 0;
 }
 

@@ -68,8 +68,7 @@
 }
 
 .pieHeader {
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
     font-size: $title-font-size;
     font-weight: $bold-headings;
     @include immediateDesktopShrink(){
@@ -79,21 +78,18 @@
 
 .meter {
     margin: auto;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
 }
 
 .accuracyMeterHeading {
     font-size: $title-font-size;
     font-weight: $bold-headings;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
     padding: 8px;
 
     @include immediateDesktopShrink(){
         font-size: $response-text-font-size;
-        border-bottom:1px solid;
-        border-bottom-color: $border-color;
+        border-bottom:1px solid $border-color;
         margin: 0 30px;
     }
 

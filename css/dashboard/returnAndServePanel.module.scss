@@ -6,8 +6,7 @@
     width: 100%;
     font-size: 40px;
     font-weight: $bold-headings;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
     margin-top: 40px;
 
     @include twoColPanel(){
@@ -37,9 +36,7 @@
 }
 
 .undoOrViewCol {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+    @extend %center-text;
     grid-column: span 1 / span 1;
 }
 
@@ -56,9 +53,7 @@
 
 .undoOrViewCol {
     grid-column: span 3 / span 3;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+    @extend %center-text;
 }
 
 

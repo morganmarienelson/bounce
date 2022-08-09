@@ -47,8 +47,7 @@
 
 
 .pieHeader {
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
     font-size: $text-font-size;
     font-weight: $bold-headings;
 
@@ -59,8 +58,7 @@
 
 .meter {
     margin: auto;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
 }
 
 .thirdRow {
@@ -80,13 +78,11 @@
 .accuracyMeterHeading {
     font-size: $text-font-size;
     font-weight: $bold-headings;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
     padding: 8px;
 
     @include immediateDesktopShrink(){
-        border-bottom: solid 1px;
-        border-color: $border-color;
+        border-bottom: solid 1px $border-color;
         margin: 0 70px;
     }
 

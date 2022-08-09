@@ -15,9 +15,7 @@
 .title {
     font-size: $title-font-size;
     font-weight: $bold-headings;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend %center-text;
     margin-bottom: 20px;
 }
 

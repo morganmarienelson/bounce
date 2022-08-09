@@ -22,7 +22,7 @@
 .body {
     width: 96%;
     margin: auto;
-    border: 2px solid silver;
+    border: 2px solid $border-color;
     border-radius: 6px;
 }
 
@@ -47,8 +47,7 @@
     width: 95%;
     grid-column: span 1 / span 1;
     margin: 10px auto;
-    border-right: solid 2px;
-    border-color: $border-color;
+    border-right: solid 2px $border-color;
 
     @include immediateDesktopShrink(){
         border-right: none;
@@ -78,8 +77,7 @@
 .percent {
     font-size: 30px;
     font-weight: $bold-text;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
     margin: auto;
 
     @include statsPercentsOneCol(){
@@ -96,8 +94,7 @@
     @include statsPercentsOneCol(){
         display: flex;
         justify-content: center;
-        border-top: 1px solid;
-        border-color: $border-color;
+        border-top: 1px solid $border-color;
         padding: 10px;
     }
 }
@@ -105,13 +102,11 @@
 .percentagesHeading {
     font-size: $response-text-font-size;
     font-weight: $bold-headings;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
     padding: 8px;
 
     @include immediateDesktopShrink(){
-        border-bottom: solid 1px;
-        border-color: $border-color;
+        border-bottom: solid 1px $border-color;
         margin-right: 50px;
     }
 
@@ -123,13 +118,12 @@
 
 .meter {
     margin: auto;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
 }
 
 .pieChart{
     @include desktopSmallScreen(){
-        margin: 0px 50px;
+        margin: 0 50px;
         padding: 20px
     }
 }

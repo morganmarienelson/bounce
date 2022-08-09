@@ -25,8 +25,7 @@
 .serveTable {
     grid-column: span 2/ span 2;
     width: 100%;
-    border-right: solid 2px;
-    border-color: $border-color;
+    border-right: solid 2px $border-color;
     padding: 0 20px;
     font-size: $response-text-font-size;
     display: flex;
@@ -59,8 +58,7 @@
     font-weight: $bold-headings;
     padding: 8px;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
 }
 
 .pieChart {
@@ -76,8 +74,7 @@
 .pieChartHeading {
     font-size: $title-font-size;
     font-weight: $bold-headings;
-    display: flex;
-    justify-content: center;
+    @extend %center-text;
 
     @include immediateDesktopShrink(){
         font-size: 22px;
@@ -89,8 +86,7 @@
 
     @include statsPercentsOneCol(){
         margin-top: 20px;
-        border-top: 1px solid;
-        border-color: $border-color;
+        border-top: 1px solid $border-color;
         font-weight: $bold-headings;
     }
 
