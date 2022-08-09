@@ -1,11 +1,11 @@
 @import '../../styles/globalSass';
-@import '../../styles/mixin';
+@import '../../styles/responsive';
 @import '../../styles/colors';
 
 .panelTitle {
     width: 100%;
     font-size: 40px;
-    font-weight: 500;
+    font-weight: $bold-headings;
     display: flex;
     justify-content: center;
     margin-top: 40px;
@@ -45,11 +45,12 @@
 
 .btnTitle {
     text-align: center;
-    color: $btn-panel-text;
+    color: $heading-btn-text;
     font-size: $panel-btn-font-size;
-    font-weight: 500;
+    font-weight: $bold-headings;
+
     @include shrinkBtnFont(){
-        font-size: 18px;
+        font-size: $response-text-font-size;
     }
 }
 
@@ -69,11 +70,11 @@
 
 .wonLostBtnTitle {
     text-align: center;
-    color: $btn-panel-text;
+    color: $heading-btn-text;
     font-size: $panel-btn-font-size;
-    font-weight: 500;
+    font-weight: $bold-headings;
     @include shrinkBtnFont(){
-        font-size: 18px;
+        font-size: $response-text-font-size;
     }
 }
 

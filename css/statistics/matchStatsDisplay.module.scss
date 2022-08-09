@@ -1,4 +1,5 @@
-@import "../../styles/mixin";
+@import "../../styles/responsive";
+@import "../../styles/globalSass";
 
 .fullPage {
     width: 100%;
@@ -7,8 +8,15 @@
 
 .heading {
     font-size: 35px;
-    font-weight: 500;
+    font-weight: $bold-headings;
     padding: 20px 20px 0 30px;
+
+    @include headingShrink(){
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+        padding: 20px 20px 0 20px;
+    }
 }
 
 .body {
@@ -23,42 +31,94 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 0;
+
+    @include immediateDesktopShrink(){
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 0 30px;
+    }
+
+
+    @include statsPercentsOneCol(){
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
 }
 
 .percentagesCol {
     width: 95%;
     grid-column: span 1 / span 1;
     margin: 10px auto;
-    border-right: solid 2px silver;
+    border-right: solid 2px;
+    border-color: $border-color;
+
+    @include immediateDesktopShrink(){
+        border-right: none;
+        padding-top: 10px;
+    }
+
+    @include statsPercentsOneCol(){
+        margin: 0 40px;
+    }
 }
 
 .percentagesColLastCol {
     width: 100%;
     margin: 10px auto;
     grid-column: span 1 / span 1;
+
+    @include immediateDesktopShrink(){
+        border-right: none;
+        padding-top: 10px;
+    }
+
+    @include statsPercentsOneCol(){
+        margin: 0 40px;
+    }
 }
 
 .percent {
     font-size: 30px;
-    font-weight: 400;
+    font-weight: $bold-text;
     display: flex;
     justify-content: center;
     margin: auto;
+
+    @include statsPercentsOneCol(){
+        padding-right: 80px;
+    }
 }
 
 .rowHeading {
     margin: auto;
     font-size: 30px;
-    font-weight: 500;
+    font-weight: $bold-headings;
     padding: 20px 20px 0 20px;
+
+    @include statsPercentsOneCol(){
+        display: flex;
+        justify-content: center;
+        border-top: 1px solid;
+        border-color: $border-color;
+        padding: 10px;
+    }
 }
 
 .percentagesHeading {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: $response-text-font-size;
+    font-weight: $bold-headings;
     display: flex;
     justify-content: center;
     padding: 8px;
+
+    @include immediateDesktopShrink(){
+        border-bottom: solid 1px;
+        border-color: $border-color;
+        margin-right: 50px;
+    }
+
+    @include statsPercentsOneCol(){
+            font-size: $text-font-size;
+            margin-right: 130px;
+    }
 }
 
 .meter {
@@ -67,69 +127,9 @@
     justify-content: center;
 }
 
-
-@media (max-width: 1200px) {
-    .percentagesRow {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin: 0 30px;
-    }
-    .percentagesCol, .percentagesColLastCol {
-        border-right: none;
-        padding-top: 10px;
-    }
-
-    .percentagesHeading {
-        font-size: 18px;
-        border-bottom: solid 1px silver;
-        margin-right: 50px;
-    }
-    .percent {
-        font-size: 30px;
-    }
-
-
-}
-
-@media (max-width:900px) {
-    .heading {
-        display: flex;
-        justify-content: center;
-        font-size: 30px;
-        padding: 20px 20px 0 20px;
-    }
-}
-
-
-@media (max-width:750px) {
-    .percentagesRow{
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-    .percentagesCol, .percentagesColLastCol {
-        margin: 0 40px;
-    }
-    .rowHeading {
-        display: flex;
-        justify-content: center;
-        border-top: 1px silver solid;
-        padding: 10px;
-
-    }
-    .percentagesHeading {
-        font-size: 20px;
-        margin-right: 130px;
-    }
-    .percent {
-        padding-right: 80px;
-    }
-}
-
-@media (max-width:600px) {
-    .percent {
-        padding-right: 80px;
-    }
-    .pieChart {
+.pieChart{
+    @include desktopSmallScreen(){
         margin: 0px 50px;
         padding: 20px
     }
-
 }

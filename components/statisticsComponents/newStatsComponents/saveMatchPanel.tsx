@@ -1,5 +1,5 @@
 import {Button, Modal} from "antd";
-import styles from "../../../css/statistics/savePanel.module.css";
+import styles from "../../../css/statistics/savePanel.module.scss";
 import React, {useEffect, useState} from "react";
 import SaveMatchModal from "./saveMatchModal";
 import {getSession} from "next-auth/react";

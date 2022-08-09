@@ -1,0 +1,103 @@
+@import "../../styles/responsive";
+@import "../../styles/globalSass";
+
+.servingLocationPercentages {
+    width: 100%;
+    grid-column: span 1 / span 1;
+}
+
+.unreturnedRow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 30px;
+    margin: 20px auto 0;
+
+    @include serveTableShrink(){
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include statsPercentsOneCol(){
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+.serveTable {
+    grid-column: span 2/ span 2;
+    width: 100%;
+    border-right: solid 2px;
+    border-color: $border-color;
+    padding: 0 20px;
+    font-size: $response-text-font-size;
+    display: flex;
+
+    @include serveTableShrink(){
+        grid-column: span 1/ span 1;
+        font-size: 16px;
+    }
+
+    @include statsPercentsOneCol(){
+        border-right: none;
+    }
+
+    @include statsPercentsOneCol(){
+        font-size: $response-text-font-size;
+    }
+}
+
+.percentRow {
+    grid-column: span 1 / span 1;
+    width: 100%;
+}
+
+.tableTotal {
+    font-weight: $bold-headings;
+}
+
+.serveLocationHeading {
+    font-size: $title-font-size;
+    font-weight: $bold-headings;
+    padding: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pieChart {
+    margin: 20px;
+    padding: 0;
+
+    @include desktopSmallScreen(){
+        margin: 0 50px;
+        padding: 20px
+    }
+}
+
+.pieChartHeading {
+    font-size: $title-font-size;
+    font-weight: $bold-headings;
+    display: flex;
+    justify-content: center;
+
+    @include immediateDesktopShrink(){
+        font-size: 22px;
+    }
+
+    @include serveTableShrink(){
+        font-size: $title-font-size;
+    }
+
+    @include statsPercentsOneCol(){
+        margin-top: 20px;
+        border-top: 1px solid;
+        border-color: $border-color;
+        padding: 10px;
+        font-size: 30px;
+        font-weight: $bold-headings;
+    }
+
+    @include statsPercentsOneCol(){
+        margin: 0 100px;
+        padding: 20px
+    }
+}

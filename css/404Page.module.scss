@@ -1,41 +1,71 @@
 @import '../styles/_colors.scss';
+@import '../styles/responsive';
+@import '../styles/globalSass';
 
 .container {
     width: 95%;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     margin: 100px auto auto auto;
+
+    @include immediateDesktopShrink(){
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include singleCol(){
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        margin: 20px auto;
+    }
 }
 
 .pic{
     grid-column: span 1 / span 1;
     display: flex;
     justify-content: center;
+
+    @include singleCol(){
+        margin: 20px;
+    }
 }
 
 .text{
     margin: auto 20px auto auto;
     grid-column: span 2 / span 2;
+    text-align: center;
+
+    @include immediateDesktopShrink(){
+        grid-column: span 1 / span 1;
+    }
+
+    @include singleCol(){
+        margin: 20px;
+    }
 }
 
 .number{
-    font-weight: 500;
+    font-weight: $bold-headings;
     font-size: 60px;
     color: $purple;
-    text-align: center;
+
+    @include headingShrink(){
+        font-size: 50px;
+    }
+
 }
 
 .oops{
-    font-weight: 400;
+    font-weight: $bold-text;
     font-size: 30px;
-   text-align: center;
+
+    @include immediateDesktopShrink(){
+        margin: auto;
+    }
 }
 
 .buttonText{
-    font-weight: 400;
-    font-size:20px;
+    font-weight: $bold-text;
+    font-size: $title-font-size;
     margin-top: 40px;
-    text-align: center;
 }
 
 .button {
@@ -45,43 +75,9 @@
 }
 
 .btnLabel{
-    font-size: 20px;
-    color: white;
+    font-size: $text-font-size;
+    color: $heading-btn-text;
     padding: 10px
-}
-
-@media (max-width:1200px) {
-    .oops{
-        font-size: 20px;
-    }
-    .container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .text{
-        grid-column: span 1 / span 1;
-    }
-
-}
-
-@media (max-width:900px) {
-    .number{
-        font-size: 50px;
-    }
-
-}
-
-@media (max-width:800px) {
-    .container {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        margin: 20px auto;
-    }
-    .pic{
-        margin: 20px;
-    }
-    .text{
-       margin: auto
-    }
-
 }
 
 

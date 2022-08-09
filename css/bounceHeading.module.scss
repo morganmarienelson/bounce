@@ -1,0 +1,41 @@
+@import '../styles/_colors.scss';
+@import '../styles/_responsive.scss';
+@import '../styles/globalSass';
+
+.header {
+    background-color: $purple;
+    padding: 15px;
+}
+
+.navCol{
+    margin: auto;
+}
+
+.headingTitle {
+    color: $heading-btn-text;
+}
+
+.matchDetailsTitle{
+    color: $heading-btn-text;
+    text-align: center;
+    font-size: $title-font-size;
+    font-weight: $bold-headings;
+
+    @include statsPanelToOneCol(){
+        font-size: 22px;
+    }
+}
+
+.loading{
+    opacity: 0;
+    transition: all 0.2s ease-in;
+}
+
+.a{
+    color: $heading-btn-text;
+}
+
+.loaded{
+    opacity: 1;
+    transition: all 0.2s ease-in;
+}

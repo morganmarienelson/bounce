@@ -1,0 +1,96 @@
+@import "../../styles/responsive";
+@import "../../styles/globalSass";
+
+.secondRow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap:40px;
+    margin: 0 auto;
+    padding: 0 30px;
+
+    @include headingShrink(){
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+.doughnutChartCol {
+    margin: auto;
+    padding: 40px;
+    width: 100%;
+
+    @include immediateDesktopShrink(){
+        padding: 10px;
+    }
+
+    @include headingShrink(){
+        padding: 20px;
+        width: 70%;
+    }
+
+    @include statsPanelToOneCol(){
+        width: 90%;
+    }
+
+    @include desktopSmallScreen(){
+        padding: 0;
+    }
+}
+
+.doughnutChart{
+    margin-top: 10px;
+    padding: 20px;
+
+    @include headingShrink(){
+        font-size: $response-text-font-size;
+    }
+}
+
+
+.pieHeader {
+    display: flex;
+    justify-content: center;
+    font-size: $text-font-size;
+    font-weight: $bold-headings;
+
+    @include immediateDesktopShrink(){
+        margin-top: 20px;
+    }
+}
+
+.meter {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.thirdRow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0;
+    margin-left: 15px;
+
+    @include immediateDesktopShrink(){
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        margin: auto;
+        padding: 0;
+    }
+}
+
+.accuracyMeterHeading {
+    font-size: $text-font-size;
+    font-weight: $bold-headings;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+
+    @include immediateDesktopShrink(){
+        border-bottom: solid 1px;
+        border-color: $border-color;
+        margin: 0 70px;
+    }
+
+    @include headingShrink(){
+        font-size: $response-text-font-size;
+    }
+}

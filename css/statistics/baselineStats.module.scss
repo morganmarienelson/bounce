@@ -1,4 +1,5 @@
-@import "../../styles/mixin";
+@import "../../styles/responsive";
+@import "../../styles/globalSass";
 
 .row {
     width: 100%;
@@ -6,12 +7,12 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap:20px;
 
-    @include statsPanelToTwoCol(){
+    @include immediateDesktopShrink(){
         grid-template-columns: repeat(2, minmax(0, 1fr));
         margin: auto;
     }
 
-    @include statsHeadingShrink(){
+    @include headingShrink(){
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 }
@@ -22,11 +23,11 @@
     width: 100%;
     grid-column: span 1 / span 1;
 
-    @include statsPanelToTwoCol(){
+    @include immediateDesktopShrink(){
         padding: 10px;
     }
 
-    @include statsHeadingShrink(){
+    @include headingShrink(){
         padding: 0;
         width: 70%;
     }
@@ -39,7 +40,7 @@
 .doughnutChart{
     margin-top: 10px;
 
-    @include statsPanelToTwoCol(){
+    @include immediateDesktopShrink(){
         padding: 20px;
     }
 }
@@ -50,7 +51,7 @@
     margin: auto;
     width: 100%;
 
-    @include statsPanelToTwoCol(){
+    @include immediateDesktopShrink(){
         grid-column: span 2 / span 2;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -64,9 +65,9 @@
 .pieHeader {
     display: flex;
     justify-content: center;
-    font-size: 25px;
-    font-weight: 500;
-    @include statsPanelToTwoCol(){
+    font-size: $title-font-size;
+    font-weight: $bold-headings;
+    @include immediateDesktopShrink(){
         margin-top: 20px;
     }
 }
@@ -78,20 +79,22 @@
 }
 
 .accuracyMeterHeading {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: $title-font-size;
+    font-weight: $bold-headings;
     display: flex;
     justify-content: center;
     padding: 8px;
 
-    @include statsPanelToTwoCol(){
-        font-size: 17px;
-        border-bottom: silver 1px solid;
+    @include immediateDesktopShrink(){
+        font-size: $response-text-font-size;
+        border-bottom:1px solid;
+        border-bottom-color: $border-color;
         margin: 0 30px;
     }
+
     @include statsPanelToOneCol(){
         margin: 0 70px;
-        font-size: 20px;
+        font-size: $text-font-size;
     }
 }
 

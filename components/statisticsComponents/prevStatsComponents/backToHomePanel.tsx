@@ -1,5 +1,5 @@
 import {Button, Modal} from "antd";
-import styles from "../../../css/statistics/savePanel.module.css";
+import styles from "../../../css/statistics/savePanel.module.scss";
 import React from "react";
 import {useRouter} from "next/router";
 

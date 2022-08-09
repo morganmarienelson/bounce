@@ -1,0 +1,125 @@
+@import "../../styles/responsive";
+@import "../../styles/globalSass";
+
+.row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0;
+
+    @include immediateDesktopShrink(){
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 0 30px;
+    }
+}
+
+.returnCol {
+    width: 100%;
+    grid-column: span 1 / span 1;
+    margin: 10px auto;
+    border-right: solid 2px;
+    border-color: $border-color;
+    padding: 0 50px;
+
+    @include immediateDesktopShrink(){
+        border-right: none;
+        padding: 0;
+    }
+
+    @include headingShrink(){
+        grid-column: span 2 / span 2;
+        padding: 0 50px;
+    }
+}
+
+.returnColLastCol {
+    width: 100%;
+    grid-column: span 1 / span 1;
+    margin: auto;
+    border-right: none;
+
+    @include immediateDesktopShrink(){
+        grid-column: span 2/ span 2;
+        display: flex;
+        justify-content: center;
+    }
+
+    @include headingShrink(){
+        justify-content: space-between;
+        margin: 0 0 10px 20px;
+    }
+
+    @include singleCol(){
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: 0;
+    }
+}
+
+.returnHeading, .missedReturnsHeading {
+    font-size: $text-font-size;
+    font-weight: $bold-headings;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+
+    @include immediateDesktopShrink(){
+        font-size: $title-font-size;
+        border-bottom: solid 1px;
+        border-color: $border-color;
+        margin-right: 50px;
+    }
+}
+
+.meter {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+.percent {
+    font-size: 30px;
+    font-weight: $text-font-size;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.numberMissed {
+    font-size: 40px;
+    font-weight: $bold-text;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+    @include immediateDesktopShrink(){
+        font-size: 30px;
+    }
+
+    @include headingShrink(){
+        font-size: $title-font-size;
+    }
+}
+
+.numberMissedCol{
+    @include immediateDesktopShrink(){
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @include headingShrink(){
+        width: 100%;
+        display: grid;
+    }
+
+    @include singleCol(){
+        grid-column: span 1 / span 1;
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+

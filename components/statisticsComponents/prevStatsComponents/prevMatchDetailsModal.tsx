@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import {Modal} from "antd";
-import styles from "../../../css/statistics/prevMatchDetailsModal.module.css";
+import styles from "../../../css/statistics/prevMatchDetailsModal.module.scss";
 import {MatchDetails} from "../../../types/matchDetails";
 
 interface PrevMatchDetailsModalProps {

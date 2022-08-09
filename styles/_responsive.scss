@@ -1,0 +1,54 @@
+@mixin immediateDesktopShrink(){
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin shrinkBtnFont(){
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin serveTableShrink(){
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin headingShrink(){
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin twoColPanel(){
+  @media (max-width: 800px) {
+    @content;
+  }
+}
+
+
+@mixin singleCol(){
+  @media (max-width: 800px) {
+    @content;
+  }
+}
+
+@mixin statsPercentsOneCol(){
+  @media (max-width: 750px) {
+    @content;
+  }
+}
+
+@mixin statsPanelToOneCol(){
+  @media (max-width: 700px) {
+    @content;
+  }
+}
+
+@mixin desktopSmallScreen(){
+  @media (max-width: 600px) {
+    @content;
+  }
+}

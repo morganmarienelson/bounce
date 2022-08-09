@@ -1,0 +1,21 @@
+@import "../../styles/responsive";
+@import "../../styles/globalSass";
+
+.btnContainer{
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+
+    @include headingShrink(){
+        justify-content: space-evenly;
+    }
+}
+
+.saveBtn, .homeBtn{
+    margin: 20px;
+    height: 60px;
+}
+
+.btnTitle{
+    font-size: $text-font-size;
+}

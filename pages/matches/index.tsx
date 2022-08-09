@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {getSession, signIn} from "next-auth/react";
-import styles from "../../css/matchLog.module.css"
+import styles from "../../css/matchLog.module.scss"
 import BackToHomeHeading from "../../components/statisticsComponents/backToHomeHeading";
 import {Nav} from "grommet";
 import PrevMatchDetailsModal from "../../components/statisticsComponents/prevStatsComponents/prevMatchDetailsModal";

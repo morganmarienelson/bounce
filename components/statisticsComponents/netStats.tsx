@@ -1,4 +1,4 @@
-import styles from "../../css/statistics/netStats.module.css";
+import styles from "../../css/statistics/netStats.module.scss";
 import React from 'react';
 import {
     Grommet,

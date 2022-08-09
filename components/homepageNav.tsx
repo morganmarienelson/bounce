@@ -3,7 +3,7 @@ import Link from "next/link";
 import {Button} from "grommet/components";
 import {Database, Scorecard} from "grommet-icons";
 import React, {useEffect, useState} from "react";
-import styles from "../css/homepage.module.css"
+import styles from "../css/homepage.module.scss"
 import {getSession} from "next-auth/react";
 
 

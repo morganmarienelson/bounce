@@ -3,7 +3,7 @@ import {Meter} from "grommet";
 import {
     Grommet,
 } from "grommet/components";
-import styles from "../../css/statistics/returnStats.module.css";
+import styles from "../../css/statistics/returnStats.module.scss";
 import globalStyles from "../../css/statistics/matchStatsDisplay.module.scss";
 import {MatchStats} from "../../types/matchStats";
 

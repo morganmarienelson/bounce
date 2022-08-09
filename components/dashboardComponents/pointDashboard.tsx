@@ -5,7 +5,7 @@ import ReturnPanel from "./returnPanel";
 import ServingPanel from "./servingPanel";
 import LostPointModal from "./dashboardModals/lostPointModal";
 import WonPointModal from "./dashboardModals/wonPointModal";
-import styles from "../../css/dashboard/pointDashboard.module.css"
+import styles from "../../css/dashboard/pointDashboard.module.scss"
 
 interface PointDashboardProps {
     setShowDashboard: (showDashboard: boolean) => void;

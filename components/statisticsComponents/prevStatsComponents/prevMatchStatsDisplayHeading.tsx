@@ -1,6 +1,6 @@
 import {Grommet, Heading} from "grommet/components";
 import {Header, Nav} from 'grommet';
-import styles from "../../../css/bounceHeading.module.css"
+import styles from "../../../css/bounceHeading.module.scss"
 import Link from "next/Link";
 import {LinkPrevious,Home} from "grommet-icons";
 import React from "react";
