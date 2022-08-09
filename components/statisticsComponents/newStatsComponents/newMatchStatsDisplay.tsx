@@ -218,7 +218,7 @@ const NewMatchStatsDisplay: React.FC<MatchStatsProps> = ({setShowDashboard, stat
 
     useEffect(() => {
         calculateStats();
-    }, [])
+    }, )
 
     const calculateStats = () =>{
         const stats = {

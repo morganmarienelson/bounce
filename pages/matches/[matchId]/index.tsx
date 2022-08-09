@@ -9,7 +9,6 @@ import BaselineStats from "../../../components/statisticsComponents/baselineStat
 import NetStats from "../../../components/statisticsComponents/netStats";
 import React from "react";
 import {MatchDetailsInit} from "../../../enums/matchDetailsInit";
-import BackToHomeHeading from "../../../components/statisticsComponents/backToHomeHeading";
 import BackToHomePanel from "../../../components/statisticsComponents/prevStatsComponents/backToHomePanel";
 
 function MatchDetails(){
@@ -28,7 +27,7 @@ function MatchDetails(){
             setStats(data);
         }
         fetchData();
-    }, [])
+    }, )
 
     const checkSuccess = (value: number) => {
         if (value >= 85) {
