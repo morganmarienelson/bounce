@@ -1,6 +1,7 @@
 @import '../styles/_colors.scss';
 @import '../styles/_responsive.scss';
 @import '../styles/globalSass';
+@import '../styles/mixin';
 
 .header {
     background-color: $purple;
@@ -17,9 +18,7 @@
 
 .matchDetailsTitle{
     color: $heading-btn-text;
-    text-align: center;
-    font-size: $title-font-size;
-    font-weight: $bold-headings;
+    @include header($font: $title-font-size);
 
     @include statsPanelToOneCol(){
         font-size: 22px;

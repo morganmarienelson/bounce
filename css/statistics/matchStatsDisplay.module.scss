@@ -1,5 +1,7 @@
 @import "../../styles/responsive";
 @import "../../styles/globalSass";
+@import "../../styles/colors";
+@import "../../styles/mixin";
 
 .fullPage {
     width: 100%;
@@ -27,9 +29,7 @@
 }
 
 .percentagesRow {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    @include grid($width: 100%, $rows: 4);
     column-gap: 0;
 
     @include immediateDesktopShrink(){
@@ -44,9 +44,7 @@
 }
 
 .percentagesCol {
-    width: 95%;
-    grid-column: span 1 / span 1;
-    margin: 10px auto;
+    @include percentagesCol($width: 95%);
     border-right: solid 2px $border-color;
 
     @include immediateDesktopShrink(){
@@ -60,9 +58,7 @@
 }
 
 .percentagesColLastCol {
-    width: 100%;
-    margin: 10px auto;
-    grid-column: span 1 / span 1;
+    @include percentagesCol;
 
     @include immediateDesktopShrink(){
         border-right: none;
@@ -100,9 +96,7 @@
 }
 
 .percentagesHeading {
-    font-size: $response-text-font-size;
-    font-weight: $bold-headings;
-    @extend %center-text;
+    @include header($font: $response-text-font-size);
     padding: 8px;
 
     @include immediateDesktopShrink(){

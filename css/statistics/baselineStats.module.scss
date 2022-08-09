@@ -1,10 +1,10 @@
 @import "../../styles/responsive";
 @import "../../styles/globalSass";
+@import "../../styles/mixin";
+@import "../../styles/colors";
 
 .row {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    @include grid($width: 100%, $rows: 3);
     column-gap:20px;
 
     @include immediateDesktopShrink(){
@@ -18,10 +18,7 @@
 }
 
 .doughnutChartCol {
-    margin: auto;
-    padding: 0;
-    width: 100%;
-    grid-column: span 1 / span 1;
+    @extend %stats-col;
 
     @include immediateDesktopShrink(){
         padding: 10px;
@@ -47,10 +44,7 @@
 }
 
 .accuracy {
-    grid-column: span 1 / span 1;
-    padding: 0;
-    margin: auto;
-    width: 100%;
+    @extend %stats-col;
 
     @include immediateDesktopShrink(){
         grid-column: span 2 / span 2;
@@ -68,9 +62,7 @@
 }
 
 .pieHeader {
-    @extend %center-text;
-    font-size: $title-font-size;
-    font-weight: $bold-headings;
+    @include header($font: $title-font-size);
     @include immediateDesktopShrink(){
         margin-top: 20px;
     }
@@ -82,9 +74,7 @@
 }
 
 .accuracyMeterHeading {
-    font-size: $title-font-size;
-    font-weight: $bold-headings;
-    @extend %center-text;
+    @include header($font: $title-font-size);
     padding: 8px;
 
     @include immediateDesktopShrink(){

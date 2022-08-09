@@ -85,7 +85,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
       <div className={styles.panelRow}>
         {!showServeButtons ? (
           <>
-            <div className={styles.twoSingleBtns}>
+            <div className={styles.twoSingleBtn}>
               <Button
                 className={styles.panelBtn}
                 type="primary"
@@ -98,7 +98,7 @@ const ServingPanel: React.FC<ServingPanelProps> = ({
                 <div className={styles.btnTitle}>Ace</div>
               </Button>
             </div>
-            <div className={styles.twoSingleBtns}>
+            <div className={styles.twoSingleBtn}>
               <Button
                 className={styles.panelBtn}
                 type="primary"

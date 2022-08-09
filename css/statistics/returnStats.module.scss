@@ -1,10 +1,11 @@
 @import "../../styles/responsive";
 @import "../../styles/globalSass";
+@import "../../styles/mixin";
+@import "../../styles/colors";
+
 
 .row {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    @include grid($width: 100%, $rows: 3);
     column-gap: 0;
 
     @include immediateDesktopShrink(){
@@ -14,9 +15,7 @@
 }
 
 .returnCol {
-    width: 100%;
-    grid-column: span 1 / span 1;
-    margin: 10px auto;
+    @include percentagesCol;
     border-right: solid 2px $border-color;
     padding: 0 50px;
 
@@ -32,9 +31,7 @@
 }
 
 .returnColLastCol {
-    width: 100%;
-    grid-column: span 1 / span 1;
-    margin: auto;
+   @extend %stats-col;
     border-right: none;
 
     @include immediateDesktopShrink(){
@@ -49,17 +46,13 @@
     }
 
     @include singleCol(){
-        width: 90%;
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
+        @include grid($width: 90%, $rows: 1);
         column-gap: 0;
     }
 }
 
 .returnHeading, .missedReturnsHeading {
-    font-size: $text-font-size;
-    font-weight: $bold-headings;
-    @extend %center-text;
+    @include header;
     padding: 8px;
 
     @include immediateDesktopShrink(){

@@ -1,9 +1,8 @@
 @import "../../styles/globalSass";
+@import "../../styles/mixin";
 
 .title{
-    font-weight: $bold-headings;
-    font-size: 30px;
-    text-align: center;
+    @include header($font: 30px)
 }
 
 .textContainer{

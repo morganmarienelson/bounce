@@ -1,10 +1,10 @@
 @import "../../styles/responsive";
 @import "../../styles/globalSass";
+@import "../../styles/mixin";
+@import "../../styles/colors";
 
 .secondRow {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    @include grid($width: 100%, $rows: 2);
     column-gap:40px;
     margin: 0 auto;
     padding: 0 30px;
@@ -47,9 +47,7 @@
 
 
 .pieHeader {
-    @extend %center-text;
-    font-size: $text-font-size;
-    font-weight: $bold-headings;
+    @include header;
 
     @include immediateDesktopShrink(){
         margin-top: 20px;
@@ -62,9 +60,7 @@
 }
 
 .thirdRow {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    @include grid($width: 100%, $rows: 3);
     column-gap: 0;
     margin-left: 15px;
 
@@ -76,9 +72,7 @@
 }
 
 .accuracyMeterHeading {
-    font-size: $text-font-size;
-    font-weight: $bold-headings;
-    @extend %center-text;
+    @include header;
     padding: 8px;
 
     @include immediateDesktopShrink(){

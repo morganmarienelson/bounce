@@ -91,7 +91,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
             <div className={styles.panelRow}>
                 {!showReturnButtons ? (
                     <>
-                        <div className={styles.twoSingleBtns}>
+                        <div className={styles.twoSingleBtn}>
                             <Button
                                 className={styles.panelBtn}
                                 type="primary"
@@ -109,7 +109,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
                                 </div>
                             </Button>
                         </div>
-                        <div className={styles.twoSingleBtns}>
+                        <div className={styles.twoSingleBtn}>
                             <Button
                                 className={styles.panelBtn}
                                 type="primary"

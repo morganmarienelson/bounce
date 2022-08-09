@@ -1,15 +1,14 @@
 @import "../../styles/responsive";
 @import "../../styles/globalSass";
+@import "../../styles/mixin";
+@import "../../styles/colors";
 
 .servingLocationPercentages {
-    width: 100%;
-    grid-column: span 1 / span 1;
+    @extend %stats-col;
 }
 
 .unreturnedRow {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    @include grid($width: 100%, $rows: 3);
     column-gap: 30px;
     margin: 20px auto 0;
 
@@ -45,8 +44,7 @@
 }
 
 .percentRow {
-    grid-column: span 1 / span 1;
-    width: 100%;
+    @include percentagesCol;
 }
 
 .tableTotal {
@@ -54,11 +52,9 @@
 }
 
 .serveLocationHeading {
-    font-size: $title-font-size;
-    font-weight: $bold-headings;
+     @include header($font: $title-font-size);
     padding: 8px;
     margin-bottom: 20px;
-    @extend %center-text;
 }
 
 .pieChart {
@@ -72,9 +68,7 @@
 }
 
 .pieChartHeading {
-    font-size: $title-font-size;
-    font-weight: $bold-headings;
-    @extend %center-text;
+    @include header($font: $title-font-size);
 
     @include immediateDesktopShrink(){
         font-size: 22px;
