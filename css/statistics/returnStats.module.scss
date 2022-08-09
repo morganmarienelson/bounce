@@ -65,7 +65,7 @@
     padding: 8px;
 
     @include immediateDesktopShrink(){
-        font-size: $title-font-size;
+        font-size: $response-text-font-size;
         border-bottom: solid 1px;
         border-color: $border-color;
         margin-right: 50px;
