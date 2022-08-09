@@ -22,7 +22,7 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
     const [winningModalVisible, setWinningModalVisible] = useState(false);
     const [isServing, setIsServing] = useState(false);
     const [secondServe, setSecondServe] = useState(false);
-    const pointLog = new Array<String>;
+    const [pointLog, setPointLog] = useState(Array<String>);
 
     const pointFinished = () => {
         setShowServeButtons(false);
