@@ -1,5 +1,6 @@
 @import "../../styles/responsive";
 @import "../../styles/globalSass";
+@import "../../styles/colors";
 
 .btnContainer{
     display: flex;
@@ -14,6 +15,7 @@
 .saveBtn, .homeBtn{
     margin: 20px;
     height: 60px;
+    color: $heading-btn-text;
 }
 
 .btnTitle{
