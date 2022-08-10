@@ -1,9 +1,7 @@
 import styles from "../../css/statistics/baselineStats.module.scss";
 import globalStyles from "../../css/statistics/matchStatsDisplay.module.scss";
 import React from 'react';
-import {
-  Grommet,
-} from "grommet/components";
+import {Grommet,} from "grommet/components";
 import { Meter } from "grommet";
 import {
   Chart as ChartJS,
