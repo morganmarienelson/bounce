@@ -6,17 +6,19 @@ import {useRouter} from "next/router";
 
 interface SaveMatchModalProps{
     showModal : boolean;
-    setShowModal: (showModal: boolean) => void;
+   // setShowModal: (showModal: boolean) => void;
 }
 
-const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal, setShowModal}) => {
+const SaveMatchModal:  React.FC<SaveMatchModalProps> = ( {showModal,// setShowModal
+
+}) => {
     const router = useRouter();
 
     const onModalOk = () => {
             Modal.confirm({
                 title: "Are you sure that you want to close this form? This match is not saved. You did not press submit.",
                 onOk: () => {
-                    setShowModal(false);
+                    //setShowModal(false);
                 },
             });
     };
