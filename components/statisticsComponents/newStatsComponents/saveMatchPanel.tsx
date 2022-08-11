@@ -1,4 +1,4 @@
-import { Button, Modal } from "antd";
+ import { Button, Modal } from "antd";
 import styles from "../../../css/statistics/savePanel.module.scss";
 import React, { useEffect, useState } from "react";
 import SaveMatchModal from "./saveMatchModal";

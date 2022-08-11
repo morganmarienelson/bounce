@@ -3,8 +3,7 @@ import "antd/dist/antd.css";
 import {Form, Modal, Radio} from "antd";
 import styles from "../../../css/dashboard/modal.module.scss";
 import {MatchDataEvents} from "../../../enums/matchDataEvents";
-import {ServeLocations
-} from "../../../enums/serveLocations";
+import {ServeLocations} from "../../../enums/serveLocations";
 
 interface ServeLocationModalProps {
     serveLocationModalVisible: boolean;

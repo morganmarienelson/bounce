@@ -1,9 +1,9 @@
-import Layout from "../components/layout";
 import {MantineProvider, ColorSchemeProvider} from "@mantine/core";
 import { useState} from "react";
 import {getCookie, setCookies} from "cookies-next";
 import { SessionProvider } from 'next-auth/react';
 import {NextPageContext} from "next";
+import Head from "next/head";
 
 const MyApp = (props: any) => {
     const {Component, pageProps} = props;
@@ -15,15 +15,19 @@ const MyApp = (props: any) => {
     }
 
     return (
+        <>
+        <Head>
+            <link rel="shortcut icon" href="/favicon/favicon.ico"/>
+            <title>Bounce</title>,
+        </Head>
         <SessionProvider session={props.session}>
             <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-                <Layout>
                 <MantineProvider theme={{colorScheme}} withGlobalStyles withNormalizeCSS>
                     <Component {...pageProps} />
                 </MantineProvider>
-                </Layout>
             </ColorSchemeProvider>
         </SessionProvider>
+        </>
 
 );
 }

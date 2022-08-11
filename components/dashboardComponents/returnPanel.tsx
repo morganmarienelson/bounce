@@ -37,7 +37,7 @@ const ReturnPanel: React.FC<ReturnPanelProps> = ({
         pointLog.push(MatchDataEvents.DecrementMissedFirstServeReturns);
         send({type: MatchDataEvents.IncrementPointsLostOnReturn});
         pointLog.push(MatchDataEvents.DecrementPointsLostOnReturn);
-        pointLog.push("filler");
+        pointLog.push(ShotTypes.filler);
         setShowServeButtons(false);
         pointFinished();
     };

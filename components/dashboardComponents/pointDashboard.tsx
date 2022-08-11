@@ -92,7 +92,6 @@ const PointDashboard: React.FC<PointDashboardProps> = ({
                 secondServe={secondServe}
                 setShowServeButtons={setShowServeButtons}
                 setShowReturnButtons={setShowReturnButtons} />
-
             <WonPointModal
                 send={send}
                 winningModalVisible={winningModalVisible}
