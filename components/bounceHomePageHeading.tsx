@@ -12,9 +12,9 @@ function BounceHomePageHeading() {
     <Grommet>
       <Header className={styles.header}>
         <Heading className={styles.headingTitle}>Bounce</Heading>
-        <Nav direction="row">
-            <div className={styles.navCol}>
           {!session && (
+              <Nav direction="row">
+              <div className={styles.navCol}>
             <Link
               href="/api/auth/signin"
               onClick={(e) => {
@@ -23,8 +23,20 @@ function BounceHomePageHeading() {
             >
               <a className={styles.a}>Sign In</a>
             </Link>
+              </div>
+                  <div className={styles.navCol}>
+                      <ColorModeSwitcher/>
+                  </div>
+              </Nav>
           )}
           {session && (
+              <Nav direction={'column'}>
+              <div className={styles.userName}>
+                 {session.user?.name}
+              </div>
+                  <Nav direction={'row'}>
+              <div className={styles.navCol}>
+
             <Link
               href="/api/auth/signout"
               onClick={(e) => {
@@ -33,12 +45,13 @@ function BounceHomePageHeading() {
             >
               <a className={styles.a}>Sign Out</a>
             </Link>
+              </div>
+                  <div className={styles.navCol}>
+                      <ColorModeSwitcher/>
+                  </div>
+                  </Nav>
+              </Nav>
           )}
-            </div>
-            <div className={styles.navCol}>
-                <ColorModeSwitcher/>
-            </div>
-        </Nav>
       </Header>
     </Grommet>
   );
