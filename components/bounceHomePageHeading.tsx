@@ -18,7 +18,7 @@ function BounceHomePageHeading() {
             <Link
               href="/api/auth/signin"
               onClick={(e) => {
-                signIn("github");
+                signIn("google");
               }}
             >
               <a className={styles.a}>Sign In</a>
