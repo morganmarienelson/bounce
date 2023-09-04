@@ -3,7 +3,7 @@
 ## Summary 
 This project was created to keep track of a player's performance statistics during a tennis match. This is a project that I am still working on. It is a side project that I began to develop to familiarize myself with frontend development and gain experience.
 In its current version, an observer is able to keep track of a player's performance during a match,
-and then, view a statistical breakdown of that player. If the user is signed in, they are able to save their match's data and 
+and then, view a statistical breakdown of that player's performance. If the user is signed in, they are able to save their match's data and 
 view previously saved matches. While these features are present in the frontend, this application does not have
 the required backend database connections to make these features fully functional yet.
 
