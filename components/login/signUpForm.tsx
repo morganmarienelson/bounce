@@ -38,6 +38,13 @@ const SignUpForm = () =>{
                         </Button>
                     </Link>
                 </form>
+                <Divider my="sm" />
+                <div className={styles.text}>
+                    <div>If you already have an account, please</div>
+                    <Link href='/auth/sign-in'>
+                        Sign In
+                    </Link>
+                </div>
             </Box>
         </div>
     )
