@@ -11,47 +11,47 @@ function BounceHomePageHeading() {
   return (
     <Grommet>
       <Header className={styles.header}>
-        <Heading className={styles.headingTitle}>Bounce</Heading>
-          {!session && (
-              <Nav direction="row">
-              <div className={styles.navCol}>
-            <Link
-              href="/api/auth/signin"
-              onClick={(e) => {
-                signIn("google");
-              }}
-            >
-              <a className={styles.a}>Sign In</a>
-            </Link>
-              </div>
-                  <div className={styles.navCol}>
-                      <ColorModeSwitcher/>
-                  </div>
-              </Nav>
-          )}
-          {session && (
-              <Nav direction={'column'}>
-              <div className={styles.userName}>
-                 {session.user?.name}
-              </div>
-                  <Nav direction={'row'}>
-              <div className={styles.navCol}>
+        {/*<Heading className={styles.headingTitle}>Bounce</Heading>*/}
+        {/*  {!session && (*/}
+        {/*      <Nav direction="row">*/}
+        {/*      <div className={styles.navCol}>*/}
+        {/*    <Link*/}
+        {/*      href="/api/auth/signin"*/}
+        {/*      onClick={(e) => {*/}
+        {/*        signIn("google");*/}
+        {/*      }}*/}
+        {/*    >*/}
+        {/*      <a className={styles.a}>Sign In</a>*/}
+        {/*    </Link>*/}
+        {/*      </div>*/}
+        {/*          <div className={styles.navCol}>*/}
+        {/*              <ColorModeSwitcher/>*/}
+        {/*          </div>*/}
+        {/*      </Nav>*/}
+        {/*  )}*/}
+        {/*  {session && (*/}
+        {/*      <Nav direction={'column'}>*/}
+        {/*      <div className={styles.userName}>*/}
+        {/*         {session.user?.name}*/}
+        {/*      </div>*/}
+        {/*          <Nav direction={'row'}>*/}
+        {/*      <div className={styles.navCol}>*/}
 
-            <Link
-              href="/api/auth/signout"
-              onClick={(e) => {
-                signOut();
-              }}
-            >
-              <a className={styles.a}>Sign Out</a>
-            </Link>
-              </div>
-                  <div className={styles.navCol}>
-                      <ColorModeSwitcher/>
-                  </div>
-                  </Nav>
-              </Nav>
-          )}
+        {/*    <Link*/}
+        {/*      href="/api/auth/signout"*/}
+        {/*      onClick={(e) => {*/}
+        {/*        signOut();*/}
+        {/*      }}*/}
+        {/*    >*/}
+        {/*      <a className={styles.a}>Sign Out</a>*/}
+        {/*    </Link>*/}
+        {/*      </div>*/}
+        {/*          <div className={styles.navCol}>*/}
+        {/*              <ColorModeSwitcher/>*/}
+        {/*          </div>*/}
+        {/*          </Nav>*/}
+        {/*      </Nav>*/}
+        {/*  )}*/}
       </Header>
     </Grommet>
   );
