@@ -9,10 +9,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@emotion/react": "^11.9.3",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.9.3",
-    "@mantine/core": "^5.0.0",
-    "@mantine/hooks": "^5.0.0",
+    "@mantine/core": "^5.10.5",
+    "@mantine/form": "^6.0.20",
+    "@mantine/hooks": "^5.10.5",
     "@testing-library/dom": "^8.17.1",
     "@xstate/react": "^3.0.0",
     "antd": "^4.21.2",

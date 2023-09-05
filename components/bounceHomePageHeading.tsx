@@ -11,7 +11,7 @@ function BounceHomePageHeading() {
   return (
     <Grommet>
       <Header className={styles.header}>
-        {/*<Heading className={styles.headingTitle}>Bounce</Heading>*/}
+        <Heading className={styles.headingTitle}>Bounce</Heading>
         {/*  {!session && (*/}
               <Nav direction="row">
               <div className={styles.navCol}>
