@@ -1,7 +1,7 @@
 import React from 'react'
 import SignInForm from "../../../components/login/signInForm";
 
-const signIn = () =>{
+const page = () =>{
     return(
         <div>
            <SignInForm/>
@@ -9,4 +9,4 @@ const signIn = () =>{
     );
 }
 
-export default signIn;
+export default page;
