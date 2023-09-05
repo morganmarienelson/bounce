@@ -7,7 +7,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import {ColorModeSwitcher} from "./colorModeSwitch";
 
 function BounceHomePageHeading() {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   return (
     <Grommet>
       <Header className={styles.header}>

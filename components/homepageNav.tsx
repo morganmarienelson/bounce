@@ -11,17 +11,17 @@ import {getSession} from "next-auth/react";
 const HomePageNav = () => {
     const [showPreviousButton, setShowPreviousButton] = useState(false)
 
-    useEffect(() => {
-        const securePage = async () => {
-            const session = await getSession();
-            if (!session) {
-                setShowPreviousButton(false)
-            } else {
-                setShowPreviousButton(true)
-            }
-        }
-        securePage();
-    }, [])
+    // useEffect(() => {
+    //     const securePage = async () => {
+    //         const session = await getSession();
+    //         if (!session) {
+    //             setShowPreviousButton(false)
+    //         } else {
+    //             setShowPreviousButton(true)
+    //         }
+    //     }
+    //     securePage();
+    // }, [])
 
 
     return (
