@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../css/login/signInForm.module.scss'
 import {useForm} from "@mantine/form";
-import {Box, Button, NumberInput, PasswordInput, TextInput} from "@mantine/core";
+import {Box, Button,Divider, PasswordInput, TextInput} from "@mantine/core";
 import Link from "next/link";
 
 const SignInForm = () =>{
@@ -21,19 +21,22 @@ const SignInForm = () =>{
 
     return(
         <div className={styles.container}>
-            <Box maw={320} mx="auto" my={'auto'}>
+            <Box  className={styles.form}>
                 <form onSubmit= {form.onSubmit((values) => onSubmit(values))}>
-                    <TextInput label="Email" placeholder="Email" withAsterisk={true} {...form.getInputProps('email')} />
-                    <PasswordInput withAsterisk={true}  mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
-                    <Button type="submit" mt="sm">
+                    <TextInput size={"md"} className={styles.input} label="Email" placeholder="Email" withAsterisk={true} {...form.getInputProps('email')} />
+                    <PasswordInput   size={"md"} className={styles.input} withAsterisk={true}  mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
+                    <Button type="submit"  size={'md'} className={styles.button}>
                         Sign In
                     </Button>
                 </form>
-                <div>or</div>
-                <div>If you do not have an account, please</div>
-                <Link href='/auth/sign-up'>
-                    Sign Up
-                </Link>
+                <Divider my="sm" />
+                <div className={styles.text}>
+                    <div>If you do not have an account, please</div>
+                    <Link href='/auth/sign-up'>
+                        Sign Up
+                    </Link>
+                </div>
+
             </Box>
         </div>
     )
