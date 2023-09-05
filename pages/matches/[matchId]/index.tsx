@@ -11,7 +11,7 @@ import React from "react";
 import {MatchDetailsInit} from "../../../enums/matchDetailsInit";
 import BackToHomePanel from "../../../components/statisticsComponents/prevStatsComponents/backToHomePanel";
 
-function MatchDetails(){
+const MatchDetails = () =>{
     const router = useRouter();
     const [stats, setStats] = useState(
         MatchDetailsInit

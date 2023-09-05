@@ -5,7 +5,7 @@ import PointDashboard from "../components/dashboardComponents/pointDashboard";
 import NewMatchStatsDisplay from "../components/statisticsComponents/newStatsComponents/newMatchStatsDisplay";
 
 
-function Dashboard() {
+const Dashboard = () =>{
     const [showDashboard, setShowDashboard] = useState(true);
     const [state, send] = useMachine(matchData);
 
