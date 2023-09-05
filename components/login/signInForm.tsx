@@ -29,7 +29,10 @@ const SignInForm = () =>{
                         Sign In
                     </Button>
                 </form>
-                <Divider my="sm" />
+                <Divider  size={'md'} my="sm" label="or" labelPosition="center"/>
+                <Button type="submit"  size={'md'} className={styles.googleBtn}>
+                    Sign In with Google
+                </Button>
                 <div className={styles.text}>
                     <div>If you do not have an account, please</div>
                     <Link href='/auth/sign-up'>

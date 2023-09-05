@@ -38,7 +38,10 @@ const SignUpForm = () =>{
                         </Button>
                     </Link>
                 </form>
-                <Divider my="sm" />
+                <Divider  size={'md'} my="sm" label="or" labelPosition="center"/>
+                <Button type="submit"  size={'md'} className={styles.googleBtn}>
+                    Sign Up with Google
+                </Button>
                 <div className={styles.text}>
                     <div>If you already have an account, please</div>
                     <Link href='/auth/sign-in'>
