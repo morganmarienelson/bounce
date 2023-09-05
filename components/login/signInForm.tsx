@@ -36,7 +36,6 @@ const SignInForm = () =>{
                         Sign Up
                     </Link>
                 </div>
-
             </Box>
         </div>
     )
