@@ -32,9 +32,11 @@ const SignUpForm = () =>{
                     <TextInput size={"md"} className={styles.input} label="Email" placeholder="Email" withAsterisk={true} {...form.getInputProps('email')} />
                     <PasswordInput   size={"md"} className={styles.input} withAsterisk={true}  mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
                     <PasswordInput   size={"md"} className={styles.input} withAsterisk={true}  mt="sm" label="Confirm Password" placeholder="Confirm Password" {...form.getInputProps('confirmPassword')} />
-                    <Button type="submit"  size={'md'} className={styles.button}>
-                        Sign Up
-                    </Button>
+                    <Link href='/'>
+                        <Button type="submit"  size={'md'} className={styles.button}>
+                            Sign Up
+                        </Button>
+                    </Link>
                 </form>
             </Box>
         </div>
