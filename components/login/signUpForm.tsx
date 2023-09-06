@@ -4,6 +4,8 @@ import {useForm} from "@mantine/form";
 import {Box, Button,Divider, PasswordInput, TextInput} from "@mantine/core";
 import Link from "next/link";
 import {UserSignUp} from "../../types/userSignUp";
+import {useRouter} from "next/router";
+import {router} from "next/client";
 
 const SignUpForm = () =>{
 
@@ -21,25 +23,40 @@ const SignUpForm = () =>{
         },
     });
 
-    const onSubmit = (values: UserSignUp) =>{
-        console.log('Form was submitted');
+    const onSubmit = async (values: UserSignUp) =>{
+        const response = await fetch('/api/route', {
+            method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: values.email,
+                password: values.password,
+                username: values.username,
+                firstName: values.firstName,
+                lastName: values.lastName,
+            })
+        })
+        if(response.ok){
+            // router.push('/sign-in')
+        } else {
+            console.error('User sign up failed')
+        }
     }
 
     return(
         <div className={styles.container}>
             <Box  className={styles.form}>
-                <form onSubmit= {form.onSubmit((values: UserSignUp) => onSubmit(values))}>
+                <form onSubmit={form.onSubmit((values: UserSignUp) => onSubmit(values))}>
                     <TextInput size={"md"} className={styles.input} label="First Name" placeholder="First Name" withAsterisk={true} {...form.getInputProps('firstName')} />
                     <TextInput size={"md"} className={styles.input} label="Last Name" placeholder="Last Name" withAsterisk={true} {...form.getInputProps('lastName')} />
                     <TextInput size={"md"} className={styles.input} label="Username" placeholder="Username" withAsterisk={true} {...form.getInputProps('username')} />
                     <TextInput size={"md"} className={styles.input} label="Email" placeholder="Email" withAsterisk={true} {...form.getInputProps('email')} />
                     <PasswordInput   size={"md"} className={styles.input} withAsterisk={true}  mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
                     <PasswordInput   size={"md"} className={styles.input} withAsterisk={true}  mt="sm" label="Confirm Password" placeholder="Confirm Password" {...form.getInputProps('confirmPassword')} />
-                    <Link href='/'>
                         <Button type="submit"  size={'md'} className={styles.button}>
                             Sign Up
                         </Button>
-                    </Link>
                 </form>
                 <Divider  size={'md'} my="sm" label="or" labelPosition="center"/>
                 <Button type="submit"  size={'md'} className={styles.googleBtn}>
