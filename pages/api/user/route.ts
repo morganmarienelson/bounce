@@ -2,6 +2,8 @@ import {NextResponse} from "next/server";
 import {db} from "../../../lib/db";
 import {hash} from "bcrypt";
 
+
+
 export async function POST(req: Request) {
    try {
        const body = req.json();

@@ -3,6 +3,7 @@ import styles from '../../css/login/signInForm.module.scss'
 import {useForm} from "@mantine/form";
 import {Box, Button,Divider, PasswordInput, TextInput} from "@mantine/core";
 import Link from "next/link";
+import {UserLogin} from "../../types/userLogin";
 
 const SignInForm = () =>{
 
@@ -15,14 +16,14 @@ const SignInForm = () =>{
         },
     });
 
-    const onSubmit = (values: any) =>{
+    const onSubmit = (values: UserLogin) =>{
         console.log('Form was submitted');
     }
 
     return(
         <div className={styles.container}>
             <Box  className={styles.form}>
-                <form onSubmit= {form.onSubmit((values) => onSubmit(values))}>
+                <form onSubmit= {form.onSubmit((values: UserLogin) => onSubmit(values))}>
                     <TextInput size={"md"} className={styles.input} label="Email" placeholder="Email" withAsterisk={true} {...form.getInputProps('email')} />
                     <PasswordInput   size={"md"} className={styles.input} withAsterisk={true}  mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
                     <Button type="submit"  size={'md'} className={styles.button}>
