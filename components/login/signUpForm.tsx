@@ -4,7 +4,9 @@ import {useForm} from "@mantine/form";
 import {Box, Button,Divider, PasswordInput, TextInput} from "@mantine/core";
 import Link from "next/link";
 import {UserSignUp} from "../../types/userSignUp";
+import { useRouter } from 'next/navigation';
 const SignUpForm = () =>{
+    const router = useRouter();
 
     const form = useForm({
         initialValues: { firstName: '', lastName:'', email: '', password: '', confirmPassword: '', username: ''},
@@ -29,13 +31,14 @@ const SignUpForm = () =>{
             username: values.username,
         }
 
-        const data = await fetch('/api/route', {
+        const response = await fetch('/api/route', {
             method: "POST",
             body: JSON.stringify(newUser),
         });
-        const res = await data.json();
-        if (!res.ok){
-            console.log(res);
+        if (!response.ok){
+            console.log(response);
+        } else{
+            router.push('/auth/sign-in')
         }
 
     }
