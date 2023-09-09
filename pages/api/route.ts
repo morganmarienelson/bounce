@@ -10,22 +10,7 @@ import {db} from "../../lib/db";
 //     try {
 //        const data = await req.json();
 //        const {email, password, username, firstName, lastName} =  data;
-//        //  const existingUserByEmail = await db.user.findUnique({
-//        //      where: {email: email}
-//        //  });
-//        //  if (existingUserByEmail){
-//        //      return NextResponse.json({user: null, message: "There is already an account associated with this email address"}, {status: 409});
-//        //  }
-//        //
-//        // const existingUserByUsername = await db.user.findUnique({
-//        //     where: {username: username}
-//        // });
-//        // if (existingUserByUsername){
-//        //     return NextResponse.json({user: null, message: "This username already exists"}, {status: 409});
-//        // }
-//
-//         // const hashedPassword = await hash(password, 10);
-//         console.log('here');
+
 //        const newUser = await db.user.create({
 //            data: {
 //                username,
@@ -48,16 +33,35 @@ import {db} from "../../lib/db";
 import { NextApiRequest, NextApiResponse } from "next"
 import {UserSignUp} from "../../types/userSignUp";
 import {NewUserRequest} from "../../types/newUserRequest";
+import {NextResponse} from "next/server";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
         const  user: NewUserRequest = await req.body;
         if (req.method == "POST"){
-            console.log(user);
             try{
-                console.log(user.username)
+       //                  const existingUserByEmail = await db.user.findUnique({
+       //      where: {email: user.email}
+       //  });
+       //  if (existingUserByEmail){
+       //      return NextResponse.json({user: null, message: "There is already an account associated with this email address"}, {status: 409});
+       //  }
+       //
+       // const existingUserByUsername = await db.user.findUnique({
+       //     where: {username: user.}
+       // });
+       // if (existingUserByUsername){
+       //     return NextResponse.json({user: null, message: "This username already exists"}, {status: 409});
+       // }
+       //
+       //  const hashedPassword = await hash(password, 10);
                 await db.user.create({ data:
-                        {email: req.body.email } ,
+                        {email: user.email,
+                            username: user.username,
+                            password: user.password,
+                            firstName: user.firstName,
+                            lastName: user.lastName
+                        } ,
                 })
                 res.status(200).json({ message: 'Success' })
             } catch (error){

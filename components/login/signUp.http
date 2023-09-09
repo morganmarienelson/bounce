@@ -2,4 +2,8 @@ POST http://localhost:3000/api/route
 Content-Type: application/x-www-form-urlencoded
 
 
-email = 123mail.com
+email = newmrtrail@.com &
+firstName = morgan &
+lastName = dgagfg &
+username = helartrlo &
+password = 12345nrfg
