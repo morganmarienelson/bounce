@@ -31,7 +31,7 @@ const SignUpForm = () =>{
 
         const data = await fetch('/api/route', {
             method: "POST",
-            body: JSON.stringify({newUser}),
+            body: JSON.stringify(newUser),
         });
         const res = await data.json();
         if (!res.ok){

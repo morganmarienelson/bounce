@@ -5,7 +5,7 @@ import {hash} from 'bcrypt'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        const  user: NewUserRequest = await req.body;
+        const  user: NewUserRequest =  JSON.parse(req.body);
         if (req.method == "POST"){
             try{
                         const existingUserByEmail = await db.user.findUnique({
