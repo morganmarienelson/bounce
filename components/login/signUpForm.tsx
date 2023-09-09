@@ -4,9 +4,6 @@ import {useForm} from "@mantine/form";
 import {Box, Button,Divider, PasswordInput, TextInput} from "@mantine/core";
 import Link from "next/link";
 import {UserSignUp} from "../../types/userSignUp";
-import {useRouter} from "next/router";
-import {router} from "next/client";
-
 const SignUpForm = () =>{
 
     const form = useForm({
@@ -24,24 +21,23 @@ const SignUpForm = () =>{
     });
 
     const onSubmit = async (values: UserSignUp) =>{
-        const response = await fetch('/api/route', {
-            method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: values.email,
-                password: values.password,
-                username: values.username,
-                firstName: values.firstName,
-                lastName: values.lastName,
-            })
-        })
-        if(response.ok){
-            // router.push('/sign-in')
-        } else {
-            console.error('User sign up failed')
+        const newUser = {
+            email: values.email,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            password: values.password,
+            username: values.username,
         }
+
+        const data = await fetch('/api/route', {
+            method: "POST",
+            body: JSON.stringify({newUser}),
+        });
+        const res = await data.json();
+        if (!res.ok){
+            console.log(res);
+        }
+
     }
 
     return(

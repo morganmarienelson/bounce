@@ -21,7 +21,7 @@ function BounceHomePageHeading() {
               //   page("google");
               // }}
             >
-              <a className={styles.a}>Sign In</a>
+             Sign In
             </Link>
               </div>
                   <div className={styles.navCol}>

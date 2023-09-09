@@ -1,0 +1,5 @@
+POST http://localhost:3000/api/route
+Content-Type: application/x-www-form-urlencoded
+
+
+email = 123mail.com
