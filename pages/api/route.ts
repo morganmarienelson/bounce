@@ -26,17 +26,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 await db.user.create({ data:
                         {email: user.email,
                             username: user.username,
-                            password: user.password,
+                            password: hashedPassword,
                             firstName: user.firstName,
                             lastName: user.lastName
                         } ,
                 })
-                res.status(200).json({ message: 'Success' })
+                res.status(200).json({ message: 'Success. This user has been creating.' })
             } catch (error){
                 res.status(400).json({ message: 'Error when creating user' })
             }
         }
     } catch (error) {
-        res.status(400).json({ message: 'Something went wrong, function did not get into POST' })
+        res.status(400).json({ message: 'Request was not a POST request' })
     }
 }
