@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import {MatchDetailsInit} from "../../enums/matchDetailsInit";
 import {Modal} from "antd";
 
-function StatisticsPage(){
+const StatisticsPage = () =>{
     const [loading, setLoading] = useState(true)
     const [matches, setMatches] = useState([])
     const router = useRouter();

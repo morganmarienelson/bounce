@@ -5,7 +5,7 @@ import styles from "../css/404Page.module.scss"
 import {Button} from "grommet/components";
 
 
-function PageNotFound(){
+const PageNotFound = () =>{
     return (
         <div className={styles.container}>
             <div className={styles.text}>

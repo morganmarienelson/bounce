@@ -2,7 +2,7 @@ import React from "react";
 import HomepageNav from "../components/homepageNav";
 import BounceHomePageHeading from "../components/bounceHomePageHeading";
 
-function HomePage(){
+const HomePage = () =>{
     return(
         <>
             <BounceHomePageHeading/>
